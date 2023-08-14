@@ -5,7 +5,7 @@
 * Higor Matheus da Costa Cordeiro
 * João Guilherme Miranda de Sousa Bispo
 * Cauã Ferraz Bittencourt
-* 
+  
 ## Descrição Geral
 Um sistema de gerenciamento de restaurante universitário, focado nas vendas de fichas e gerenciamento de usuários. O aplicativo poderá ser usado tanto pelos funcionários quanto pelos consumidores. Os serviços oferecidos são: compra de fichas, apresentação do cardápio, gerenciamento e cadastro de usuários do sistema, e apresentação de relatórios para o gerente.
 Os usuários do tipo cliente possuem permissão de visualizar seu próprio perfil, sem modificá-lo, comprar fichas, ver o cardápio e verificar seu histórico de transações. Os usuários que são vendedores poderão cadastrar cardápios e realizar vendas quando for necessário o pagamento à dinheiro. Usuários com perfil de Gerente terão acesso a todos os relatórios, aprovarão os cardápios e farão o gerenciamento dos usuários e cardápios, sendo os únicos capazes de modificá-los. A realização das vendas e a apresentação do cardápio tornam-se mais importantes para o cliente, e gira em torno do objetivo principal do desenvolvimento do software.
