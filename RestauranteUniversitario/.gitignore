@@ -36,3 +36,10 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Ignore ###
+.mvn
+pom.xml
+mvnw.cmd
+.idea
+.mvnw
