@@ -10,5 +10,5 @@ public interface IRepositorioUsuario {
 
     public void removerUsuario (Usuario u);
 
-    public List<Usuario> getListaUsuario();
+    public List<Usuario> getUsuarios();
 }

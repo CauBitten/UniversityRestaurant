@@ -22,7 +22,7 @@ public class ControllerLoginPage {
     private PasswordField passwordField;
 
     @FXML
-    void bttnEntrar(ActionEvent event) {
+    void btnEntrar(ActionEvent event) {
 
     }
 
