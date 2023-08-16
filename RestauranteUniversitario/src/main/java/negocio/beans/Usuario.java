@@ -10,9 +10,10 @@ public abstract class Usuario {
     private String nome;
     private long cpf;
     private boolean ativado;
+    private boolean perfilAdmin;
 
     Usuario(String senha, String login, String email,
-            String nome, long cpf, boolean ativado) {
+            String nome, long cpf, boolean ativado, boolean perfilAdmin) {
 
         this.senha = senha;
         this.login = login;
@@ -20,7 +21,7 @@ public abstract class Usuario {
         this.nome = nome;
         this.cpf = cpf;
         this.ativado = ativado;
-
+        this.perfilAdmin = perfilAdmin;
     }
 
     public String getSenha() {
@@ -52,7 +53,7 @@ public abstract class Usuario {
         if (obj instanceof Usuario){
             Usuario user = (Usuario) obj;
 
-            return this.cpf == user.getCpf() || Objects.equals(this.login, user.getLogin());
+            return (this.cpf == user.getCpf() || Objects.equals(this.login, user.getLogin()));
         }
 
         return false;
