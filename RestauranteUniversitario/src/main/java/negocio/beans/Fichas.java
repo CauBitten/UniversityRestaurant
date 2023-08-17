@@ -4,16 +4,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Fichas {
-
-    private long codigoFicha;
+    private long codigo;
     private double valor;
     private String tipo;
-    private LocalDateTime dataDeAquisicao;
+    private LocalDateTime dataCompra;
 
-    DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-    Fichas (String tipo, String dataDeAquisicao) {
-
+    public Fichas(String tipo, String dataCompra) {
         if (tipo.equals("Janta")) {
             valor = 3;
         } else if (tipo.equals("Almoco")) {
@@ -23,19 +21,15 @@ public class Fichas {
         }
 
         this.tipo = tipo;
-        this.dataDeAquisicao = LocalDateTime.parse(dataDeAquisicao, formato2);
-
+        this.dataCompra = LocalDateTime.parse(dataCompra, formatoDataHora);
     }
 
-    // Setter
     public void setCodigoFicha(long codigoFicha) {
-        this.codigoFicha = codigoFicha;
+        this.codigo = codigoFicha;
     }
-    //
 
-    // Getters
     public long getCodigoFicha() {
-        return codigoFicha;
+        return codigo;
     }
 
     public double getValor() {
@@ -47,18 +41,17 @@ public class Fichas {
     }
 
     public LocalDateTime getDataDeAquisicao() {
-        return dataDeAquisicao;
+        return dataCompra;
     }
-    //
 
     public String toString() {
         String toString;
 
         toString = "===============F===============\n";
-        toString += String.format("Código Ficha   : %s\n", codigoFicha);
+        toString += String.format("Código Ficha   : %s\n", codigo);
         toString += String.format("Tipo Ficha     : %s\n", tipo);
         toString += String.format("Valor Unitário : %.2f\n", valor);
-        toString += String.format("Data Aquisição : %s\n", dataDeAquisicao.format(formato2));
+        toString += String.format("Data Aquisição : %s\n", dataCompra.format(formatoDataHora));
         toString += "==================F=================\n";
 
         return toString;

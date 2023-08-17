@@ -3,7 +3,6 @@ package negocio.beans;
 import java.util.Objects;
 
 public class Cardapio {
-
     private String principal1;
     private String principal2;
     private String naGrelha;

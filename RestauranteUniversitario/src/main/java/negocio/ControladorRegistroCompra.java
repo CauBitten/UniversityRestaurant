@@ -5,39 +5,37 @@ import negocio.beans.RegistroCompra;
 
 import java.util.List;
 
-public class ControladorRegistroCompra implements IRepositorioRegistroCompra {
+public class ControladorRegistroCompra{
 
-    private IRepositorioRegistroCompra iRepositorioRegistroCompra;
+    private IRepositorioRegistroCompra repositorioRegistroCompra;
 
     private static ControladorRegistroCompra instance;
 
-    ControladorRegistroCompra (IRepositorioRegistroCompra iRepositorioRegistroCompra) {
-        this.iRepositorioRegistroCompra = instance.iRepositorioRegistroCompra;
+    private ControladorRegistroCompra() {
+        this.repositorioRegistroCompra = instance.repositorioRegistroCompra;
     }
 
     public static ControladorRegistroCompra getInstance(IRepositorioRegistroCompra iRepositorioRegistroCompra) {
         if (instance == null) {
-            instance = new ControladorRegistroCompra(iRepositorioRegistroCompra);
+            instance = new ControladorRegistroCompra();
         }
+
         return instance;
     }
 
-    @Override
     public void cadastrarRegistroCompra(RegistroCompra rc) {
         if (rc != null) {
-            iRepositorioRegistroCompra.cadastrarRegistroCompra(rc);
+            repositorioRegistroCompra.cadastrarRegistroCompra(rc);
         }
     }
 
-    @Override
     public void removerRegistroCompra(RegistroCompra rc) {
         if (rc != null) {
-            iRepositorioRegistroCompra.removerRegistroCompra(rc);
+            repositorioRegistroCompra.removerRegistroCompra(rc);
         }
     }
 
-    @Override
     public List<RegistroCompra> getListaRegistroCompra() {
-        return iRepositorioRegistroCompra.getListaRegistroCompra();
+        return repositorioRegistroCompra.getListaRegistroCompra();
     }
 }

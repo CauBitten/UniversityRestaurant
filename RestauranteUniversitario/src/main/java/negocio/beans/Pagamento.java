@@ -3,8 +3,10 @@ package negocio.beans;
 public class Pagamento {
 
     private double valor;
+    //Adicionar um tipo de pagamento?
+    //private String tipoPagamento;
 
-    Pagamento (double valor) {
+    Pagamento(double valor) {
         this.valor = valor;
     }
 
@@ -12,7 +14,7 @@ public class Pagamento {
         return valor;
     }
 
-    public boolean autorizarPag() {
+    public boolean isAutorizado() {
         boolean autorizar = false;
 
         /*

@@ -2,30 +2,28 @@ package negocio.beans;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RegistroCompra {
 
-    private List<Fichas> fichasCompradas = new ArrayList<>();
+    private List<Fichas> fichasCompradas;
     private long codigoCompra;
     private Cliente cliente;
-    private Vendedor vendedor;
-    private LocalDateTime dataHora;
+    private String vendedor;
+    private LocalDateTime dataHoraCompra;
     private Pagamento pagamento;
-    private double valor;
+    private double valorCompra;
 
-    DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     public RegistroCompra(List<Fichas> fichasCompradas, Cliente cliente,
-                          Vendedor vendedor, String dataHora) {
-
+                          String vendedor, String dataHora)
+    {
         this.fichasCompradas = fichasCompradas;
         this.cliente = cliente;
         this.vendedor = vendedor;
-        this.dataHora = LocalDateTime.parse(dataHora, formato2);
-
-        gerarValor();
+        this.dataHoraCompra = LocalDateTime.parse(dataHora, formatoDataHora);
+        this.valorCompra = gerarValorDeCompra();
     }
 
     // Getters
@@ -41,51 +39,51 @@ public class RegistroCompra {
         return cliente;
     }
 
-    public Vendedor getVendedor() {
+    public String getVendedor() {
         return vendedor;
     }
 
-    public LocalDateTime getDataHora() {
-        return dataHora;
+    public LocalDateTime getDataHoraCompra() {
+        return dataHoraCompra;
     }
 
     public Pagamento getPagamento() {
         return pagamento;
     }
 
-    public double getValor() {
-        return valor;
+    public double getValorCompra() {
+        return valorCompra;
     }
     //
 
-    public void gerarValor () {
+    private double gerarValorDeCompra() {
         double total = 0;
 
         for (Fichas fichas : fichasCompradas) {
             total += fichas.getValor();
         }
 
-        this.valor = total;
+        return total;
     }
 
     public void setCodigoCompra(long codigoCompra) {
         this.codigoCompra = codigoCompra;
     }
 
-    public boolean autorizacaoPagamento() {
-        pagamento = new Pagamento(valor);
+    public boolean pagamentoAutorizado() {
+        pagamento = new Pagamento(this.getValorCompra());
 
-        return pagamento.autorizarPag();
+        return pagamento.isAutorizado();
     }
 
     public String toString() {
-        String toString;
+        String toString = "";
 
         toString = String.format("=============== %d ===============\n", codigoCompra);
         toString += String.format("negocio.beans.Cliente     : %s\n", cliente.getNome());
-        toString += String.format("negocio.beans.Vendedor    : %s\n", vendedor.getNome());
-        toString += String.format("Data & Hora : %s\n", dataHora.format(formato2));
-        toString += String.format("Valor       : %.2f\n", valor);
+        toString += String.format("negocio.beans.Vendedor    : %s\n", vendedor);
+        toString += String.format("Data & Hora : %s\n", dataHoraCompra.format(formatoDataHora));
+        toString += String.format("Valor       : %.2f\n", valorCompra);
         toString += "==================RC=================\n";
 
         return toString;
@@ -93,16 +91,10 @@ public class RegistroCompra {
 
     @Override
     public boolean equals(Object o) {
-        boolean result = false;
-
         if (o instanceof RegistroCompra) {
-
-            if (((RegistroCompra) o).getCodigoCompra() != codigoCompra) {
-                result = true;
-            }
-
+            return ((RegistroCompra) o).getCodigoCompra() != codigoCompra;
         }
 
-        return result;
+        return false;
     }
 }
