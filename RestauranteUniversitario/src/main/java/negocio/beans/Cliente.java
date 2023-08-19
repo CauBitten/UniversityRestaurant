@@ -9,9 +9,9 @@ public class Cliente extends Usuario {
     private List<Fichas> listaFichas = new ArrayList<>();
 
     Cliente (String senha, String login, String email, String nome,
-             long cpf, boolean ativado, long matricula) {
+             long cpf, boolean ativado, boolean perfilAdmin, long matricula) {
 
-        super(senha, login, email, nome, cpf, ativado);
+        super(senha, login, email, nome, cpf, ativado, perfilAdmin);
         this.matricula = matricula;
     }
 
