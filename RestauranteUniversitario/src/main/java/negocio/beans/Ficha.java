@@ -38,14 +38,6 @@ public class Ficha {
         this.cliente = cliente;
     }
 
-    public void setCodigoFicha(long codigoFicha) {
-        this.codigo = codigoFicha;
-    }
-
-    public long getCodigoFicha() {
-        return codigo;
-    }
-
     public double getValor() {
         return valor;
     }

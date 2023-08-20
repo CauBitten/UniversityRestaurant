@@ -1,7 +1,9 @@
 package dados;
 
+import negocio.beans.Cliente;
 import negocio.beans.Ficha;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,12 +34,10 @@ public class RepositorioFicha implements IRepositorioFicha {
         }
     }
 
-    public Ficha removerFicha(Ficha f) {
+    public void removerFicha(Ficha f) {
         if (f != null) {
             fichas.remove(f);
         }
-
-        return f;
     }
 
     public Ficha obterFichaComCodigo(long codigo) {
@@ -49,16 +49,34 @@ public class RepositorioFicha implements IRepositorioFicha {
         return null;
     }
 
-    public List<Ficha> obterFichasComClienteDeMatricula(long matricula) {
+    public List<Ficha> obterFichasDoCliente(Cliente c) {
         List<Ficha> fichasPorCliente = new ArrayList<>();
 
         for (Ficha ficha : fichas) {
-            long matriculaDoCliente = ficha.getCliente().getMatricula();
+            Cliente cliente = ficha.getCliente();
 
-            if (matriculaDoCliente == matricula)
+            if (c.equals(cliente))
                 fichasPorCliente.add(ficha);
         }
 
         return fichasPorCliente;
+    }
+
+    public List<Ficha> obterFichasDoTipo(String tipo) {
+        List<Ficha> fichasPorTipo = new ArrayList<>();
+
+        for (Ficha ficha : fichas) {
+            if (tipo.equals(ficha.getTipo()))
+                fichasPorTipo.add(ficha);
+        }
+
+        return fichasPorTipo;
+    }
+
+    public List<Ficha> obterFichasCompradasNoIntervalo(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
+        //implementar
+        List<Ficha> fichasDoIntervalo = new ArrayList<>();
+
+        return fichasDoIntervalo;
     }
 }

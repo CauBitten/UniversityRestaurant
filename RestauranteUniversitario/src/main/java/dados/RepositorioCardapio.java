@@ -43,12 +43,9 @@ public class RepositorioCardapio implements IRepositorioCardapio {
         return null;
     }
 
-    public void removerCardapioComId(long id) {
-        for (Cardapio cardapio : cardapios) {
-            if (cardapio.getId() == id) {
-                cardapios.remove(cardapio);
-                break;
-            }
+    public void removerCardapio(Cardapio c) {
+        if (c != null) {
+            cardapios.remove(c);
         }
     }
 }

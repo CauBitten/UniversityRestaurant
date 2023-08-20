@@ -25,15 +25,25 @@ public class ControladorUsuario {
 
     public void cadastrarUsuario(Usuario u) {
         if (u != null) {
-            repositorioUsuarios.cadastrarUsuario(u);
+            if (repositorioUsuarios.getUsuarioPorCPF(u.getCpf()) != null) {
+                //trhow exceção cpf cadastrado
+            }
+            else if (repositorioUsuarios.getUsuarioPorLogin(u.getLogin()) != null) {
+                //threow exceção login cadastrado
+            }
+            else {
+                repositorioUsuarios.cadastrarUsuario(u);
+            }
         }
     }
 
-    public void removerUsuario(long cpf) {
-        Usuario u = repositorioUsuarios.getUsuarioPorCPF(cpf);
-
+    public void removerUsuario(Usuario u) {
         if (u != null) {
-            repositorioUsuarios.removerUsuario(u);
+            long cpf = u.getCpf();
+
+            if (repositorioUsuarios.getUsuarioPorCPF(cpf) != null) {
+                this.repositorioUsuarios.removerUsuario(u);
+            }
         }
     }
 
@@ -42,7 +52,11 @@ public class ControladorUsuario {
     }
 
     public Usuario getUsuarioPorCPF(long cpf) {
-        return repositorioUsuarios.getUsuarioPorCPF(cpf);
+        if (cpf >= 0) {
+            return repositorioUsuarios.getUsuarioPorCPF(cpf);
+        }
+
+        return null;
     }
 
     public List<Usuario> listarUsuariosPorDataNascimento(LocalDate dataNascimento) {
