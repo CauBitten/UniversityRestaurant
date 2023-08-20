@@ -3,6 +3,7 @@ package view;
 import gui.login.ControllerLoginPage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -31,7 +32,7 @@ public class ScreenManager {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
 
-            GridPane loginPane = fxmlLoader.load(getClass()
+            AnchorPane loginPane = fxmlLoader.load(getClass()
                     .getResource("/login/telaDeLogin.fxml").openStream());
             this.loginScene = new Scene(loginPane);
             this.loginController = (ControllerLoginPage) fxmlLoader.getController();
@@ -39,5 +40,17 @@ public class ScreenManager {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Scene getLoginScene() {
+        return loginScene;
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 }

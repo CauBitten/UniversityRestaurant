@@ -7,13 +7,17 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/login/telaDeLogin.fxml"));
-        Scene loginScene = new Scene(fxmlLoader.load());
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setScene(ScreenManager.getInstance().getLoginScene());
+        primaryStage.setTitle("Bem-Vindo ao RU");
 
-        stage.setScene(loginScene);
-        stage.setTitle("RU");
-        stage.show();
+        primaryStage.setWidth(600);
+        primaryStage.setHeight(400);
+        primaryStage.setResizable(false);
+
+        ScreenManager.getInstance().setPrimaryStage(primaryStage);
+
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
