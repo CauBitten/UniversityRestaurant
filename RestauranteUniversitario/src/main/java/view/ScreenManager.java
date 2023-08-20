@@ -20,16 +20,38 @@ public class ScreenManager {
     private Scene principalGerenteScene;
     private ControllerPrincipalGerente principalGerenteController;
 
-    private ScreenManager() {
-        this.initialize();
-    }
+//    private FXMLLoader fxmlLoader;
+//
+//    private final String caminhoLogin = "/login/telaDeLogin.fxml";
+//    private final String caminhoPrincipalGerente = "/gerente/telaPrincipalGerente.fxml";
+//    private final String caminhoPrincipalCliente = "/cliente/telaPrincipalCliente.fxml";
+//    private final String caminhoPrincipalVendedor = "/vendedor/telaPrincipalVendedor.fxml";
+//    private Scene loginScene;
+//    private Scene principalGerenteScene;
+//    private Scene principalClienteScene;
+//    private Scene principalVendedorScene;
+
+//    private ControllerLoginPage controllerLoginPage;
 
     public static ScreenManager getInstance() {
-        if (instance == null) {
-            instance = new ScreenManager();
-        }
+        if (instance == null) instance = new ScreenManager();
 
         return instance;
+    }
+
+//    public void teste (Stage mainStage) throws IOException {
+//        fxmlLoader = new FXMLLoader(Main.class.getResource(caminhoLogin));
+//
+//        loginScene = fxmlLoader.load();
+//        mainStage.setScene(loginScene);
+//
+//        controllerLoginPage = ControllerLoginPage.getInstance();
+//
+//        controllerLoginPage.entrarButtonClicked(mainStage, fxmlLoader);
+//    }
+
+        private ScreenManager() {
+        this.initialize();
     }
 
     private void initialize() {

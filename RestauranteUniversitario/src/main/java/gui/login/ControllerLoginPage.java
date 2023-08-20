@@ -2,14 +2,19 @@ package gui.login;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import view.Main;
 import view.ScreenManager;
+
+import java.io.IOException;
 
 public class ControllerLoginPage {
 
@@ -25,6 +30,16 @@ public class ControllerLoginPage {
     @FXML
     private PasswordField passwordField;
 
+    private ScreenManager screenManager;
+
+    private static ControllerLoginPage instance;
+
+    public static ControllerLoginPage getInstance() {
+        if (instance == null) instance = new ControllerLoginPage();
+
+        return instance;
+    }
+
     @FXML
     void btnEntrar(ActionEvent event) {
 
@@ -35,7 +50,7 @@ public class ControllerLoginPage {
 
     }
 
-    public void entrarButtonClicked(ActionEvent event) {
+    public void entrarButtonClicked(ActionEvent event) throws IOException {
         Stage dialog = new Stage();
 
         dialog.setScene(ScreenManager.getInstance().getPrincipalGerenteScene());
