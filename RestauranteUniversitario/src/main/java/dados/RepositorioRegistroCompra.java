@@ -16,7 +16,7 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
         registrosCompras = new ArrayList<>();
     }
 
-    public IRepositorioRegistroCompra getInstance() {
+    public static IRepositorioRegistroCompra getInstance() {
         if (instance == null) {
             instance = new RepositorioRegistroCompra();
         }
