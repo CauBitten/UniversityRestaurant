@@ -3,7 +3,7 @@ package negocio.beans;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Fichas {
+public class Ficha {
     private long codigo;
     private double valor;
     private String tipo;
@@ -11,7 +11,7 @@ public class Fichas {
 
     DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-    public Fichas(String tipo, String dataCompra) {
+    public Ficha(String tipo, String dataCompra) {
         if (tipo.equals("Janta")) {
             valor = 3;
         } else if (tipo.equals("Almoco")) {

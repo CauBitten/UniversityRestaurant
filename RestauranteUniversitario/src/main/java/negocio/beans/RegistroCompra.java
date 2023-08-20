@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RegistroCompra {
 
-    private List<Fichas> fichasCompradas;
+    private List<Ficha> fichasCompradas;
     private long codigoCompra;
     private Cliente cliente;
     private String vendedor;
@@ -16,7 +16,7 @@ public class RegistroCompra {
 
     DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-    public RegistroCompra(List<Fichas> fichasCompradas, Cliente cliente,
+    public RegistroCompra(List<Ficha> fichasCompradas, Cliente cliente,
                           String vendedor, String dataHora)
     {
         this.fichasCompradas = fichasCompradas;
@@ -27,7 +27,7 @@ public class RegistroCompra {
     }
 
     // Getters
-    public List<Fichas> getFichasCompradas() {
+    public List<Ficha> getFichasCompradas() {
         return fichasCompradas;
     }
 
@@ -59,8 +59,8 @@ public class RegistroCompra {
     private double gerarValorDeCompra() {
         double total = 0;
 
-        for (Fichas fichas : fichasCompradas) {
-            total += fichas.getValor();
+        for (Ficha ficha : fichasCompradas) {
+            total += ficha.getValor();
         }
 
         return total;
