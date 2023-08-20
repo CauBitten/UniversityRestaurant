@@ -35,6 +35,26 @@ public class Entrada {
         return "A refeição é um   : " + tipo + "\nData da refeição  : " + dataHora.format(formato) + cardapio.toString();
     }
 
+    public void setCardapio(Cardapio cardapio) {
+        this.cardapio = cardapio;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
+    }
+
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o instanceof Entrada) {

@@ -8,10 +8,23 @@ public class Ficha {
     private double valor;
     private String tipo;
     private LocalDateTime dataCompra;
+    private Cliente cliente;
+
+    public long getCodigo() {
+        return codigo;
+    }
+
+    public LocalDateTime getDataCompra() {
+        return dataCompra;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
 
     DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-    public Ficha(String tipo, String dataCompra) {
+    public Ficha(String tipo, String dataCompra, Cliente cliente) {
         if (tipo.equals("Janta")) {
             valor = 3;
         } else if (tipo.equals("Almoco")) {
@@ -22,6 +35,7 @@ public class Ficha {
 
         this.tipo = tipo;
         this.dataCompra = LocalDateTime.parse(dataCompra, formatoDataHora);
+        this.cliente = cliente;
     }
 
     public void setCodigoFicha(long codigoFicha) {
