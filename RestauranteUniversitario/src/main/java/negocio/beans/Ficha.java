@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Ficha {
+
+    // API: string uuid
     private long codigo;
     private double valor;
     private String tipo;
