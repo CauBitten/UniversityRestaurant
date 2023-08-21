@@ -1,4 +1,4 @@
-package gui.gerente;
+package gui.refeicao;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,25 +6,25 @@ import javafx.scene.control.Button;
 import view.ScreenManager;
 import view.TelasEnum;
 
-public class ControllerListarUsuarios {
+public class ControllerVisualizarRefeicoes {
 
     @FXML
-    private Button buttonAlterarUsuario;
+    private Button buttonAlterarRef;
 
     @FXML
-    private Button buttonCadastrarUsuario;
+    private Button buttonCadastrarRef;
 
     @FXML
     private Button buttonVoltarPagina;
 
     @FXML
-    void bttnAlterarUsuarioOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.ALTERAR_USUARIO.name());
+    void bttnAlterarRefOn(ActionEvent event) {
+        ScreenManager.changeScreen(TelasEnum.ALTERAR_REFEICOES.name());
     }
 
     @FXML
-    void bttnCadastrarUsuarioOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.CADASTRAR_USUARIO.name());
+    void bttnCadastrarRefOn(ActionEvent event) {
+        ScreenManager.changeScreen(TelasEnum.CADASTRAR_REFEICOES.name());
     }
 
     @FXML

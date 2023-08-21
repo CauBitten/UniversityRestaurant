@@ -21,7 +21,7 @@ public class ControllerPrincipalCliente {
 
     @FXML
     void bttnVisualizarDados(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.VISUALIZACAO_DADOS.name());
+        ScreenManager.changeScreen(TelasEnum.VISUALIZAR_DADOS.name());
     }
 
 }
