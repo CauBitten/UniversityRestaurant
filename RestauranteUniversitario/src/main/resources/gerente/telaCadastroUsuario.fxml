@@ -1,16 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.gerente.ControllerCadastroUsuario">
    <children>
       <Button fx:id="buttonVoltarPagina" layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
          <font>
-            <Font name="Georgia" size="12.0" />
+            <Font name="Georgia Bold" size="12.0" />
          </font>
       </Button>
+      <VBox layoutX="262.0" layoutY="35.0" prefHeight="279.0" prefWidth="311.0" spacing="20.0">
+         <children>
+            <TextField fx:id="tfNome" minHeight="30.0" promptText="NOME" />
+            <TextField fx:id="tfEmail" minHeight="30.0" promptText="EMAIL" />
+            <TextField fx:id="tfLogin" minHeight="30.0" promptText="LOGIN" />
+            <TextField fx:id="tfSenha" minHeight="30.0" promptText="SENHA" />
+            <TextField fx:id="tfCPF" minHeight="30.0" promptText="CPF" />
+            <TextField fx:id="tfPerfil" minHeight="30.0" promptText="PERFIL" />
+         </children>
+      </VBox>
+      <Button fx:id="buttonCadastrar" layoutX="14.0" layoutY="58.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#bttnCadastrarOn" style="-fx-background-color: #149959;" text="CADASTRAR" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="15.0" />
+         </font>
+      </Button>
+      <RadioButton fx:id="rdAtivado" layoutX="418.0" layoutY="346.0" mnemonicParsing="false" onAction="#rdAtivadoOn" text="ATIVADO?" textFill="#149959">
+         <font>
+            <Font name="Georgia Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <MenuButton fx:id="menuTipo" layoutX="262.0" layoutY="342.0" mnemonicParsing="false" onAction="#menuTipoOn" prefHeight="23.0" prefWidth="110.0" style="-fx-background-color: #149959;" text="Tipo" textFill="WHITE">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Gerente" />
+          <MenuItem mnemonicParsing="false" text="Cliente" />
+            <MenuItem mnemonicParsing="false" text="Vendedor" />
+        </items>
+         <font>
+            <Font name="Georgia Bold" size="12.0" />
+         </font>
+      </MenuButton>
    </children>
 </AnchorPane>
