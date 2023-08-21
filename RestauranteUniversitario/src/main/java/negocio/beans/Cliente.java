@@ -8,7 +8,7 @@ public class Cliente extends Usuario {
     private long matricula;
 
     Cliente (String senha, String login, String email, String nome,
-             long cpf, boolean ativado, boolean perfilAdmin, long matricula) {
+             long cpf, boolean ativado, int perfilAdmin, long matricula) {
 
         super(senha, login, email, nome, cpf, ativado, perfilAdmin);
         this.matricula = matricula;

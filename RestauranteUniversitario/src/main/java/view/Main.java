@@ -9,7 +9,11 @@ public class Main extends Application {
     protected static Stage stage;
     protected static Scene loginScene;
     protected static Scene principalGerenteScene;
+
     protected static Scene principalClienteScene;
+    protected static Scene compraFichasScene;
+    protected static Scene visualizacaoDados;
+
     protected static Scene principalVendedorScene;
 
     @Override

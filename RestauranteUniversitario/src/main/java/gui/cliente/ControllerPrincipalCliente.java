@@ -3,6 +3,8 @@ package gui.cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import view.ScreenManager;
+import view.TelasEnum;
 
 public class ControllerPrincipalCliente {
 
@@ -14,12 +16,12 @@ public class ControllerPrincipalCliente {
 
     @FXML
     void bttnComprarFichas(ActionEvent event) {
-
+        ScreenManager.changeScreen(TelasEnum.COMPRA_FICHAS.name());
     }
 
     @FXML
     void bttnVisualizarDados(ActionEvent event) {
-
+        ScreenManager.changeScreen(TelasEnum.VISUALIZACAO_DADOS.name());
     }
 
 }
