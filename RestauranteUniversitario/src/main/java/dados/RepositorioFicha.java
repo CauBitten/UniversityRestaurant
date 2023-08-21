@@ -16,9 +16,7 @@ public class RepositorioFicha implements IRepositorioFicha {
     }
 
     public static IRepositorioFicha getInstance() {
-        if (instance == null) {
-            instance = new RepositorioFicha();
-        }
+        if (instance == null) instance = new RepositorioFicha();
 
         return instance;
     }

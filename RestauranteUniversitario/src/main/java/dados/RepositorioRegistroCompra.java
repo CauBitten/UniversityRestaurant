@@ -17,9 +17,7 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
     }
 
     public static IRepositorioRegistroCompra getInstance() {
-        if (instance == null) {
-            instance = new RepositorioRegistroCompra();
-        }
+        if (instance == null) instance = new RepositorioRegistroCompra();
 
         return instance;
     }

@@ -10,18 +10,6 @@ public class Ficha {
     private LocalDateTime dataCompra;
     private Cliente cliente;
 
-    public long getCodigo() {
-        return codigo;
-    }
-
-    public LocalDateTime getDataCompra() {
-        return dataCompra;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
     DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     public Ficha(String tipo, String dataCompra, Cliente cliente) {
@@ -36,6 +24,18 @@ public class Ficha {
         this.tipo = tipo;
         this.dataCompra = LocalDateTime.parse(dataCompra, formatoDataHora);
         this.cliente = cliente;
+    }
+
+    public long getCodigo() {
+        return codigo;
+    }
+
+    public LocalDateTime getDataCompra() {
+        return dataCompra;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
     }
 
     public double getValor() {

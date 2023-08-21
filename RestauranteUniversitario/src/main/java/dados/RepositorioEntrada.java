@@ -16,9 +16,7 @@ public class RepositorioEntrada implements IRepositorioEntrada {
     }
 
     public static IRepositorioEntrada getInstance() {
-        if (instance == null) {
-            instance = new RepositorioEntrada();
-        }
+        if (instance == null) instance = new RepositorioEntrada();
 
         return instance;
     }
@@ -63,7 +61,7 @@ public class RepositorioEntrada implements IRepositorioEntrada {
 
     public Entrada obterEntradaComFichaDeID(long id) {
         for (Entrada entrada : entradas) {
-            if (entrada.getFicha().getCodigoFicha() == id)
+            if (entrada.getFicha().getCodigo() == id)
                 return entrada;
         }
 

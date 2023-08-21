@@ -14,9 +14,7 @@ public class RepositorioCardapio implements IRepositorioCardapio {
     }
 
     public static IRepositorioCardapio getInstance() {
-        if (instance == null) {
-            instance = new RepositorioCardapio();
-        }
+        if (instance == null) instance = new RepositorioCardapio();
 
         return instance;
     }

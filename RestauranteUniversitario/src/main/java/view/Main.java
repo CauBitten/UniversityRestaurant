@@ -1,23 +1,29 @@
 package view;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+
+    protected static Stage stage;
+    protected static Scene loginScene;
+    protected static Scene principalGerenteScene;
+    protected static Scene principalClienteScene;
+    protected static Scene principalVendedorScene;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setScene(ScreenManager.getInstance().getLoginScene());
-        primaryStage.setTitle("Bem-Vindo ao RU");
+        stage = primaryStage;
 
-        primaryStage.setWidth(600);
-        primaryStage.setHeight(400);
-        primaryStage.setResizable(false);
+        ScreenManager screenManager = ScreenManager.getInstance();
 
-        ScreenManager.getInstance().setPrimaryStage(primaryStage);
+        screenManager.criarCenas();
 
-        primaryStage.show();
+        stage.setTitle("RU");
+
+        stage.setScene(loginScene);
+        stage.show();
     }
 
     public static void main(String[] args) {

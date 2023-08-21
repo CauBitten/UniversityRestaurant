@@ -16,9 +16,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     }
 
     public static IRepositorioUsuario getInstance() {
-        if (instance == null) {
-            instance = new RepositorioUsuario();
-        }
+        if (instance == null) instance = new RepositorioUsuario();
 
         return instance;
     }
