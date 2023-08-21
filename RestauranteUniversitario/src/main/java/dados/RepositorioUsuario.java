@@ -1,5 +1,6 @@
 package dados;
 
+import negocio.beans.Cliente;
 import negocio.beans.Usuario;
 
 import java.time.LocalDate;
@@ -16,7 +17,9 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     }
 
     public static IRepositorioUsuario getInstance() {
-        if (instance == null) instance = new RepositorioUsuario();
+        if (instance == null) {
+            instance = new RepositorioUsuario();
+        }
 
         return instance;
     }
@@ -27,6 +30,9 @@ public class RepositorioUsuario implements IRepositorioUsuario {
             if (getUsuarioPorCPF(u.getCpf()) == null) {
                 usuarios.add(u);
             }
+            else {
+                //throw exceção usuario com mesmo cpf ja existe
+            }
         }
     }
 
@@ -35,6 +41,9 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         if (u != null) {
             if (getUsuarioPorCPF(u.getCpf()) != null) {
                 usuarios.remove(u);
+            }
+            else {
+                //throw usuario nao cadastrado
             }
         }
     }
@@ -86,6 +95,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
                 if (login.equals(usuario.getLogin())) {
                     return usuario;
                 }
+                //atirar exceçao nao existe usuario
             }
         }
 
@@ -112,5 +122,27 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         }
 
         return listaUsuarios;
+    }
+
+    public List<Usuario> getClientes() {
+        List<Usuario> clientes = new ArrayList<>();
+
+        for (Usuario u : usuarios) {
+            if (u instanceof Cliente)
+                clientes.add(u);
+        }
+
+        return clientes;
+    }
+
+    public List<Usuario> getUsuariosComPerfil(int perfil) {
+        List<Usuario> usuariosComPerfil = new ArrayList<>();
+
+        for (Usuario u : usuarios) {
+            if (u.getPerfilAdmin() == perfil)
+                usuariosComPerfil.add(u);
+        }
+
+        return usuariosComPerfil;
     }
 }

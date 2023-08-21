@@ -1,5 +1,6 @@
 package dados;
 
+import negocio.beans.Cliente;
 import negocio.beans.RegistroCompra;
 
 import java.time.LocalDateTime;
@@ -28,7 +29,7 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
 
         while (true) {
             int cont = 0;
-            long aleatorio = gerador.nextLong(899999) + 100000;
+            long aleatorio = gerador.nextLong() + 100000;
 
             for (RegistroCompra registroCompra : registrosCompras) {
                 if (registroCompra.getCodigoCompra() != aleatorio) {
@@ -47,7 +48,9 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
 
     @Override
     public void removerRegistroCompra(RegistroCompra rc) {
-        this.registrosCompras.remove(rc);
+        if (rc != null) {
+            this.registrosCompras.remove(rc);
+        }
     }
 
     @Override
@@ -56,14 +59,16 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
     }
 
     @Override
-    public List<RegistroCompra> getRegistrosComprasPorClienteComCPF(long cpf) {
+    public List<RegistroCompra> getRegistrosComprasDoCliente(Cliente c) {
         List<RegistroCompra> registroComprasPorCliente = new ArrayList<>();
 
-        for (RegistroCompra registro : registrosCompras) {
-            long cpfCliente = registro.getCliente().getCpf();
+        if (c != null) {
+            for (RegistroCompra registro : registrosCompras) {
+                long cpfCliente = registro.getCliente().getCpf();
 
-            if (cpfCliente == cpf)
-                registroComprasPorCliente.add(registro);
+                if (cpfCliente == c.getCpf())
+                    registroComprasPorCliente.add(registro);
+            }
         }
 
         return registroComprasPorCliente;

@@ -14,7 +14,9 @@ public class RepositorioCardapio implements IRepositorioCardapio {
     }
 
     public static IRepositorioCardapio getInstance() {
-        if (instance == null) instance = new RepositorioCardapio();
+        if (instance == null) {
+            instance = new RepositorioCardapio();
+        }
 
         return instance;
     }
@@ -24,7 +26,7 @@ public class RepositorioCardapio implements IRepositorioCardapio {
             Cardapio cardapio = encontrarCardapioPorID(c.getId());
 
             if (cardapio != null) {
-                //adicionar exceçao cardapioexiste
+                //adicionar exceçao idexiste
             }
             else {
                 cardapios.add(c);

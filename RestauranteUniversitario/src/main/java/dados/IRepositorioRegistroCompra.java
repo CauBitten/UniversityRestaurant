@@ -1,5 +1,6 @@
 package dados;
 
+import negocio.beans.Cliente;
 import negocio.beans.RegistroCompra;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ public interface IRepositorioRegistroCompra {
 
     public List<RegistroCompra> getListaRegistroCompra();
 
-    public List<RegistroCompra> getRegistrosComprasPorClienteComCPF(long cpf);
+    public List<RegistroCompra> getRegistrosComprasDoCliente(Cliente c);
 
     public List<RegistroCompra> getRegistrosComprasPorIntervaloDeDataHora(
             LocalDateTime dataHoraInicial, LocalDateTime dataHoraFinal);
