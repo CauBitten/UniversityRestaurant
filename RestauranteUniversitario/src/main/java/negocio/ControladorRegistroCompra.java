@@ -15,7 +15,7 @@ public class ControladorRegistroCompra{
         this.repositorioRegistroCompra = instance.repositorioRegistroCompra;
     }
 
-    public static ControladorRegistroCompra getInstance(IRepositorioRegistroCompra iRepositorioRegistroCompra) {
+    public static ControladorRegistroCompra getInstance() {
         if (instance == null) {
             instance = new ControladorRegistroCompra();
         }
