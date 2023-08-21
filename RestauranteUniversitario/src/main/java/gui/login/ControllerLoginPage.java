@@ -34,6 +34,14 @@ public class ControllerLoginPage {
 
     public void entrarButtonClicked(ActionEvent event) throws IOException {
         ScreenManager.changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
+
+//        if () {
+//
+//        } else if () {
+//
+//        } else if () {
+//
+//        }
     }
 
 }

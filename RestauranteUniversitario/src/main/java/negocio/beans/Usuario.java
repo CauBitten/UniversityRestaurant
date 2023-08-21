@@ -10,10 +10,10 @@ public abstract class Usuario {
     private String nome;
     private long cpf;
     private boolean ativado;
-    private boolean perfilAdmin;
+    private int perfilAdmin;
 
     Usuario(String senha, String login, String email,
-            String nome, long cpf, boolean ativado, boolean perfilAdmin) {
+            String nome, long cpf, boolean ativado, int perfilAdmin) {
 
         this.senha = senha;
         this.login = login;

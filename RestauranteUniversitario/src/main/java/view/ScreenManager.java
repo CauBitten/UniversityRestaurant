@@ -35,9 +35,21 @@ public class ScreenManager {
     public static void changeScreen(String scr) {
         switch (scr) {
             case "LOGIN" -> stage.setScene(loginScene);
-            case "PRINCIPAL_GERENTE" -> stage.setScene(principalGerenteScene);
-            case "PRINCIPAL_CLIENTE" -> stage.setScene(principalClienteScene);
-            case "PRINCIPAL_VENDEDOR" -> stage.setScene(principalVendedorScene);
+
+            case "PRINCIPAL_GERENTE" -> {
+                stage.setScene(principalGerenteScene);
+                stage.setTitle("RU | TELA PRINCIPAL GERENTE");
+            }
+
+            case "PRINCIPAL_CLIENTE" -> {
+                stage.setScene(principalClienteScene);
+                stage.setTitle("RU | TELA PRINCIPAL CLIENTE");
+            }
+
+            case "PRINCIPAL_VENDEDOR" -> {
+                stage.setScene(principalVendedorScene);
+                stage.setTitle("RU | TELA PRINCIPAL VENDEDOR");
+            }
         }
     }
 

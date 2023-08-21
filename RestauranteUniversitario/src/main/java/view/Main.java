@@ -20,7 +20,7 @@ public class Main extends Application {
 
         screenManager.criarCenas();
 
-        stage.setTitle("RU");
+        stage.setTitle("RU | LOGIN");
 
         stage.setScene(loginScene);
         stage.show();
