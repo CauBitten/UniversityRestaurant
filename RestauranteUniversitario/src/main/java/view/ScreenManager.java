@@ -3,14 +3,44 @@ package view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
-import static view.Main.*;
-
 public class ScreenManager {
     private static ScreenManager instance;
+
+    // Stage e Login Scene
+    protected static Stage stage;
+    protected static Scene loginScene;
+    // -----
+
+    // Clientes Scenes
+    protected static Scene principalClienteScene;
+    protected static Scene compraFichasScene;
+    protected static Scene visualizarDados;
+    // -----
+
+    // Vendedor Scenes
+    protected static Scene principalVendedorScene;
+    protected static Scene vendaScene;
+    protected static Scene listarRefeicoesScene;
+    // -----
+
+    // Gerentes Scenes
+    protected static Scene principalGerenteScene;
+    protected static Scene listarRegistroCompraScene;
+    protected static Scene listarUsuarioScene;
+    protected static Scene cadastrarUsuarioScene;
+    protected static Scene alterarUsuarioScene;
+    // -----
+
+    // Refeições Scenes
+    protected static Scene visualizarRefeicoesScene;
+    protected static Scene cadastrarRefeicoesScene;
+    protected static Scene alterarRefeicoesScene;
+    // -----
 
     public static ScreenManager getInstance() {
         if (instance == null) instance = new ScreenManager();
