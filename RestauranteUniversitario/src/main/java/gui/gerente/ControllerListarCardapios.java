@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import negocio.beans.Cardapio;
+import view.ScreenManager;
+import view.TelasEnum;
 
 public class ControllerListarCardapios {
 
@@ -45,6 +47,11 @@ public class ControllerListarCardapios {
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
 
+    }
+
+    @FXML
+    void bttnCadastrarCardapioOn(ActionEvent event) {
+        ScreenManager.changeScreen(TelasEnum.CADASTRAR_CARDAPIO.name());
     }
 
 }
