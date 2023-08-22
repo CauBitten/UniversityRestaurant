@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import negocio.ControladorUsuario;
 import negocio.Fachada;
 import negocio.beans.Usuario;
 import view.ScreenManager;
@@ -66,14 +67,17 @@ public class ControllerListarUsuarios {
         tblUsuarios.setItems(lista);
     }
 
-    private void initialize() {
-        tblColNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
-        tblColCPF.setCellValueFactory(new PropertyValueFactory<>("CPF"));
-        tblColLogin.setCellValueFactory(new PropertyValueFactory<>("Login"));
-        tblColAtivo.setCellValueFactory(new PropertyValueFactory<>("Ativo"));
-        tblColPerfil.setCellValueFactory(new PropertyValueFactory<>("Perfil"));
+    @FXML
+    public void listarUsuarios() {
+        configurarListaDeUsuarios(ControladorUsuario.getInstance().listarUsuarios());
+    }
 
-        configurarListaDeUsuarios(Fachada.getInstance().controladorUsuario.listarUsuarios());
+    private void initialize() {
+        tblColNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tblColCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        tblColLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
+        tblColAtivo.setCellValueFactory(new PropertyValueFactory<>("ativado"));
+        tblColPerfil.setCellValueFactory(new PropertyValueFactory<>("perfil"));
     }
 
 }
