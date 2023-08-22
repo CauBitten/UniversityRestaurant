@@ -9,7 +9,7 @@ import view.TelasEnum;
 public class ControllerPrincipalGerente {
 
     @FXML
-    private Button listarRefeicoesButton;
+    private Button listarCardapiosButton;
 
     @FXML
     private Button listarRegistrosCompra;
@@ -18,8 +18,8 @@ public class ControllerPrincipalGerente {
     private Button listarUsuariosButton;
 
     @FXML
-    void bttnListarRefeicoes(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.VISUALIZAR_REFEICOES.name());
+    void bttnListarCardapios(ActionEvent event) {
+        ScreenManager.changeScreen(TelasEnum.VISUALIZAR_CARDAPIOS.name());
     }
 
     @FXML

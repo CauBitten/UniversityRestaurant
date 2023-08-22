@@ -34,6 +34,7 @@ public class ScreenManager {
     protected static Scene listarUsuarioScene;
     protected static Scene cadastrarUsuarioScene;
     protected static Scene alterarUsuarioScene;
+    protected static Scene listarCardapiosScene;
     // -----
 
     // Refeições Scenes
@@ -91,6 +92,9 @@ public class ScreenManager {
 
         Parent fxmlListarRegistroCompra = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gerente/telaListarRegistroCompra.fxml")));
         listarRegistroCompraScene = new Scene(fxmlListarRegistroCompra);
+
+        Parent fxmlListarCardapios = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gerente/telaListarCardapios.fxml")));
+        listarCardapiosScene = new Scene(fxmlListarCardapios);
         // -----
 
         // FXMLs Refeições
@@ -184,6 +188,11 @@ public class ScreenManager {
             case "ALTERAR_REFEICOES" -> {
                 stage.setScene(alterarRefeicoesScene);
                 stage.setTitle("RU | TELA ALTERAR REFEIÇÕES");
+            }
+
+            case "VISUALIZAR_CARDAPIOS" -> {
+                stage.setScene(listarCardapiosScene);
+                stage.setTitle("RU | TELA LISTA DE CARDÁPIOS");
             }
             // -----
         }
