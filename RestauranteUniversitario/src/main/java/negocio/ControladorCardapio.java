@@ -21,7 +21,7 @@ public class ControladorCardapio {
 
     public void cadastrarCardapio(Cardapio c) {
         if (c != null) {
-            if (c.getId() >= 0 && c.getPrincipal1() != null && c.getPrincipal2() != null &&
+            if (c.getId() >= 0 && c.getPrincipal() != null &&
                 c.getGuarnicao() != null && c.getSalada() != null && c.getSuco() != null &&
                 c.getVegetariano() != null) {
                 this.repositorioCardapio.cadastrarCardapio(c);

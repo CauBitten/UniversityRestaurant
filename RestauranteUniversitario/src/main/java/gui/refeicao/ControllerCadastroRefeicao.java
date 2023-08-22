@@ -9,11 +9,18 @@ import view.TelasEnum;
 public class ControllerCadastroRefeicao {
 
     @FXML
+    private Button buttonCadastrar;
+
+    @FXML
     private Button buttonVoltarPagina;
+
+    @FXML
+    void bttnCadastrarOn(ActionEvent event) {
+
+    }
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
         ScreenManager.changeScreen(TelasEnum.VISUALIZAR_REFEICOES.name());
     }
-
 }

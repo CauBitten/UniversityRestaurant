@@ -3,19 +3,28 @@ package negocio.beans;
 import java.util.Objects;
 
 public class Cardapio {
-    private String principal1;
-    private String principal2;
+    private String principal;
     private String vegetariano;
     private String guarnicao;
     private String salada;
     private String sobremesa;
+    private String suco;
+    private long id;
 
-    public String getPrincipal2() {
-        return principal2;
+    public Cardapio(String principal, String vegetariano, String guarnicao,
+                    String salada, String sobremesa, String suco, long id) {
+
+        this.principal = principal;
+        this.vegetariano = vegetariano;
+        this.guarnicao = guarnicao;
+        this.salada = salada;
+        this.sobremesa = sobremesa;
+        this.suco = suco;
+        this.id = id;
     }
 
-    public void setPrincipal2(String principal2) {
-        this.principal2 = principal2;
+    public String getPrincipal() {
+        return principal;
     }
 
     public String getVegetariano() {
@@ -66,32 +75,8 @@ public class Cardapio {
         this.id = id;
     }
 
-    public String getPrincipal1() {
-        return principal1;
-    }
-
-    public void setPrincipal1(String principal1) {
-        this.principal1 = principal1;
-    }
-
-    private String suco;
-    private long id;
-
-    public Cardapio(String principal1, String principal2, String vegetariano,
-                    String guarnicao, String salada, String sobremesa, String suco, long id) {
-
-        this.principal1 = principal1;
-        this.principal2 = principal2;
-        this.vegetariano = vegetariano;
-        this.guarnicao = guarnicao;
-        this.salada = salada;
-        this.sobremesa = sobremesa;
-        this.suco = suco;
-        this.id = id;
-    }
-
     public String toString(){
-        return    "Prato principal 1 : " + principal1 + "\nPrato principal 2 : " + principal2 +
+        return    "Prato principal 1 : " + principal +
                 "\nVegetariano       : " + vegetariano +"\nGuarnicao         : " + guarnicao +
                 "\nSalada            : " + salada +
                 "\nSobremesa         : " + sobremesa +  "\nSuco : " + suco;
@@ -106,8 +91,7 @@ public class Cardapio {
             return false;
 
         Cardapio cardapio = (Cardapio) o;
-        return Objects.equals(principal1, cardapio.principal1) && Objects.equals(principal2, cardapio.principal2)
-                && Objects.equals(vegetariano, cardapio.vegetariano) && Objects.equals(guarnicao, cardapio.guarnicao)
+        return Objects.equals(principal, cardapio.principal) && Objects.equals(vegetariano, cardapio.vegetariano) && Objects.equals(guarnicao, cardapio.guarnicao)
                 && Objects.equals(salada, cardapio.salada) && Objects.equals(sobremesa, cardapio.sobremesa) && Objects.equals(suco, cardapio.suco);
     }
 }

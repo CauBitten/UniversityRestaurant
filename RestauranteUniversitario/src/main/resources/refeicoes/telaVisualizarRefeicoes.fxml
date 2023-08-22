@@ -7,16 +7,16 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.refeicao.ControllerVisualizarRefeicoes">
    <children>
-      <VBox layoutX="134.0" layoutY="135.0" prefHeight="130.0" prefWidth="332.0" spacing="40.0">
+      <VBox layoutX="455.0" layoutY="46.0" prefHeight="86.0" prefWidth="130.0" spacing="20.0">
          <children>
-            <Button fx:id="buttonCadastrarRef" minHeight="44.0" mnemonicParsing="false" onAction="#bttnCadastrarRefOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="CADASTRAR REFEIÇÕES" textFill="WHITE">
+            <Button fx:id="buttonCadastrarRef" minHeight="44.0" mnemonicParsing="false" onAction="#bttnCadastrarRefOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="CADASTRAR" textFill="WHITE">
                <font>
-                  <Font name="Georgia Bold" size="15.0" />
+                  <Font name="Georgia Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="buttonAlterarRef" minHeight="44.0" mnemonicParsing="false" onAction="#bttnAlterarRefOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="ALTERAR REFEIÇÕES" textFill="WHITE">
+            <Button fx:id="buttonAlterarRef" minHeight="44.0" mnemonicParsing="false" onAction="#bttnAlterarRefOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="ALTERAR" textFill="WHITE">
                <font>
-                  <Font name="Georgia Bold" size="15.0" />
+                  <Font name="Georgia Bold" size="14.0" />
                </font>
             </Button>
          </children>
