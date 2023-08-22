@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.gerente.ControllerListarCardapios">
+   <children>
+      <VBox layoutX="428.0" layoutY="294.0" prefHeight="82.0" prefWidth="146.0" spacing="20.0">
+         <children>
+            <Button fx:id="buttonCadastrar" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #149959;" text="CADASTRAR" textFill="WHITE">
+               <font>
+                  <Font name="Georgia Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonAlterar" mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #149959;" text="ALTERAR" textFill="WHITE">
+               <font>
+                  <Font name="Georgia Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Button fx:id="buttonVoltarPagina" layoutX="24.0" layoutY="24.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="12.0" />
+         </font>
+      </Button>
+      <VBox layoutX="24.0" layoutY="60.0" prefHeight="222.0" prefWidth="551.0">
+         <children>
+            <TableView fx:id="tvCardapios" prefHeight="253.0" prefWidth="551.0">
+              <columns>
+                <TableColumn fx:id="tblColPrincipal" prefWidth="75.0" text="Principal" />
+                <TableColumn fx:id="tblColVegetariano" prefWidth="95.20001220703125" text="Vegetariano" />
+                  <TableColumn fx:id="tblColGuarnicao" prefWidth="82.39996337890625" text="Guarnicao" />
+                  <TableColumn fx:id="tblColSalada" prefWidth="68.00006103515625" text="Salada" />
+                  <TableColumn fx:id="tblColSobremesa" prefWidth="96.0" text="Sobremesa" />
+                  <TableColumn fx:id="tblColSuco" prefWidth="69.5999755859375" text="Suco" />
+                  <TableColumn fx:id="tblColId" prefWidth="60.00006103515625" text="ID" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

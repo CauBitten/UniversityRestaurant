@@ -39,16 +39,25 @@ public class ControllerListarUsuarios implements Initializable {
     private Button buttonVoltarPagina;
 
     @FXML
-    private TableView<Usuario> tvUser;
+    private TableColumn<Usuario, Boolean> tvColAtivo;
 
     @FXML
-    private TableColumn<Usuario, Long> cpf;
+    private TableColumn<Usuario, Long> tvColCPF;
 
     @FXML
-    private TableColumn<Usuario, String> login;
+    private TableColumn<Usuario, String> tvColEmail;
 
     @FXML
-    private TableColumn<Usuario, String> nome;
+    private TableColumn<Usuario, String> tvColLogin;
+
+    @FXML
+    private TableColumn<Usuario, String> tvColNome;
+
+    @FXML
+    private TableColumn<Usuario, String> tvColPerfil;
+
+    @FXML
+    private TableView<Usuario> tvUsuarios;
 
     @FXML
     void bttnAlterarUsuarioOn(ActionEvent event) {
@@ -72,14 +81,17 @@ public class ControllerListarUsuarios implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        nome.setCellValueFactory(new PropertyValueFactory<Usuario, String >("nome"));
-        login.setCellValueFactory(new PropertyValueFactory<Usuario, String >("login"));
-        cpf.setCellValueFactory(new PropertyValueFactory<Usuario, Long >("cpf"));
+        tvColNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tvColLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
+        tvColCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        tvColPerfil.setCellValueFactory(new PropertyValueFactory<>("perfil"));
+        tvColAtivo.setCellValueFactory(new PropertyValueFactory<>("ativado"));
+        tvColEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
     }
 
     private void configurarTv(List<Usuario> usuarios) {
         ObservableList<Usuario> userList = FXCollections.observableArrayList();
         userList.addAll(usuarios);
-        tvUser.setItems(userList);
+        tvUsuarios.setItems(userList);
     }
 }

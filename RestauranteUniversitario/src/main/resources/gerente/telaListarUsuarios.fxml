@@ -30,11 +30,14 @@
       </Button>
       <VBox layoutX="14.0" layoutY="53.0" prefHeight="335.0" prefWidth="423.0">
          <children>
-            <TableView fx:id="tvUser" prefHeight="343.0" prefWidth="423.0">
+            <TableView fx:id="tvUsuarios" prefHeight="335.0" prefWidth="436.0">
               <columns>
-                <TableColumn fx:id="nome" prefWidth="75.0" text="NOME" />
-                <TableColumn fx:id="cpf" prefWidth="75.0" text="CPF" />
-                  <TableColumn fx:id="login" prefWidth="75.0" text="LOGIN" />
+                <TableColumn fx:id="tvColNome" prefWidth="75.0" text="Nome" />
+                <TableColumn fx:id="tvColCPF" prefWidth="86.4000244140625" text="CPF" />
+                  <TableColumn fx:id="tvColPerfil" prefWidth="60.0" text="Perfil" />
+                  <TableColumn fx:id="tvColAtivo" prefWidth="56.79998779296875" text="Ativo" />
+                  <TableColumn fx:id="tvColLogin" prefWidth="73.5999755859375" text="Login" />
+                  <TableColumn fx:id="tvColEmail" prefWidth="75.0" text="Email" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
