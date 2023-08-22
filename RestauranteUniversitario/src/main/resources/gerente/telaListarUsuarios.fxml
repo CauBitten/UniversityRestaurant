@@ -30,15 +30,19 @@
       </Button>
       <VBox layoutX="14.0" layoutY="53.0" prefHeight="335.0" prefWidth="423.0">
          <children>
-            <TableView prefHeight="343.0" prefWidth="423.0">
+            <TableView fx:id="tvUser" prefHeight="343.0" prefWidth="423.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="NOME" />
-                <TableColumn prefWidth="75.0" text="CPF" />
-                  <TableColumn prefWidth="75.0" text="LOGIN" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
+                <TableColumn fx:id="nome" prefWidth="75.0" text="NOME" />
+                <TableColumn fx:id="cpf" prefWidth="75.0" text="CPF" />
+                  <TableColumn fx:id="login" prefWidth="75.0" text="LOGIN" />
               </columns>
             </TableView>
          </children>
       </VBox>
+      <Button fx:id="buttonAtualizar" layoutX="451.0" layoutY="350.0" mnemonicParsing="false" onAction="#bttnAtualizarOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #149959;" text="ATUALIZAR" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
