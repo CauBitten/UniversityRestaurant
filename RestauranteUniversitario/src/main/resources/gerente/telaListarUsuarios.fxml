@@ -30,13 +30,17 @@
       </Button>
       <VBox layoutX="14.0" layoutY="53.0" prefHeight="335.0" prefWidth="423.0">
          <children>
-            <TableView prefHeight="343.0" prefWidth="423.0">
+            <TableView fx:id="tblUsuarios" prefHeight="335.0" prefWidth="478.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="NOME" />
-                <TableColumn prefWidth="75.0" text="CPF" />
-                  <TableColumn prefWidth="75.0" text="LOGIN" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
+                <TableColumn fx:id="tblColNome" prefWidth="75.0" text="Nome" />
+                <TableColumn fx:id="tblColCPF" prefWidth="96.0" text="CPF" />
+                  <TableColumn fx:id="tblColLogin" prefWidth="94.4000244140625" text="Login" />
+                  <TableColumn fx:id="tblColAtivo" prefWidth="73.5999755859375" text="Ativo" />
+                  <TableColumn fx:id="tblColPerfil" prefWidth="84.0" text="Perfil" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </children>
       </VBox>
