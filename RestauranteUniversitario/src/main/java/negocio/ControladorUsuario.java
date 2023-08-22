@@ -1,6 +1,7 @@
 package negocio;
 
 import dados.IRepositorioUsuario;
+import dados.RepositorioUsuario;
 import negocio.beans.Usuario;
 
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ public class ControladorUsuario {
     private static ControladorUsuario instance;
 
     private ControladorUsuario() {
-        this.repositorioUsuarios = getInstance().repositorioUsuarios;
+        this.repositorioUsuarios = RepositorioUsuario.getInstance();
     }
 
     public static ControladorUsuario getInstance() {
@@ -74,4 +75,5 @@ public class ControladorUsuario {
     public Usuario getUsuarioPorLogin(String login) {
         return repositorioUsuarios.getUsuarioPorLogin(login);
     }
+
 }

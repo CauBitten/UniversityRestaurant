@@ -1,5 +1,6 @@
 package dados;
 
+import negocio.Fachada;
 import negocio.beans.Cliente;
 import negocio.beans.Usuario;
 
@@ -13,7 +14,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     private static IRepositorioUsuario instance;
 
     private RepositorioUsuario() {
-        usuarios = new ArrayList<Usuario>();
+        usuarios = new ArrayList<>();
     }
 
     public static IRepositorioUsuario getInstance() {
@@ -135,11 +136,11 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         return clientes;
     }
 
-    public List<Usuario> getUsuariosComPerfil(int perfil) {
+    public List<Usuario> getUsuariosComPerfil(String perfil) {
         List<Usuario> usuariosComPerfil = new ArrayList<>();
 
         for (Usuario u : usuarios) {
-            if (u.getPerfilAdmin() == perfil)
+            if (u.getPerfil().equals(perfil))
                 usuariosComPerfil.add(u);
         }
 

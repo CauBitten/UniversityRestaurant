@@ -4,12 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import negocio.ControladorUsuario;
+import negocio.Fachada;
 import negocio.beans.Cliente;
+import negocio.beans.Usuario;
 import view.ScreenManager;
 import view.TelasEnum;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static java.lang.Long.parseLong;
 
 public class ControllerCadastroUsuario implements Initializable {
 
@@ -40,7 +45,15 @@ public class ControllerCadastroUsuario implements Initializable {
 
     @FXML
     void bttnCadastrarOn(ActionEvent event) {
-        System.out.println(validar());
+        if (validar()) {
+            Usuario u =  new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
+                    parseLong(tfCPF.getText()), true, choiceBoxTipo.getValue());
+
+            Fachada.getInstance().cadastrarUsuario(u);
+            showInfoMessage("Cadastro realizado", "O usuário de CPF " + tfCPF.getText() +
+                    " foi cadastrado com sucesso");
+            clearFields();
+        }
     }
 
     @FXML
@@ -65,6 +78,24 @@ public class ControllerCadastroUsuario implements Initializable {
         alert.setTitle(titulo);
         alert.setHeaderText(mensagem);
         alert.show();
+    }
+
+    private void showInfoMessage(String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(mensagem);
+        alert.show();
+    }
+
+    private void clearFields() {
+        tfEmail.setText("");
+        tfLogin.setText("");
+        tfNome.setText("");
+        tfEmail.setText("");
+        tfCPF.setText("");
+        senhaField.setText("");
+        choiceBoxTipo.setValue(null);
     }
 
 

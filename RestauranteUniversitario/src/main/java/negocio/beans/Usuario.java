@@ -2,7 +2,7 @@ package negocio.beans;
 
 import java.util.Objects;
 
-public abstract class Usuario {
+public class Usuario {
 
     private String senha;
     private String login;
@@ -10,22 +10,18 @@ public abstract class Usuario {
     private String nome;
     private long cpf;
     private boolean ativado;
-    private int perfil;
+    private String perfil;
 
-    Usuario(String senha, String login, String email,
-            String nome, long cpf, boolean ativado, int perfil) {
+    public Usuario(String senha, String login, String email,
+            String nome, long cpf, boolean ativado, String perfil) {
 
-        if (senha != null && login != null && email != null && nome != null) {
+        if (senha != null && login != null && email != null && nome != null && perfil != null) {
             this.senha = senha;
             this.login = login;
             this.email = email;
             this.nome = nome;
             this.cpf = cpf;
             this.ativado = ativado;
-        }
-
-        //0 para admin, 1 para vendedor e 2 para cliente
-        if (perfil >= 0 && perfil <= 2) {
             this.perfil = perfil;
         }
     }
@@ -38,7 +34,7 @@ public abstract class Usuario {
         return login;
     }
 
-    public int getPerfilAdmin() {
+    public String getPerfil() {
         return perfil;
     }
 
@@ -56,6 +52,12 @@ public abstract class Usuario {
 
     public boolean isAtivado() {
         return ativado;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + nome + "\nCPF: " + cpf + "\nLogin: " + login + "\nE-mail: " + email + "\nAtivo: " +
+                ativado + "\nPerfil: " + perfil;
     }
 
     @Override
