@@ -1,5 +1,6 @@
 package gui.login;
 
+import negocio.Fachada;
 import view.TelasEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +11,7 @@ import view.ScreenManager;
 public class ControllerLoginPage {
 
     @FXML
-    private TextField emailField;
+    private TextField loginField;
 
     @FXML
     private PasswordField passwordField;
@@ -25,14 +26,21 @@ public class ControllerLoginPage {
     }
 
     public void entrarButtonClicked(ActionEvent event) {
-        if (validar()) {
+        String login = loginField.getText();
+        String password = passwordField.getText();
+
+        if (Fachada.getInstance().controladorUsuario.permicaoLogin(login, password)) {
+            showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
             ScreenManager.changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
+        } else {
+            showAlert("Credenciais inválidas!", Alert.AlertType.ERROR);
         }
         clearFields();
     }
 
+
     private boolean validar() {
-        if (emailField.getText().isBlank() || passwordField.getText().isBlank()) {
+        if (loginField.getText().isBlank() || passwordField.getText().isBlank()) {
             showErrorMessage("Erro: campos preenchidos incorretamente", "Informe os campos solicitados corretamente");
             return false;
         }
@@ -48,8 +56,15 @@ public class ControllerLoginPage {
     }
 
     private void clearFields() {
-        emailField.setText("");
+        loginField.setText("");
         passwordField.setText("");
     }
 
+    private void showAlert(String message, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle("Login");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
