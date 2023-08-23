@@ -38,7 +38,7 @@ public class ControllerLoginPage {
         String password = passwordField.getText();
         if (Fachada.getInstance().controladorUsuario.permicaoLogin(login, password)) {
             showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
-            ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+            ScreenManager.changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
         } else {
             showAlert("Credenciais inválidas!", Alert.AlertType.ERROR);
         }

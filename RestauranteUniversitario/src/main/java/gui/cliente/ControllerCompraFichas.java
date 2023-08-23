@@ -51,15 +51,22 @@ public class ControllerCompraFichas {
 
     @FXML
     void checkBoxFAlmocoOn(ActionEvent event) {
-
+        if (checkBoxFAlmoco.isSelected()) {
+            checkBoxFJantar.setSelected(false);
+        }
     }
 
     @FXML
     void checkBoxFJantarOn(ActionEvent event) {
-
+        if (checkBoxFJantar.isSelected()) {
+            checkBoxFAlmoco.setSelected(false);
+        }
     }
+
 
     private void atualizarLabelNum (Label label) {
         label.setText(Integer.toString(contador));
     }
+
+
 }
