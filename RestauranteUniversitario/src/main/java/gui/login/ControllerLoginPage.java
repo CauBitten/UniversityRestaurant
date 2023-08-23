@@ -28,11 +28,20 @@ public class ControllerLoginPage {
     public void entrarButtonClicked(ActionEvent event) {
         String login = loginField.getText();
         String password = passwordField.getText();
-
-        if (Fachada.getInstance().controladorUsuario.permicaoLogin(login, password)) {
+        int tipoDeEntrada = Fachada.getInstance().controladorUsuario.permicaoLogin(login, password);
+        if (tipoDeEntrada == 1) {
             showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
             ScreenManager.changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
-        } else {
+        }
+        else if(tipoDeEntrada == 2){
+            showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+            ScreenManager.changeScreen(TelasEnum.PRINCIPAL_VENDEDOR.name());
+        }
+        else if(tipoDeEntrada == 3){
+            showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+            ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+        }
+        else {
             showAlert("Credenciais inválidas!", Alert.AlertType.ERROR);
         }
         clearFields();
