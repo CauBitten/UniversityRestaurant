@@ -23,10 +23,8 @@ public class RepositorioCardapio implements IRepositorioCardapio {
 
     public void cadastrarCardapio(Cardapio c) {
         if (c != null) {
-            Cardapio cardapio = encontrarCardapioPorID(c.getId());
-
-            if (cardapio != null) {
-                //adicionar exceçao idexiste
+            if (verificarSeHaCardapiosIguaisA(c)) {
+                //adicionar exceçao cardapioexiste
             }
             else {
                 cardapios.add(c);
@@ -51,5 +49,14 @@ public class RepositorioCardapio implements IRepositorioCardapio {
 
     public List<Cardapio> getCardapios() {
         return cardapios;
+    }
+
+    private boolean verificarSeHaCardapiosIguaisA(Cardapio c) {
+        for (Cardapio cardapio : cardapios) {
+            if (cardapio.equals(c))
+                return true;
+        }
+
+        return false;
     }
 }
