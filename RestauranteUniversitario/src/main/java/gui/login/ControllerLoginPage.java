@@ -1,5 +1,9 @@
 package gui.login;
 
+import dados.IRepositorioUsuario;
+import dados.RepositorioUsuario;
+import negocio.Fachada;
+import negocio.beans.Usuario;
 import view.TelasEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +12,8 @@ import javafx.scene.control.*;
 import view.ScreenManager;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerLoginPage {
 
@@ -33,15 +39,23 @@ public class ControllerLoginPage {
     }
 
     public void entrarButtonClicked(ActionEvent event) throws IOException {
-        ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
-
-//        if () {
-//
-//        } else if () {
-//
-//        } else if () {
-//
-//        }
+        String email = emailField.getText();
+        String password = passwordField.getText();
+        if (Fachada.getInstance().controladorUsuario.permicaoLogin(email, password)) {
+            showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+            ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+        } else {
+            showAlert("Credenciais inválidas!", Alert.AlertType.ERROR);
+        }
     }
 
-}
+    private void showAlert(String message, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle("Login");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+     }
+
+ }
+

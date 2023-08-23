@@ -22,4 +22,6 @@ public interface IRepositorioUsuario {
     public Usuario getUsuarioPorLogin(String login);
 
     public List<Usuario> getUsuariosPorAtivacao(boolean ativo);
+
+    public boolean permicaoLogin(String email, String password);
 }
