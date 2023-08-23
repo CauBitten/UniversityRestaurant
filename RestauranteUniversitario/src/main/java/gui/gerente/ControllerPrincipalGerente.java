@@ -9,6 +9,9 @@ import view.TelasEnum;
 public class ControllerPrincipalGerente {
 
     @FXML
+    private Button botaoSair;
+
+    @FXML
     private Button listarCardapiosButton;
 
     @FXML
@@ -30,6 +33,11 @@ public class ControllerPrincipalGerente {
     @FXML
     void bttnListarUsuarios(ActionEvent event) {
         ScreenManager.changeScreen(TelasEnum.LISTAR_USUARIO.name());
+    }
+
+    @FXML
+    void bttnSairOn(ActionEvent event) {
+        ScreenManager.changeScreen(TelasEnum.LOGIN.name());
     }
 
 }

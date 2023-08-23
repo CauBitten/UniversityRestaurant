@@ -54,7 +54,7 @@ public class ControllerListarCardapios implements Initializable  {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-
+        ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
     }
 
     @FXML

@@ -24,7 +24,7 @@
                   <Font name="Georgia Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="botaoSair" layoutX="498.0" layoutY="336.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-color: #149959;" text="SAIR" textFill="WHITE">
+            <Button fx:id="botaoSair" layoutX="498.0" layoutY="336.0" mnemonicParsing="false" onAction="#bttnSairOn" prefHeight="29.0" prefWidth="66.0" style="-fx-background-color: #149959;" text="SAIR" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="15.0" />
                </font>
