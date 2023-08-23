@@ -28,7 +28,9 @@ public class ControllerLoginPage {
     public void entrarButtonClicked(ActionEvent event) {
         String login = loginField.getText();
         String password = passwordField.getText();
+
         int tipoDeEntrada = Fachada.getInstance().controladorUsuario.permicaoLogin(login, password);
+
         if (tipoDeEntrada == 1) {
             showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
             ScreenManager.changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
@@ -45,23 +47,6 @@ public class ControllerLoginPage {
             showAlert("Credenciais inválidas!", Alert.AlertType.ERROR);
         }
         clearFields();
-    }
-
-
-    private boolean validar() {
-        if (loginField.getText().isBlank() || passwordField.getText().isBlank()) {
-            showErrorMessage("Erro: campos preenchidos incorretamente", "Informe os campos solicitados corretamente");
-            return false;
-        }
-        return true;
-    }
-
-    private void showErrorMessage(String titulo, String mensagem) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-
-        alert.setTitle(titulo);
-        alert.setHeaderText(mensagem);
-        alert.show();
     }
 
     private void clearFields() {
