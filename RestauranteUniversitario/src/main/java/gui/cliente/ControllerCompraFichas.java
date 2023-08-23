@@ -10,38 +10,41 @@ import view.TelasEnum;
 
 public class ControllerCompraFichas {
 
-    private int contador = 0;
+    private int contadorAlmoco = 0;
+    private int contadorJantar = 0;
 
     @FXML
-    private Button buttonDecrementar;
+    private Label labelQuantidadeJantar;
 
     @FXML
-    private Button buttonIncrementar;
+    private Label labelQuantidadeAlmoco;
 
     @FXML
-    private Button buttonVoltarPagina;
-
-    @FXML
-    private CheckBox checkBoxFAlmoco;
-
-    @FXML
-    private CheckBox checkBoxFJantar;
-
-    @FXML
-    private Label labelQuantidade;
-
-    @FXML
-    void bttnDecrementarOn(ActionEvent event) {
-        if (contador > 0) {
-            contador--;
-            atualizarLabelNum(labelQuantidade);
+    void bttnDecrementarOn1(ActionEvent event) {
+        if (contadorAlmoco > 0) {
+            contadorAlmoco--;
+            atualizarLabelNum(labelQuantidadeAlmoco, contadorAlmoco);
         }
     }
 
     @FXML
-    void bttnIncrementarOn(ActionEvent event) {
-        contador++;
-        atualizarLabelNum(labelQuantidade);
+    void bttnDecrementarOn2(ActionEvent event) {
+        if (contadorJantar > 0) {
+            contadorJantar--;
+            atualizarLabelNum(labelQuantidadeJantar, contadorJantar);
+        }
+    }
+
+    @FXML
+    void bttnIncrementarOn1(ActionEvent event) {
+        contadorAlmoco++;
+        atualizarLabelNum(labelQuantidadeAlmoco, contadorAlmoco);
+    }
+
+    @FXML
+    void bttnIncrementarOn2(ActionEvent event) {
+        contadorJantar++;
+        atualizarLabelNum(labelQuantidadeJantar, contadorJantar);
     }
 
     @FXML
@@ -59,7 +62,12 @@ public class ControllerCompraFichas {
 
     }
 
-    private void atualizarLabelNum (Label label) {
+    @FXML
+    void bttnEfetuarCompraOn(ActionEvent event) {
+
+    }
+
+    private void atualizarLabelNum (Label label, int contador) {
         label.setText(Integer.toString(contador));
     }
 }

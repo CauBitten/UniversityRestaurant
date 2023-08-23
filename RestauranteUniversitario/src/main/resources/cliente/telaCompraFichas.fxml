@@ -10,33 +10,44 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.cliente.ControllerCompraFichas">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="204.0" layoutY="127.0" prefHeight="46.0" prefWidth="192.0" spacing="10.0">
+      <VBox alignment="TOP_CENTER" layoutX="124.0" layoutY="114.0" prefHeight="91.0" prefWidth="183.0" spacing="40.0">
          <children>
-            <CheckBox fx:id="checkBoxFJantar" mnemonicParsing="false" onAction="#checkBoxFJantarOn" prefHeight="18.0" prefWidth="115.0" text="Ficha de Jantar" />
-            <CheckBox fx:id="checkBoxFAlmoco" mnemonicParsing="false" onAction="#checkBoxFAlmocoOn" prefHeight="18.0" prefWidth="115.0" text="Ficha de Almoço" />
+            <CheckBox mnemonicParsing="false" onAction="#checkBoxFAlmocoOn" prefHeight="25.0" prefWidth="115.0" text="Ficha de Almoço" />
+            <CheckBox mnemonicParsing="false" onAction="#checkBoxFJantarOn" prefHeight="25.0" prefWidth="115.0" text="Ficha de Jantar" />
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="200.0" layoutY="194.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-         <children>
-            <Button fx:id="buttonDecrementar" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#bttnDecrementarOn" text="-" />
-            <Label fx:id="labelQuantidade" alignment="CENTER" contentDisplay="CENTER" minHeight="35.0" minWidth="35.0" text="0" />
-            <Button fx:id="buttonIncrementar" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#bttnIncrementarOn" text="+" />
-         </children>
-      </HBox>
       <Label layoutX="200.0" layoutY="54.0" text="COMPRAR FICHAS" textFill="#149959">
          <font>
             <Font name="Georgia Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="200.0" layoutY="294.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #149959;" text="EFETUAR COMPRA" textFill="WHITE">
+      <Button layoutX="200.0" layoutY="294.0" mnemonicParsing="false" onAction="#bttnEfetuarCompraOn" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #149959;" text="EFETUAR COMPRA" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="buttonVoltarPagina" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>
       </Button>
+      <VBox layoutX="308.0" layoutY="114.0" prefHeight="91.0" prefWidth="183.0" spacing="40.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="98.0" spacing="10.0">
+               <children>
+                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnDecrementarOn1" text="-" />
+                  <Label fx:id="labelQuantidadeAlmoco" alignment="CENTER" contentDisplay="CENTER" minHeight="25.0" minWidth="25.0" text="0" />
+                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnIncrementarOn1" text="+" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="98.0" spacing="10.0">
+               <children>
+                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnDecrementarOn2" text="-" />
+                  <Label fx:id="labelQuantidadeJantar" alignment="CENTER" contentDisplay="CENTER" minHeight="25.0" minWidth="25.0" text="0" />
+                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnIncrementarOn2" text="+" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

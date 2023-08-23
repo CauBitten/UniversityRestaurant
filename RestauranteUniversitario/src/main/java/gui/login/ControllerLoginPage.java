@@ -7,18 +7,10 @@ import javafx.scene.control.*;
 
 import view.ScreenManager;
 
-import java.io.IOException;
-
 public class ControllerLoginPage {
 
     @FXML
     private TextField emailField;
-
-    @FXML
-    private Button entrarButton;
-
-    @FXML
-    private Hyperlink hlEsqueceuSenha;
 
     @FXML
     private PasswordField passwordField;
@@ -32,16 +24,32 @@ public class ControllerLoginPage {
         alert.show();
     }
 
-    public void entrarButtonClicked(ActionEvent event) throws IOException {
-        ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+    public void entrarButtonClicked(ActionEvent event) {
+        if (validar()) {
+            ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+        }
+        clearFields();
+    }
 
-//        if () {
-//
-//        } else if () {
-//
-//        } else if () {
-//
-//        }
+    private boolean validar() {
+        if (emailField.getText().isBlank() || passwordField.getText().isBlank()) {
+            showErrorMessage("Erro: campos preenchidos incorretamente", "Informe os campos solicitados corretamente");
+            return false;
+        }
+        return true;
+    }
+
+    private void showErrorMessage(String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(mensagem);
+        alert.show();
+    }
+
+    private void clearFields() {
+        emailField.setText("");
+        passwordField.setText("");
     }
 
 }

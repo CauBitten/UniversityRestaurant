@@ -2,17 +2,10 @@ package gui.cliente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import view.ScreenManager;
 import view.TelasEnum;
 
 public class ControllerPrincipalCliente {
-
-    @FXML
-    private Button comprarFichasButton;
-
-    @FXML
-    private Button visualizarDadosButton;
 
     @FXML
     void bttnComprarFichas(ActionEvent event) {
@@ -24,4 +17,8 @@ public class ControllerPrincipalCliente {
         ScreenManager.changeScreen(TelasEnum.VISUALIZAR_DADOS.name());
     }
 
+    @FXML
+    void hlSairOn(ActionEvent event) {
+        ScreenManager.changeScreen(TelasEnum.LOGIN.name());
+    }
 }

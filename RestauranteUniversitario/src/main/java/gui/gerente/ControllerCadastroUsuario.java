@@ -19,15 +19,8 @@ import static java.lang.Long.parseLong;
 public class ControllerCadastroUsuario implements Initializable {
 
     @FXML
-    private Button buttonCadastrar;
-
-    @FXML
-    private Button buttonVoltarPagina;
-
-    @FXML
     private ChoiceBox<String> choiceBoxTipo;
 
-    //validar cpf para ser somente numerico
     @FXML
     private TextField tfCPF;
 

@@ -2,23 +2,10 @@ package gui.gerente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import view.ScreenManager;
 import view.TelasEnum;
 
 public class ControllerPrincipalGerente {
-
-    @FXML
-    private Button botaoSair;
-
-    @FXML
-    private Button listarCardapiosButton;
-
-    @FXML
-    private Button listarRegistrosCompra;
-
-    @FXML
-    private Button listarUsuariosButton;
 
     @FXML
     void bttnListarCardapios(ActionEvent event) {
@@ -36,7 +23,7 @@ public class ControllerPrincipalGerente {
     }
 
     @FXML
-    void bttnSairOn(ActionEvent event) {
+    void hlSairOn(ActionEvent event) {
         ScreenManager.changeScreen(TelasEnum.LOGIN.name());
     }
 
