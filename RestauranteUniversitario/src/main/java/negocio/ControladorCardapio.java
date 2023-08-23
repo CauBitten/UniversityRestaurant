@@ -1,6 +1,7 @@
 package negocio;
 
 import dados.IRepositorioCardapio;
+import dados.RepositorioCardapio;
 import negocio.beans.Cardapio;
 
 public class ControladorCardapio {
@@ -8,7 +9,7 @@ public class ControladorCardapio {
     private static ControladorCardapio instance;
 
     private ControladorCardapio() {
-        this.repositorioCardapio = instance.repositorioCardapio;
+        this.repositorioCardapio = RepositorioCardapio.getInstance();
     }
 
     public static ControladorCardapio getInstance() {

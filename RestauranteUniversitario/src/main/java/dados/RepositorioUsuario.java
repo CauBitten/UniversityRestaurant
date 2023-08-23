@@ -1,6 +1,5 @@
 package dados;
 
-import negocio.Fachada;
 import negocio.beans.Cliente;
 import negocio.beans.Usuario;
 

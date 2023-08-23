@@ -1,15 +1,23 @@
 package gui.gerente;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import negocio.beans.Cardapio;
 import view.ScreenManager;
 import view.TelasEnum;
 
-public class ControllerListarCardapios {
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class ControllerListarCardapios implements Initializable  {
 
     @FXML
     private Button buttonAlterar;
@@ -52,6 +60,23 @@ public class ControllerListarCardapios {
     @FXML
     void bttnCadastrarCardapioOn(ActionEvent event) {
         ScreenManager.changeScreen(TelasEnum.CADASTRAR_CARDAPIO.name());
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tblColGuarnicao.setCellValueFactory(new PropertyValueFactory<>("guarnicao"));
+        tblColId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tblColPrincipal.setCellValueFactory(new PropertyValueFactory<>("principal"));
+        tblColSalada.setCellValueFactory(new PropertyValueFactory<>("salada"));
+        tblColSuco.setCellValueFactory(new PropertyValueFactory<>("suco"));
+        tblColVegetariano.setCellValueFactory(new PropertyValueFactory<>("vegetariano"));
+        tblColSobremesa.setCellValueFactory(new PropertyValueFactory<>("sobremesa"));
+    }
+
+    private void configurarTv(List<Cardapio> cardapios) {
+        ObservableList<Cardapio> cardapioList = FXCollections.observableArrayList();
+        cardapioList.addAll(cardapios);
+        tvCardapios.setItems(cardapioList);
     }
 
 }

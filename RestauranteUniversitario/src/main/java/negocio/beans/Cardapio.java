@@ -12,15 +12,14 @@ public class Cardapio {
     private long id;
 
     public Cardapio(String principal, String vegetariano, String guarnicao,
-                    String salada, String sobremesa, String suco, long id) {
-
+                    String salada, String sobremesa, String suco) {
+        //implementar o id
         this.principal = principal;
         this.vegetariano = vegetariano;
         this.guarnicao = guarnicao;
         this.salada = salada;
         this.sobremesa = sobremesa;
         this.suco = suco;
-        this.id = id;
     }
 
     public String getPrincipal() {

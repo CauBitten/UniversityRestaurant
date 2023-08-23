@@ -1,5 +1,6 @@
 package negocio;
 
+import negocio.beans.Cardapio;
 import negocio.beans.Usuario;
 
 public class Fachada {
@@ -13,10 +14,10 @@ public class Fachada {
 
     private Fachada() {
         this.controladorUsuario = ControladorUsuario.getInstance();
-        /*this.controladorEntrada = ControladorEntrada.getInstance();
+        //this.controladorEntrada = ControladorEntrada.getInstance();
         this.controladorCardapio = ControladorCardapio.getInstance();
-        this.controladorFicha = ControladorFicha.getInstance();
-        this.controladorRegistroCompra = ControladorRegistroCompra.getInstance();*/
+        //this.controladorFicha = ControladorFicha.getInstance();
+        //this.controladorRegistroCompra = ControladorRegistroCompra.getInstance();
     }
 
     public static Fachada getInstance() {
@@ -33,7 +34,9 @@ public class Fachada {
         }
     }
 
-    public Usuario obterUsuario() {
-        return controladorUsuario.getUsuarioPorCPF(123);
+    public void cadastrarCardapio(Cardapio c) {
+        if (c != null) {
+            controladorCardapio.cadastrarCardapio(c);
+        }
     }
 }

@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import negocio.Fachada;
+import negocio.beans.Cardapio;
 import view.ScreenManager;
 import view.TelasEnum;
 
@@ -37,7 +39,12 @@ public class ControllerCadastroCardapio {
     @FXML
     void bttnCadastrarOn(ActionEvent event) {
         if (validar()) {
-            System.out.println("1");
+            Cardapio c = new Cardapio(tfPrincipal.getText(), tfVegetariano.getText(), tfGuarnicao.getText(), tfSalada.getText(),
+                    tfSobremesa.getText(), tfSuco.getText());
+
+            Fachada.getInstance().cadastrarCardapio(c);
+            showInfoMessage("Cadastro realizado", "O cardápio foi cadastrado com sucesso");
+            clearFields();
         }
     }
 
@@ -70,6 +77,15 @@ public class ControllerCadastroCardapio {
         }
 
         return true;
+    }
+
+    private void clearFields() {
+        tfSuco.setText("");
+        tfSobremesa.setText("");
+        tfVegetariano.setText("");
+        tfSalada.setText("");
+        tfGuarnicao.setText("");
+        tfPrincipal.setText("");
     }
 
 }
