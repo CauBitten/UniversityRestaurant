@@ -26,7 +26,7 @@ public class ControllerLoginPage {
 
     public void entrarButtonClicked(ActionEvent event) {
         if (validar()) {
-            ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+            ScreenManager.changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
         }
         clearFields();
     }
