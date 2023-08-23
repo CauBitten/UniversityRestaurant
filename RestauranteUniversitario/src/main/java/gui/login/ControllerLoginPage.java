@@ -1,9 +1,6 @@
 package gui.login;
 
-import dados.IRepositorioUsuario;
-import dados.RepositorioUsuario;
 import negocio.Fachada;
-import negocio.beans.Usuario;
 import view.TelasEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,13 +9,11 @@ import javafx.scene.control.*;
 import view.ScreenManager;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ControllerLoginPage {
 
     @FXML
-    private TextField emailField;
+    private TextField loginField;
 
     @FXML
     private Button entrarButton;
@@ -39,9 +34,9 @@ public class ControllerLoginPage {
     }
 
     public void entrarButtonClicked(ActionEvent event) throws IOException {
-        String email = emailField.getText();
+        String login = loginField.getText();
         String password = passwordField.getText();
-        if (Fachada.getInstance().controladorUsuario.permicaoLogin(email, password)) {
+        if (Fachada.getInstance().controladorUsuario.permicaoLogin(login, password)) {
             showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
             ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
         } else {

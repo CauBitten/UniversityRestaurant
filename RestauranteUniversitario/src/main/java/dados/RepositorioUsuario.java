@@ -127,9 +127,9 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     }
 
     @Override
-    public boolean permicaoLogin(String email, String password) {
+    public boolean permicaoLogin(String login, String password) {
         for (Usuario u : usuarios) {
-            if(u.getEmail().equals(email) && u.getSenha().equals(password)){
+            if(u.getLogin().equals(login) && u.getSenha().equals(password)){
                 return true;
             }
         }
