@@ -4,6 +4,8 @@ import dados.IRepositorioCardapio;
 import dados.RepositorioCardapio;
 import negocio.beans.Cardapio;
 
+import java.util.List;
+
 public class ControladorCardapio {
     private IRepositorioCardapio repositorioCardapio;
     private static ControladorCardapio instance;
@@ -41,5 +43,9 @@ public class ControladorCardapio {
     public Cardapio obterCardapioDeID(long id) {
         //cadastrar exceçao se id < 0
         return this.repositorioCardapio.encontrarCardapioPorID(id);
+    }
+
+    public List<Cardapio> getCardapios() {
+        return this.repositorioCardapio.getCardapios();
     }
 }

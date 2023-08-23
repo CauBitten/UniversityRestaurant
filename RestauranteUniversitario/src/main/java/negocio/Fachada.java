@@ -2,6 +2,7 @@ package negocio;
 
 import negocio.beans.Cardapio;
 import negocio.beans.Usuario;
+import java.util.List;
 
 public class Fachada {
     private static Fachada instance;
@@ -38,5 +39,13 @@ public class Fachada {
         if (c != null) {
             controladorCardapio.cadastrarCardapio(c);
         }
+    }
+
+    public List<Usuario> obterUsuarios() {
+        return controladorUsuario.listarUsuarios();
+    }
+
+    public List<Cardapio> obterCardapios() {
+        return controladorCardapio.getCardapios();
     }
 }

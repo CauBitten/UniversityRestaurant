@@ -66,7 +66,7 @@ public class ControllerListarUsuarios implements Initializable {
 
     @FXML
     void bttnAtualizarOn(ActionEvent event) {
-        configurarTv(Fachada.getInstance().controladorUsuario.listarUsuarios());
+        configurarTv(Fachada.getInstance().obterUsuarios());
     }
 
     @FXML

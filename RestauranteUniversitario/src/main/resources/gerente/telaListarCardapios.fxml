@@ -46,5 +46,10 @@
             </TableView>
          </children>
       </VBox>
+      <Button fx:id="buttonAtualizar" layoutX="24.0" layoutY="294.0" mnemonicParsing="false" onAction="#bttnAtualizarOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #149959;" text="ATUALIZAR" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

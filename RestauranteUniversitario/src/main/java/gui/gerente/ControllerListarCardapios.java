@@ -9,7 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import negocio.Fachada;
 import negocio.beans.Cardapio;
+import org.controlsfx.control.action.Action;
 import view.ScreenManager;
 import view.TelasEnum;
 
@@ -24,6 +26,9 @@ public class ControllerListarCardapios implements Initializable  {
 
     @FXML
     private Button buttonCadastrar;
+
+    @FXML
+    private Button buttonAtualizar;
 
     @FXML
     private Button buttonVoltarPagina;
@@ -55,6 +60,11 @@ public class ControllerListarCardapios implements Initializable  {
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
         ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+    }
+
+    @FXML
+    void bttnAtualizarOn(ActionEvent event) {
+        configurarTv(Fachada.getInstance().obterCardapios());
     }
 
     @FXML

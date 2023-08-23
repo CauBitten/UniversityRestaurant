@@ -48,4 +48,8 @@ public class RepositorioCardapio implements IRepositorioCardapio {
             cardapios.remove(c);
         }
     }
+
+    public List<Cardapio> getCardapios() {
+        return cardapios;
+    }
 }

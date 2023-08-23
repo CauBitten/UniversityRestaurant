@@ -10,6 +10,7 @@ public class Cardapio {
     private String sobremesa;
     private String suco;
     private long id;
+    private static long contador = 0;
 
     public Cardapio(String principal, String vegetariano, String guarnicao,
                     String salada, String sobremesa, String suco) {
@@ -20,6 +21,9 @@ public class Cardapio {
         this.salada = salada;
         this.sobremesa = sobremesa;
         this.suco = suco;
+        this.id = contador;
+
+        contador++;
     }
 
     public String getPrincipal() {
