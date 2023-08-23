@@ -76,7 +76,7 @@ public class ControladorUsuario {
         return repositorioUsuarios.getUsuarioPorLogin(login);
     }
 
-    public boolean permicaoLogin(String login, String password) {
+    public int permicaoLogin(String login, String password) {
         return repositorioUsuarios.permicaoLogin(login, password);
     }
 }
