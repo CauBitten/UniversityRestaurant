@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -61,12 +62,18 @@ public class ControllerListarUsuarios implements Initializable {
 
     @FXML
     void bttnAlterarUsuarioOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.ALTERAR_USUARIO.name());
+        if (tvUsuarios.getSelectionModel().getSelectedItem() != null) {
+            ControllerAlterarUsuarios.setUsuario(tvUsuarios.getSelectionModel().getSelectedItem());
+            ScreenManager.changeScreen(TelasEnum.ALTERAR_USUARIO.name());
+        }
+        else {
+            showErrorMessage("Erro: Nenhum usuário selecionado", "Selecione um usuário se quiser alterar");
+        }
     }
 
     @FXML
     void bttnAtualizarOn(ActionEvent event) {
-        configurarTv(Fachada.getInstance().obterUsuarios());
+        configurarTv(Fachada.getInstance().controladorUsuario.listarUsuarios());
     }
 
     @FXML
@@ -94,4 +101,13 @@ public class ControllerListarUsuarios implements Initializable {
         userList.addAll(usuarios);
         tvUsuarios.setItems(userList);
     }
+
+    private void showErrorMessage(String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(mensagem);
+        alert.show();
+    }
+
 }
