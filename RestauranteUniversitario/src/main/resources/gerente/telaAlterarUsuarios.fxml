@@ -15,7 +15,7 @@
             <Font name="Georgia Bold" size="12.0" />
          </font>
       </Button>
-      <VBox layoutX="263.0" layoutY="45.0" prefHeight="232.0" prefWidth="311.0" spacing="20.0">
+      <VBox layoutX="172.0" layoutY="49.0" prefHeight="232.0" prefWidth="311.0" spacing="20.0">
          <children>
             <TextField fx:id="tfNome" minHeight="30.0" promptText="NOME" />
             <TextField fx:id="tfEmail" minHeight="30.0" promptText="EMAIL" />
@@ -24,7 +24,7 @@
             <TextField fx:id="tfCPF" minHeight="30.0" promptText="CPF" />
          </children>
       </VBox>
-      <VBox layoutX="207.0" layoutY="45.0" prefHeight="232.0" prefWidth="46.0" spacing="20.0">
+      <VBox layoutX="116.0" layoutY="49.0" prefHeight="232.0" prefWidth="46.0" spacing="20.0">
          <children>
             <Label prefHeight="30.0" text="NOME:" textFill="#149959">
                <font>
@@ -53,5 +53,10 @@
             </Label>
          </children>
       </VBox>
+      <Button fx:id="buttonAlterar" layoutX="232.0" layoutY="316.0" minHeight="35.0" minWidth="152.0" mnemonicParsing="false" onAction="#bttnAlterarOn" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: #149959;" text="ALTERAR" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

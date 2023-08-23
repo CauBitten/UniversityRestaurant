@@ -12,8 +12,10 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     private List<Usuario> usuarios;
     private static IRepositorioUsuario instance;
 
-    private RepositorioUsuario() {
+    public RepositorioUsuario() {
+        Usuario admin = new Usuario("123","admin","admin@","admin", 123L, true, "vv");
         usuarios = new ArrayList<>();
+        usuarios.add(admin);
     }
 
     public static IRepositorioUsuario getInstance() {
@@ -122,6 +124,16 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         }
 
         return listaUsuarios;
+    }
+
+    @Override
+    public boolean permicaoLogin(String login, String password) {
+        for (Usuario u : usuarios) {
+            if(u.getLogin().equals(login) && u.getSenha().equals(password)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public List<Usuario> getClientes() {
