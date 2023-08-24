@@ -1,6 +1,7 @@
 package GUI.login;
 
 import negocio.Fachada;
+import negocio.beans.Usuario;
 import view.TelasEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,20 +29,24 @@ public class ControllerLoginPage {
     public void entrarButtonClicked(ActionEvent event) {
         String login = loginField.getText();
         String password = passwordField.getText();
+        Usuario usuario = Fachada.getInstance().controladorUsuario.getUsuarioPorLogin(login);
 
         int tipoDeEntrada = Fachada.getInstance().controladorUsuario.permicaoLogin(login, password);
 
         if (tipoDeEntrada == 1) {
             showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+            Fachada.getInstance().setUsuarioLogado(usuario);
             ScreenManager.getInstance().getControllerVisualizacaoDados().exibirDados();
             ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
         }
         else if(tipoDeEntrada == 2){
             showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+            Fachada.getInstance().setUsuarioLogado(usuario);
             ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_VENDEDOR.name());
         }
         else if(tipoDeEntrada == 3){
             showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+            Fachada.getInstance().setUsuarioLogado(usuario);
             ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
         }
         else {
