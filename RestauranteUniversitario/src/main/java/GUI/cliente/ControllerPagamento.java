@@ -47,11 +47,15 @@ public class ControllerPagamento {
             Ficha f = new Ficha("Janta", Fachada.getInstance().getUsuarioLogado());
             fichasCompradas.add(f);
         }
+        for (Ficha f : fichasCompradas) {
+            Fachada.getInstance().adicionarFicha(f);
+        }
         RegistroCompra rc = new RegistroCompra(fichasCompradas,
                 Fachada.getInstance().getUsuarioLogado(), "zezo");
-        Fachada.getInstance().controladorRegistroCompra.cadastrarRegistroCompra(rc);
+        Fachada.getInstance().cadastrarRegistroCompra(rc);
         showInfoAlert("Compra", "", "Compra Efetuada Com Sucesso!");
-        System.out.println(Fachada.getInstance().controladorRegistroCompra.getListaRegistroCompra());
+        ScreenManager.getInstance().getControllerCompraFichas().clearFields();
+        clearFields();
     }
 
     @FXML
@@ -108,5 +112,14 @@ public class ControllerPagamento {
         alert.setHeaderText(header);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void clearFields(){
+        cbBoleto.setSelected(false);
+        cbCartao.setSelected(false);
+        cbPix.setSelected(false);
+        labelTFichasAlmoco.setText("");
+        labelTFichasJantar.setText("");
+        labelTCompra.setText("");
     }
 }

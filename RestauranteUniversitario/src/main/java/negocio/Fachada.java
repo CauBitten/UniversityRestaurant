@@ -1,9 +1,7 @@
 package negocio;
 
-import negocio.beans.Cardapio;
-import negocio.beans.Cliente;
-import negocio.beans.Ficha;
-import negocio.beans.Usuario;
+import negocio.beans.*;
+
 import java.util.List;
 
 public class Fachada {
@@ -20,7 +18,7 @@ public class Fachada {
         this.controladorUsuario = ControladorUsuario.getInstance();
         //this.controladorEntrada = ControladorEntrada.getInstance();
         this.controladorCardapio = ControladorCardapio.getInstance();
-        //this.controladorFicha = ControladorFicha.getInstance();
+        this.controladorFicha = ControladorFicha.getInstance();
         this.controladorRegistroCompra = ControladorRegistroCompra.getInstance();
     }
 
@@ -42,6 +40,22 @@ public class Fachada {
         if (c != null) {
             controladorCardapio.cadastrarCardapio(c);
         }
+    }
+
+    public List<Ficha> obterFichasDoTipo(String tipo) {
+        return controladorFicha.obterFichasDoTipo(tipo);
+    }
+
+    public void cadastrarRegistroCompra(RegistroCompra rc) {
+        controladorRegistroCompra.cadastrarRegistroCompra(rc);
+    }
+
+    public void adicionarFicha(Ficha f) {
+        controladorFicha.adicionarFicha(f);
+    }
+
+    public void removerFicha(Ficha f) {
+        controladorFicha.removerFicha(f);
     }
 
     public List<Ficha> obterFichasDoCliente(Usuario u) {
