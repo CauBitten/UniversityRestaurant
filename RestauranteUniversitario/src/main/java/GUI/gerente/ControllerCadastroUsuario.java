@@ -36,15 +36,9 @@ public class ControllerCadastroUsuario implements Initializable {
 
     @FXML
     void bttnCadastrarOn(ActionEvent event) {
-        String perfilAdmin = choiceBoxTipo.getSelectionModel().getSelectedItem();
-        //Se não escolher corretamente, ele seta para cliente... Debater sobre o assunto
-        int escolhaPerfil = 1;
-        if (perfilAdmin == "Cliente") escolhaPerfil = 1;
-        else if (perfilAdmin == "Vendedor") escolhaPerfil = 2;
-        else if (perfilAdmin == "Gerente") escolhaPerfil = 3;
         if (validar()) {
             Usuario u =  new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
-                    parseLong(tfCPF.getText()), true, choiceBoxTipo.getValue(), escolhaPerfil);
+                    parseLong(tfCPF.getText()), true, choiceBoxTipo.getValue());
 
             Fachada.getInstance().cadastrarUsuario(u);
             showInfoMessage("Cadastro realizado", "O usuário de CPF " + tfCPF.getText() +

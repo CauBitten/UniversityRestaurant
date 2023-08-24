@@ -76,7 +76,10 @@ public class ControladorUsuario {
         return repositorioUsuarios.getUsuarioPorLogin(login);
     }
 
-    public int permicaoLogin(String login, String password) {
-        return repositorioUsuarios.permicaoLogin(login, password);
+    public Usuario getUsuarioDeCredenciais(String login, String senha) {
+        if (login != null && senha != null)
+            return this.repositorioUsuarios.obterUsuarioDeCredenciais(login, senha);
+        else
+            return null;
     }
 }

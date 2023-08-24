@@ -63,5 +63,8 @@ public class Fachada {
         return usuarioLogado;
     }
 
+    public Usuario validarCredenciais(String login, String senha) {
+        return this.controladorUsuario.getUsuarioDeCredenciais(login, senha);
+    }
 
 }

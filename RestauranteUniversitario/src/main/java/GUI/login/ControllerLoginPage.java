@@ -1,6 +1,7 @@
 package GUI.login;
 
 import negocio.Fachada;
+import negocio.beans.Usuario;
 import view.TelasEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,27 +27,29 @@ public class ControllerLoginPage {
     }
 
     public void entrarButtonClicked(ActionEvent event) {
-        String login = loginField.getText();
-        String password = passwordField.getText();
+        Usuario u = obterUsuarioDe(loginField.getText(), passwordField.getText());
 
-        int tipoDeEntrada = Fachada.getInstance().controladorUsuario.permicaoLogin(login, password);
-
-        if (tipoDeEntrada == 1) {
-            showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
-            ScreenManager.getInstance().getControllerVisualizacaoDados().exibirDados();
-            ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
-        }
-        else if(tipoDeEntrada == 2){
-            showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
-            ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_VENDEDOR.name());
-        }
-        else if(tipoDeEntrada == 3){
-            showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
-            ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+        if (u != null) {
+            switch (u.getPerfil()) {
+                case "Cliente" -> {
+                    showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+                    ScreenManager.getInstance().getControllerVisualizacaoDados().exibirDados();
+                    ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
+                }
+                case "Vendedor" -> {
+                    showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+                    ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_VENDEDOR.name());
+                }
+                case "Gerente" -> {
+                    showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+                    ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+                }
+            }
         }
         else {
             showAlert("Credenciais inválidas!", Alert.AlertType.ERROR);
         }
+
         clearFields();
     }
 
@@ -61,5 +64,9 @@ public class ControllerLoginPage {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private Usuario obterUsuarioDe(String login, String senha) {
+        return Fachada.getInstance().validarCredenciais(login, senha);
     }
 }

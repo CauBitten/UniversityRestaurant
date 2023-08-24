@@ -23,5 +23,6 @@ public interface IRepositorioUsuario {
 
     public List<Usuario> getUsuariosPorAtivacao(boolean ativo);
 
-    public int permicaoLogin(String login, String password);
+    public Usuario obterUsuarioDeCredenciais(String login, String senha);
+
 }

@@ -13,7 +13,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     private static IRepositorioUsuario instance;
 
     public RepositorioUsuario() {
-        Usuario admin = new Usuario("123","admin","admin@","admin", 123L, true, "vv", 3);
+        Usuario admin = new Usuario("123","admin","admin@","admin", 123L, true, "Gerente");
         usuarios = new ArrayList<>();
         usuarios.add(admin);
     }
@@ -126,16 +126,6 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         return listaUsuarios;
     }
 
-    @Override
-    public int permicaoLogin(String login, String password) {
-        for (Usuario u : usuarios) {
-            if(u.getLogin().equals(login) && u.getSenha().equals(password)){
-                return u.getPerfilAdmin();
-            }
-        }
-        return -1;
-    }
-
     public List<Usuario> getClientes() {
         List<Usuario> clientes = new ArrayList<>();
 
@@ -156,5 +146,20 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         }
 
         return usuariosComPerfil;
+    }
+
+    public void alterarUsuario(Usuario u) {
+
+    }
+
+    public Usuario obterUsuarioDeCredenciais(String login, String senha) {
+        for (Usuario usuario : usuarios) {
+            if (login.equals(usuario.getLogin())) {
+                if (senha.equals(usuario.getSenha()))
+                    return usuario;
+            }
+        }
+
+        return null;
     }
 }

@@ -11,10 +11,9 @@ public class Usuario {
     private long cpf;
     private boolean ativado;
     private String perfil;
-    private int perfilAdmin;
 
     public Usuario(String senha, String login, String email,
-            String nome, long cpf, boolean ativado, String perfil, int perfilAdmin) {
+            String nome, long cpf, boolean ativado, String perfil) {
 
         if (senha != null && login != null && email != null && nome != null && perfil != null) {
             this.senha = senha;
@@ -24,7 +23,6 @@ public class Usuario {
             this.cpf = cpf;
             this.ativado = ativado;
             this.perfil = perfil;
-            this.perfilAdmin = perfilAdmin;
         }
     }
 
@@ -73,7 +71,4 @@ public class Usuario {
         return false;
     }
 
-    public int getPerfilAdmin() {
-        return perfilAdmin;
-    }
 }
