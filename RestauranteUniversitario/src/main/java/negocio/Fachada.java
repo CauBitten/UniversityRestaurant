@@ -13,7 +13,7 @@ public class Fachada {
     private ControladorEntrada controladorEntrada;
     private ControladorCardapio controladorCardapio;
     private ControladorFicha controladorFicha;
-    private ControladorRegistroCompra controladorRegistroCompra;
+    public ControladorRegistroCompra controladorRegistroCompra;
     private Usuario usuarioLogado;
 
     private Fachada() {
@@ -21,7 +21,7 @@ public class Fachada {
         //this.controladorEntrada = ControladorEntrada.getInstance();
         this.controladorCardapio = ControladorCardapio.getInstance();
         //this.controladorFicha = ControladorFicha.getInstance();
-        //this.controladorRegistroCompra = ControladorRegistroCompra.getInstance();
+        this.controladorRegistroCompra = ControladorRegistroCompra.getInstance();
     }
 
     public static Fachada getInstance() {
