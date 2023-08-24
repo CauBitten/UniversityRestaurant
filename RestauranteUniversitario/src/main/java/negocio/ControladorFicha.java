@@ -1,6 +1,7 @@
 package negocio;
 
 import dados.IRepositorioFicha;
+import dados.RepositorioFicha;
 import negocio.beans.Cliente;
 import negocio.beans.Ficha;
 import negocio.beans.Usuario;
@@ -13,7 +14,7 @@ public class ControladorFicha {
     private static ControladorFicha instance;
 
     private ControladorFicha() {
-        this.repositorioFicha = instance.repositorioFicha;
+        this.repositorioFicha = RepositorioFicha.getInstance();
     }
 
     public static ControladorFicha getInstance() {

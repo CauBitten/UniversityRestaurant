@@ -60,6 +60,7 @@ public class ControllerCompraFichas {
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
+        clearFields();
     }
 
     @FXML
@@ -88,5 +89,14 @@ public class ControllerCompraFichas {
 
     public int getContadorJantar() {
         return contadorJantar;
+    }
+
+    public void clearFields(){
+        contadorAlmoco = 0;
+        contadorJantar = 0;
+        atualizarLabelNum(labelQuantidadeAlmoco, 0);
+        atualizarLabelNum(labelQuantidadeJantar, 0);
+        cbAlmoco.setSelected(false);
+        cbJantar.setSelected(false);
     }
 }

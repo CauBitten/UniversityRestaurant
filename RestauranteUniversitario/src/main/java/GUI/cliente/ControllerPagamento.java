@@ -42,16 +42,19 @@ public class ControllerPagamento {
         for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorAlmoco();i++){
             Ficha f = new Ficha("Almoco", Fachada.getInstance().getUsuarioLogado());
             fichasCompradas.add(f);
+            Fachada.getInstance().adicionarFicha(f);
         }
         for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorJantar();i++){
             Ficha f = new Ficha("Janta", Fachada.getInstance().getUsuarioLogado());
             fichasCompradas.add(f);
+            Fachada.getInstance().adicionarFicha(f);
         }
         RegistroCompra rc = new RegistroCompra(fichasCompradas,
                 Fachada.getInstance().getUsuarioLogado(), "zezo");
-        Fachada.getInstance().controladorRegistroCompra.cadastrarRegistroCompra(rc);
+        Fachada.getInstance().cadastrarRegistroCompra(rc);
         showInfoAlert("Compra", "", "Compra Efetuada Com Sucesso!");
         System.out.println(Fachada.getInstance().controladorRegistroCompra.getListaRegistroCompra());
+        ScreenManager.getInstance().getControllerCompraFichas().clearFields();
     }
 
     @FXML
