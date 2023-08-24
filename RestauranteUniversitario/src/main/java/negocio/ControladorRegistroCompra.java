@@ -1,6 +1,7 @@
 package negocio;
 
 import dados.IRepositorioRegistroCompra;
+import dados.RepositorioRegistroCompra;
 import negocio.beans.RegistroCompra;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public class ControladorRegistroCompra{
     private static ControladorRegistroCompra instance;
 
     private ControladorRegistroCompra() {
-        this.repositorioRegistroCompra = instance.repositorioRegistroCompra;
+        this.repositorioRegistroCompra = RepositorioRegistroCompra.getInstance();
     }
 
     public static ControladorRegistroCompra getInstance() {

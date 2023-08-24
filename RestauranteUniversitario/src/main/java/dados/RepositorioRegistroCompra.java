@@ -64,7 +64,7 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
 
         if (c != null) {
             for (RegistroCompra registro : registrosCompras) {
-                long cpfCliente = registro.getCliente().getCpf();
+                long cpfCliente = registro.getUsuario().getCpf();
 
                 if (cpfCliente == c.getCpf())
                     registroComprasPorCliente.add(registro);

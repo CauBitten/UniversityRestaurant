@@ -46,12 +46,12 @@ public class RepositorioEntrada implements IRepositorioEntrada {
     public List<Entrada> obterEntradasPorClienteComMatricula(long matricula) {
         List<Entrada> entradasPorCliente = new ArrayList<>();
 
-        for (Entrada entrada : entradas) {
-            long idDoCliente = entrada.getFicha().getCliente().getMatricula();
-
-            if (idDoCliente == matricula)
-                entradasPorCliente.add(entrada);
-        }
+//        for (Entrada entrada : entradas) {
+//            long idDoCliente = entrada.getFicha().getCliente().getMatricula();
+//
+//            if (idDoCliente == matricula)
+//                entradasPorCliente.add(entrada);
+//        }
 
         return entradasPorCliente;
     }

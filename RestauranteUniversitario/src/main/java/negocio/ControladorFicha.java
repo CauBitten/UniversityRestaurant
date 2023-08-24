@@ -26,7 +26,7 @@ public class ControladorFicha {
 
     public void adicionarFicha(Ficha f) {
         if (f != null) {
-            if (f.getCliente() != null && f.getTipo() != null && f.getDataCompra() != null &&
+            if (f.getUsuario() != null && f.getTipo() != null && f.getDataCompra() != null &&
             f.getCodigo() >= 0) {
                 this.repositorioFicha.adicionarFicha(f);
             }

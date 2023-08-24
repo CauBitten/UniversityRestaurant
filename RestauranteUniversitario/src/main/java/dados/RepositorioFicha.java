@@ -49,16 +49,16 @@ public class RepositorioFicha implements IRepositorioFicha {
     }
 
     public List<Ficha> obterFichasDoCliente(Usuario u) {
-        List<Ficha> fichasPorCliente = new ArrayList<>();
+        List<Ficha> fichasPorUsuario = new ArrayList<>();
 
         for (Ficha ficha : fichas) {
-            Cliente cliente = ficha.getCliente();
+            Usuario usuario = ficha.getUsuario();
 
-            if (u.equals(cliente))
-                fichasPorCliente.add(ficha);
+            if (u.equals(usuario))
+                fichasPorUsuario.add(ficha);
         }
 
-        return fichasPorCliente;
+        return fichasPorUsuario;
     }
 
     public List<Ficha> obterFichasDoTipo(String tipo) {

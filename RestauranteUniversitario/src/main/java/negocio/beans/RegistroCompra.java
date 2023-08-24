@@ -8,7 +8,7 @@ public class RegistroCompra {
 
     private List<Ficha> fichasCompradas;
     private long codigoCompra;
-    private Cliente cliente;
+    private Usuario usuario;
     private String vendedor;
     private LocalDateTime dataHoraCompra;
     private Pagamento pagamento;
@@ -16,13 +16,13 @@ public class RegistroCompra {
 
     DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-    public RegistroCompra(List<Ficha> fichasCompradas, Cliente cliente,
-                          String vendedor, String dataHora)
+    public RegistroCompra(List<Ficha> fichasCompradas, Usuario usuario,
+                          String vendedor)
     {
         this.fichasCompradas = fichasCompradas;
-        this.cliente = cliente;
+        this.usuario = usuario;
         this.vendedor = vendedor;
-        this.dataHoraCompra = LocalDateTime.parse(dataHora, formatoDataHora);
+        this.dataHoraCompra = LocalDateTime.now();
         this.valorCompra = gerarValorDeCompra();
     }
 
@@ -35,8 +35,8 @@ public class RegistroCompra {
         return codigoCompra;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     public String getVendedor() {
@@ -80,7 +80,7 @@ public class RegistroCompra {
         String toString = "";
 
         toString = String.format("=============== %d ===============\n", codigoCompra);
-        toString += String.format("negocio.beans.Cliente     : %s\n", cliente.getNome());
+        toString += String.format("negocio.beans.Cliente     : %s\n", usuario.getNome());
         toString += String.format("negocio.beans.Vendedor    : %s\n", vendedor);
         toString += String.format("Data & Hora : %s\n", dataHoraCompra.format(formatoDataHora));
         toString += String.format("Valor       : %.2f\n", valorCompra);
