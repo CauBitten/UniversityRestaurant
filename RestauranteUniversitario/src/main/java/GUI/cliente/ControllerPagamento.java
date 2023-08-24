@@ -2,11 +2,21 @@ package GUI.cliente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import view.ScreenManager;
 import view.TelasEnum;
 
 public class ControllerPagamento {
+
+    @FXML
+    private CheckBox cbBoleto;
+
+    @FXML
+    private CheckBox cbCartao;
+
+    @FXML
+    private CheckBox cbPix;
 
     @FXML
     private Label labelTCompra;
@@ -29,17 +39,32 @@ public class ControllerPagamento {
 
     @FXML
     void cbBoletoOn(ActionEvent event) {
-
+        if (cbCartao.isSelected()) {
+            cbCartao.setSelected(false);
+        }
+        if (cbPix.isSelected()) {
+            cbPix.setSelected(false);
+        }
     }
 
     @FXML
     void cbCartaoOn(ActionEvent event) {
-
+        if (cbPix.isSelected()) {
+            cbPix.setSelected(false);
+        }
+        if (cbBoleto.isSelected()) {
+            cbBoleto.setSelected(false);
+        }
     }
 
     @FXML
     void cbPixOn(ActionEvent event) {
-
+        if (cbBoleto.isSelected()) {
+            cbBoleto.setSelected(false);
+        }
+        if (cbCartao.isSelected()) {
+            cbCartao.setSelected(false);
+        }
     }
 
     public void inicializarValores() {
