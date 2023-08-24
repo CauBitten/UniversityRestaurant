@@ -54,8 +54,8 @@ public class ControllerPagamento {
                 Fachada.getInstance().getUsuarioLogado(), "zezo");
         Fachada.getInstance().cadastrarRegistroCompra(rc);
         showInfoAlert("Compra", "", "Compra Efetuada Com Sucesso!");
-        System.out.println(Fachada.getInstance().controladorRegistroCompra.getListaRegistroCompra());
         ScreenManager.getInstance().getControllerCompraFichas().clearFields();
+        clearFields();
     }
 
     @FXML
@@ -112,5 +112,14 @@ public class ControllerPagamento {
         alert.setHeaderText(header);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void clearFields(){
+        cbBoleto.setSelected(false);
+        cbCartao.setSelected(false);
+        cbPix.setSelected(false);
+        labelTFichasAlmoco.setText("");
+        labelTFichasJantar.setText("");
+        labelTCompra.setText("");
     }
 }

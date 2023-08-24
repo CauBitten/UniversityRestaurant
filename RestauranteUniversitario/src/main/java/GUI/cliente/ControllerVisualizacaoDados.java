@@ -45,7 +45,6 @@ public class ControllerVisualizacaoDados {
     public void exibirDados() {
         Usuario usuario = Fachada.getInstance().getUsuarioLogado();
         List<Ficha> fichasUsuario = Fachada.getInstance().obterFichasDoCliente(usuario);
-        System.out.println(Fachada.getInstance().obterFichasDoCliente(usuario));
         int Fjanta = Fachada.getInstance().obterFichasDoTipo("Janta").size();
         int FAlmoco = Fachada.getInstance().obterFichasDoTipo("Almoco").size();;
         nomeLabel.setText("Nome: " + usuario.getNome());
