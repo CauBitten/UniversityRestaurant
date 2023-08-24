@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import negocio.Fachada;
 import negocio.beans.Cardapio;
@@ -17,6 +14,7 @@ import view.TelasEnum;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerListarCardapios implements Initializable  {
@@ -28,7 +26,7 @@ public class ControllerListarCardapios implements Initializable  {
     private Button buttonCadastrar;
 
     @FXML
-    private Button buttonAtualizar;
+    private Button buttonRemover;
 
     @FXML
     private Button buttonVoltarPagina;
@@ -63,8 +61,17 @@ public class ControllerListarCardapios implements Initializable  {
     }
 
     @FXML
-    void bttnAtualizarOn(ActionEvent event) {
-        atualizarApresentacao();
+    void bttnRemoverOn(ActionEvent event) {
+        if (tvCardapios.getSelectionModel().getSelectedItem() != null) {
+            if (getConfirmation()) {
+                Fachada.getInstance().removerCardapio(tvCardapios.getSelectionModel().getSelectedItem());
+                atualizarApresentacao();
+            }
+        }
+        else {
+            showErrorMessage("Erro: nenhum cardápio selecionado",
+                    "Selecione um cardápio se quiser removê-lo.");
+        }
     }
 
     @FXML
@@ -103,6 +110,9 @@ public class ControllerListarCardapios implements Initializable  {
     }
 
     public void atualizarApresentacao() {
+        for (int i = 0; i < tvCardapios.getItems().size(); i++)
+            tvCardapios.getItems().clear();
+
         configurarTv(Fachada.getInstance().obterCardapios());
     }
 
@@ -112,6 +122,43 @@ public class ControllerListarCardapios implements Initializable  {
         alert.setTitle(titulo);
         alert.setHeaderText(header);
         alert.setContentText(content);
+        alert.show();
+    }
+
+    private void showErrorMessage(String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(mensagem);
+        alert.show();
+    }
+
+    private boolean getConfirmation() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Remover cardápio");
+        alert.setHeaderText("Tem certeza que gostaria de remover o cardápio selecionado?");
+        alert.setContentText("Aviso: esta operação não pode ser desfeita.");
+
+        Optional<ButtonType> option = alert.showAndWait();
+
+        if (option.get() == ButtonType.OK) {
+            showInfoMessage("Cardápio removido", "Cardápio removido com sucesso!", "A operação foi um sucesso!");
+            return true;
+        }
+        else if (option.get() == ButtonType.CANCEL) {
+            showInfoMessage("Operação cancelada", "A operação foi cancelada", "Nada foi modificado.");
+            return false;
+        }
+
+        return false;
+    }
+
+    private void showInfoMessage(String titulo, String header, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setHeaderText(mensagem);
         alert.show();
     }
 

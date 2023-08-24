@@ -30,6 +30,10 @@ public class Cardapio {
         return principal;
     }
 
+    public void setPrincipal(String principal) {
+        this.principal = principal;
+    }
+
     public String getVegetariano() {
         return vegetariano;
     }

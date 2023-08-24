@@ -59,4 +59,22 @@ public class RepositorioCardapio implements IRepositorioCardapio {
 
         return false;
     }
+
+    public void alterarCardapio(Cardapio c, Cardapio editado) {
+        if (verificarSeHaCardapiosIguaisA(editado)) {
+            //atirar exceção cardapio já existe
+        }
+        else {
+            for (Cardapio cardapio : cardapios) {
+                if (cardapio.equals(c)) {
+                    cardapio.setGuarnicao(editado.getGuarnicao());
+                    cardapio.setVegetariano(editado.getVegetariano());
+                    cardapio.setSalada(editado.getSalada());
+                    cardapio.setSuco(editado.getSuco());
+                    cardapio.setSobremesa(editado.getSobremesa());
+                    cardapio.setPrincipal(editado.getPrincipal());
+                }
+            }
+        }
+    }
 }
