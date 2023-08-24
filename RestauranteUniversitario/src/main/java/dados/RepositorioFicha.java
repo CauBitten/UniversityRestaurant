@@ -2,6 +2,7 @@ package dados;
 
 import negocio.beans.Cliente;
 import negocio.beans.Ficha;
+import negocio.beans.Usuario;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -47,13 +48,13 @@ public class RepositorioFicha implements IRepositorioFicha {
         return null;
     }
 
-    public List<Ficha> obterFichasDoCliente(Cliente c) {
+    public List<Ficha> obterFichasDoCliente(Usuario u) {
         List<Ficha> fichasPorCliente = new ArrayList<>();
 
         for (Ficha ficha : fichas) {
             Cliente cliente = ficha.getCliente();
 
-            if (c.equals(cliente))
+            if (u.equals(cliente))
                 fichasPorCliente.add(ficha);
         }
 

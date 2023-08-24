@@ -393,6 +393,7 @@ public class ScreenManager {
             }
 
             case "VISUALIZAR_DADOS" -> {
+                controllerVisualizacaoDados.exibirDados();
                 primaryStage.setScene(visualizarDadosScene);
                 primaryStage.setTitle("RU | TELA VISUALIZAÇÃO DE DADOS");
             }

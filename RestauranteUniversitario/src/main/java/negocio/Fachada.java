@@ -1,6 +1,8 @@
 package negocio;
 
 import negocio.beans.Cardapio;
+import negocio.beans.Cliente;
+import negocio.beans.Ficha;
 import negocio.beans.Usuario;
 import java.util.List;
 
@@ -8,10 +10,11 @@ public class Fachada {
     private static Fachada instance;
 
     public ControladorUsuario controladorUsuario;
-    private  ControladorEntrada controladorEntrada;
+    private ControladorEntrada controladorEntrada;
     private ControladorCardapio controladorCardapio;
     private ControladorFicha controladorFicha;
     private ControladorRegistroCompra controladorRegistroCompra;
+    private Usuario usuarioLogado;
 
     private Fachada() {
         this.controladorUsuario = ControladorUsuario.getInstance();
@@ -41,6 +44,10 @@ public class Fachada {
         }
     }
 
+    public List<Ficha> obterFichasDoCliente(Usuario u) {
+        return controladorFicha.obterFichasDoCliente(u);
+    }
+
     public List<Usuario> obterUsuarios() {
         return controladorUsuario.listarUsuarios();
     }
@@ -48,4 +55,13 @@ public class Fachada {
     public List<Cardapio> obterCardapios() {
         return controladorCardapio.getCardapios();
     }
+
+    public void setUsuarioLogado(Usuario usuario) {
+        this.usuarioLogado = usuario;
+    }
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+
 }
