@@ -61,7 +61,7 @@ public class ControllerLoginPage {
     private void showAlert(String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle("Login");
-        alert.setHeaderText(null);
+        alert.setHeaderText("Erro");
         alert.setContentText(message);
         alert.showAndWait();
     }
