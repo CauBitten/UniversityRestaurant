@@ -21,6 +21,6 @@ public class ControllerCadastroRefeicao {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.VISUALIZAR_REFEICOES.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.VISUALIZAR_REFEICOES.name());
     }
 }

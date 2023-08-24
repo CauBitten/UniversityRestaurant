@@ -46,7 +46,7 @@ public class ControllerAlterarUsuarios implements Initializable {
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
         usuario = null;
-        ScreenManager.changeScreen(TelasEnum.LISTAR_USUARIO.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
     }
 
     public static void setUsuario(Usuario u) {

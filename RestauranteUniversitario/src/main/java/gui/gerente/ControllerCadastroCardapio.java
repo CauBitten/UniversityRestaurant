@@ -50,7 +50,7 @@ public class ControllerCadastroCardapio {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.VISUALIZAR_CARDAPIOS.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.VISUALIZAR_CARDAPIOS.name());
     }
 
     private void showErrorMessage(String titulo, String mensagem) {

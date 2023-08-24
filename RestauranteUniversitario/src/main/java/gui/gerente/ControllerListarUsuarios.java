@@ -64,7 +64,7 @@ public class ControllerListarUsuarios implements Initializable {
     void bttnAlterarUsuarioOn(ActionEvent event) {
         if (tvUsuarios.getSelectionModel().getSelectedItem() != null) {
             ControllerAlterarUsuarios.setUsuario(tvUsuarios.getSelectionModel().getSelectedItem());
-            ScreenManager.changeScreen(TelasEnum.ALTERAR_USUARIO.name());
+            ScreenManager.getInstance().changeScreen(TelasEnum.ALTERAR_USUARIO.name());
         }
         else {
             showErrorMessage("Erro: Nenhum usuário selecionado", "Selecione um usuário se quiser alterar");
@@ -78,12 +78,12 @@ public class ControllerListarUsuarios implements Initializable {
 
     @FXML
     void bttnCadastrarUsuarioOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.CADASTRAR_USUARIO.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.CADASTRAR_USUARIO.name());
     }
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
     }
 
     @Override

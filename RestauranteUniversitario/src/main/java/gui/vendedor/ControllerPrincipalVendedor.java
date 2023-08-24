@@ -9,17 +9,17 @@ public class ControllerPrincipalVendedor {
 
     @FXML
     void bttnRefeicoes(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.LISTAR_REFEICOES.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_REFEICOES.name());
     }
 
     @FXML
     void bttnVender(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.VENDA.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.VENDA.name());
     }
 
     @FXML
     void hlSairOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.LOGIN.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.LOGIN.name());
     }
 
 }

@@ -7,19 +7,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ScreenManager.stage = primaryStage;
+        primaryStage.setScene(ScreenManager.getInstance().getLoginScene());
+        primaryStage.setTitle("RU | LOGIN");
+        primaryStage.setResizable(false);
 
-        ScreenManager screenManager = ScreenManager.getInstance();
+        ScreenManager.getInstance().setPrimaryStage(primaryStage);
 
-        screenManager.criarCenas();
-
-        ScreenManager.stage.setTitle("RU | LOGIN");
-
-        ScreenManager.stage.setScene(ScreenManager.loginScene);
-        ScreenManager.stage.show();
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
-        launch();
+        Main.launch(args);
     }
 }

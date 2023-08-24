@@ -13,7 +13,7 @@ public class ControllerListarRegistroCompra {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
     }
 
 }

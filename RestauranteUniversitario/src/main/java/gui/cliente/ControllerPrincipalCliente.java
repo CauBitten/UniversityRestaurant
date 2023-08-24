@@ -9,16 +9,16 @@ public class ControllerPrincipalCliente {
 
     @FXML
     void bttnComprarFichas(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.COMPRA_FICHAS.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.COMPRA_FICHAS.name());
     }
 
     @FXML
     void bttnVisualizarDados(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.VISUALIZAR_DADOS.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.VISUALIZAR_DADOS.name());
     }
 
     @FXML
     void hlSairOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.LOGIN.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.LOGIN.name());
     }
 }

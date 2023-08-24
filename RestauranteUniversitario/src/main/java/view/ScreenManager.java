@@ -1,9 +1,21 @@
 package view;
 
-import gui.gerente.ControllerAlterarUsuarios;
+import gui.cliente.ControllerCompraFichas;
+import gui.cliente.ControllerPrincipalCliente;
+import gui.cliente.ControllerVisualizacaoDados;
+import gui.gerente.*;
+import gui.login.ControllerLoginPage;
+import gui.refeicao.ControllerAlterarRefeicao;
+import gui.refeicao.ControllerCadastroRefeicao;
+import gui.refeicao.ControllerVisualizarRefeicoes;
+import gui.vendedor.ControllerListarRefeicoes;
+import gui.vendedor.ControllerPrincipalVendedor;
+import gui.vendedor.ControllerVenda;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,196 +25,423 @@ public class ScreenManager {
     private static ScreenManager instance;
 
     // Stage e Login Scene
-    protected static Stage stage;
-    protected static Scene loginScene;
+    private Stage primaryStage;
+    private Scene loginScene;
+    private ControllerLoginPage controllerLoginPage;
     // -----
 
     // Clientes Scenes
-    protected static Scene principalClienteScene;
-    protected static Scene compraFichasScene;
-    protected static Scene visualizarDados;
+    private Scene principalClienteScene;
+    private ControllerPrincipalCliente controllerPrincipalCliente;
+
+    private Scene compraFichasScene;
+    private ControllerCompraFichas controllerCompraFichas;
+
+    private Scene visualizarDadosScene;
+    private ControllerVisualizacaoDados controllerVisualizacaoDados;
     // -----
 
     // Vendedor Scenes
-    protected static Scene principalVendedorScene;
-    protected static Scene vendaScene;
-    protected static Scene listarRefeicoesScene;
+    private Scene principalVendedorScene;
+    private ControllerPrincipalVendedor controllerPrincipalVendedor;
+
+    private Scene vendaScene;
+    private ControllerVenda controllerVenda;
+
+    private Scene listarRefeicoesScene;
+    private ControllerListarRefeicoes controllerListarRefeicoes;
     // -----
 
     // Gerentes Scenes
-    protected static Scene principalGerenteScene;
-    protected static Scene listarRegistroCompraScene;
-    protected static Scene listarUsuarioScene;
-    protected static Scene cadastrarUsuarioScene;
-    protected static Scene alterarUsuarioScene;
-    protected static Scene listarCardapiosScene;
-    protected static Scene cadastrarCardapioScene;
+    private Scene principalGerenteScene;
+    private ControllerPrincipalGerente controllerPrincipalGerente;
+
+    private Scene listarRegistroCompraScene;
+    private ControllerListarRegistroCompra controllerListarRegistroCompra;
+
+    private Scene listarUsuarioScene;
+    private ControllerListarUsuarios controllerListarUsuarios;
+
+    private Scene cadastrarUsuarioScene;
+    private ControllerCadastroUsuario controllerCadastroUsuario;
+
+    private Scene alterarUsuarioScene;
+    private ControllerAlterarUsuarios controllerAlterarUsuarios;
+
+    private Scene listarCardapiosScene;
+    private ControllerListarCardapios controllerListarCardapios;
+
+    private Scene cadastrarCardapioScene;
+    private ControllerCadastroCardapio controllerCadastroCardapio;
     // -----
 
     // Refeições Scenes
-    protected static Scene visualizarRefeicoesScene;
-    protected static Scene cadastrarRefeicoesScene;
-    protected static Scene alterarRefeicoesScene;
+    private Scene visualizarRefeicoesScene;
+    private ControllerVisualizarRefeicoes controllerVisualizarRefeicoes;
+
+    private Scene cadastrarRefeicoesScene;
+    private ControllerCadastroRefeicao controllerCadastroRefeicao;
+
+    private Scene alterarRefeicoesScene;
+    private ControllerAlterarRefeicao controllerAlterarRefeicao;
     // -----
 
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public Scene getLoginScene() {
+        return loginScene;
+    }
+
+    public ControllerLoginPage getControllerLoginPage() {
+        return controllerLoginPage;
+    }
+
+    public Scene getPrincipalClienteScene() {
+        return principalClienteScene;
+    }
+
+    public ControllerPrincipalCliente getControllerPrincipalCliente() {
+        return controllerPrincipalCliente;
+    }
+
+    public Scene getCompraFichasScene() {
+        return compraFichasScene;
+    }
+
+    public ControllerCompraFichas getControllerCompraFichas() {
+        return controllerCompraFichas;
+    }
+
+    public Scene getVisualizarDadosScene() {
+        return visualizarDadosScene;
+    }
+
+    public ControllerVisualizacaoDados getControllerVisualizacaoDados() {
+        return controllerVisualizacaoDados;
+    }
+
+    public Scene getPrincipalVendedorScene() {
+        return principalVendedorScene;
+    }
+
+    public ControllerPrincipalVendedor getControllerPrincipalVendedor() {
+        return controllerPrincipalVendedor;
+    }
+
+    public Scene getVendaScene() {
+        return vendaScene;
+    }
+
+    public ControllerVenda getControllerVenda() {
+        return controllerVenda;
+    }
+
+    public Scene getListarRefeicoesScene() {
+        return listarRefeicoesScene;
+    }
+
+    public ControllerListarRefeicoes getControllerListarRefeicoes() {
+        return controllerListarRefeicoes;
+    }
+
+    public Scene getPrincipalGerenteScene() {
+        return principalGerenteScene;
+    }
+
+    public ControllerPrincipalGerente getControllerPrincipalGerente() {
+        return controllerPrincipalGerente;
+    }
+
+    public Scene getListarRegistroCompraScene() {
+        return listarRegistroCompraScene;
+    }
+
+    public ControllerListarRegistroCompra getControllerListarRegistroCompra() {
+        return controllerListarRegistroCompra;
+    }
+
+    public Scene getListarUsuarioScene() {
+        return listarUsuarioScene;
+    }
+
+    public ControllerListarUsuarios getControllerListarUsuarios() {
+        return controllerListarUsuarios;
+    }
+
+    public Scene getCadastrarUsuarioScene() {
+        return cadastrarUsuarioScene;
+    }
+
+    public ControllerCadastroUsuario getControllerCadastroUsuario() {
+        return controllerCadastroUsuario;
+    }
+
+    public Scene getAlterarUsuarioScene() {
+        return alterarUsuarioScene;
+    }
+
+    public ControllerAlterarUsuarios getControllerAlterarUsuarios() {
+        return controllerAlterarUsuarios;
+    }
+
+    public Scene getListarCardapiosScene() {
+        return listarCardapiosScene;
+    }
+
+    public ControllerListarCardapios getControllerListarCardapios() {
+        return controllerListarCardapios;
+    }
+
+    public Scene getCadastrarCardapioScene() {
+        return cadastrarCardapioScene;
+    }
+
+    public ControllerCadastroCardapio getControllerCadastroCardapio() {
+        return controllerCadastroCardapio;
+    }
+
+    public Scene getVisualizarRefeicoesScene() {
+        return visualizarRefeicoesScene;
+    }
+
+    public ControllerVisualizarRefeicoes getControllerVisualizarRefeicoes() {
+        return controllerVisualizarRefeicoes;
+    }
+
+    public Scene getCadastrarRefeicoesScene() {
+        return cadastrarRefeicoesScene;
+    }
+
+    public ControllerCadastroRefeicao getControllerCadastroRefeicao() {
+        return controllerCadastroRefeicao;
+    }
+
+    public Scene getAlterarRefeicoesScene() {
+        return alterarRefeicoesScene;
+    }
+
+    public ControllerAlterarRefeicao getControllerAlterarRefeicao() {
+        return controllerAlterarRefeicao;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+
+    private ScreenManager() {
+        this.initialize();
+    }
+
     public static ScreenManager getInstance() {
-        if (instance == null) instance = new ScreenManager();
+        if (instance == null) {
+            instance = new ScreenManager();
+        }
 
         return instance;
     }
 
-    public void criarCenas () throws IOException {
-        // FXML Login
-        Parent fxmlLogin = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/login/telaDeLogin.fxml")));
-        loginScene = new Scene(fxmlLogin);
-        // -----
+    private void initialize() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
 
-        // FXMLs Clientes
-        Parent fxmlPrincipalCliente = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/cliente/telaPrincipalCliente.fxml")));
-        principalClienteScene = new Scene(fxmlPrincipalCliente);
+            AnchorPane loginPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/login/telaDeLogin.fxml")).openStream());
+            this.loginScene = new Scene(loginPane);
+            this.controllerLoginPage = fxmlLoader.getController();
 
-        Parent fxmlCompraFichasCliente = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/cliente/telaCompraFichas.fxml")));
-        compraFichasScene = new Scene(fxmlCompraFichasCliente);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane principalClientePane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/cliente/telaPrincipalCliente.fxml")).openStream());
+            this.principalClienteScene = new Scene(principalClientePane);
+            this.controllerPrincipalCliente = fxmlLoader.getController();
 
-        Parent fxmlVisualizarDadosCliente = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/cliente/telaVisualizacaoDados.fxml")));
-        visualizarDados = new Scene(fxmlVisualizarDadosCliente);
-        // -----
+            fxmlLoader = new FXMLLoader();
+            AnchorPane compraFichasPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/cliente/telaCompraFichas.fxml")).openStream());
+            this.compraFichasScene = new Scene(compraFichasPane);
+            this.controllerCompraFichas = fxmlLoader.getController();
 
-        // FXMLs Vendedor
-        Parent fxmlVendedor = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/vendedor/telaPrincipalVendedor.fxml")));
-        principalVendedorScene = new Scene(fxmlVendedor);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane visualizarDadosPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/cliente/telaVisualizacaoDados.fxml")).openStream());
+            this.visualizarDadosScene = new Scene(visualizarDadosPane);
+            this.controllerVisualizacaoDados = fxmlLoader.getController();
 
-        Parent fxmlVenda = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/vendedor/telaDeVenda.fxml")));
-        vendaScene = new Scene(fxmlVenda);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane principalVendedorPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/vendedor/telaPrincipalVendedor.fxml")).openStream());
+            this.principalVendedorScene = new Scene(principalVendedorPane);
+            this.controllerPrincipalVendedor = fxmlLoader.getController();
 
-        Parent fxmlListarRefeicoes = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/vendedor/telaListarRefeicoes.fxml")));
-        listarRefeicoesScene = new Scene(fxmlListarRefeicoes);
-        // -----
+            fxmlLoader = new FXMLLoader();
+            AnchorPane vendaPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/vendedor/telaDeVenda.fxml")).openStream());
+            this.vendaScene = new Scene(vendaPane);
+            this.controllerVenda = fxmlLoader.getController();
 
-        // FXMLs Gerente
-        Parent fxmlGerente = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gerente/telaPrincipalGerente.fxml")));
-        principalGerenteScene = new Scene(fxmlGerente);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane listarRefeicoesPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/vendedor/telaListarRefeicoes.fxml")).openStream());
+            this.listarRefeicoesScene = new Scene(listarRefeicoesPane);
+            this.controllerListarRefeicoes = fxmlLoader.getController();
 
-        Parent fxmlListarUsuarios = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gerente/telaListarUsuarios.fxml")));
-        listarUsuarioScene = new Scene(fxmlListarUsuarios);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane principalGerentePane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaPrincipalGerente.fxml")).openStream());
+            this.principalGerenteScene = new Scene(principalGerentePane);
+            this.controllerPrincipalGerente = fxmlLoader.getController();
 
-        Parent fxmlCadastrarUsuarios = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gerente/telaCadastroUsuario.fxml")));
-        cadastrarUsuarioScene = new Scene(fxmlCadastrarUsuarios);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane listarRegistroCompraPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaListarRegistroCompra.fxml")).openStream());
+            this.listarRegistroCompraScene = new Scene(listarRegistroCompraPane);
+            this.controllerListarRegistroCompra = fxmlLoader.getController();
 
-        Parent fxmlAlterarUsuario = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gerente/telaAlterarUsuarios.fxml")));
-        alterarUsuarioScene = new Scene(fxmlAlterarUsuario);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane listarUsuariosPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaListarUsuarios.fxml")).openStream());
+            this.listarUsuarioScene = new Scene(listarUsuariosPane);
+            this.controllerListarUsuarios = fxmlLoader.getController();
 
-        Parent fxmlListarRegistroCompra = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gerente/telaListarRegistroCompra.fxml")));
-        listarRegistroCompraScene = new Scene(fxmlListarRegistroCompra);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane cadastrarUsuarioPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaCadastroUsuario.fxml")).openStream());
+            this.cadastrarUsuarioScene = new Scene(cadastrarUsuarioPane);
+            this.controllerCadastroUsuario = fxmlLoader.getController();
 
-        Parent fxmlListarCardapios = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gerente/telaListarCardapios.fxml")));
-        listarCardapiosScene = new Scene(fxmlListarCardapios);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane alterarUsuarioPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaAlterarUsuarios.fxml")).openStream());
+            this.alterarUsuarioScene = new Scene(alterarUsuarioPane);
+            this.controllerAlterarUsuarios = fxmlLoader.getController();
 
-        Parent fxmlCadastrarCardapios = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gerente/telaCadastroCardapio.fxml")));
-        cadastrarCardapioScene = new Scene(fxmlCadastrarCardapios);
-        // -----
+            fxmlLoader = new FXMLLoader();
+            AnchorPane listarCardapiosPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaListarCardapios.fxml")).openStream());
+            this.listarCardapiosScene = new Scene(listarCardapiosPane);
+            this.controllerListarCardapios = fxmlLoader.getController();
 
-        // FXMLs Refeições
-        Parent fxmlVisualizarRefeicoes = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/refeicoes/telaVisualizarRefeicoes.fxml")));
-        visualizarRefeicoesScene = new Scene(fxmlVisualizarRefeicoes);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane cadastrarCardapioPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaCadastroCardapio.fxml")).openStream());
+            this.cadastrarCardapioScene = new Scene(cadastrarCardapioPane);
+            this.controllerCadastroCardapio = fxmlLoader.getController();
 
-        Parent fxmlCadastrarRefeicoes = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/refeicoes/telaCadastroRefeicao.fxml")));
-        cadastrarRefeicoesScene = new Scene(fxmlCadastrarRefeicoes);
+            fxmlLoader = new FXMLLoader();
+            AnchorPane visualizarRefeicoesPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/refeicoes/telaVisualizarRefeicoes.fxml")).openStream());
+            this.visualizarRefeicoesScene = new Scene(visualizarRefeicoesPane);
+            this.controllerVisualizarRefeicoes = fxmlLoader.getController();
 
-        Parent fxmlAlterarRefeicoes = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/refeicoes/telaAlterarRefeicao.fxml")));
-        alterarRefeicoesScene = new Scene(fxmlAlterarRefeicoes);
-        // -----
+            fxmlLoader = new FXMLLoader();
+            AnchorPane cadastrarRefeicoesPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/refeicoes/telaCadastroRefeicao.fxml")).openStream());
+            this.cadastrarRefeicoesScene = new Scene(cadastrarRefeicoesPane);
+            this.controllerCadastroRefeicao = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane alterarRefeicoesPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/refeicoes/telaAlterarRefeicao.fxml")).openStream());
+            this.alterarRefeicoesScene = new Scene(alterarRefeicoesPane);
+            this.controllerAlterarRefeicao = fxmlLoader.getController();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void changeScreen(String scr) {
+    public void changeScreen(String scr) {
         switch (scr) {
-            case "LOGIN" -> stage.setScene(loginScene);
+            case "LOGIN" -> primaryStage.setScene(loginScene);
 
             // Cliente
             case "PRINCIPAL_CLIENTE" -> {
-                stage.setScene(principalClienteScene);
-                stage.setTitle("RU | TELA PRINCIPAL CLIENTE");
+                primaryStage.setScene(principalClienteScene);
+                primaryStage.setTitle("RU | TELA PRINCIPAL CLIENTE");
             }
 
             case "VISUALIZAR_DADOS" -> {
-                stage.setScene(visualizarDados);
-                stage.setTitle("RU | TELA VISUALIZAÇÃO DE DADOS");
+                primaryStage.setScene(visualizarDadosScene);
+                primaryStage.setTitle("RU | TELA VISUALIZAÇÃO DE DADOS");
             }
 
             case "COMPRA_FICHAS" -> {
-                stage.setScene(compraFichasScene);
-                stage.setTitle("RU | TELA COMPRA FICHAS");
+                primaryStage.setScene(compraFichasScene);
+                primaryStage.setTitle("RU | TELA COMPRA FICHAS");
             }
             // -----
 
             // Vendedor
             case "PRINCIPAL_VENDEDOR" -> {
-                stage.setScene(principalVendedorScene);
-                stage.setTitle("RU | TELA PRINCIPAL VENDEDOR");
+                primaryStage.setScene(principalVendedorScene);
+                primaryStage.setTitle("RU | TELA PRINCIPAL VENDEDOR");
             }
 
             case "VENDA" -> {
-                stage.setScene(vendaScene);
-                stage.setTitle("RU | TELA DE VENDA");
+                primaryStage.setScene(vendaScene);
+                primaryStage.setTitle("RU | TELA DE VENDA");
             }
 
             case "LISTAR_REFEICOES" -> {
-                stage.setScene(listarRefeicoesScene);
-                stage.setTitle("RU | TELA LISTAR REFEIÇÕES");
+                primaryStage.setScene(listarRefeicoesScene);
+                primaryStage.setTitle("RU | TELA LISTAR REFEIÇÕES");
             }
             // -----
 
             // Gerente
             case "PRINCIPAL_GERENTE" -> {
-                stage.setScene(principalGerenteScene);
-                stage.setTitle("RU | TELA PRINCIPAL GERENTE");
+                primaryStage.setScene(principalGerenteScene);
+                primaryStage.setTitle("RU | TELA PRINCIPAL GERENTE");
             }
 
             case "LISTAR_USUARIO" -> {
-                stage.setScene(listarUsuarioScene);
-                stage.setTitle("RU | TELA LISTAR USUÁRIO");
+                primaryStage.setScene(listarUsuarioScene);
+                primaryStage.setTitle("RU | TELA LISTAR USUÁRIO");
             }
 
             case "CADASTRAR_USUARIO" -> {
-                stage.setScene(cadastrarUsuarioScene);
-                stage.setTitle("RU | TELA CADASTRAR USUÁRIO");
+                primaryStage.setScene(cadastrarUsuarioScene);
+                primaryStage.setTitle("RU | TELA CADASTRAR USUÁRIO");
             }
 
             case "ALTERAR_USUARIO" -> {
-                stage.setScene(alterarUsuarioScene);
-                stage.setTitle("RU | TELA ALTERAR USUÁRIO");
+                primaryStage.setScene(alterarUsuarioScene);
+                primaryStage.setTitle("RU | TELA ALTERAR USUÁRIO");
             }
 
             case "LISTAR_REGISTRO_COMPRA" -> {
-                stage.setScene(listarRegistroCompraScene);
-                stage.setTitle("RU | TELA LISTAR REGISTRO COMPRA");
+                primaryStage.setScene(listarRegistroCompraScene);
+                primaryStage.setTitle("RU | TELA LISTAR REGISTRO COMPRA");
             }
             // -----
 
             // Refeições
             case "VISUALIZAR_REFEICOES" -> {
-                stage.setScene(visualizarRefeicoesScene);
-                stage.setTitle("RU | TELA VISUALIZAR REFEIÇÕES");
+                primaryStage.setScene(visualizarRefeicoesScene);
+                primaryStage.setTitle("RU | TELA VISUALIZAR REFEIÇÕES");
             }
 
             case "CADASTRAR_REFEICOES" -> {
-                stage.setScene(cadastrarRefeicoesScene);
-                stage.setTitle("RU | TELA CADASTRO REFEIÇÕES");
+                primaryStage.setScene(cadastrarRefeicoesScene);
+                primaryStage.setTitle("RU | TELA CADASTRO REFEIÇÕES");
             }
 
             case "ALTERAR_REFEICOES" -> {
-                stage.setScene(alterarRefeicoesScene);
-                stage.setTitle("RU | TELA ALTERAR REFEIÇÕES");
+                primaryStage.setScene(alterarRefeicoesScene);
+                primaryStage.setTitle("RU | TELA ALTERAR REFEIÇÕES");
             }
 
             case "VISUALIZAR_CARDAPIOS" -> {
-                stage.setScene(listarCardapiosScene);
-                stage.setTitle("RU | TELA LISTA DE CARDÁPIOS");
+                primaryStage.setScene(listarCardapiosScene);
+                primaryStage.setTitle("RU | TELA LISTA DE CARDÁPIOS");
             }
 
             case "CADASTRAR_CARDAPIO" -> {
-                stage.setScene(cadastrarCardapioScene);
-                stage.setTitle("RU | TELA DE CADASTRO DE CARDÁPIOS");
+                primaryStage.setScene(cadastrarCardapioScene);
+                primaryStage.setTitle("RU | TELA DE CADASTRO DE CARDÁPIOS");
             }
             // -----
         }

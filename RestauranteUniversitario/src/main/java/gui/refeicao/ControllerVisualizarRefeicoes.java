@@ -19,17 +19,17 @@ public class ControllerVisualizarRefeicoes {
 
     @FXML
     void bttnAlterarRefOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.ALTERAR_REFEICOES.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.ALTERAR_REFEICOES.name());
     }
 
     @FXML
     void bttnCadastrarRefOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.CADASTRAR_REFEICOES.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.CADASTRAR_REFEICOES.name());
     }
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
     }
 
 }

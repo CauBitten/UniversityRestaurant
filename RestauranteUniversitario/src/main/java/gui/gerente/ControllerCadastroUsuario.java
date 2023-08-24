@@ -67,7 +67,7 @@ public class ControllerCadastroUsuario implements Initializable {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.LISTAR_USUARIO.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
     }
 
     private boolean validar() {

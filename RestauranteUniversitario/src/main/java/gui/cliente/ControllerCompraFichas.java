@@ -49,7 +49,7 @@ public class ControllerCompraFichas {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
     }
 
     @FXML

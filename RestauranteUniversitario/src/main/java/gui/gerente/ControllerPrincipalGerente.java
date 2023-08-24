@@ -9,22 +9,22 @@ public class ControllerPrincipalGerente {
 
     @FXML
     void bttnListarCardapios(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.VISUALIZAR_CARDAPIOS.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.VISUALIZAR_CARDAPIOS.name());
     }
 
     @FXML
     void bttnListarRegistrosCompra(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.LISTAR_REGISTRO_COMPRA.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_REGISTRO_COMPRA.name());
     }
 
     @FXML
     void bttnListarUsuarios(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.LISTAR_USUARIO.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
     }
 
     @FXML
     void hlSairOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.LOGIN.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.LOGIN.name());
     }
 
 }

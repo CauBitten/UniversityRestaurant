@@ -13,7 +13,7 @@ public class ControllerListarRefeicoes {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-        ScreenManager.changeScreen(TelasEnum.PRINCIPAL_VENDEDOR.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_VENDEDOR.name());
     }
 
 }
