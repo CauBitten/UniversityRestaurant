@@ -42,11 +42,12 @@ public class ControllerPagamento {
         for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorAlmoco();i++){
             Ficha f = new Ficha("Almoco", Fachada.getInstance().getUsuarioLogado());
             fichasCompradas.add(f);
-            Fachada.getInstance().adicionarFicha(f);
         }
         for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorJantar();i++){
             Ficha f = new Ficha("Janta", Fachada.getInstance().getUsuarioLogado());
             fichasCompradas.add(f);
+        }
+        for (Ficha f : fichasCompradas) {
             Fachada.getInstance().adicionarFicha(f);
         }
         RegistroCompra rc = new RegistroCompra(fichasCompradas,

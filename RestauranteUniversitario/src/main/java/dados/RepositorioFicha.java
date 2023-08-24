@@ -23,12 +23,7 @@ public class RepositorioFicha implements IRepositorioFicha {
     }
 
     public void adicionarFicha(Ficha f) {
-        Ficha ficha = obterFichaComCodigo(f.getCodigo());
-
-        if (ficha != null) {
-            //adicionar exceção ficha ja existe
-        }
-        else {
+        if (f != null) {
             fichas.add(f);
         }
     }

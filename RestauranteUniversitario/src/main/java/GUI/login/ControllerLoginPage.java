@@ -44,7 +44,7 @@ public class ControllerLoginPage {
                 case "Gerente" -> {
                     showInfoAlert("Acesso permitido", "Login bem-sucedido", "Bem-vindo ao RU");
                     Fachada.getInstance().setUsuarioLogado(u);
-                    ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
+                    ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
                 }
             }
         }
