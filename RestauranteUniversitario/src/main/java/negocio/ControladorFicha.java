@@ -3,6 +3,7 @@ package negocio;
 import dados.IRepositorioFicha;
 import negocio.beans.Cliente;
 import negocio.beans.Ficha;
+import negocio.beans.Usuario;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -38,9 +39,9 @@ public class ControladorFicha {
         }
     }
 
-    public List<Ficha> obterFichasDoCliente(Cliente c) {
-        if (c != null) {
-            return this.repositorioFicha.obterFichasDoCliente(c);
+    public List<Ficha> obterFichasDoCliente(Usuario u) {
+        if (u != null) {
+            return this.repositorioFicha.obterFichasDoCliente(u);
         }
 
         return null;
