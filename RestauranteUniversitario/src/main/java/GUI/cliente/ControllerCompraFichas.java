@@ -2,6 +2,7 @@ package GUI.cliente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import view.ScreenManager;
 import view.TelasEnum;
@@ -11,6 +12,13 @@ public class ControllerCompraFichas {
     private int contadorAlmoco = 0;
     private int contadorJantar = 0;
 
+
+    @FXML
+    private CheckBox cbAlmoco;
+
+    @FXML
+    private CheckBox cbJantar;
+
     @FXML
     private Label labelQuantidadeJantar;
 
@@ -19,7 +27,7 @@ public class ControllerCompraFichas {
 
     @FXML
     void bttnDecrementarOn1(ActionEvent event) {
-        if (contadorAlmoco > 0) {
+        if (contadorAlmoco > 0 && cbAlmoco.isSelected()) {
             contadorAlmoco--;
             atualizarLabelNum(labelQuantidadeAlmoco, contadorAlmoco);
         }
@@ -27,7 +35,7 @@ public class ControllerCompraFichas {
 
     @FXML
     void bttnDecrementarOn2(ActionEvent event) {
-        if (contadorJantar > 0) {
+        if (contadorJantar > 0 && cbJantar.isSelected()) {
             contadorJantar--;
             atualizarLabelNum(labelQuantidadeJantar, contadorJantar);
         }
@@ -35,14 +43,18 @@ public class ControllerCompraFichas {
 
     @FXML
     void bttnIncrementarOn1(ActionEvent event) {
-        contadorAlmoco++;
-        atualizarLabelNum(labelQuantidadeAlmoco, contadorAlmoco);
+        if (cbAlmoco.isSelected()) {
+            contadorAlmoco++;
+            atualizarLabelNum(labelQuantidadeAlmoco, contadorAlmoco);
+        }
     }
 
     @FXML
     void bttnIncrementarOn2(ActionEvent event) {
-        contadorJantar++;
-        atualizarLabelNum(labelQuantidadeJantar, contadorJantar);
+        if (cbJantar.isSelected()) {
+            contadorJantar++;
+            atualizarLabelNum(labelQuantidadeJantar, contadorJantar);
+        }
     }
 
     @FXML
@@ -63,9 +75,18 @@ public class ControllerCompraFichas {
     @FXML
     void bttnEfetuarCompraOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
+        ScreenManager.getInstance().getControllerPagamento().inicializarValores();
     }
 
     private void atualizarLabelNum (Label label, int contador) {
         label.setText(Integer.toString(contador));
+    }
+
+    public int getContadorAlmoco() {
+        return contadorAlmoco;
+    }
+
+    public int getContadorJantar() {
+        return contadorJantar;
     }
 }

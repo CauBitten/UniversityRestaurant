@@ -125,6 +125,10 @@ public class ScreenManager {
         return controllerVisualizacaoDados;
     }
 
+    public Scene getPagamentoScene() { return pagamentoScene; }
+
+    public ControllerPagamento getControllerPagamento() { return controllerPagamento; }
+
     public Scene getPrincipalVendedorScene() {
         return principalVendedorScene;
     }
