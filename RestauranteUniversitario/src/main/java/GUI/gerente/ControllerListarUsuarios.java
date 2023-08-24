@@ -82,9 +82,14 @@ public class ControllerListarUsuarios implements Initializable {
 
     @FXML
     void bttnRemoverOn(ActionEvent event) {
-        if (getConfirmation()) {
-            Fachada.getInstance().removerUsuario(tvUsuarios.getSelectionModel().getSelectedItem());
-            atualizarApresentacao();
+        if (tvUsuarios.getSelectionModel().getSelectedItem() != Fachada.getInstance().getUsuarioLogado()) {
+            if (getConfirmation()) {
+                Fachada.getInstance().removerUsuario(tvUsuarios.getSelectionModel().getSelectedItem());
+                atualizarApresentacao();
+            }
+        }
+        else {
+            showErrorMessage("Erro: permissão negada", "Você não pode remover a si mesmo.");
         }
     }
 
