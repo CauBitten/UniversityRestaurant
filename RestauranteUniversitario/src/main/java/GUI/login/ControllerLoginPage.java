@@ -33,6 +33,7 @@ public class ControllerLoginPage {
             switch (u.getPerfil()) {
                 case "Cliente" -> {
                     showInfoAlert("Acesso permitido", "Login bem-sucedido", "Bem-vindo ao RU");
+                    Fachada.getInstance().setUsuarioLogado(u);
                     ScreenManager.getInstance().getControllerVisualizacaoDados().exibirDados();
                     ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
                 }
@@ -42,6 +43,7 @@ public class ControllerLoginPage {
                 }
                 case "Gerente" -> {
                     showInfoAlert("Acesso permitido", "Login bem-sucedido", "Bem-vindo ao RU");
+                    Fachada.getInstance().setUsuarioLogado(u);
                     ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
                 }
             }
