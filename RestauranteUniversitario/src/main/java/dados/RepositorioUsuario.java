@@ -66,6 +66,15 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         return null;
     }
 
+    public Usuario getUsuarioPorEmail(String email) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getEmail().equals(email))
+                return usuario;
+        }
+
+        return null;
+    }
+
     @Override
     public List<Usuario> getUsuariosPorNome(String nome) {
         if (nome != null) {
@@ -137,6 +146,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         return clientes;
     }
 
+    @Override
     public List<Usuario> getUsuariosComPerfil(String perfil) {
         List<Usuario> usuariosComPerfil = new ArrayList<>();
 
@@ -148,8 +158,26 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         return usuariosComPerfil;
     }
 
-    public void alterarUsuario(Usuario u) {
-
+    @Override
+    public void alterarUsuario(Usuario user, Usuario editado) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.equals(user))
+                continue;
+            else {
+                if (getUsuarioPorLogin(editado.getLogin()) != null) {
+                    //atirar exceção login ja cadastrado
+                }
+                else if (getUsuarioPorCPF(editado.getCpf()) != null) {
+                    //atirar exceção cpf ja cadastrado
+                }
+                else if (getUsuarioPorEmail(editado.getEmail()) != null) {
+                    //atirar execção email cadastrado
+                }
+                else {
+                    user = editado;
+                }
+            }
+        }
     }
 
     public Usuario obterUsuarioDeCredenciais(String login, String senha) {

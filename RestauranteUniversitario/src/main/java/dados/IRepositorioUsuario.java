@@ -7,22 +7,26 @@ import java.util.List;
 
 public interface IRepositorioUsuario {
 
-    public void cadastrarUsuario (Usuario u);
+    void cadastrarUsuario(Usuario u);
 
-    public void removerUsuario (Usuario u);
+    void removerUsuario(Usuario u);
 
-    public List<Usuario> getUsuarios();
+    List<Usuario> getUsuarios();
 
-    public List<Usuario> getUsuariosPorNome(String nome);
+    List<Usuario> getUsuariosPorNome(String nome);
 
-    public List<Usuario> getUsuariosPorDataNascimento(LocalDate dataNascimento);
+    List<Usuario> getUsuariosPorDataNascimento(LocalDate dataNascimento);
 
-    public Usuario getUsuarioPorCPF(long cpf);
+    Usuario getUsuarioPorCPF(long cpf);
 
-    public Usuario getUsuarioPorLogin(String login);
+    Usuario getUsuarioPorLogin(String login);
 
-    public List<Usuario> getUsuariosPorAtivacao(boolean ativo);
+    List<Usuario> getUsuariosPorAtivacao(boolean ativo);
 
-    public Usuario obterUsuarioDeCredenciais(String login, String senha);
+    Usuario obterUsuarioDeCredenciais(String login, String senha);
+
+    List<Usuario> getUsuariosComPerfil(String perfil);
+
+    void alterarUsuario(Usuario user, Usuario editado);
 
 }

@@ -54,6 +54,34 @@ public class Usuario {
         return ativado;
     }
 
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCpf(long cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setAtivado(boolean ativado) {
+        this.ativado = ativado;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
+
     @Override
     public String toString() {
         return "Nome: " + nome + "\nCPF: " + cpf + "\nLogin: " + login + "\nE-mail: " + email + "\nAtivo: " +
@@ -65,7 +93,8 @@ public class Usuario {
         if (obj instanceof Usuario){
             Usuario user = (Usuario) obj;
 
-            return (this.cpf == user.getCpf() || Objects.equals(this.login, user.getLogin()));
+            return (this.cpf == user.getCpf() || Objects.equals(this.login, user.getLogin()) ||
+                    this.email.equals(user.getEmail()));
         }
 
         return false;

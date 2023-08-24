@@ -67,4 +67,8 @@ public class Fachada {
         return this.controladorUsuario.getUsuarioDeCredenciais(login, senha);
     }
 
+    public void alterarUsuario(Usuario user, Usuario editado) {
+        this.controladorUsuario.alterarUsuario(user, editado);
+    }
+
 }

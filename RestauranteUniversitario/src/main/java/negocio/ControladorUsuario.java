@@ -82,4 +82,8 @@ public class ControladorUsuario {
         else
             return null;
     }
+
+    public void alterarUsuario(Usuario user, Usuario editado) {
+        this.repositorioUsuarios.alterarUsuario(user, editado);
+    }
 }
