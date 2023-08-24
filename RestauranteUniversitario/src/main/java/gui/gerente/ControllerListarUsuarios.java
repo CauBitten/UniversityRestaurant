@@ -64,6 +64,7 @@ public class ControllerListarUsuarios implements Initializable {
     public void bttnAlterarUsuarioOn(ActionEvent event) {
         if (tvUsuarios.getSelectionModel().getSelectedItem() != null) {
             ScreenManager.getInstance().getControllerAlterarUsuarios().setUsuario(tvUsuarios.getSelectionModel().getSelectedItem());
+            ScreenManager.getInstance().getControllerAlterarUsuarios().initialize();
             ScreenManager.getInstance().changeScreen(TelasEnum.ALTERAR_USUARIO.name());
         }
         else {
