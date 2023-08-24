@@ -33,6 +33,7 @@ public class ControllerLoginPage {
 
         if (tipoDeEntrada == 1) {
             showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+            ScreenManager.getInstance().getControllerVisualizacaoDados().exibirDados();
             ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
         }
         else if(tipoDeEntrada == 2){
