@@ -32,19 +32,20 @@ public class ControllerLoginPage {
         int tipoDeEntrada = Fachada.getInstance().controladorUsuario.permicaoLogin(login, password);
 
         if (tipoDeEntrada == 1) {
-            showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+            showInfoMessage("Bem-Vindo!", "Login bem-sucedido", "Seja bem-vindo ao RU");
             ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
         }
         else if(tipoDeEntrada == 2){
-            showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+            showInfoMessage("Bem-Vindo!", "Login bem-sucedido", "Seja bem-vindo ao RU");
             ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_VENDEDOR.name());
         }
         else if(tipoDeEntrada == 3){
-            showAlert("Login bem-sucedido!", Alert.AlertType.INFORMATION);
+            showInfoMessage("Bem-Vindo!", "Login bem-sucedido", "Seja bem-vindo ao RU");
             ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
         }
         else {
-            showAlert("Credenciais inválidas!", Alert.AlertType.ERROR);
+            showErrorAlert("Erro: acesso negado", "Credenciais inválidas", "Corrija as informações" +
+                    " e tente novamente");
         }
         clearFields();
     }
@@ -54,11 +55,21 @@ public class ControllerLoginPage {
         passwordField.setText("");
     }
 
-    private void showAlert(String message, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle("Login");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
+    private void showErrorAlert(String titulo, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
         alert.showAndWait();
     }
+    private void showInfoMessage(String titulo, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.show();
+    }
+
 }

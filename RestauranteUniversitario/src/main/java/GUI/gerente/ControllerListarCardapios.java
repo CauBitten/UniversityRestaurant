@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -63,12 +64,25 @@ public class ControllerListarCardapios implements Initializable  {
 
     @FXML
     void bttnAtualizarOn(ActionEvent event) {
-        configurarTv(Fachada.getInstance().obterCardapios());
+        atualizarApresentacao();
     }
 
     @FXML
     void bttnCadastrarCardapioOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.CADASTRAR_CARDAPIO.name());
+    }
+
+    @FXML
+    void buttonAlterarOn(ActionEvent event) {
+        if (tvCardapios.getSelectionModel().getSelectedItem() != null) {
+            ScreenManager.getInstance().getControllerAlterarCardapio().setCardapio(tvCardapios.getSelectionModel().getSelectedItem());
+            ScreenManager.getInstance().getControllerAlterarCardapio().initialize();
+            ScreenManager.getInstance().changeScreen(TelasEnum.ALTERAR_CARDAPIO.name());
+        }
+        else {
+            showErrorMessage("Erro: Nenhum cardápio selecionado", "Selecione um cardápio para alterar",
+                    "Tente novamente.");
+        }
     }
 
     @Override
@@ -86,6 +100,19 @@ public class ControllerListarCardapios implements Initializable  {
         ObservableList<Cardapio> cardapioList = FXCollections.observableArrayList();
         cardapioList.addAll(cardapios);
         tvCardapios.setItems(cardapioList);
+    }
+
+    public void atualizarApresentacao() {
+        configurarTv(Fachada.getInstance().obterCardapios());
+    }
+
+    private void showErrorMessage(String titulo, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.show();
     }
 
 }

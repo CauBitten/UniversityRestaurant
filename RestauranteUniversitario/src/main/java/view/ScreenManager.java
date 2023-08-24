@@ -75,6 +75,9 @@ public class ScreenManager {
 
     private Scene cadastrarCardapioScene;
     private ControllerCadastroCardapio controllerCadastroCardapio;
+
+    private Scene alterarCardapioScene;
+    private ControllerAlterarCardapio controllerAlterarCardapio;
     // -----
 
     // Refeições Scenes
@@ -233,6 +236,14 @@ public class ScreenManager {
         return controllerAlterarRefeicao;
     }
 
+    public Scene getAlterarCardapioScene() {
+        return alterarCardapioScene;
+    }
+
+    public ControllerAlterarCardapio getControllerAlterarCardapio() {
+        return controllerAlterarCardapio;
+    }
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -359,6 +370,12 @@ public class ScreenManager {
                     .getResource("/refeicoes/telaAlterarRefeicao.fxml")).openStream());
             this.alterarRefeicoesScene = new Scene(alterarRefeicoesPane);
             this.controllerAlterarRefeicao = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane alterarCardapioPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaAlterarCardapio.fxml")).openStream());
+            this.alterarCardapioScene = new Scene(alterarCardapioPane);
+            this.controllerAlterarCardapio = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -459,6 +476,16 @@ public class ScreenManager {
             case "CADASTRAR_CARDAPIO" -> {
                 primaryStage.setScene(cadastrarCardapioScene);
                 primaryStage.setTitle("RU | TELA DE CADASTRO DE CARDÁPIOS");
+            }
+
+            case "LISTAR_CARDAPIOS" -> {
+                primaryStage.setScene(listarCardapiosScene);
+                primaryStage.setTitle("RU | TELA DE LISTA DE CARDÁPIOS");
+            }
+
+            case "ALTERAR_CARDAPIO" -> {
+                primaryStage.setScene(alterarCardapioScene);
+                primaryStage.setTitle("RU | TELA DE ALTERAR CARDÁPIO");
             }
             // -----
         }

@@ -108,7 +108,7 @@ public class ControllerListarUsuarios implements Initializable {
     }
 
     public void atualizarApresentacao() {
-        configurarTv(Fachada.getInstance().controladorUsuario.listarUsuarios());
+        configurarTv(Fachada.getInstance().obterUsuarios());
     }
 
 }

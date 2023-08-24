@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerAlterarCardapio">
+   <children>
+      <Button fx:id="buttonVoltarPagina" layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="12.0" />
+         </font>
+      </Button>
+      <VBox layoutX="185.0" layoutY="40.0" prefHeight="232.0" prefWidth="311.0" spacing="20.0">
+         <children>
+            <TextField fx:id="tfPrincipal" minHeight="30.0" promptText="PRINCIPAL" />
+            <TextField fx:id="tfVegetariano" minHeight="30.0" promptText="VEGETARIANO" />
+            <TextField fx:id="tfGuarnicao" minHeight="30.0" prefHeight="45.0" prefWidth="311.0" promptText="GUARNIÇÃO" />
+            <TextField fx:id="tfSalada" minHeight="30.0" promptText="SALADA" />
+            <TextField fx:id="tfSobremesa" minHeight="30.0" promptText="SOBREMESA" />
+            <TextField fx:id="tfSuco" minHeight="30.0" promptText="SUCO" />
+         </children>
+      </VBox>
+      <VBox layoutX="93.0" layoutY="40.0" prefHeight="276.0" prefWidth="91.0" spacing="20.0">
+         <children>
+            <Label prefHeight="30.0" text="PRINCIPAL:" textFill="#149959">
+               <font>
+                  <Font name="Georgia Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" text="VEGETARIANO:" textFill="#149959">
+               <font>
+                  <Font name="Georgia Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" text="GUARNIÇAO:" textFill="#149959">
+               <font>
+                  <Font name="Georgia Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" text="SALADA:" textFill="#149959">
+               <font>
+                  <Font name="Georgia Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label prefHeight="33.0" prefWidth="73.0" text="SOBREMESA:" textFill="#149959">
+               <font>
+                  <Font name="Georgia Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label prefHeight="32.0" prefWidth="95.0" text="SUCO:" textFill="#149959">
+               <font>
+                  <Font name="Georgia Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Button fx:id="buttonAlterar" layoutX="224.0" layoutY="339.0" minHeight="35.0" minWidth="152.0" mnemonicParsing="false" onAction="#bttnAlterarOn" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: #149959;" text="ALTERAR" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
