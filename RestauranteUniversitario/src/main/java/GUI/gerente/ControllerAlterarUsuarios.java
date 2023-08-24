@@ -3,9 +3,11 @@ package GUI.gerente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import negocio.Fachada;
 import negocio.beans.Usuario;
 import view.ScreenManager;
 import view.TelasEnum;
@@ -40,7 +42,17 @@ public class ControllerAlterarUsuarios {
 
     @FXML
     void bttnAlterarOn(ActionEvent event) {
-
+        //falta alterar o cpf
+        if (compararUsuarioAosCampos()) {
+            showErrorMessage("Erro: usuário não modificado", "Usuário não modificado",
+                    "Altere os campos para poder modificar");
+        }
+        else {
+            Usuario editado = new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
+                    usuario.getCpf(), usuario.isAtivado(), usuario.getPerfil());
+            Fachada.getInstance().alterarUsuario(usuario, editado);
+            showInfoMessage("Alteração bem-sucedida", "Sucesso!", "Alteração realizada com sucesso");
+        }
     }
 
     @FXML
@@ -63,6 +75,34 @@ public class ControllerAlterarUsuarios {
             tfEmail.setText(usuario.getEmail());
             senhaField.setText(usuario.getSenha());
         }
+    }
+    private void showErrorMessage(String titulo, String header, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setHeaderText(mensagem);
+        alert.show();
+    }
+
+    private void showInfoMessage(String titulo, String header, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setHeaderText(mensagem);
+        alert.show();
+    }
+
+    private boolean verificarCampos() {
+        return tfNome.getText().isBlank() || tfEmail.getText().isBlank() || tfLogin.getText().isBlank() ||
+                senhaField.getText().isBlank();
+    }
+
+    private boolean compararUsuarioAosCampos() {
+        //implementar os que faltam, precisa adicionar o resto na tela e ajustar o cpf
+        return tfNome.getText().equals(usuario.getNome()) && tfEmail.getText().equals(usuario.getEmail()) &&
+                tfLogin.getText().equals(usuario.getLogin()) && senhaField.getText().equals(usuario.getSenha());
     }
 
 }
