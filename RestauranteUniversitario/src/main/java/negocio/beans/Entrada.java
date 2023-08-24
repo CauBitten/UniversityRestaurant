@@ -11,7 +11,7 @@ public class Entrada {
     private Ficha ficha;
 
 
-    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     public Entrada(Cardapio cardapio, String tipo, String dataHora, Ficha ficha) {
         this.cardapio = cardapio;
