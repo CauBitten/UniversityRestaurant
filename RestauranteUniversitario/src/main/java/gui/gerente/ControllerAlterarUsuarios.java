@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class ControllerAlterarUsuarios implements Initializable {
 
-    private static Usuario usuario;
+    private Usuario usuario;
 
     @FXML
     private Button buttonAlterar;
@@ -46,10 +46,11 @@ public class ControllerAlterarUsuarios implements Initializable {
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
         usuario = null;
+        ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
     }
 
-    public static void setUsuario(Usuario u) {
+    public void setUsuario(Usuario u) {
         if (u != null) {
             usuario = u;
         }
@@ -59,6 +60,9 @@ public class ControllerAlterarUsuarios implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (usuario != null) {
             tfLogin.setText(usuario.getLogin());
+            tfNome.setText(usuario.getNome());
+            tfEmail.setText(usuario.getEmail());
+            senhaField.setText(usuario.getSenha());
         }
     }
 

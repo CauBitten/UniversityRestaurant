@@ -61,9 +61,9 @@ public class ControllerListarUsuarios implements Initializable {
     private TableView<Usuario> tvUsuarios;
 
     @FXML
-    void bttnAlterarUsuarioOn(ActionEvent event) {
+    public void bttnAlterarUsuarioOn(ActionEvent event) {
         if (tvUsuarios.getSelectionModel().getSelectedItem() != null) {
-            ControllerAlterarUsuarios.setUsuario(tvUsuarios.getSelectionModel().getSelectedItem());
+            ScreenManager.getInstance().getControllerAlterarUsuarios().setUsuario(tvUsuarios.getSelectionModel().getSelectedItem());
             ScreenManager.getInstance().changeScreen(TelasEnum.ALTERAR_USUARIO.name());
         }
         else {
@@ -72,17 +72,17 @@ public class ControllerListarUsuarios implements Initializable {
     }
 
     @FXML
-    void bttnAtualizarOn(ActionEvent event) {
-        configurarTv(Fachada.getInstance().controladorUsuario.listarUsuarios());
+    public void bttnAtualizarOn(ActionEvent event) {
+        atualizarApresentacao();
     }
 
     @FXML
-    void bttnCadastrarUsuarioOn(ActionEvent event) {
+    public void bttnCadastrarUsuarioOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.CADASTRAR_USUARIO.name());
     }
 
     @FXML
-    void bttnVoltarPaginaOn(ActionEvent event) {
+    public void bttnVoltarPaginaOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
     }
 
@@ -108,6 +108,10 @@ public class ControllerListarUsuarios implements Initializable {
         alert.setTitle(titulo);
         alert.setHeaderText(mensagem);
         alert.show();
+    }
+
+    public void atualizarApresentacao() {
+        configurarTv(Fachada.getInstance().controladorUsuario.listarUsuarios());
     }
 
 }

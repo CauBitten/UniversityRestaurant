@@ -19,6 +19,7 @@ public class ControllerPrincipalGerente {
 
     @FXML
     void bttnListarUsuarios(ActionEvent event) {
+        ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
     }
 
