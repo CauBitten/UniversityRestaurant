@@ -71,4 +71,9 @@ public class Fachada {
         this.controladorUsuario.alterarUsuario(user, editado);
     }
 
+    public void removerUsuario(Usuario u) {
+        if (u != null)
+            this.controladorUsuario.removerUsuario(u);
+    }
+
 }

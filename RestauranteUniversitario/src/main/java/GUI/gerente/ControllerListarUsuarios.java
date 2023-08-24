@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.ButtonType;
 
 import negocio.Fachada;
 
@@ -19,6 +20,7 @@ import view.TelasEnum;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerListarUsuarios implements Initializable {
@@ -27,13 +29,13 @@ public class ControllerListarUsuarios implements Initializable {
     private Button buttonAlterarUsuario;
 
     @FXML
-    private Button buttonAtualizar;
-
-    @FXML
     private Button buttonCadastrarUsuario;
 
     @FXML
     private Button buttonVoltarPagina;
+
+    @FXML
+    private Button buttonRemover;
 
     @FXML
     private TableColumn<Usuario, Boolean> tvColAtivo;
@@ -69,11 +71,6 @@ public class ControllerListarUsuarios implements Initializable {
     }
 
     @FXML
-    public void bttnAtualizarOn(ActionEvent event) {
-        atualizarApresentacao();
-    }
-
-    @FXML
     public void bttnCadastrarUsuarioOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.CADASTRAR_USUARIO.name());
     }
@@ -81,6 +78,14 @@ public class ControllerListarUsuarios implements Initializable {
     @FXML
     public void bttnVoltarPaginaOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+    }
+
+    @FXML
+    void bttnRemoverOn(ActionEvent event) {
+        if (getConfirmation()) {
+            Fachada.getInstance().removerUsuario(tvUsuarios.getSelectionModel().getSelectedItem());
+            atualizarApresentacao();
+        }
     }
 
     @Override
@@ -113,5 +118,35 @@ public class ControllerListarUsuarios implements Initializable {
 
         configurarTv(Fachada.getInstance().obterUsuarios());
     }
+
+    private boolean getConfirmation() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Remover usuário");
+        alert.setHeaderText("Tem certeza que gostaria de remover o usuário selecionado?");
+        alert.setContentText("Aviso: esta operação não pode ser desfeita.");
+
+        Optional<ButtonType> option = alert.showAndWait();
+
+        if (option.get() == ButtonType.OK) {
+            showInfoMessage("Usuário removido", "Usuário removido com sucesso!", "A operação foi um sucesso!");
+            return true;
+        }
+        else if (option.get() == ButtonType.CANCEL) {
+            showInfoMessage("Operação cancelada", "A operação foi cancelada", "Nada foi modificado.");
+            return false;
+        }
+
+        return false;
+    }
+
+    private void showInfoMessage(String titulo, String header, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setHeaderText(mensagem);
+        alert.show();
+    }
+
 
 }
