@@ -61,6 +61,7 @@ public class ControllerAlterarCardapio {
             tfPrincipal.setText(cardapio.getPrincipal());
             tfSalada.setText(cardapio.getSalada());
             tfVegetariano.setText(cardapio.getVegetariano());
+            tfSobremesa.setText(cardapio.getSobremesa());
         }
     }
 
