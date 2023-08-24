@@ -1,5 +1,6 @@
 package dados;
 
+import negocio.Fachada;
 import negocio.beans.Cliente;
 import negocio.beans.Usuario;
 
@@ -160,21 +161,28 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     @Override
     public void alterarUsuario(Usuario user, Usuario editado) {
-        for (Usuario usuario : usuarios) {
-            if (usuario.equals(user))
-                continue;
-            else {
-                if (getUsuarioPorLogin(editado.getLogin()) != null) {
-                    //atirar exceção login ja cadastrado
-                }
-                else if (getUsuarioPorCPF(editado.getCpf()) != null) {
-                    //atirar exceção cpf ja cadastrado
-                }
-                else if (getUsuarioPorEmail(editado.getEmail()) != null) {
-                    //atirar execção email cadastrado
-                }
-                else {
-                    user = editado;
+        if (getUsuarioPorLogin(editado.getLogin()) != null &&
+                getUsuarioPorLogin(editado.getLogin()) != user) {
+            //atirar exceção login ja cadastrado
+        }
+        else if (getUsuarioPorCPF(editado.getCpf()) != null &&
+            getUsuarioPorCPF(editado.getCpf()) != user) {
+            //atirar exceção cpf ja cadastrado
+        }
+        else if (getUsuarioPorEmail(editado.getEmail()) != null
+                && getUsuarioPorEmail(editado.getEmail()) != user) {
+            //atirar execção email cadastrado
+        }
+        else {
+            for (Usuario usuario : usuarios) {
+                if (user.getLogin().equals(usuario.getLogin())) {
+                    usuario.setNome(editado.getNome());
+                    usuario.setAtivado(editado.isAtivado());
+                    usuario.setPerfil(editado.getPerfil());
+                    usuario.setLogin(editado.getLogin());
+                    usuario.setEmail(editado.getEmail());
+                    usuario.setCpf(editado.getCpf());
+                    usuario.setSenha(editado.getSenha());
                 }
             }
         }
