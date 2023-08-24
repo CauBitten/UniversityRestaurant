@@ -9,6 +9,7 @@ public class ControllerPrincipalGerente {
 
     @FXML
     void bttnListarCardapios(ActionEvent event) {
+        ScreenManager.getInstance().getControllerListarCardapios().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.VISUALIZAR_CARDAPIOS.name());
     }
 

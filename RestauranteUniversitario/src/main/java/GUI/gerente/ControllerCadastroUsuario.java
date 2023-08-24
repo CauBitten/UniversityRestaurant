@@ -34,16 +34,6 @@ public class ControllerCadastroUsuario implements Initializable {
     @FXML
     private PasswordField senhaField;
 
-
-    protected void choicesBox(){
-        String cliente = "Cliente";
-        String vendedor = "Vendedor";
-        String gerente = "Gerente";
-        choiceBoxTipo.getItems().add(cliente);
-        choiceBoxTipo.getItems().add(vendedor);
-        choiceBoxTipo.getItems().add(gerente);
-    }
-
     @FXML
     void bttnCadastrarOn(ActionEvent event) {
         String perfilAdmin = choiceBoxTipo.getSelectionModel().getSelectedItem();

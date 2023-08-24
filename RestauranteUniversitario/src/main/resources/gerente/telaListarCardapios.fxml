@@ -16,7 +16,7 @@
                   <Font name="Georgia Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="buttonAlterar" mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #149959;" text="ALTERAR" textFill="WHITE">
+            <Button fx:id="buttonAlterar" mnemonicParsing="false" onAction="#buttonAlterarOn" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #149959;" text="ALTERAR" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="14.0" />
                </font>
