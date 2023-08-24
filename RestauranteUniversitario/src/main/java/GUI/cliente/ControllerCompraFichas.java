@@ -1,9 +1,7 @@
-package gui.cliente;
+package GUI.cliente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import view.ScreenManager;
 import view.TelasEnum;
@@ -64,7 +62,7 @@ public class ControllerCompraFichas {
 
     @FXML
     void bttnEfetuarCompraOn(ActionEvent event) {
-
+        ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
     }
 
     private void atualizarLabelNum (Label label, int contador) {

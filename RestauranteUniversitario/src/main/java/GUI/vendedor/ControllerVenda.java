@@ -1,4 +1,4 @@
-package gui.refeicao;
+package GUI.vendedor;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,14 +6,14 @@ import javafx.scene.control.Button;
 import view.ScreenManager;
 import view.TelasEnum;
 
-public class ControllerAlterarRefeicao {
+public class ControllerVenda {
 
     @FXML
     private Button buttonVoltarPagina;
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-        ScreenManager.getInstance().changeScreen(TelasEnum.VISUALIZAR_REFEICOES.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_VENDEDOR.name());
     }
 
 }

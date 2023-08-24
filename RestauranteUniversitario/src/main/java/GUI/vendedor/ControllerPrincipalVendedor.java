@@ -1,4 +1,4 @@
-package gui.vendedor;
+package GUI.vendedor;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,4 +1,4 @@
-package gui.gerente;
+package GUI.gerente;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import negocio.Fachada;
 import negocio.beans.Cardapio;
-import org.controlsfx.control.action.Action;
 import view.ScreenManager;
 import view.TelasEnum;
 

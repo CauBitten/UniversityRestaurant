@@ -1,24 +1,19 @@
-package gui.cliente;
+package GUI.refeicao;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import view.ScreenManager;
 import view.TelasEnum;
 
-public class ControllerVisualizacaoDados {
+public class ControllerAlterarRefeicao {
 
     @FXML
     private Button buttonVoltarPagina;
 
     @FXML
-    private TableView<?> tableViewDados;
-
-    @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-        ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
+        ScreenManager.getInstance().changeScreen(TelasEnum.VISUALIZAR_REFEICOES.name());
     }
 
 }
-

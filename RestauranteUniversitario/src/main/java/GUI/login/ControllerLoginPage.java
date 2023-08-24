@@ -1,4 +1,4 @@
-package gui.login;
+package GUI.login;
 
 import negocio.Fachada;
 import view.TelasEnum;

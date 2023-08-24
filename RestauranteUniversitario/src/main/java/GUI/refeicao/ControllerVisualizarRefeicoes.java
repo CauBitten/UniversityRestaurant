@@ -1,4 +1,4 @@
-package gui.refeicao;
+package GUI.refeicao;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

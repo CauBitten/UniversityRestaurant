@@ -1,7 +1,4 @@
-package gui.gerente;
-
-import dados.IRepositorioUsuario;
-import dados.RepositorioUsuario;
+package GUI.gerente;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +11,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import negocio.ControladorUsuario;
 import negocio.Fachada;
 
 import negocio.beans.Usuario;

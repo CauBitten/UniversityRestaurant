@@ -1,12 +1,10 @@
-package gui.gerente;
+package GUI.gerente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import negocio.ControladorUsuario;
 import negocio.Fachada;
-import negocio.beans.Cliente;
 import negocio.beans.Usuario;
 import view.ScreenManager;
 import view.TelasEnum;
