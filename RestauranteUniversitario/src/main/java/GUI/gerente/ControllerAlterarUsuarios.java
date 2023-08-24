@@ -13,7 +13,7 @@ import view.TelasEnum;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerAlterarUsuarios implements Initializable {
+public class ControllerAlterarUsuarios {
 
     private Usuario usuario;
 
@@ -56,8 +56,7 @@ public class ControllerAlterarUsuarios implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
         if (usuario != null) {
             tfLogin.setText(usuario.getLogin());
             tfNome.setText(usuario.getNome());
