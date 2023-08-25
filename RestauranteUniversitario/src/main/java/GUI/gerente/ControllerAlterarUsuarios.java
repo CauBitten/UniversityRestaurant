@@ -3,10 +3,7 @@ package GUI.gerente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import negocio.Fachada;
 import negocio.beans.Usuario;
 import view.ScreenManager;
@@ -15,15 +12,15 @@ import view.TelasEnum;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerAlterarUsuarios {
+public class ControllerAlterarUsuarios implements Initializable {
 
     private Usuario usuario;
 
     @FXML
-    private Button buttonAlterar;
+    private CheckBox checkBoxAtivo;
 
     @FXML
-    private Button buttonVoltarPagina;
+    private ChoiceBox<String> choiceBoxTipo;
 
     @FXML
     private PasswordField senhaField;
@@ -60,6 +57,11 @@ public class ControllerAlterarUsuarios {
         usuario = null;
         ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBoxTipo.getItems().addAll("Gerente", "Vendedor", "Cliente");
     }
 
     public void setUsuario(Usuario u) {

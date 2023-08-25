@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerListarCardapios">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerListarCardapios">
    <children>
       <VBox layoutX="428.0" layoutY="294.0" prefHeight="82.0" prefWidth="146.0" spacing="20.0">
          <children>
@@ -46,7 +46,7 @@
             </TableView>
          </children>
       </VBox>
-      <Button fx:id="buttonAtualizar" layoutX="24.0" layoutY="294.0" mnemonicParsing="false" onAction="#bttnAtualizarOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #149959;" text="ATUALIZAR" textFill="WHITE">
+      <Button fx:id="buttonRemover" layoutX="24.0" layoutY="294.0" mnemonicParsing="false" onAction="#bttnRemoverOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #149959;" text="REMOVER" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="14.0" />
          </font>

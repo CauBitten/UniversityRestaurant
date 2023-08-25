@@ -14,4 +14,6 @@ public interface IRepositorioCardapio {
 
     public List<Cardapio> getCardapios();
 
+    public void alterarCardapio(Cardapio c, Cardapio editado);
+
 }

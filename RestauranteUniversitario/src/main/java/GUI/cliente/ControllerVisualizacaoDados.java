@@ -39,20 +39,19 @@ public class ControllerVisualizacaoDados {
     @FXML
     private Button buttonVoltarPagina;
 
-
-
     @FXML
     public void exibirDados() {
         Usuario usuario = Fachada.getInstance().getUsuarioLogado();
-        List<Ficha> fichasUsuario = Fachada.getInstance().obterFichasDoCliente(usuario);
-        int Fjanta = Fachada.getInstance().obterFichasDoTipo("Janta").size();
-        int FAlmoco = Fachada.getInstance().obterFichasDoTipo("Almoco").size();;
+
+        int fAlmoco = contarQuantidadeDeFichasDoTipo(Fachada.getInstance().obterFichasDoCliente(usuario), "Almoco");
+        int fJanta = contarQuantidadeDeFichasDoTipo(Fachada.getInstance().obterFichasDoCliente(usuario), "Janta");
+
         nomeLabel.setText("Nome: " + usuario.getNome());
         loginLabel.setText("Login: " + usuario.getLogin());
         emailLabel.setText("E-mail: " + usuario.getEmail());
-        cpfLabel.setText("Cpf: " + usuario.getCpf());
-        jantarLabel.setText("Jantar: " + Fjanta);
-        almocoLabel.setText("Almoço: " + FAlmoco);
+        cpfLabel.setText("CPF: " + usuario.getCpf());
+        jantarLabel.setText("Jantar: " + fJanta);
+        almocoLabel.setText("Almoço: " + fAlmoco);
     }
 
     @FXML
@@ -60,5 +59,15 @@ public class ControllerVisualizacaoDados {
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
     }
 
+    private int contarQuantidadeDeFichasDoTipo(List<Ficha> fichas, String tipo) {
+        int qtd = 0;
+
+        for (Ficha ficha : fichas) {
+            if (ficha.getTipo().equals(tipo))
+                qtd++;
+        }
+
+        return qtd;
+    }
 }
 

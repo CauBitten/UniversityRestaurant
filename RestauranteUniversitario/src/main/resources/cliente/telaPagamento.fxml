@@ -6,55 +6,56 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.cliente.ControllerPagamento">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.cliente.ControllerPagamento">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="214.0" layoutY="293.0" mnemonicParsing="false" onAction="#bttnComprarOn" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #149959;" text="COMPRAR" textFill="WHITE">
+      <Button layoutX="213.0" layoutY="313.0" mnemonicParsing="false" onAction="#bttnComprarOn" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #149959;" text="COMPRAR" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>
       </Button>
-      <HBox layoutX="200.0" layoutY="86.0" prefHeight="25.0" prefWidth="200.0" spacing="30.0">
+      <HBox layoutX="158.0" layoutY="86.0" prefHeight="26.0" prefWidth="242.0" spacing="30.0">
          <children>
-            <Label prefHeight="25.0" prefWidth="135.0" text="Total em fichas almoço..." textFill="#8e8e8e">
+            <Label prefHeight="26.0" prefWidth="156.0" text="Total em fichas almoço:">
                <font>
-                  <Font name="Georgia" size="12.0" />
+                  <Font name="Georgia" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="labelTFichasAlmoco" prefHeight="25.0" prefWidth="25.0" textFill="#8e8e8e">
+            <Label fx:id="labelTFichasAlmoco" prefHeight="26.0" prefWidth="41.0">
                <font>
                   <Font name="Georgia" size="12.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <HBox layoutX="200.0" layoutY="118.0" prefHeight="25.0" prefWidth="200.0" spacing="30.0">
+      <HBox layoutX="158.0" layoutY="118.0" prefHeight="26.0" prefWidth="242.0" spacing="30.0">
          <children>
-            <Label prefHeight="25.0" prefWidth="135.0" text="Total em fichas jantar..." textFill="#949494">
+            <Label prefHeight="26.0" prefWidth="142.0" text="Total em fichas jantar:">
                <font>
-                  <Font name="Georgia" size="12.0" />
+                  <Font name="Georgia" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="labelTFichasJantar" prefHeight="25.0" prefWidth="25.0" textFill="#8e8e8e">
+            <Label fx:id="labelTFichasJantar" prefHeight="26.0" prefWidth="45.0" textFill="#8e8e8e">
                <font>
                   <Font name="Georgia" size="12.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <HBox layoutX="199.0" layoutY="187.0" prefHeight="25.0" prefWidth="200.0" spacing="30.0">
+      <HBox layoutX="158.0" layoutY="164.0" prefHeight="25.0" prefWidth="200.0" spacing="30.0">
          <children>
-            <Label prefHeight="25.0" prefWidth="135.0" text="Total da compra..." textFill="#149959">
+            <Label prefHeight="25.0" prefWidth="135.0" text="Total da compra:" textFill="#149959">
                <font>
-                  <Font name="Georgia" size="12.0" />
+                  <Font name="Georgia" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="labelTCompra" prefHeight="25.0" prefWidth="25.0" textFill="#149959">
+            <Label fx:id="labelTCompra" prefHeight="26.0" prefWidth="41.0" textFill="#149959">
                <font>
                   <Font name="Georgia" size="12.0" />
                </font>
@@ -80,5 +81,10 @@
             </CheckBox>
          </children>
       </HBox>
+      <Text fill="#149959" layoutX="216.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metodo de pagamento:">
+         <font>
+            <Font name="Georgia Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

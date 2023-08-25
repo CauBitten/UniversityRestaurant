@@ -90,4 +90,14 @@ public class Fachada {
             this.controladorUsuario.removerUsuario(u);
     }
 
+    public void alterarCardapio(Cardapio c, Cardapio editado) {
+        if (c != null && editado != null)
+            this.controladorCardapio.alterarCardapio(c, editado);
+    }
+
+    public void removerCardapio(Cardapio c) {
+        if (c != null)
+            this.controladorCardapio.removerCardapio(c);
+    }
+
 }

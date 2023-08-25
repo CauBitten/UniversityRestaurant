@@ -32,9 +32,7 @@ public class ControladorCardapio {
         }
     }
 
-    public void removerCardapio(long id) {
-        Cardapio c = repositorioCardapio.encontrarCardapioPorID(id);
-
+    public void removerCardapio(Cardapio c) {
         if (c != null) {
             repositorioCardapio.removerCardapio(c);
         }
@@ -47,5 +45,10 @@ public class ControladorCardapio {
 
     public List<Cardapio> getCardapios() {
         return this.repositorioCardapio.getCardapios();
+    }
+
+    public void alterarCardapio(Cardapio c, Cardapio editado) {
+        if (c != null && editado != null)
+            this.repositorioCardapio.alterarCardapio(c, editado);
     }
 }
