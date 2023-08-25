@@ -15,8 +15,10 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     public RepositorioUsuario() {
         Usuario admin = new Usuario("123","admin","admin@","admin", 123L, true, "Gerente");
+        Usuario avulso = new Usuario("000","avulso","avulso@","avulso", 000L, true, "Cliente");
         usuarios = new ArrayList<>();
         usuarios.add(admin);
+        usuarios.add(avulso);
     }
 
     public static IRepositorioUsuario getInstance() {

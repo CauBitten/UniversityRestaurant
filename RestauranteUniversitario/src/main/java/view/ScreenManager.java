@@ -10,6 +10,7 @@ import GUI.refeicao.ControllerAlterarRefeicao;
 import GUI.refeicao.ControllerCadastroRefeicao;
 import GUI.refeicao.ControllerVisualizarRefeicoes;
 import GUI.vendedor.ControllerListarRefeicoes;
+import GUI.vendedor.ControllerPagamentoVendedor;
 import GUI.vendedor.ControllerPrincipalVendedor;
 import GUI.vendedor.ControllerVenda;
 import javafx.fxml.FXMLLoader;
@@ -52,6 +53,9 @@ public class ScreenManager {
 
     private Scene listarRefeicoesScene;
     private ControllerListarRefeicoes controllerListarRefeicoes;
+    private Scene pagamentoVendedorScene;
+    private ControllerPagamentoVendedor controllerPagamentoVendedor;
+
     // -----
 
     // Gerentes Scenes
@@ -130,6 +134,7 @@ public class ScreenManager {
 
     public Scene getPagamentoScene() { return pagamentoScene; }
 
+
     public ControllerPagamento getControllerPagamento() { return controllerPagamento; }
 
     public Scene getPrincipalVendedorScene() {
@@ -143,6 +148,9 @@ public class ScreenManager {
     public Scene getVendaScene() {
         return vendaScene;
     }
+
+    public Scene getPagamentoVendedorScene(){return pagamentoVendedorScene; }
+    public ControllerPagamentoVendedor getControllerPagamentoVendedor(){return controllerPagamentoVendedor;}
 
     public ControllerVenda getControllerVenda() {
         return controllerVenda;
@@ -300,10 +308,18 @@ public class ScreenManager {
             this.controllerPrincipalVendedor = fxmlLoader.getController();
 
             fxmlLoader = new FXMLLoader();
-            AnchorPane vendaPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+            AnchorPane vendaVendedor = fxmlLoader.load(Objects.requireNonNull(getClass()
                     .getResource("/vendedor/telaDeVenda.fxml")).openStream());
-            this.vendaScene = new Scene(vendaPane);
+            this.vendaScene = new Scene(vendaVendedor);
             this.controllerVenda = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane pagamentoVendedor = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/vendedor/telaPagamentoVendedor.fxml")).openStream());
+            this.pagamentoVendedorScene = new Scene(pagamentoVendedor);
+            this.controllerPagamentoVendedor = fxmlLoader.getController();
+
+
 
             fxmlLoader = new FXMLLoader();
             AnchorPane listarRefeicoesPane = fxmlLoader.load(Objects.requireNonNull(getClass()
@@ -417,6 +433,11 @@ public class ScreenManager {
             case "VENDA" -> {
                 primaryStage.setScene(vendaScene);
                 primaryStage.setTitle("RU | TELA DE VENDA");
+            }
+
+            case "PAGAMENTOVENDEDOR" ->{
+                primaryStage.setScene(pagamentoVendedorScene);
+                primaryStage.setTitle("RU | TELA DE PAGAMENTO");
             }
 
             case "LISTAR_REFEICOES" -> {

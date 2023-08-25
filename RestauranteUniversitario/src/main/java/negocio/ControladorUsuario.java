@@ -86,4 +86,7 @@ public class ControladorUsuario {
     public void alterarUsuario(Usuario user, Usuario editado) {
         this.repositorioUsuarios.alterarUsuario(user, editado);
     }
+    public Usuario getAvulso(){
+        return getUsuarioPorCPF(000L);
+    }
 }

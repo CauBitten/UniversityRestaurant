@@ -99,5 +99,7 @@ public class Fachada {
         if (c != null)
             this.controladorCardapio.removerCardapio(c);
     }
-
+    public Usuario getAvulso(){
+        return controladorUsuario.getAvulso();
+    }
 }
