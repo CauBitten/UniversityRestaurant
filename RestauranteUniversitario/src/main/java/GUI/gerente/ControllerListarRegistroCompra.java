@@ -80,13 +80,9 @@ public class ControllerListarRegistroCompra implements Initializable {
         valorColumn.setCellValueFactory(new PropertyValueFactory<>("valorCompra"));
 
         almocoColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().
-        getFichasCompradas().stream() .filter(ficha -> ficha.getTipo().equals("Almoco")) .collect(Collectors.toList()).size()
-        ).asObject());
+            getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Almoco")).collect(Collectors.toList()).size()).asObject());
         jantaColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().
-                getFichasCompradas().stream() .filter(ficha -> ficha.getTipo().equals("Janta")) .collect(Collectors.toList()).size()
-        ).asObject());
-
-
+                getFichasCompradas().stream() .filter(ficha -> ficha.getTipo().equals("Janta")) .collect(Collectors.toList()).size()).asObject());
 
     }
 
@@ -97,7 +93,10 @@ public class ControllerListarRegistroCompra implements Initializable {
     }
 
     public void atualizarApresentacao() {
-        configurarTv(Fachada.getInstance().controladorRegistroCompra.getListaRegistroCompra());
+        for (int i = 0; i < tvRegistroCompra.getItems().size(); i++)
+            tvRegistroCompra.getItems().clear();
+
+        configurarTv(Fachada.getInstance().getRegistrosCompra());
     }
 
 }

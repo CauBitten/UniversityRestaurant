@@ -3,8 +3,6 @@ package negocio.beans;
 public class Pagamento {
 
     private double valor;
-    //Adicionar um tipo de pagamento?
-    //private String tipoPagamento;
 
     Pagamento(double valor) {
         this.valor = valor;

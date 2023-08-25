@@ -100,4 +100,8 @@ public class Fachada {
             this.controladorCardapio.removerCardapio(c);
     }
 
+    public List<RegistroCompra> getRegistrosCompra() {
+        return this.controladorRegistroCompra.getListaRegistroCompra();
+    }
+
 }
