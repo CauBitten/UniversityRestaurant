@@ -12,7 +12,7 @@ import view.TelasEnum;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerAlterarUsuarios implements Initializable {
+public class ControllerAlterarUsuarios {
 
     private Usuario usuario;
 
@@ -40,17 +40,24 @@ public class ControllerAlterarUsuarios implements Initializable {
     @FXML
     void bttnAlterarOn(ActionEvent event) {
         //falta alterar o cpf
-        if (compararUsuarioAosCampos()) {
-            showErrorMessage("Erro: usuário não modificado", "Usuário não modificado",
-                    "Altere os campos para poder modificar");
+        if (!verificarCampos()) {
+            if (compararUsuarioAosCampos()) {
+                showErrorMessage("Erro: usuário não modificado", "Usuário não modificado",
+                        "Altere os campos para poder modificar");
+            }
+            else {
+                Usuario editado = new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
+                        usuario.getCpf(), checkBoxAtivo.isSelected(), choiceBoxTipo.getValue());
+
+                Fachada.getInstance().alterarUsuario(usuario, editado);
+                showInfoMessage("Alteração bem-sucedida", "Sucesso!", "Alteração realizada com sucesso");
+                ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
+                ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
+            }
         }
         else {
-            Usuario editado = new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
-                    usuario.getCpf(), usuario.isAtivado(), usuario.getPerfil());
-            Fachada.getInstance().alterarUsuario(usuario, editado);
-            showInfoMessage("Alteração bem-sucedida", "Sucesso!", "Alteração realizada com sucesso");
-            ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
-            ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
+            showErrorMessage("Erro: campos vazios", "Os campos não podem ser vazios",
+                    "Por favor, altere e tente outra vez");
         }
     }
 
@@ -61,9 +68,19 @@ public class ControllerAlterarUsuarios implements Initializable {
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        choiceBoxTipo.getItems().addAll("Gerente", "Vendedor", "Cliente");
+    public void initialize() {
+        if (usuario != null) {
+            tfLogin.setText(usuario.getLogin());
+            tfNome.setText(usuario.getNome());
+            tfEmail.setText(usuario.getEmail());
+            senhaField.setText(usuario.getSenha());
+            choiceBoxTipo.setValue(usuario.getPerfil());
+            checkBoxAtivo.setSelected(usuario.isAtivado());
+        }
+
+        if (choiceBoxTipo.getItems().isEmpty()) {
+            choiceBoxTipo.getItems().addAll("Gerente", "Vendedor", "Cliente");
+        }
     }
 
     public void setUsuario(Usuario u) {
@@ -72,14 +89,6 @@ public class ControllerAlterarUsuarios implements Initializable {
         }
     }
 
-    public void initialize() {
-        if (usuario != null) {
-            tfLogin.setText(usuario.getLogin());
-            tfNome.setText(usuario.getNome());
-            tfEmail.setText(usuario.getEmail());
-            senhaField.setText(usuario.getSenha());
-        }
-    }
     private void showErrorMessage(String titulo, String header, String mensagem) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -100,13 +109,14 @@ public class ControllerAlterarUsuarios implements Initializable {
 
     private boolean verificarCampos() {
         return tfNome.getText().isBlank() || tfEmail.getText().isBlank() || tfLogin.getText().isBlank() ||
-                senhaField.getText().isBlank();
+                senhaField.getText().isBlank() || choiceBoxTipo.getValue() == null;
     }
 
     private boolean compararUsuarioAosCampos() {
-        //implementar os que faltam, precisa adicionar o resto na tela e ajustar o cpf
+        // ajustar o cpf
         return tfNome.getText().equals(usuario.getNome()) && tfEmail.getText().equals(usuario.getEmail()) &&
-                tfLogin.getText().equals(usuario.getLogin()) && senhaField.getText().equals(usuario.getSenha());
+                tfLogin.getText().equals(usuario.getLogin()) && senhaField.getText().equals(usuario.getSenha())
+                && (checkBoxAtivo.isSelected() == usuario.isAtivado()) && choiceBoxTipo.getValue().equals(usuario.getPerfil());
     }
 
 }
