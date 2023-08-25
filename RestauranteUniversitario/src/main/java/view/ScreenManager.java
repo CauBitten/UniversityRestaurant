@@ -85,6 +85,9 @@ public class ScreenManager {
 
     private Scene filtrarUsuarioScene;
     private ControllerFiltrarUsuarios controllerFiltrarUsuarios;
+
+    private Scene filtrarCardapioScene;
+    private ControllerFiltrarCardapio controllerFiltrarCardapio;
     // -----
 
     // Refeições Scenes
@@ -255,6 +258,22 @@ public class ScreenManager {
         return controllerAlterarCardapio;
     }
 
+    public Scene getFiltrarUsuarioScene() {
+        return filtrarUsuarioScene;
+    }
+
+    public ControllerFiltrarUsuarios getControllerFiltrarUsuarios() {
+        return controllerFiltrarUsuarios;
+    }
+
+    public Scene getFiltrarCardapioScene() {
+        return filtrarCardapioScene;
+    }
+
+    public ControllerFiltrarCardapio getControllerFiltrarCardapio() {
+        return controllerFiltrarCardapio;
+    }
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -399,6 +418,12 @@ public class ScreenManager {
                     .getResource("/gerente/telaFiltroUsuarios.fxml")).openStream());
             this.filtrarUsuarioScene = new Scene(filtrarUsuarioPane);
             this.controllerFiltrarUsuarios = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane filtrarCardapioPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaFiltroCardapio.fxml")).openStream());
+            this.filtrarCardapioScene = new Scene(filtrarCardapioPane);
+            this.controllerFiltrarCardapio = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -519,6 +544,11 @@ public class ScreenManager {
             case "FILTRAR_USUARIO" -> {
                 primaryStage.setScene(filtrarUsuarioScene);
                 primaryStage.setTitle("RU | TELA DE FILTRO DE USUÁRIOS");
+            }
+
+            case "FILTRAR_CARDAPIO" -> {
+                primaryStage.setScene(filtrarCardapioScene);
+                primaryStage.setTitle("RU | TELA DE FILTRO DE CARDÁPIOS");
             }
             // -----
         }

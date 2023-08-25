@@ -32,6 +32,9 @@ public class ControllerListarCardapios implements Initializable  {
     private Button buttonVoltarPagina;
 
     @FXML
+    private Button buttonFiltrar;
+
+    @FXML
     private TableColumn<Cardapio, String> tblColGuarnicao;
 
     @FXML
@@ -58,6 +61,17 @@ public class ControllerListarCardapios implements Initializable  {
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+    }
+
+    @FXML
+    void bttnFiltrarOn(ActionEvent event) {
+        if (!Fachada.getInstance().obterCardapios().isEmpty()) {
+            ScreenManager.getInstance().changeScreen(TelasEnum.FILTRAR_CARDAPIO.name());
+        }
+        else {
+            showErrorMessage("Erro: não há cardápios para pesquisar",
+                    "Para pesquisar cardápios, adicione pelo menos um.");
+        }
     }
 
     @FXML
@@ -103,7 +117,7 @@ public class ControllerListarCardapios implements Initializable  {
         tblColSobremesa.setCellValueFactory(new PropertyValueFactory<>("sobremesa"));
     }
 
-    private void configurarTv(List<Cardapio> cardapios) {
+    public void configurarTv(List<Cardapio> cardapios) {
         ObservableList<Cardapio> cardapioList = FXCollections.observableArrayList();
         cardapioList.addAll(cardapios);
         tvCardapios.setItems(cardapioList);

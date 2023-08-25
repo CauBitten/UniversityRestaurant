@@ -51,4 +51,8 @@ public class ControladorCardapio {
         if (c != null && editado != null)
             this.repositorioCardapio.alterarCardapio(c, editado);
     }
+
+    public List<Cardapio> obterCardapioComOsPratosContidosEm(Cardapio modelo) {
+        return this.repositorioCardapio.obterCardapiosComOsPratosIguaisA(modelo);
+    }
 }

@@ -16,4 +16,6 @@ public interface IRepositorioCardapio {
 
     public void alterarCardapio(Cardapio c, Cardapio editado);
 
+    public List<Cardapio> obterCardapiosComOsPratosIguaisA(Cardapio modelo);
+
 }

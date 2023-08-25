@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerListarCardapios">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerListarCardapios">
    <children>
-      <VBox layoutX="428.0" layoutY="294.0" prefHeight="82.0" prefWidth="146.0" spacing="20.0">
+      <VBox layoutX="417.0" layoutY="294.0" prefHeight="82.0" prefWidth="146.0" spacing="20.0">
          <children>
             <Button fx:id="buttonCadastrar" mnemonicParsing="false" onAction="#bttnCadastrarCardapioOn" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #149959;" text="CADASTRAR" textFill="WHITE">
                <font>
@@ -46,10 +46,19 @@
             </TableView>
          </children>
       </VBox>
-      <Button fx:id="buttonRemover" layoutX="24.0" layoutY="294.0" mnemonicParsing="false" onAction="#bttnRemoverOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #149959;" text="REMOVER" textFill="WHITE">
-         <font>
-            <Font name="Georgia Bold" size="14.0" />
-         </font>
-      </Button>
+      <VBox layoutX="37.0" layoutY="294.0" prefHeight="82.0" prefWidth="135.0" spacing="20.0">
+         <children>
+            <Button fx:id="buttonRemover" mnemonicParsing="false" onAction="#bttnRemoverOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #149959;" text="REMOVER" textFill="WHITE">
+               <font>
+                  <Font name="Georgia Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonFiltrar" mnemonicParsing="false" onAction="#bttnFiltrarOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #149959;" text="FILTRAR" textFill="WHITE">
+               <font>
+                  <Font name="Georgia Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

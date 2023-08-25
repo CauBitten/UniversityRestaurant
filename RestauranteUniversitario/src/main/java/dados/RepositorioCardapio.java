@@ -21,6 +21,7 @@ public class RepositorioCardapio implements IRepositorioCardapio {
         return instance;
     }
 
+    @Override
     public void cadastrarCardapio(Cardapio c) {
         if (c != null) {
             if (verificarSeHaCardapiosIguaisA(c)) {
@@ -41,12 +42,14 @@ public class RepositorioCardapio implements IRepositorioCardapio {
         return null;
     }
 
+    @Override
     public void removerCardapio(Cardapio c) {
         if (c != null) {
             cardapios.remove(c);
         }
     }
 
+    @Override
     public List<Cardapio> getCardapios() {
         return cardapios;
     }
@@ -60,6 +63,7 @@ public class RepositorioCardapio implements IRepositorioCardapio {
         return false;
     }
 
+    @Override
     public void alterarCardapio(Cardapio c, Cardapio editado) {
         if (verificarSeHaCardapiosIguaisA(editado)) {
             //atirar exceção cardapio já existe
@@ -76,5 +80,26 @@ public class RepositorioCardapio implements IRepositorioCardapio {
                 }
             }
         }
+    }
+
+    @Override
+    public List<Cardapio> obterCardapiosComOsPratosIguaisA(Cardapio modelo)
+    {
+        List<Cardapio> cardapiosFiltrados = new ArrayList<>();
+
+        for (Cardapio cardapio : cardapios) {
+            if (compararCardapioAoModelo(cardapio, modelo))
+            {
+                cardapiosFiltrados.add(cardapio);
+            }
+        }
+
+        return cardapiosFiltrados;
+    }
+
+    private boolean compararCardapioAoModelo(Cardapio c, Cardapio modelo) {
+        return c.getPrincipal().contains(modelo.getPrincipal()) && c.getVegetariano().contains(modelo.getVegetariano()) &&
+                c.getGuarnicao().contains(modelo.getGuarnicao()) && c.getSalada().contains(modelo.getSalada())
+                && c.getSobremesa().contains(c.getSobremesa()) && c.getSuco().contains(modelo.getSuco());
     }
 }

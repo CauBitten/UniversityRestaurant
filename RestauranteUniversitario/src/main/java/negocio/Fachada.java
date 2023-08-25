@@ -123,4 +123,8 @@ public class Fachada {
         return this.controladorUsuario.getUsuariosComPerfil(perfil);
     }
 
+    public List<Cardapio> obterCardapiosComPratosIguaisA(Cardapio modelo) {
+        return this.controladorCardapio.obterCardapioComOsPratosContidosEm(modelo);
+    }
+
 }
