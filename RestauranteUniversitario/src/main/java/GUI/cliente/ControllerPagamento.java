@@ -39,23 +39,28 @@ public class ControllerPagamento {
     @FXML
     void bttnComprarOn(ActionEvent event) {
         List<Ficha> fichasCompradas = new ArrayList<>();
-        for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorAlmoco();i++){
+
+        for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorAlmoco(); i++) {
             Ficha f = new Ficha("Almoco", Fachada.getInstance().getUsuarioLogado());
             fichasCompradas.add(f);
         }
-        for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorJantar();i++){
+
+        for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorJantar(); i++) {
             Ficha f = new Ficha("Janta", Fachada.getInstance().getUsuarioLogado());
             fichasCompradas.add(f);
         }
+
         for (Ficha f : fichasCompradas) {
             Fachada.getInstance().adicionarFicha(f);
         }
+
         RegistroCompra rc = new RegistroCompra(fichasCompradas,
-                Fachada.getInstance().getUsuarioLogado(), "zezo");
+                Fachada.getInstance().getUsuarioLogado(), "Online");
         Fachada.getInstance().cadastrarRegistroCompra(rc);
-        showInfoAlert("Compra", "", "Compra Efetuada Com Sucesso!");
+        showInfoAlert("Compra realizada", "A operação foi um sucesso", "Compra Efetuada Com Sucesso!");
         ScreenManager.getInstance().getControllerCompraFichas().clearFields();
         clearFields();
+        ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_CLIENTE.name());
     }
 
     @FXML
@@ -68,6 +73,7 @@ public class ControllerPagamento {
         if (cbCartao.isSelected()) {
             cbCartao.setSelected(false);
         }
+
         if (cbPix.isSelected()) {
             cbPix.setSelected(false);
         }
@@ -78,6 +84,7 @@ public class ControllerPagamento {
         if (cbPix.isSelected()) {
             cbPix.setSelected(false);
         }
+
         if (cbBoleto.isSelected()) {
             cbBoleto.setSelected(false);
         }
@@ -88,6 +95,7 @@ public class ControllerPagamento {
         if (cbBoleto.isSelected()) {
             cbBoleto.setSelected(false);
         }
+
         if (cbCartao.isSelected()) {
             cbCartao.setSelected(false);
         }
@@ -96,12 +104,12 @@ public class ControllerPagamento {
     public void inicializarValores() {
         double tFAlmoco = ScreenManager.getInstance().getControllerCompraFichas().getContadorAlmoco() * 3.5;
 
-        int tFJantar = ScreenManager.getInstance().getControllerCompraFichas().getContadorJantar() * 3;
+        double tFJantar = ScreenManager.getInstance().getControllerCompraFichas().getContadorJantar() * 3.0;
 
         double totalCompra = tFAlmoco + tFJantar;
 
         labelTFichasAlmoco.setText(Double.toString(tFAlmoco));
-        labelTFichasJantar.setText(Integer.toString(tFJantar));
+        labelTFichasJantar.setText(Double.toString(tFJantar));
         labelTCompra.setText(Double.toString(totalCompra));
     }
 
