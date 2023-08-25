@@ -2,6 +2,7 @@ package GUI.cliente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import view.ScreenManager;
@@ -79,6 +80,10 @@ public class ControllerCompraFichas {
             ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
             ScreenManager.getInstance().getControllerPagamento().inicializarValores();
         }
+        else {
+            showErrorMessage("Erro: nenhuma ficha selecionada", "Você deve selecionar fichas para compra",
+                    "Tente outra vez para prosseguir");
+        }
     }
 
     private void atualizarLabelNum (Label label, int contador) {
@@ -101,4 +106,14 @@ public class ControllerCompraFichas {
         cbAlmoco.setSelected(false);
         cbJantar.setSelected(false);
     }
+
+    private void showErrorMessage(String titulo, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.show();
+    }
+
 }

@@ -11,8 +11,6 @@ import negocio.beans.RegistroCompra;
 import view.ScreenManager;
 import view.TelasEnum;
 
-import java.nio.channels.FileChannel;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,31 +37,40 @@ public class ControllerPagamento {
     @FXML
     void bttnComprarOn(ActionEvent event) {
         List<Ficha> fichasCompradas = new ArrayList<>();
-        if(cbPix.isSelected() || cbCartao.isSelected() || cbBoleto.isSelected()) {
+
+        if (cbPix.isSelected() || cbCartao.isSelected() || cbBoleto.isSelected()) {
             for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorAlmoco(); i++) {
                 Ficha f = new Ficha("Almoco", Fachada.getInstance().getUsuarioLogado());
                 fichasCompradas.add(f);
                 Fachada.getInstance().adicionarFicha(f);
             }
+
             for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorJantar(); i++) {
                 Ficha f = new Ficha("Janta", Fachada.getInstance().getUsuarioLogado());
                 fichasCompradas.add(f);
                 Fachada.getInstance().adicionarFicha(f);
             }
+
             String pagamento;
-            if (cbBoleto.isSelected()){ pagamento = "Boleto";}
-            else if(cbPix.isSelected()){ pagamento = "Pix";}
-            else {pagamento = "Cartão";}
+
+            if (cbBoleto.isSelected())
+                pagamento = "Boleto";
+            else if (cbPix.isSelected())
+                pagamento = "Pix";
+            else
+                pagamento = "Cartão";
+
             RegistroCompra rc = new RegistroCompra(fichasCompradas,
-                    Fachada.getInstance().getUsuarioLogado(), "zezo", pagamento);
+                    Fachada.getInstance().getUsuarioLogado(), "Online", pagamento);
+
             Fachada.getInstance().cadastrarRegistroCompra(rc);
-            showInfoAlert("Compra", "", "Compra Efetuada Com Sucesso!");
+            showInfoAlert("Compra realizada", "A operação foi um sucesso", "Compra Efetuada Com Sucesso!");
             ScreenManager.getInstance().getControllerCompraFichas().clearFields();
             clearFields();
             ScreenManager.getInstance().changeScreen(TelasEnum.COMPRA_FICHAS.name());
-        } else {
-            showErrorAlert("Erro", "Campo não selecionado", "Você deve selecionar um método de pagamento para efetuar a compra");
         }
+        else
+            showErrorAlert("Erro", "Campo não selecionado", "Você deve selecionar um método de pagamento para efetuar a compra");
     }
 
     @FXML
@@ -73,32 +80,32 @@ public class ControllerPagamento {
 
     @FXML
     void cbBoletoOn(ActionEvent event) {
-        if (cbCartao.isSelected()) {
+        if (cbCartao.isSelected())
             cbCartao.setSelected(false);
-        }
-        if (cbPix.isSelected()) {
+
+        if (cbPix.isSelected())
             cbPix.setSelected(false);
-        }
+
     }
 
     @FXML
     void cbCartaoOn(ActionEvent event) {
-        if (cbPix.isSelected()) {
+        if (cbPix.isSelected())
             cbPix.setSelected(false);
-        }
-        if (cbBoleto.isSelected()) {
+
+        if (cbBoleto.isSelected())
             cbBoleto.setSelected(false);
-        }
+
     }
 
     @FXML
     void cbPixOn(ActionEvent event) {
-        if (cbBoleto.isSelected()) {
+        if (cbBoleto.isSelected())
             cbBoleto.setSelected(false);
-        }
-        if (cbCartao.isSelected()) {
+
+        if (cbCartao.isSelected())
             cbCartao.setSelected(false);
-        }
+
     }
 
     public void inicializarValores() {
