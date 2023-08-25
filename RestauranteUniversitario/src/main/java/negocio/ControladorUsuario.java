@@ -60,14 +60,6 @@ public class ControladorUsuario {
         return null;
     }
 
-    public List<Usuario> listarUsuariosPorDataNascimento(LocalDate dataNascimento) {
-        return repositorioUsuarios.getUsuariosPorDataNascimento(dataNascimento);
-    }
-
-    public List<Usuario> listarUsuariosAtivos(boolean ativo) {
-        return repositorioUsuarios.getUsuariosPorAtivacao(ativo);
-    }
-
     public List<Usuario> listarUsuariosPorNome(String nome) {
         return repositorioUsuarios.getUsuariosPorNome(nome);
     }
@@ -97,4 +89,9 @@ public class ControladorUsuario {
     public List<Usuario> getUsuariosComPerfil(String perfil) {
         return this.repositorioUsuarios.getUsuariosComPerfil(perfil);
     }
+
+    public List<Usuario> obterUsuariosComInformacoesContidasEm(Usuario modelo) {
+        return this.repositorioUsuarios.obterUsuariosComInformacoesContidasEm(modelo);
+    }
+
 }

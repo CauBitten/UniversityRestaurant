@@ -202,14 +202,20 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         return null;
     }
 
-    public List<Usuario> obterUsuariosComPerfil(String perfil) {
-        List<Usuario> usuariosPorPerfil = new ArrayList<>();
+    @Override
+    public List<Usuario> obterUsuariosComInformacoesContidasEm(Usuario modelo) {
+        List<Usuario> usuariosFiltrados = new ArrayList<>();
 
         for (Usuario usuario : usuarios) {
-            if (usuario.getPerfil().equals(perfil))
-                usuariosPorPerfil.add(usuario);
+            if (compararUsuarioAoModelo(usuario, modelo))
+                usuariosFiltrados.add(usuario);
         }
 
-        return usuariosPorPerfil;
+        return usuariosFiltrados;
+    }
+
+    private boolean compararUsuarioAoModelo(Usuario u, Usuario modelo) {
+        return u.getNome().contains(modelo.getNome()) && u.getPerfil().contains(modelo.getPerfil())
+                && u.getLogin().contains(modelo.getLogin()) && u.getEmail().contains(modelo.getEmail()) && u.isAtivado() == modelo.isAtivado();
     }
 }

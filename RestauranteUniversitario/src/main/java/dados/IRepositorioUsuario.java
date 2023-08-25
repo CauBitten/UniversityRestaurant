@@ -31,4 +31,6 @@ public interface IRepositorioUsuario {
 
     public Usuario getUsuarioPorEmail(String email);
 
+    public List<Usuario> obterUsuariosComInformacoesContidasEm(Usuario modelo);
+
 }
