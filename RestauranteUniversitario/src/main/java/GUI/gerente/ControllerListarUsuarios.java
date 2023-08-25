@@ -38,6 +38,9 @@ public class ControllerListarUsuarios implements Initializable {
     private Button buttonRemover;
 
     @FXML
+    private Button buttonFiltrar;
+
+    @FXML
     private TableColumn<Usuario, Boolean> tvColAtivo;
 
     @FXML
@@ -93,6 +96,10 @@ public class ControllerListarUsuarios implements Initializable {
         }
     }
 
+    public void bttnFiltrarOn(ActionEvent event) {
+        ScreenManager.getInstance().changeScreen(TelasEnum.FILTRAR_USUARIO.name());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tvColNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -103,11 +110,15 @@ public class ControllerListarUsuarios implements Initializable {
         tvColEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
     }
 
-    private void configurarTv(List<Usuario> usuarios) {
+    public void configurarTv(List<Usuario> usuarios) {
         ObservableList<Usuario> userList = FXCollections.observableArrayList();
-        for(Usuario u : usuarios) {
-            if(u.getNome()!= "avulso"){userList.add(u);}
+
+        for (Usuario u : usuarios) {
+            if(u.getNome() != "avulso"){
+                userList.add(u);
+            }
         }
+
         tvUsuarios.setItems(userList);
     }
 

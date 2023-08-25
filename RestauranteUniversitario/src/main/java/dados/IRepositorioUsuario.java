@@ -29,4 +29,6 @@ public interface IRepositorioUsuario {
 
     void alterarUsuario(Usuario user, Usuario editado);
 
+    public Usuario getUsuarioPorEmail(String email);
+
 }

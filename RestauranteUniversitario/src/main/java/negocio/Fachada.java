@@ -107,4 +107,20 @@ public class Fachada {
         return controladorRegistroCompra.getListaRegistroCompra();
     }
 
+    public List<Usuario> getUsuariosComNome(String nome) {
+        return this.controladorUsuario.listarUsuariosPorNome(nome);
+    }
+
+    public Usuario getUsuarioComEmail(String email) {
+        return this.controladorUsuario.getUsuarioComEmail(email);
+    }
+
+    public Usuario getUsuarioComLogin(String login) {
+        return this.controladorUsuario.getUsuarioPorLogin(login);
+    }
+
+    public List<Usuario> getUsuariosPorPerfil(String perfil) {
+        return this.controladorUsuario.getUsuariosComPerfil(perfil);
+    }
+
 }

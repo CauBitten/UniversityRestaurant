@@ -49,6 +49,8 @@ public class ControllerAlterarUsuarios implements Initializable {
                     usuario.getCpf(), usuario.isAtivado(), usuario.getPerfil());
             Fachada.getInstance().alterarUsuario(usuario, editado);
             showInfoMessage("Alteração bem-sucedida", "Sucesso!", "Alteração realizada com sucesso");
+            ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
+            ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
         }
     }
 

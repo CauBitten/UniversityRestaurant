@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerFiltrarUsuarios">
+   <children>
+      <Button layoutX="24.0" layoutY="24.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="12.0" />
+         </font>
+      </Button>
+      <VBox layoutX="174.0" layoutY="37.0" prefHeight="186.0" prefWidth="311.0" spacing="20.0">
+         <children>
+            <TextField fx:id="tfNome" minHeight="30.0" promptText="NOME" />
+            <TextField fx:id="tfEmail" minHeight="30.0" promptText="EMAIL" />
+            <TextField fx:id="tfLogin" minHeight="30.0" prefHeight="30.0" prefWidth="311.0" promptText="LOGIN" />
+            <TextField fx:id="tfCPF" minHeight="30.0" promptText="CPF" />
+         </children>
+      </VBox>
+      <VBox layoutX="128.0" layoutY="37.0" prefHeight="186.0" prefWidth="46.0" spacing="20.0">
+         <children>
+            <Label prefHeight="30.0" text="NOME:" textFill="#149959">
+               <font>
+                  <Font name="Georgia Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" text="EMAIL:" textFill="#149959">
+               <font>
+                  <Font name="Georgia Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" text="LOGIN:" textFill="#149959">
+               <font>
+                  <Font name="Georgia Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" text="CPF:" textFill="#149959">
+               <font>
+                  <Font name="Georgia Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Button fx:id="buttonFiltrar" layoutX="224.0" layoutY="303.0" minHeight="35.0" minWidth="152.0" mnemonicParsing="false" onAction="#bttnFiltrarOn" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: #149959;" text="FILTRAR" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="15.0" />
+         </font>
+      </Button>
+      <CheckBox fx:id="checkBoxAtivo" layoutX="379.0" layoutY="249.0" mnemonicParsing="false" text="Ativo" textFill="#149959">
+         <font>
+            <Font name="Georgia Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <ChoiceBox fx:id="choiceBoxTipo" layoutX="174.0" layoutY="245.0" prefWidth="150.0" />
+      <Label layoutX="122.0" layoutY="248.0" prefHeight="18.0" prefWidth="43.0" text="Perfil:" textFill="#149959">
+         <font>
+            <Font name="Georgia Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -82,6 +82,9 @@ public class ScreenManager {
 
     private Scene alterarCardapioScene;
     private ControllerAlterarCardapio controllerAlterarCardapio;
+
+    private Scene filtrarUsuarioScene;
+    private ControllerFiltrarUsuarios controllerFiltrarUsuarios;
     // -----
 
     // Refeições Scenes
@@ -319,8 +322,6 @@ public class ScreenManager {
             this.pagamentoVendedorScene = new Scene(pagamentoVendedor);
             this.controllerPagamentoVendedor = fxmlLoader.getController();
 
-
-
             fxmlLoader = new FXMLLoader();
             AnchorPane listarRefeicoesPane = fxmlLoader.load(Objects.requireNonNull(getClass()
                     .getResource("/vendedor/telaListarRefeicoes.fxml")).openStream());
@@ -392,6 +393,12 @@ public class ScreenManager {
                     .getResource("/gerente/telaAlterarCardapio.fxml")).openStream());
             this.alterarCardapioScene = new Scene(alterarCardapioPane);
             this.controllerAlterarCardapio = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane filtrarUsuarioPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaFiltroUsuarios.fxml")).openStream());
+            this.filtrarUsuarioScene = new Scene(filtrarUsuarioPane);
+            this.controllerFiltrarUsuarios = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -507,6 +514,11 @@ public class ScreenManager {
             case "ALTERAR_CARDAPIO" -> {
                 primaryStage.setScene(alterarCardapioScene);
                 primaryStage.setTitle("RU | TELA DE ALTERAR CARDÁPIO");
+            }
+
+            case "FILTRAR_USUARIO" -> {
+                primaryStage.setScene(filtrarUsuarioScene);
+                primaryStage.setTitle("RU | TELA DE FILTRO DE USUÁRIOS");
             }
             // -----
         }

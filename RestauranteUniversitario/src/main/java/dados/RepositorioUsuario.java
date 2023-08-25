@@ -69,6 +69,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         return null;
     }
 
+    @Override
     public Usuario getUsuarioPorEmail(String email) {
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email))
@@ -199,5 +200,16 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         }
 
         return null;
+    }
+
+    public List<Usuario> obterUsuariosComPerfil(String perfil) {
+        List<Usuario> usuariosPorPerfil = new ArrayList<>();
+
+        for (Usuario usuario : usuarios) {
+            if (usuario.getPerfil().equals(perfil))
+                usuariosPorPerfil.add(usuario);
+        }
+
+        return usuariosPorPerfil;
     }
 }
