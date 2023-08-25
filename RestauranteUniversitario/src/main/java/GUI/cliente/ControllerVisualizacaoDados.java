@@ -52,7 +52,7 @@ public class ControllerVisualizacaoDados {
         emailLabel.setText("E-mail: " + usuario.getEmail());
         cpfLabel.setText("Cpf: " + usuario.getCpf());
         jantarLabel.setText("Jantar: " + Fjanta);
-        almocoLabel.setText("Al mosso: " + FAlmoco);
+        almocoLabel.setText("Almoço: " + FAlmoco);
     }
 
     @FXML

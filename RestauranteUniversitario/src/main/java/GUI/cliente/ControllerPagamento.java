@@ -39,23 +39,31 @@ public class ControllerPagamento {
     @FXML
     void bttnComprarOn(ActionEvent event) {
         List<Ficha> fichasCompradas = new ArrayList<>();
-        for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorAlmoco();i++){
-            Ficha f = new Ficha("Almoco", Fachada.getInstance().getUsuarioLogado());
-            fichasCompradas.add(f);
+        if(cbPix.isSelected() || cbCartao.isSelected() || cbBoleto.isSelected()) {
+            for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorAlmoco(); i++) {
+                Ficha f = new Ficha("Almoco", Fachada.getInstance().getUsuarioLogado());
+                fichasCompradas.add(f);
+                Fachada.getInstance().adicionarFicha(f);
+            }
+            for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorJantar(); i++) {
+                Ficha f = new Ficha("Janta", Fachada.getInstance().getUsuarioLogado());
+                fichasCompradas.add(f);
+                Fachada.getInstance().adicionarFicha(f);
+            }
+            String pagamento;
+            if (cbBoleto.isSelected()){ pagamento = "Boleto";}
+            else if(cbPix.isSelected()){ pagamento = "Pix";}
+            else {pagamento = "Cartão";}
+            RegistroCompra rc = new RegistroCompra(fichasCompradas,
+                    Fachada.getInstance().getUsuarioLogado(), "zezo", pagamento);
+            Fachada.getInstance().cadastrarRegistroCompra(rc);
+            showInfoAlert("Compra", "", "Compra Efetuada Com Sucesso!");
+            ScreenManager.getInstance().getControllerCompraFichas().clearFields();
+            clearFields();
+            ScreenManager.getInstance().changeScreen(TelasEnum.COMPRA_FICHAS.name());
+        } else {
+            showErrorAlert("Erro", "Campo não selecionado", "Você deve selecionar um método de pagamento para efetuar a compra");
         }
-        for (int i = 0; i < ScreenManager.getInstance().getControllerCompraFichas().getContadorJantar();i++){
-            Ficha f = new Ficha("Janta", Fachada.getInstance().getUsuarioLogado());
-            fichasCompradas.add(f);
-        }
-        for (Ficha f : fichasCompradas) {
-            Fachada.getInstance().adicionarFicha(f);
-        }
-        RegistroCompra rc = new RegistroCompra(fichasCompradas,
-                Fachada.getInstance().getUsuarioLogado(), "zezo");
-        Fachada.getInstance().cadastrarRegistroCompra(rc);
-        showInfoAlert("Compra", "", "Compra Efetuada Com Sucesso!");
-        ScreenManager.getInstance().getControllerCompraFichas().clearFields();
-        clearFields();
     }
 
     @FXML
@@ -107,6 +115,15 @@ public class ControllerPagamento {
 
     private void showInfoAlert(String titulo, String header, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void showErrorAlert(String titulo, String header, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
 
         alert.setTitle(titulo);
         alert.setHeaderText(header);

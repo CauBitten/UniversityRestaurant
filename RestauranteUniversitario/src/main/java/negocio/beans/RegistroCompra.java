@@ -11,19 +11,20 @@ public class RegistroCompra {
     private Usuario usuario;
     private String vendedor;
     private LocalDateTime dataHoraCompra;
-    private Pagamento pagamento;
+    private String pagamento;
     private double valorCompra;
 
     DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     public RegistroCompra(List<Ficha> fichasCompradas, Usuario usuario,
-                          String vendedor)
+                          String vendedor, String pagamento)
     {
         this.fichasCompradas = fichasCompradas;
         this.usuario = usuario;
         this.vendedor = vendedor;
         this.dataHoraCompra = LocalDateTime.now();
         this.valorCompra = gerarValorDeCompra();
+        this.pagamento = pagamento;
     }
 
     // Getters
@@ -47,7 +48,7 @@ public class RegistroCompra {
         return dataHoraCompra;
     }
 
-    public Pagamento getPagamento() {
+    public String getPagamento() {
         return pagamento;
     }
 
@@ -70,11 +71,13 @@ public class RegistroCompra {
         this.codigoCompra = codigoCompra;
     }
 
-    public boolean pagamentoAutorizado() {
-        pagamento = new Pagamento(this.getValorCompra());
 
-        return pagamento.isAutorizado();
-    }
+
+//    public boolean pagamentoAutorizado() {
+//        pagamento = new Pagamento(this.getValorCompra());
+//
+//        return pagamento.isAutorizado();
+//    }
 
     public String toString() {
         String toString = "";
