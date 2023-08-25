@@ -75,8 +75,10 @@ public class ControllerCompraFichas {
 
     @FXML
     void bttnEfetuarCompraOn(ActionEvent event) {
-        ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
-        ScreenManager.getInstance().getControllerPagamento().inicializarValores();
+        if (contadorAlmoco > 0 || contadorJantar > 0) {
+            ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
+            ScreenManager.getInstance().getControllerPagamento().inicializarValores();
+        }
     }
 
     private void atualizarLabelNum (Label label, int contador) {
