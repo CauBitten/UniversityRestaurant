@@ -107,28 +107,16 @@ public class Fachada {
         return controladorRegistroCompra.getListaRegistroCompra();
     }
 
-    public List<Usuario> getUsuariosComNome(String nome) {
-        return this.controladorUsuario.listarUsuariosPorNome(nome);
-    }
-
-    public Usuario getUsuarioComEmail(String email) {
-        return this.controladorUsuario.getUsuarioComEmail(email);
-    }
-
-    public Usuario getUsuarioComLogin(String login) {
-        return this.controladorUsuario.getUsuarioPorLogin(login);
-    }
-
-    public List<Usuario> getUsuariosPorPerfil(String perfil) {
-        return this.controladorUsuario.getUsuariosComPerfil(perfil);
-    }
-
     public List<Cardapio> obterCardapiosComPratosIguaisA(Cardapio modelo) {
         return this.controladorCardapio.obterCardapioComOsPratosContidosEm(modelo);
     }
 
     public List<Usuario> obterUsuariosComInformacoesContidasEm(Usuario modelo) {
         return this.controladorUsuario.obterUsuariosComInformacoesContidasEm(modelo);
+    }
+
+    public List<RegistroCompra> obterRegistrosContidosEm(RegistroCompra modelo, int almoco, int janta) {
+        return this.controladorRegistroCompra.obterRegistrosContidosEm(modelo, almoco, janta);
     }
 
 }

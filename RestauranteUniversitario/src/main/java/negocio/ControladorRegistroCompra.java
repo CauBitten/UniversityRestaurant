@@ -39,4 +39,8 @@ public class ControladorRegistroCompra{
     public List<RegistroCompra> getListaRegistroCompra() {
         return repositorioRegistroCompra.getListaRegistroCompra();
     }
+
+    public List<RegistroCompra> obterRegistrosContidosEm(RegistroCompra modelo, int almoco, int janta) {
+        return this.repositorioRegistroCompra.obterRegistrosComInformacoesContidasEm(modelo, almoco, janta);
+    }
 }

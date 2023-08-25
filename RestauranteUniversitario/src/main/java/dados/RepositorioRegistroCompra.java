@@ -1,6 +1,7 @@
 package dados;
 
 import negocio.beans.Cliente;
+import negocio.beans.Ficha;
 import negocio.beans.RegistroCompra;
 
 import java.time.LocalDateTime;
@@ -117,4 +118,36 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
 
         return registrosPorVendedor;
     }
+
+    @Override
+    public List<RegistroCompra> obterRegistrosComInformacoesContidasEm(RegistroCompra modelo, int almoco, int janta) {
+        List<RegistroCompra> registrosFiltrados = new ArrayList<>();
+
+        for (RegistroCompra registroCompra : registrosCompras) {
+            if (compararRegistroAoModelo(registroCompra, modelo, almoco, janta))
+                registrosFiltrados.add(registroCompra);
+        }
+
+        return registrosFiltrados;
+    }
+
+    private boolean compararRegistroAoModelo(RegistroCompra r, RegistroCompra modelo, int almoco, int janta) {
+        return r.getVendedor().contains(modelo.getVendedor()) && r.getValorCompra() >= modelo.getValorCompra() &&
+                r.getPagamento().equals(modelo.getPagamento()) && (r.getDataHoraCompra().isAfter(modelo.getDataHoraCompra()) ||
+                r.getDataHoraCompra().isEqual(modelo.getDataHoraCompra()) || r.getCodigoCompra() >= modelo.getCodigoCompra()) ||
+                contarQuantidadeDeFichasDoTipo("Janta", r) >= janta ||
+                contarQuantidadeDeFichasDoTipo("Almoco", r) >= almoco;
+    }
+
+    private int contarQuantidadeDeFichasDoTipo(String tipo, RegistroCompra r) {
+        int qtd = 0;
+
+        for (Ficha ficha : r.getFichasCompradas()) {
+            if (ficha.getTipo().equals(tipo))
+                qtd++;
+        }
+
+        return qtd;
+    }
+
 }

@@ -8,20 +8,23 @@ import java.util.List;
 
 public interface IRepositorioRegistroCompra {
 
-    public void cadastrarRegistroCompra(RegistroCompra rc);
+    void cadastrarRegistroCompra(RegistroCompra rc);
 
-    public void removerRegistroCompra(RegistroCompra rc);
+    void removerRegistroCompra(RegistroCompra rc);
 
-    public List<RegistroCompra> getListaRegistroCompra();
+    List<RegistroCompra> getListaRegistroCompra();
 
-    public List<RegistroCompra> getRegistrosComprasDoCliente(Cliente c);
+    List<RegistroCompra> getRegistrosComprasDoCliente(Cliente c);
 
-    public List<RegistroCompra> getRegistrosComprasPorIntervaloDeDataHora(
+    List<RegistroCompra> getRegistrosComprasPorIntervaloDeDataHora(
             LocalDateTime dataHoraInicial, LocalDateTime dataHoraFinal);
 
-    public List<RegistroCompra> getRegistrosComprasComValorMaiorOuIgualQue(double valor);
+    List<RegistroCompra> getRegistrosComprasComValorMaiorOuIgualQue(double valor);
 
-    public RegistroCompra getRegistroCompraPorCodigo(long codigo);
+    RegistroCompra getRegistroCompraPorCodigo(long codigo);
 
-    public List<RegistroCompra> getRegistrosComprasDoVendedor(String vendedor);
+    List<RegistroCompra> getRegistrosComprasDoVendedor(String vendedor);
+
+    List<RegistroCompra> obterRegistrosComInformacoesContidasEm(RegistroCompra modelo, int almoco, int janta);
+
 }

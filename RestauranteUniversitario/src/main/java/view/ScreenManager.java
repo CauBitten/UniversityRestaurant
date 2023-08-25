@@ -88,6 +88,9 @@ public class ScreenManager {
 
     private Scene filtrarCardapioScene;
     private ControllerFiltrarCardapio controllerFiltrarCardapio;
+
+    private Scene filtrarRegistrosScene;
+    private ControllerFiltrarRegistroCompra controllerFiltrarRegistroCompra;
     // -----
 
     // Refeições Scenes
@@ -274,6 +277,14 @@ public class ScreenManager {
         return controllerFiltrarCardapio;
     }
 
+    public Scene getFiltrarRegistrosScene() {
+        return filtrarRegistrosScene;
+    }
+
+    public ControllerFiltrarRegistroCompra getControllerFiltrarRegistroCompra() {
+        return controllerFiltrarRegistroCompra;
+    }
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -424,6 +435,12 @@ public class ScreenManager {
                     .getResource("/gerente/telaFiltroCardapio.fxml")).openStream());
             this.filtrarCardapioScene = new Scene(filtrarCardapioPane);
             this.controllerFiltrarCardapio = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane filtrarRegistrosPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaFiltroRegistroCompra.fxml")).openStream());
+            this.filtrarRegistrosScene = new Scene(filtrarRegistrosPane);
+            this.controllerFiltrarRegistroCompra = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -549,6 +566,11 @@ public class ScreenManager {
             case "FILTRAR_CARDAPIO" -> {
                 primaryStage.setScene(filtrarCardapioScene);
                 primaryStage.setTitle("RU | TELA DE FILTRO DE CARDÁPIOS");
+            }
+
+            case "FILTRAR_REGISTRO" -> {
+                primaryStage.setScene(filtrarRegistrosScene);
+                primaryStage.setTitle("RU | TELA DE FILTRO DE REGISTROS");
             }
             // -----
         }

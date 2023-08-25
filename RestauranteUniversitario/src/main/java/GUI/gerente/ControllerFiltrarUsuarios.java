@@ -54,7 +54,7 @@ public class ControllerFiltrarUsuarios {
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
     }
 
-    List<Usuario> filtrar() {
+    private List<Usuario> filtrar() {
         List<Usuario> usuarios = new ArrayList<>();
 
         if (tfLogin.getText().isBlank() && tfEmail.getText().isBlank()

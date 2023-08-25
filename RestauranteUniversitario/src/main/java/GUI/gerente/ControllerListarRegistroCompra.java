@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,6 +30,9 @@ public class ControllerListarRegistroCompra implements Initializable {
 
     @FXML
     private Button buttonVoltarPagina;
+
+    @FXML
+    private Button buttonFiltrar;
 
     @FXML
     private TableColumn<RegistroCompra, Long> codigoColumn = new TableColumn<>("Código");
@@ -63,6 +67,26 @@ public class ControllerListarRegistroCompra implements Initializable {
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
     }
 
+    @FXML
+    void bttnFiltrarOn(ActionEvent event) {
+        //if (!Fachada.getInstance().getRegistrosCompra().isEmpty()) {
+            ScreenManager.getInstance().changeScreen(TelasEnum.FILTRAR_REGISTRO.name());
+        /*}
+        else {
+            showErrorMessage("Não há registros de compra", "Não foi possível buscar os registros",
+                    "Não há registros para buscar");
+        }*/
+    }
+
+    private void showErrorMessage(String titulo, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.show();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
 
@@ -86,7 +110,7 @@ public class ControllerListarRegistroCompra implements Initializable {
 
     }
 
-    private void configurarTv(List<RegistroCompra> registroCompras) {
+    public void configurarTv(List<RegistroCompra> registroCompras) {
         ObservableList<RegistroCompra> registroList = FXCollections.observableArrayList();
         registroList.addAll(registroCompras);
         tvRegistroCompra.setItems(registroList);
