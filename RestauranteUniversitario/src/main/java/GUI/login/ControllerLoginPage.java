@@ -50,6 +50,7 @@ public class ControllerLoginPage {
             }
         }
         else {
+            //Atirar exceções de acesso: login não existe, senha incorreta ou usuário desativado
             showErrorAlert("Erro: acesso negado", "Credenciais inválidas informadas", "Atualize e tente outra vez");
         }
 
