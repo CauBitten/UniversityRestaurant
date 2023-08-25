@@ -1,15 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.vendedor.ControllerVenda">
+<AnchorPane prefHeight="400.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.vendedor.ControllerVenda">
    <children>
+
       <Button fx:id="buttonVoltarPagina" layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="196.0" layoutY="40.0" prefHeight="42.0" prefWidth="293.0" text="VENDER FICHAS AVULSAS" textAlignment="CENTER" textFill="#149959">
+         <font>
+            <Font name="Georgia Bold" size="20.0" />
+         </font>
+      </Label>
+      <VBox layoutX="148.0" layoutY="124.0" prefHeight="138.0" prefWidth="178.0">
+         <children>
+            <CheckBox mnemonicParsing="false" prefHeight="85.0" prefWidth="168.0" text="Ficha de Almoço" />
+            <CheckBox mnemonicParsing="false" prefHeight="59.0" prefWidth="158.0" text="Ficha de Jantar" />
+         </children>
+      </VBox>
+      <VBox layoutX="427.0" layoutY="151.0" prefHeight="138.0" prefWidth="178.0" spacing="20.0">
+         <children>
+            <HBox prefHeight="51.0" prefWidth="178.0" spacing="10.0">
+               <children>
+                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" text="-" />
+                  <Label minHeight="25.0" minWidth="25.0" text="   0" />
+                  <Button layoutX="10.0" layoutY="10.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" text="+" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="51.0" prefWidth="178.0" spacing="10.0">
+               <children>
+                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" text="-" />
+                  <Label minHeight="25.0" minWidth="25.0" text="   0" />
+                  <Button layoutX="10.0" layoutY="10.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" text="+" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button layoutX="246.0" layoutY="311.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="194.0" style="-fx-background-color: #149959;" text="EFETUAR COMPRA" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="15.0" />
          </font>
       </Button>
    </children>
