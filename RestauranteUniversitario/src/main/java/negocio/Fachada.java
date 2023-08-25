@@ -102,4 +102,9 @@ public class Fachada {
     public Usuario getAvulso(){
         return controladorUsuario.getAvulso();
     }
+
+    public List<RegistroCompra> getRegistrosCompra(){
+        return controladorRegistroCompra.getListaRegistroCompra();
+    }
+
 }
