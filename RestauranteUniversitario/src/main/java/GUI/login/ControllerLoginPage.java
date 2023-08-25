@@ -29,7 +29,7 @@ public class ControllerLoginPage {
     public void entrarButtonClicked(ActionEvent event) {
         Usuario u = obterUsuarioDe(loginField.getText(), passwordField.getText());
 
-        if (u != null) {
+        if (u != null && u.isAtivado()) {
             switch (u.getPerfil()) {
                 case "Cliente" -> {
                     showInfoAlert("Acesso permitido", "Login bem-sucedido", "Bem-vindo ao RU");
