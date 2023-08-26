@@ -50,8 +50,8 @@ public class ControllerVisualizacaoDados {
         loginLabel.setText("Login: " + usuario.getLogin());
         emailLabel.setText("E-mail: " + usuario.getEmail());
         cpfLabel.setText("CPF: " + usuario.getCpf());
-        jantarLabel.setText("Jantar: " + fJanta);
         almocoLabel.setText("Almoço: " + fAlmoco);
+        jantarLabel.setText("Jantar: " + fJanta);
     }
 
     @FXML

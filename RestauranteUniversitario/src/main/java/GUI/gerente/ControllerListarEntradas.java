@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import negocio.beans.Entrada;
+import view.ScreenManager;
+import view.TelasEnum;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -41,7 +43,7 @@ public class ControllerListarEntradas {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
-
+        ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
     }
 
     public void initialize() {

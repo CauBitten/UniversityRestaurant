@@ -41,7 +41,7 @@
                   <Font name="Georgia" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="labelTFichasJantar" prefHeight="26.0" prefWidth="45.0" textFill="#8e8e8e">
+            <Label fx:id="labelTFichasJantar" prefHeight="26.0" prefWidth="45.0" >
                <font>
                   <Font name="Georgia" size="12.0" />
                </font>

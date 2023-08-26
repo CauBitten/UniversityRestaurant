@@ -91,6 +91,9 @@ public class ScreenManager {
 
     private Scene filtrarRegistrosScene;
     private ControllerFiltrarRegistroCompra controllerFiltrarRegistroCompra;
+
+    private Scene listarEntradasScene;
+    private ControllerListarEntradas controllerListarEntradas;
     // -----
 
     // Refeições Scenes
@@ -285,6 +288,10 @@ public class ScreenManager {
         return controllerFiltrarRegistroCompra;
     }
 
+    public Scene getListarEntradasScene() { return listarEntradasScene; }
+
+    public ControllerListarEntradas getControllerListarEntradas(){return controllerListarEntradas;}
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -441,6 +448,12 @@ public class ScreenManager {
                     .getResource("/gerente/telaFiltroRegistroCompra.fxml")).openStream());
             this.filtrarRegistrosScene = new Scene(filtrarRegistrosPane);
             this.controllerFiltrarRegistroCompra = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane listarEntradasPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaListarEntradas.fxml")).openStream());
+            this.listarEntradasScene = new Scene(listarEntradasPane);
+            this.controllerListarEntradas = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -520,6 +533,11 @@ public class ScreenManager {
                 primaryStage.setScene(listarRegistroCompraScene);
                 primaryStage.setTitle("RU | TELA LISTAR REGISTRO COMPRA");
             }
+
+            case "LISTAR_ENTRADAS" -> {
+                primaryStage.setScene(listarEntradasScene);
+                primaryStage.setTitle("RU | TELA LISTAR ENTRADAS");
+            }
             // -----
 
             // Refeições
@@ -572,6 +590,7 @@ public class ScreenManager {
                 primaryStage.setScene(filtrarRegistrosScene);
                 primaryStage.setTitle("RU | TELA DE FILTRO DE REGISTROS");
             }
+
             // -----
         }
     }
