@@ -119,4 +119,8 @@ public class Fachada {
         return this.controladorRegistroCompra.obterRegistrosContidosEm(modelo, almoco, janta);
     }
 
+    public Usuario getUsuarioPorLogin(String login) {
+        return this.controladorUsuario.getUsuarioPorLogin(login);
+    }
+
 }

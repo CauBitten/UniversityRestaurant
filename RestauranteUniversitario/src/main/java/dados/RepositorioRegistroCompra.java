@@ -60,66 +60,6 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
     }
 
     @Override
-    public List<RegistroCompra> getRegistrosComprasDoCliente(Cliente c) {
-        List<RegistroCompra> registroComprasPorCliente = new ArrayList<>();
-
-        if (c != null) {
-            for (RegistroCompra registro : registrosCompras) {
-                long cpfCliente = registro.getUsuario().getCpf();
-
-                if (cpfCliente == c.getCpf())
-                    registroComprasPorCliente.add(registro);
-            }
-        }
-
-        return registroComprasPorCliente;
-    }
-
-    @Override
-    public List<RegistroCompra> getRegistrosComprasPorIntervaloDeDataHora(
-            LocalDateTime dataHoraInicial, LocalDateTime dataHoraFinal)
-    {
-        //Atualizar
-        List<RegistroCompra> registrosPorData = new ArrayList<>();
-
-        return registrosPorData;
-    }
-
-    @Override
-    public List<RegistroCompra> getRegistrosComprasComValorMaiorOuIgualQue(double valor) {
-        List<RegistroCompra> registrosPorValor = new ArrayList<>();
-
-        for (RegistroCompra registro : registrosCompras) {
-            if (registro.getValorCompra() >= valor)
-                registrosPorValor.add(registro);
-        }
-
-        return registrosPorValor;
-    }
-
-    @Override
-    public RegistroCompra getRegistroCompraPorCodigo(long codigo) {
-        for (RegistroCompra registro : registrosCompras) {
-            if (registro.getCodigoCompra() == codigo)
-                return registro;
-        }
-
-        return null;
-    }
-
-    @Override
-    public List<RegistroCompra> getRegistrosComprasDoVendedor(String vendedor) {
-        List<RegistroCompra> registrosPorVendedor = new ArrayList<>();
-
-        for (RegistroCompra registro : registrosCompras) {
-            if (registro.getVendedor().equals(vendedor))
-                registrosPorVendedor.add(registro);
-        }
-
-        return registrosPorVendedor;
-    }
-
-    @Override
     public List<RegistroCompra> obterRegistrosComInformacoesContidasEm(RegistroCompra modelo, int almoco, int janta) {
         List<RegistroCompra> registrosFiltrados = new ArrayList<>();
 
@@ -132,11 +72,11 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
     }
 
     private boolean compararRegistroAoModelo(RegistroCompra r, RegistroCompra modelo, int almoco, int janta) {
-        return r.getVendedor().contains(modelo.getVendedor()) && r.getValorCompra() >= modelo.getValorCompra() &&
-                r.getPagamento().equals(modelo.getPagamento()) && (r.getDataHoraCompra().isAfter(modelo.getDataHoraCompra()) ||
-                r.getDataHoraCompra().isEqual(modelo.getDataHoraCompra()) || r.getCodigoCompra() >= modelo.getCodigoCompra()) ||
-                contarQuantidadeDeFichasDoTipo("Janta", r) >= janta ||
-                contarQuantidadeDeFichasDoTipo("Almoco", r) >= almoco;
+        return r.getLoginVendedor().contains(modelo.getLoginVendedor()) && r.getValorCompra() >= modelo.getValorCompra() &&
+                r.getPagamento().contains(modelo.getPagamento()) && (r.getDataHoraCompra().isAfter(modelo.getDataHoraCompra()) ||
+                r.getDataHoraCompra().isEqual(modelo.getDataHoraCompra())) && r.getCodigoCompra() >= modelo.getCodigoCompra() &&
+                contarQuantidadeDeFichasDoTipo("Janta", r) >= janta &&
+                contarQuantidadeDeFichasDoTipo("Almoco", r) >= almoco && r.getLoginCliente().contains(modelo.getLoginCliente());
     }
 
     private int contarQuantidadeDeFichasDoTipo(String tipo, RegistroCompra r) {

@@ -11,6 +11,7 @@ import negocio.beans.RegistroCompra;
 import view.ScreenManager;
 import view.TelasEnum;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,8 +61,8 @@ public class ControllerPagamento {
             else
                 pagamento = "Cartão";
 
-            RegistroCompra rc = new RegistroCompra(fichasCompradas,
-                    Fachada.getInstance().getUsuarioLogado(), "Online", pagamento);
+            RegistroCompra rc = new RegistroCompra(fichasCompradas, Fachada.getInstance().getUsuarioLogado().getLogin(),
+                    "online", pagamento, LocalDateTime.now());
 
             Fachada.getInstance().cadastrarRegistroCompra(rc);
             showInfoAlert("Compra realizada", "A operação foi um sucesso", "Compra Efetuada Com Sucesso!");

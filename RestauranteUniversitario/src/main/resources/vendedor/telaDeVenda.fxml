@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.vendedor.ControllerVenda">
+<AnchorPane prefHeight="400.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.vendedor.ControllerVenda">
    <children>
 
       <Button fx:id="buttonVoltarPagina" layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
@@ -28,14 +32,14 @@
             <HBox prefHeight="51.0" prefWidth="178.0" spacing="10.0">
                <children>
                   <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnDecrementarOn1" text="-" />
-                  <Label fx:id="labelQuantidadeAlmoco" minHeight="25.0" minWidth="25.0" text="   0" textAlignment="CENTER" />
+                  <Label fx:id="labelQuantidadeAlmoco" alignment="CENTER" minHeight="25.0" minWidth="25.0" text="   0" textAlignment="CENTER" />
                   <Button layoutX="10.0" layoutY="10.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnIncrementarOn1" text="+" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" prefHeight="51.0" prefWidth="178.0" spacing="10.0">
                <children>
                   <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnDecrementarOn2" text="-" />
-                  <Label fx:id="labelQuantidadeJantar" minHeight="25.0" minWidth="25.0" text="   0" textAlignment="CENTER" />
+                  <Label fx:id="labelQuantidadeJantar" alignment="CENTER" minHeight="25.0" minWidth="25.0" text="   0" textAlignment="CENTER" />
                   <Button layoutX="10.0" layoutY="10.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnIncrementarOn2" text="+" />
                </children>
             </HBox>

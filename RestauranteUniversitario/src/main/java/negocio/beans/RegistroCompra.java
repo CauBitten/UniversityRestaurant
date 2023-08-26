@@ -8,21 +8,21 @@ public class RegistroCompra {
 
     private List<Ficha> fichasCompradas;
     private long codigoCompra;
-    private Usuario usuario;
-    private String vendedor;
+    private String loginCliente;
+    private String loginVendedor;
     private LocalDateTime dataHoraCompra;
     private String pagamento;
     private double valorCompra;
 
     DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-    public RegistroCompra(List<Ficha> fichasCompradas, Usuario usuario,
-                          String vendedor, String pagamento)
+    public RegistroCompra(List<Ficha> fichasCompradas, String loginCliente,
+                          String loginVendedor, String pagamento, LocalDateTime dataHoraCompra)
     {
         this.fichasCompradas = fichasCompradas;
-        this.usuario = usuario;
-        this.vendedor = vendedor;
-        this.dataHoraCompra = LocalDateTime.now();
+        this.loginCliente = loginCliente;
+        this.loginVendedor = loginVendedor;
+        this.dataHoraCompra = dataHoraCompra;
         this.valorCompra = gerarValorDeCompra();
         this.pagamento = pagamento;
     }
@@ -36,12 +36,12 @@ public class RegistroCompra {
         return codigoCompra;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getLoginCliente() {
+        return loginCliente;
     }
 
-    public String getVendedor() {
-        return vendedor;
+    public String getLoginVendedor() {
+        return loginVendedor;
     }
 
     public LocalDateTime getDataHoraCompra() {
@@ -83,8 +83,8 @@ public class RegistroCompra {
         String toString = "";
 
         toString = String.format("=============== %d ===============\n", codigoCompra);
-        toString += String.format("negocio.beans.Cliente     : %s\n", usuario.getNome());
-        toString += String.format("negocio.beans.Vendedor    : %s\n", vendedor);
+        toString += String.format("negocio.beans.Cliente     : %s\n", loginCliente);
+        toString += String.format("negocio.beans.Vendedor    : %s\n", loginVendedor);
         toString += String.format("Data & Hora : %s\n", dataHoraCompra.format(formatoDataHora));
         toString += String.format("Valor       : %.2f\n", valorCompra);
         toString += "==================RC=================\n";

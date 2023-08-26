@@ -2,10 +2,7 @@ package GUI.gerente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import negocio.Fachada;
 import negocio.beans.RegistroCompra;
 import view.ScreenManager;
@@ -35,17 +32,19 @@ public class ControllerFiltrarRegistroCompra {
     private TextField tfJanta;
 
     @FXML
-    private TextField tfPagamento;
-
-    @FXML
     private TextField tfValor;
 
     @FXML
     private TextField tfVendedor;
 
     @FXML
+    private ChoiceBox<String> cbPagamento;
+
+    @FXML
     void bttnFiltrarOn(ActionEvent event) {
+        ScreenManager.getInstance().getControllerListarRegistroCompra().atualizarApresentacao();
         List<RegistroCompra> registroCompras = filtrar();
+        System.out.println(registroCompras);
 
         if (registroCompras.isEmpty())
             showErrorMessage("Erro: nada encontrado", "A busca não retornou resultados",
@@ -55,6 +54,11 @@ public class ControllerFiltrarRegistroCompra {
 
         clearFields();
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_REGISTRO_COMPRA.name());
+    }
+
+    public void initialize() {
+        if (cbPagamento.getItems().isEmpty())
+            cbPagamento.getItems().addAll("Pix", "Cartão", "Boleto");
     }
 
     @FXML
@@ -68,7 +72,7 @@ public class ControllerFiltrarRegistroCompra {
         tfCodigo.setText("");
         tfCliente.setText("");
         tfValor.setText("");
-        tfPagamento.setText("");
+        cbPagamento.setValue("");
         tfVendedor.setText("");
         tfJanta.setText("");
 
@@ -79,12 +83,24 @@ public class ControllerFiltrarRegistroCompra {
         List<RegistroCompra> registrosFiltrados = new ArrayList<>();
 
         if (tfAlmoco.getText().isBlank() && tfJanta.getText().isBlank() && tfVendedor.getText().isBlank() &&
-            tfPagamento.getText().isBlank() && tfCliente.getText().isBlank() && tfCodigo.getText().isBlank() &&
+            cbPagamento.getValue().isBlank() && tfCliente.getText().isBlank() && tfCodigo.getText().isBlank() &&
             dtpData.getValue() == null) {
             registrosFiltrados = Fachada.getInstance().getRegistrosCompra();
         }
         else {
-            //RegistroCompra r = new RegistroCompra(null, Fa)
+            RegistroCompra modelo;
+
+            if (cbPagamento.getValue() == null) {
+                modelo = new RegistroCompra(new ArrayList<>(0), tfCliente.getText(),
+                        tfVendedor.getText(), "", dtpData.getValue().atStartOfDay());
+            }
+            else {
+                modelo = new RegistroCompra(new ArrayList<>(0), tfCliente.getText(),
+                        tfVendedor.getText(), cbPagamento.getValue(), dtpData.getValue().atStartOfDay());
+            }
+
+            registrosFiltrados.addAll(Fachada.getInstance().obterRegistrosContidosEm(modelo,
+                    Integer.parseInt(tfAlmoco.getText()), Integer.parseInt(tfJanta.getText())));
         }
 
         return registrosFiltrados;

@@ -60,10 +60,6 @@ public class ControladorUsuario {
         return null;
     }
 
-    public List<Usuario> listarUsuariosPorNome(String nome) {
-        return repositorioUsuarios.getUsuariosPorNome(nome);
-    }
-
     public Usuario getUsuarioPorLogin(String login) {
         return repositorioUsuarios.getUsuarioPorLogin(login);
     }
@@ -80,14 +76,6 @@ public class ControladorUsuario {
     }
     public Usuario getAvulso(){
         return getUsuarioPorCPF(000L);
-    }
-
-    public Usuario getUsuarioComEmail(String email) {
-        return this.repositorioUsuarios.getUsuarioPorEmail(email);
-    }
-
-    public List<Usuario> getUsuariosComPerfil(String perfil) {
-        return this.repositorioUsuarios.getUsuariosComPerfil(perfil);
     }
 
     public List<Usuario> obterUsuariosComInformacoesContidasEm(Usuario modelo) {

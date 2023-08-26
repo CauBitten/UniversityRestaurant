@@ -14,17 +14,6 @@ public interface IRepositorioRegistroCompra {
 
     List<RegistroCompra> getListaRegistroCompra();
 
-    List<RegistroCompra> getRegistrosComprasDoCliente(Cliente c);
-
-    List<RegistroCompra> getRegistrosComprasPorIntervaloDeDataHora(
-            LocalDateTime dataHoraInicial, LocalDateTime dataHoraFinal);
-
-    List<RegistroCompra> getRegistrosComprasComValorMaiorOuIgualQue(double valor);
-
-    RegistroCompra getRegistroCompraPorCodigo(long codigo);
-
-    List<RegistroCompra> getRegistrosComprasDoVendedor(String vendedor);
-
     List<RegistroCompra> obterRegistrosComInformacoesContidasEm(RegistroCompra modelo, int almoco, int janta);
 
 }

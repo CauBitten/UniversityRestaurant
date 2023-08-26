@@ -49,6 +49,7 @@ public class ControllerCadastroUsuario implements Initializable {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
+        clearFields();
         ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
     }
@@ -89,7 +90,6 @@ public class ControllerCadastroUsuario implements Initializable {
         senhaField.setText("");
         choiceBoxTipo.setValue(null);
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -70,6 +70,7 @@ public class ControllerListarRegistroCompra implements Initializable {
     @FXML
     void bttnFiltrarOn(ActionEvent event) {
         //if (!Fachada.getInstance().getRegistrosCompra().isEmpty()) {
+        ScreenManager.getInstance().getControllerFiltrarRegistroCompra().initialize();
             ScreenManager.getInstance().changeScreen(TelasEnum.FILTRAR_REGISTRO.name());
         /*}
         else {
@@ -92,9 +93,9 @@ public class ControllerListarRegistroCompra implements Initializable {
 
         codigoColumn.setCellValueFactory(new PropertyValueFactory<>("codigoCompra"));
 
-        clienteColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsuario().getNome()));
+        clienteColumn.setCellValueFactory(new PropertyValueFactory<>("loginCliente"));
 
-        vendedorColumn.setCellValueFactory(new PropertyValueFactory<>("vendedor"));
+        vendedorColumn.setCellValueFactory(new PropertyValueFactory<>("loginVendedor"));
 
         dataHoraColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getDataHoraCompra().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))));
@@ -106,7 +107,7 @@ public class ControllerListarRegistroCompra implements Initializable {
         almocoColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().
             getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Almoco")).collect(Collectors.toList()).size()).asObject());
         jantaColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().
-                getFichasCompradas().stream() .filter(ficha -> ficha.getTipo().equals("Janta")) .collect(Collectors.toList()).size()).asObject());
+                getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Janta")) .collect(Collectors.toList()).size()).asObject());
 
     }
 
