@@ -17,7 +17,7 @@ public class Fachada {
 
     private Fachada() {
         this.controladorUsuario = ControladorUsuario.getInstance();
-        //this.controladorEntrada = ControladorEntrada.getInstance();
+        this.controladorEntrada = ControladorEntrada.getInstance();
         this.controladorCardapio = ControladorCardapio.getInstance();
         this.controladorFicha = ControladorFicha.getInstance();
         this.controladorRegistroCompra = ControladorRegistroCompra.getInstance();
@@ -42,6 +42,14 @@ public class Fachada {
         if (c != null) {
             controladorCardapio.cadastrarCardapio(c);
         }
+    }
+
+    public void adicionarEntrada(Entrada e) {
+        controladorEntrada.adicionarEntrada(e);
+    }
+
+    public List<Entrada> getListaEntrada() {
+        return controladorEntrada.getListaEntrada();
     }
 
     public List<Ficha> obterFichasDoTipo(String tipo) {

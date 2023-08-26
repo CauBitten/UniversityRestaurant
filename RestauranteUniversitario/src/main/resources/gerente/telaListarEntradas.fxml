@@ -17,7 +17,7 @@
       </Button>
       <VBox layoutX="61.0" layoutY="50.0" prefHeight="271.0" prefWidth="478.0">
          <children>
-            <TableView prefHeight="276.0" prefWidth="478.0">
+            <TableView fx:id="tvEntrada" prefHeight="276.0" prefWidth="478.0">
               <columns>
                 <TableColumn fx:id="tblColTipo" prefWidth="75.0" text="Tipo" />
                 <TableColumn fx:id="tblColDataHora" prefWidth="75.0" text="Data/Hora" />

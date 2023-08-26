@@ -32,4 +32,10 @@ public class RepositorioEntrada implements IRepositorioEntrada {
         }
     }
 
+    @Override
+    public List<Entrada> getListaEntrada() {
+        return entradas;
+    }
+
+
 }

@@ -49,6 +49,7 @@ public class ControllerPrincipalGerente {
 
     @FXML
     void bttnListarEntradasOn(ActionEvent event) {
+        ScreenManager.getInstance().getControllerListarEntradas().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_ENTRADAS.name());
     }
 

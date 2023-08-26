@@ -3,6 +3,9 @@ package negocio;
 import dados.IRepositorioEntrada;
 import dados.RepositorioEntrada;
 import negocio.beans.Cardapio;
+import negocio.beans.Entrada;
+
+import java.util.List;
 
 public class ControladorEntrada {
     private IRepositorioEntrada repositorioEntrada;
@@ -19,4 +22,11 @@ public class ControladorEntrada {
         return instance;
     }
 
+    public void adicionarEntrada(Entrada e) {
+        repositorioEntrada.adicionarEntrada(e);
+    }
+
+    public List<Entrada> getListaEntrada() {
+        return repositorioEntrada.getListaEntrada();
+    }
 }
