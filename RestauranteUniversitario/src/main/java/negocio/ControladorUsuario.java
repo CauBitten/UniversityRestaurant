@@ -2,6 +2,9 @@ package negocio;
 
 import dados.IRepositorioUsuario;
 import dados.RepositorioUsuario;
+import exception.CpfJaCadastradoException;
+import exception.EmailJaCadastradoException;
+import exception.LoginJaCadastradoException;
 import negocio.beans.Usuario;
 
 import java.time.LocalDate;
@@ -24,17 +27,10 @@ public class ControladorUsuario {
         return instance;
     }
 
-    public void cadastrarUsuario(Usuario u) {
+    public void cadastrarUsuario(Usuario u) throws CpfJaCadastradoException, LoginJaCadastradoException,
+            EmailJaCadastradoException {
         if (u != null) {
-            if (repositorioUsuarios.getUsuarioPorCPF(u.getCpf()) != null) {
-                //trhow exceção cpf cadastrado
-            }
-            else if (repositorioUsuarios.getUsuarioPorLogin(u.getLogin()) != null) {
-                //threow exceção login cadastrado
-            }
-            else {
-                repositorioUsuarios.cadastrarUsuario(u);
-            }
+            repositorioUsuarios.cadastrarUsuario(u);
         }
     }
 
@@ -71,7 +67,8 @@ public class ControladorUsuario {
             return null;
     }
 
-    public void alterarUsuario(Usuario user, Usuario editado) {
+    public void alterarUsuario(Usuario user, Usuario editado) throws LoginJaCadastradoException, CpfJaCadastradoException,
+            EmailJaCadastradoException {
         this.repositorioUsuarios.alterarUsuario(user, editado);
     }
     public Usuario getAvulso(){

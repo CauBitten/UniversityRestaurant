@@ -10,7 +10,6 @@ public class Entrada {
     private LocalDateTime dataHora;
     private Ficha ficha;
 
-
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     public Entrada(Cardapio cardapio, String tipo, String dataHora, Ficha ficha) {

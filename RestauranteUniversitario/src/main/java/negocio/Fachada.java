@@ -1,5 +1,9 @@
 package negocio;
 
+import exception.CardapioJaCadastradoException;
+import exception.CpfJaCadastradoException;
+import exception.LoginJaCadastradoException;
+import exception.EmailJaCadastradoException;
 import negocio.beans.*;
 
 import java.util.List;
@@ -30,13 +34,14 @@ public class Fachada {
         return instance;
     }
 
-    public void cadastrarUsuario(Usuario u) {
+    public void cadastrarUsuario(Usuario u) throws CpfJaCadastradoException, LoginJaCadastradoException,
+            EmailJaCadastradoException {
         if (u != null) {
             this.controladorUsuario.cadastrarUsuario(u);
         }
     }
 
-    public void cadastrarCardapio(Cardapio c) {
+    public void cadastrarCardapio(Cardapio c) throws CardapioJaCadastradoException {
         if (c != null) {
             controladorCardapio.cadastrarCardapio(c);
         }
@@ -81,7 +86,8 @@ public class Fachada {
         return this.controladorUsuario.getUsuarioDeCredenciais(login, senha);
     }
 
-    public void alterarUsuario(Usuario user, Usuario editado) {
+    public void alterarUsuario(Usuario user, Usuario editado) throws LoginJaCadastradoException, CpfJaCadastradoException,
+            EmailJaCadastradoException {
         this.controladorUsuario.alterarUsuario(user, editado);
     }
 
@@ -90,7 +96,7 @@ public class Fachada {
             this.controladorUsuario.removerUsuario(u);
     }
 
-    public void alterarCardapio(Cardapio c, Cardapio editado) {
+    public void alterarCardapio(Cardapio c, Cardapio editado) throws CardapioJaCadastradoException {
         if (c != null && editado != null)
             this.controladorCardapio.alterarCardapio(c, editado);
     }

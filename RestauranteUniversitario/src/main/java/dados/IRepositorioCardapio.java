@@ -1,21 +1,22 @@
 package dados;
 
+import exception.CardapioJaCadastradoException;
 import negocio.beans.Cardapio;
 
 import java.util.List;
 
 public interface IRepositorioCardapio {
 
-    public void cadastrarCardapio(Cardapio c);
+    void cadastrarCardapio(Cardapio c) throws CardapioJaCadastradoException;
 
-    public Cardapio encontrarCardapioPorID(long id);
+    Cardapio encontrarCardapioPorID(long id);
 
-    public void removerCardapio(Cardapio c);
+    void removerCardapio(Cardapio c);
 
-    public List<Cardapio> getCardapios();
+    List<Cardapio> getCardapios();
 
-    public void alterarCardapio(Cardapio c, Cardapio editado);
+    void alterarCardapio(Cardapio c, Cardapio editado) throws CardapioJaCadastradoException;
 
-    public List<Cardapio> obterCardapiosComOsPratosIguaisA(Cardapio modelo);
+    List<Cardapio> obterCardapiosComOsPratosIguaisA(Cardapio modelo);
 
 }

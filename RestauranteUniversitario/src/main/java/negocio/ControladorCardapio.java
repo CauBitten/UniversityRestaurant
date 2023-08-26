@@ -2,6 +2,7 @@ package negocio;
 
 import dados.IRepositorioCardapio;
 import dados.RepositorioCardapio;
+import exception.CardapioJaCadastradoException;
 import negocio.beans.Cardapio;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class ControladorCardapio {
         return instance;
     }
 
-    public void cadastrarCardapio(Cardapio c) {
+    public void cadastrarCardapio(Cardapio c) throws CardapioJaCadastradoException {
         if (c != null) {
             if (c.getId() >= 0 && c.getPrincipal() != null &&
                 c.getGuarnicao() != null && c.getSalada() != null && c.getSuco() != null &&
@@ -47,7 +48,7 @@ public class ControladorCardapio {
         return this.repositorioCardapio.getCardapios();
     }
 
-    public void alterarCardapio(Cardapio c, Cardapio editado) {
+    public void alterarCardapio(Cardapio c, Cardapio editado) throws CardapioJaCadastradoException {
         if (c != null && editado != null)
             this.repositorioCardapio.alterarCardapio(c, editado);
     }

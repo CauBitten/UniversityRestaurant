@@ -1,5 +1,6 @@
 package GUI.gerente;
 
+import exception.CardapioJaCadastradoException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -44,10 +45,17 @@ public class ControllerAlterarCardapio {
             showErrorMessage("Erro: nada foi modificado", "Altere os campos se quiser alterar o cardápio");
         }
         else {
-            Cardapio editado = new Cardapio(tfPrincipal.getText(), tfVegetariano.getText(),
-                    tfGuarnicao.getText(), tfSalada.getText(), tfSobremesa.getText(), tfSuco.getText());
-            Fachada.getInstance().alterarCardapio(cardapio, editado);
-            showInfoMessage("Alteração bem-sucedida", "Sucesso!", "Alteração realizada com sucesso");
+            try {
+                Cardapio editado = new Cardapio(tfPrincipal.getText(), tfVegetariano.getText(),
+                        tfGuarnicao.getText(), tfSalada.getText(), tfSobremesa.getText(), tfSuco.getText());
+                Fachada.getInstance().alterarCardapio(cardapio, editado);
+                showInfoMessage("Alteração bem-sucedida", "Sucesso!", "Alteração realizada com sucesso");
+            }
+            catch (CardapioJaCadastradoException e) {
+                showErrorMessage("Erro: Cardápio já existe", e.getMessage());
+            }
+
+            clearFields();
         }
     }
 
@@ -106,6 +114,15 @@ public class ControllerAlterarCardapio {
         alert.setHeaderText(header);
         alert.setHeaderText(mensagem);
         alert.show();
+    }
+
+    private void clearFields() {
+        tfSuco.setText("");
+        tfPrincipal.setText("");
+        tfGuarnicao.setText("");
+        tfSalada.setText("");
+        tfSobremesa.setText("");
+        tfVegetariano.setText("");
     }
 
 }

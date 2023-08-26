@@ -1,5 +1,8 @@
 package GUI.gerente;
 
+import exception.CpfJaCadastradoException;
+import exception.EmailJaCadastradoException;
+import exception.LoginJaCadastradoException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,11 +49,23 @@ public class ControllerAlterarUsuarios {
                         "Altere os campos para poder modificar");
             }
             else {
-                Usuario editado = new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
-                        usuario.getCpf(), checkBoxAtivo.isSelected(), choiceBoxTipo.getValue());
+                try {
+                    Usuario editado = new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
+                            usuario.getCpf(), checkBoxAtivo.isSelected(), choiceBoxTipo.getValue());
 
-                Fachada.getInstance().alterarUsuario(usuario, editado);
-                showInfoMessage("Alteração bem-sucedida", "Sucesso!", "Alteração realizada com sucesso");
+                    Fachada.getInstance().alterarUsuario(usuario, editado);
+                    showInfoMessage("Alteração bem-sucedida", "Sucesso!", "Alteração realizada com sucesso");
+                }
+                catch (CpfJaCadastradoException e) {
+                    showErrorMessage("Erro: CPF já cadastrado", e.getMessage(), "Tente novamente");
+                }
+                catch (LoginJaCadastradoException e) {
+                    showErrorMessage("Erro: Login já cadastrado", e.getMessage(), "Tente novamente");
+                }
+                catch (EmailJaCadastradoException e) {
+                    showErrorMessage("Erro: E-mail já cadastrado", e.getMessage(), "Tente novamente");
+                }
+
                 ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
                 ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
             }

@@ -58,7 +58,6 @@ public class ControllerListarRegistroCompra implements Initializable {
     @FXML
     private TableColumn<RegistroCompra, String> pagamentoColumn = new TableColumn<>("Pagamento");
 
-
     @FXML
     private TableView<RegistroCompra> tvRegistroCompra;
 
@@ -69,14 +68,14 @@ public class ControllerListarRegistroCompra implements Initializable {
 
     @FXML
     void bttnFiltrarOn(ActionEvent event) {
-        //if (!Fachada.getInstance().getRegistrosCompra().isEmpty()) {
+        if (!Fachada.getInstance().getRegistrosCompra().isEmpty()) {
         ScreenManager.getInstance().getControllerFiltrarRegistroCompra().initialize();
             ScreenManager.getInstance().changeScreen(TelasEnum.FILTRAR_REGISTRO.name());
-        /*}
+        }
         else {
             showErrorMessage("Não há registros de compra", "Não foi possível buscar os registros",
                     "Não há registros para buscar");
-        }*/
+        }
     }
 
     private void showErrorMessage(String titulo, String header, String content) {

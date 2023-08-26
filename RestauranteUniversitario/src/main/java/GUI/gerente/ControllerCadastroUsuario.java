@@ -1,5 +1,8 @@
 package GUI.gerente;
 
+import exception.CpfJaCadastradoException;
+import exception.EmailJaCadastradoException;
+import exception.LoginJaCadastradoException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,12 +40,24 @@ public class ControllerCadastroUsuario implements Initializable {
     @FXML
     void bttnCadastrarOn(ActionEvent event) {
         if (validar()) {
-            Usuario u =  new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
-                    parseLong(tfCPF.getText()), true, choiceBoxTipo.getValue());
+            try {
+                Usuario u =  new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
+                        parseLong(tfCPF.getText()), true, choiceBoxTipo.getValue());
 
-            Fachada.getInstance().cadastrarUsuario(u);
-            showInfoMessage("Cadastro realizado", "O usuário de CPF " + tfCPF.getText() +
-                    " foi cadastrado com sucesso");
+                Fachada.getInstance().cadastrarUsuario(u);
+                showInfoMessage("Cadastro realizado", "O usuário de CPF " + tfCPF.getText() +
+                        " foi cadastrado com sucesso");
+            }
+            catch (CpfJaCadastradoException e) {
+                showErrorMessage("Erro: CPF já cadastrado", e.getMessage());
+            }
+            catch (LoginJaCadastradoException e) {
+                showErrorMessage("Erro: Login já cadastrado", e.getMessage());
+            }
+            catch (EmailJaCadastradoException e) {
+                showErrorMessage("Erro: E-mail já cadastrado", e.getMessage());
+            }
+
             clearFields();
         }
     }

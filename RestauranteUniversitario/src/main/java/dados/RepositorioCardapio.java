@@ -1,5 +1,6 @@
 package dados;
 
+import exception.CardapioJaCadastradoException;
 import negocio.beans.Cardapio;
 
 import java.util.ArrayList;
@@ -22,10 +23,10 @@ public class RepositorioCardapio implements IRepositorioCardapio {
     }
 
     @Override
-    public void cadastrarCardapio(Cardapio c) {
+    public void cadastrarCardapio(Cardapio c) throws CardapioJaCadastradoException {
         if (c != null) {
-            if (verificarSeHaCardapiosIguaisA(c)) {
-                //adicionar exceçao cardapioexiste
+            if (obterCardapioIgualA(c) != null) {
+                throw new CardapioJaCadastradoException(obterCardapioIgualA(c));
             }
             else {
                 cardapios.add(c);
@@ -54,19 +55,19 @@ public class RepositorioCardapio implements IRepositorioCardapio {
         return cardapios;
     }
 
-    private boolean verificarSeHaCardapiosIguaisA(Cardapio c) {
+    private Cardapio obterCardapioIgualA(Cardapio c) {
         for (Cardapio cardapio : cardapios) {
             if (cardapio.equals(c))
-                return true;
+                return cardapio;
         }
 
-        return false;
+        return null;
     }
 
     @Override
-    public void alterarCardapio(Cardapio c, Cardapio editado) {
-        if (verificarSeHaCardapiosIguaisA(editado)) {
-            //atirar exceção cardapio já existe
+    public void alterarCardapio(Cardapio c, Cardapio editado) throws CardapioJaCadastradoException {
+        if (obterCardapioIgualA(editado) != null) {
+            throw new CardapioJaCadastradoException(obterCardapioIgualA(editado));
         }
         else {
             for (Cardapio cardapio : cardapios) {

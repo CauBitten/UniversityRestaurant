@@ -1,5 +1,6 @@
 package GUI.gerente;
 
+import exception.CardapioJaCadastradoException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -39,11 +40,16 @@ public class ControllerCadastroCardapio {
     @FXML
     void bttnCadastrarOn(ActionEvent event) {
         if (validar()) {
-            Cardapio c = new Cardapio(tfPrincipal.getText(), tfVegetariano.getText(), tfGuarnicao.getText(), tfSalada.getText(),
-                    tfSobremesa.getText(), tfSuco.getText());
+            try {
+                Cardapio c = new Cardapio(tfPrincipal.getText(), tfVegetariano.getText(), tfGuarnicao.getText(), tfSalada.getText(),
+                        tfSobremesa.getText(), tfSuco.getText());
 
-            Fachada.getInstance().cadastrarCardapio(c);
-            showInfoMessage("Cadastro realizado", "O cardápio foi cadastrado com sucesso");
+                Fachada.getInstance().cadastrarCardapio(c);
+                showInfoMessage("Cadastro realizado", "O cardápio foi cadastrado com sucesso");
+            }
+            catch (CardapioJaCadastradoException e) {
+                showErrorMessage("Erro: cardápio já existe.", e.getMessage());
+            }
             clearFields();
         }
     }

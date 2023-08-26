@@ -1,10 +1,10 @@
 package dados;
 
-import negocio.Fachada;
-import negocio.beans.Cliente;
+import exception.CpfJaCadastradoException;
+import exception.LoginJaCadastradoException;
+import exception.EmailJaCadastradoException;
 import negocio.beans.Usuario;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,13 +32,19 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     }
 
     @Override
-    public void cadastrarUsuario(Usuario u) {
+    public void cadastrarUsuario(Usuario u) throws CpfJaCadastradoException, LoginJaCadastradoException,
+            EmailJaCadastradoException {
         if (u != null) {
-            if (getUsuarioPorCPF(u.getCpf()) == null) {
-                usuarios.add(u);
+            if (getUsuarioPorCPF(u.getCpf()) != null) {
+                throw new CpfJaCadastradoException(getUsuarioPorCPF(u.getCpf()));
             }
-            else {
-                //throw exceção usuario com mesmo cpf ja existe
+
+            if (getUsuarioPorLogin(u.getLogin()) != null) {
+                throw new LoginJaCadastradoException(getUsuarioPorLogin(u.getLogin()));
+            }
+
+            if (getUsuarioPorEmail(u.getEmail()) != null) {
+                throw new EmailJaCadastradoException(getUsuarioPorEmail(u.getEmail()));
             }
         }
     }
@@ -48,9 +54,6 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         if (u != null) {
             if (getUsuarioPorCPF(u.getCpf()) != null) {
                 usuarios.remove(u);
-            }
-            else {
-                //throw usuario nao cadastrado
             }
         }
     }
@@ -82,37 +85,12 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     }
 
     @Override
-    public List<Usuario> getUsuariosPorNome(String nome) {
-        if (nome != null) {
-            List<Usuario> usuariosList = new ArrayList<>();
-
-            for (Usuario usuario : usuarios) {
-                if (usuario.getNome().contains(nome)) {
-                    usuariosList.add(usuario);
-                }
-            }
-
-            return usuariosList;
-        }
-
-        return null;
-    }
-
-    @Override
-    public List<Usuario> getUsuariosPorDataNascimento(LocalDate dataNascimento) {
-        List<Usuario> usuariosList = new ArrayList<>();
-
-        return usuariosList;
-    }
-
-    @Override
     public Usuario getUsuarioPorLogin(String login) {
         if (login != null) {
             for (Usuario usuario : usuarios) {
                 if (login.equals(usuario.getLogin())) {
                     return usuario;
                 }
-                //atirar exceçao nao existe usuario
             }
         }
 
@@ -120,63 +98,19 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     }
 
     @Override
-    public List<Usuario> getUsuariosPorAtivacao(boolean ativo) {
-        List<Usuario> listaUsuarios = new ArrayList<>();
-
-        if (ativo) {
-            for (Usuario usuario : usuarios) {
-                if (usuario.isAtivado()) {
-                    listaUsuarios.add(usuario);
-                }
-            }
-        }
-        else {
-            for (Usuario usuario : usuarios) {
-                if (!usuario.isAtivado()) {
-                    listaUsuarios.add(usuario);
-                }
-            }
-        }
-
-        return listaUsuarios;
-    }
-
-    public List<Usuario> getClientes() {
-        List<Usuario> clientes = new ArrayList<>();
-
-        for (Usuario u : usuarios) {
-            if (u instanceof Cliente)
-                clientes.add(u);
-        }
-
-        return clientes;
-    }
-
-    @Override
-    public List<Usuario> getUsuariosComPerfil(String perfil) {
-        List<Usuario> usuariosComPerfil = new ArrayList<>();
-
-        for (Usuario u : usuarios) {
-            if (u.getPerfil().equals(perfil))
-                usuariosComPerfil.add(u);
-        }
-
-        return usuariosComPerfil;
-    }
-
-    @Override
-    public void alterarUsuario(Usuario user, Usuario editado) {
+    public void alterarUsuario(Usuario user, Usuario editado) throws LoginJaCadastradoException, CpfJaCadastradoException,
+            EmailJaCadastradoException {
         if (getUsuarioPorLogin(editado.getLogin()) != null &&
                 getUsuarioPorLogin(editado.getLogin()) != user) {
-            //atirar exceção login ja cadastrado
+            throw new LoginJaCadastradoException(getUsuarioPorLogin(editado.getLogin()));
         }
         else if (getUsuarioPorCPF(editado.getCpf()) != null &&
             getUsuarioPorCPF(editado.getCpf()) != user) {
-            //atirar exceção cpf ja cadastrado
+            throw new CpfJaCadastradoException(getUsuarioPorCPF(editado.getCpf()));
         }
         else if (getUsuarioPorEmail(editado.getEmail()) != null
                 && getUsuarioPorEmail(editado.getEmail()) != user) {
-            //atirar execção email cadastrado
+            throw new EmailJaCadastradoException(getUsuarioPorEmail(editado.getEmail()));
         }
         else {
             for (Usuario usuario : usuarios) {
