@@ -45,7 +45,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="246.0" layoutY="311.0" mnemonicParsing="false" onAction="#bttnEfetuarCompraOn" prefHeight="42.0" prefWidth="194.0" style="-fx-background-color: #149959;" text="EFETUAR COMPRA" textFill="WHITE">
+      <Button layoutX="246.0" layoutY="311.0" mnemonicParsing="false" onAction="#bttnEfetuarCompraOn" prefHeight="42.0" prefWidth="194.0" style="-fx-background-color: #149959;" text="EFETUAR VENDA" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="15.0" />
          </font>

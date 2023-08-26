@@ -6,11 +6,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.vendedor.ControllerPrincipalVendedor">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.vendedor.ControllerPrincipalVendedor">
    <children>
-      <VBox layoutX="134.0" layoutY="132.0" prefHeight="135.0" prefWidth="332.0" spacing="45.0">
+      <VBox layoutX="134.0" layoutY="103.0" prefHeight="194.0" prefWidth="332.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#bttnVender" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="VENDER" textFill="WHITE">
+            <Button fx:id="buttonVenderAvulso" mnemonicParsing="false" onAction="#bttnVenderAvulsoOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="VENDER FICHAS AVULSAS" textFill="WHITE">
+               <font>
+                  <Font name="Georgia Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonVenderACliente" mnemonicParsing="false" onAction="#bttnVenderAClienteOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="VENDER A CLIENTE" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="15.0" />
                </font>
