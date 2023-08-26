@@ -1,8 +1,6 @@
 package dados;
 
-import exception.CpfJaCadastradoException;
-import exception.LoginJaCadastradoException;
-import exception.EmailJaCadastradoException;
+import exception.*;
 import negocio.beans.Usuario;
 
 import java.util.ArrayList;
@@ -46,6 +44,8 @@ public class RepositorioUsuario implements IRepositorioUsuario {
             if (getUsuarioPorEmail(u.getEmail()) != null) {
                 throw new EmailJaCadastradoException(getUsuarioPorEmail(u.getEmail()));
             }
+
+            usuarios.add(u);
         }
     }
 
@@ -127,15 +127,22 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         }
     }
 
-    public Usuario obterUsuarioDeCredenciais(String login, String senha) {
+    public Usuario obterUsuarioDeCredenciais(String login, String senha) throws SenhaIncorretaException,
+            LoginNaoExisteException, UsuarioDesativadoException {
         for (Usuario usuario : usuarios) {
             if (login.equals(usuario.getLogin())) {
+                if (!usuario.isAtivado()) {
+                    throw new UsuarioDesativadoException(usuario);
+                }
+
                 if (senha.equals(usuario.getSenha()))
                     return usuario;
+                else
+                    throw new SenhaIncorretaException(senha);
             }
         }
 
-        return null;
+        throw new LoginNaoExisteException(login);
     }
 
     @Override

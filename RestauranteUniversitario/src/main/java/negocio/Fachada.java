@@ -1,9 +1,6 @@
 package negocio;
 
-import exception.CardapioJaCadastradoException;
-import exception.CpfJaCadastradoException;
-import exception.LoginJaCadastradoException;
-import exception.EmailJaCadastradoException;
+import exception.*;
 import negocio.beans.*;
 
 import java.util.List;
@@ -82,7 +79,8 @@ public class Fachada {
         return usuarioLogado;
     }
 
-    public Usuario validarCredenciais(String login, String senha) {
+    public Usuario validarCredenciais(String login, String senha) throws SenhaIncorretaException,
+            LoginNaoExisteException, UsuarioDesativadoException {
         return this.controladorUsuario.getUsuarioDeCredenciais(login, senha);
     }
 

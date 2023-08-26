@@ -1,8 +1,6 @@
 package dados;
 
-import exception.CpfJaCadastradoException;
-import exception.EmailJaCadastradoException;
-import exception.LoginJaCadastradoException;
+import exception.*;
 import negocio.beans.Usuario;
 
 import java.time.LocalDate;
@@ -21,7 +19,8 @@ public interface IRepositorioUsuario {
 
     Usuario getUsuarioPorLogin(String login);
 
-    Usuario obterUsuarioDeCredenciais(String login, String senha);
+    Usuario obterUsuarioDeCredenciais(String login, String senha) throws SenhaIncorretaException,
+            LoginNaoExisteException, UsuarioDesativadoException;
 
     void alterarUsuario(Usuario user, Usuario editado) throws LoginJaCadastradoException, CpfJaCadastradoException,
             EmailJaCadastradoException;

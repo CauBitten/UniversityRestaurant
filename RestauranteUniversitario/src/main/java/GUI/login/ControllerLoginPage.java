@@ -1,5 +1,8 @@
 package GUI.login;
 
+import exception.LoginNaoExisteException;
+import exception.SenhaIncorretaException;
+import exception.UsuarioDesativadoException;
 import negocio.Fachada;
 import negocio.beans.Usuario;
 import view.TelasEnum;
@@ -49,10 +52,6 @@ public class ControllerLoginPage {
                 }
             }
         }
-        else {
-            //Atirar exceções de acesso: login não existe, senha incorreta ou usuário desativado
-            showErrorAlert("Erro: acesso negado", "Credenciais inválidas informadas", "Atualize e tente outra vez");
-        }
 
         clearFields();
     }
@@ -82,6 +81,19 @@ public class ControllerLoginPage {
 
 
     private Usuario obterUsuarioDe(String login, String senha) {
-        return Fachada.getInstance().validarCredenciais(login, senha);
+        try {
+            return Fachada.getInstance().validarCredenciais(login, senha);
+        }
+        catch (LoginNaoExisteException e) {
+            showErrorAlert("Erro: login não existe", e.getMessage(), "Tente novamente");
+        }
+        catch (SenhaIncorretaException e) {
+            showErrorAlert("Erro: senha incorreta", e.getMessage(), "Tente novamente");
+        }
+        catch (UsuarioDesativadoException e) {
+            showErrorAlert("Erro: usuário desativado", e.getMessage(), "Contate o administrador");
+        }
+
+        return null;
     }
 }

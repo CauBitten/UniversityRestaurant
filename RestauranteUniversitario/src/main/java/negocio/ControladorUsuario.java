@@ -2,9 +2,7 @@ package negocio;
 
 import dados.IRepositorioUsuario;
 import dados.RepositorioUsuario;
-import exception.CpfJaCadastradoException;
-import exception.EmailJaCadastradoException;
-import exception.LoginJaCadastradoException;
+import exception.*;
 import negocio.beans.Usuario;
 
 import java.time.LocalDate;
@@ -60,7 +58,8 @@ public class ControladorUsuario {
         return repositorioUsuarios.getUsuarioPorLogin(login);
     }
 
-    public Usuario getUsuarioDeCredenciais(String login, String senha) {
+    public Usuario getUsuarioDeCredenciais(String login, String senha) throws SenhaIncorretaException,
+            LoginNaoExisteException, UsuarioDesativadoException {
         if (login != null && senha != null)
             return this.repositorioUsuarios.obterUsuarioDeCredenciais(login, senha);
         else
