@@ -6,28 +6,33 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerPrincipalGerente">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerPrincipalGerente">
    <children>
-      <VBox alignment="CENTER" layoutX="134.0" layoutY="93.0" prefHeight="214.0" prefWidth="332.0" spacing="45.0">
+      <VBox alignment="CENTER" layoutX="134.0" layoutY="75.0" prefHeight="249.0" prefWidth="332.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#bttnListarUsuarios" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="LISTAR USUARIOS" textFill="WHITE">
+            <Button fx:id="buttonListarUsuarios" mnemonicParsing="false" onAction="#bttnListarUsuariosOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="LISTAR USUARIOS" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#bttnListarCardapios" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="LISTAR CARDAPIOS" textFill="WHITE">
+            <Button fx:id="buttonListarCardapios" mnemonicParsing="false" onAction="#bttnListarCardapiosOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="LISTAR CARDAPIOS" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#bttnListarRegistrosCompra" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="LISTAR REGISTROS DE COMPRA" textFill="WHITE">
+            <Button fx:id="buttonListarRegistros" mnemonicParsing="false" onAction="#bttnListarRegistrosCompraOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="LISTAR REGISTROS DE COMPRA" textFill="WHITE">
+               <font>
+                  <Font name="Georgia Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonListarEntradas" mnemonicParsing="false" onAction="#bttnListarEntradasOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="LISTAR ENTRADAS" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="15.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <Hyperlink layoutX="554.0" layoutY="14.0" onAction="#hlSairOn" text="Sair" textFill="#149959">
+      <Hyperlink fx:id="hlSair" layoutX="554.0" layoutY="14.0" onAction="#hlSairOn" text="Sair" textFill="#149959">
          <font>
             <Font name="Georgia Italic" size="12.0" />
          </font>
