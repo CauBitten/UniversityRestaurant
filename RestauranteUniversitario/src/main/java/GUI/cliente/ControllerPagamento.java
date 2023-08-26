@@ -147,4 +147,5 @@ public class ControllerPagamento {
         labelTFichasJantar.setText("");
         labelTCompra.setText("");
     }
+
 }

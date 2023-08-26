@@ -74,7 +74,7 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
     private boolean compararRegistroAoModelo(RegistroCompra r, RegistroCompra modelo, int almoco, int janta) {
         return r.getLoginVendedor().contains(modelo.getLoginVendedor()) && r.getValorCompra() >= modelo.getValorCompra() &&
                 r.getPagamento().contains(modelo.getPagamento()) && (r.getDataHoraCompra().isAfter(modelo.getDataHoraCompra()) ||
-                r.getDataHoraCompra().isEqual(modelo.getDataHoraCompra())) && r.getCodigoCompra() >= modelo.getCodigoCompra() &&
+                r.getDataHoraCompra().isEqual(modelo.getDataHoraCompra()))  &&
                 contarQuantidadeDeFichasDoTipo("Janta", r) >= janta &&
                 contarQuantidadeDeFichasDoTipo("Almoco", r) >= almoco && r.getLoginCliente().contains(modelo.getLoginCliente());
     }

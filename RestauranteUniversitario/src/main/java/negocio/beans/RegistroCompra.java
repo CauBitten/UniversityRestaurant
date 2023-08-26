@@ -87,6 +87,7 @@ public class RegistroCompra {
         toString += String.format("negocio.beans.Vendedor    : %s\n", loginVendedor);
         toString += String.format("Data & Hora : %s\n", dataHoraCompra.format(formatoDataHora));
         toString += String.format("Valor       : %.2f\n", valorCompra);
+        toString += String.format("Pagamento   : %s\n", pagamento);
         toString += "==================RC=================\n";
 
         return toString;

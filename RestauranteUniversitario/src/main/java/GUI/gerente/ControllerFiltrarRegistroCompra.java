@@ -42,9 +42,7 @@ public class ControllerFiltrarRegistroCompra {
 
     @FXML
     void bttnFiltrarOn(ActionEvent event) {
-        ScreenManager.getInstance().getControllerListarRegistroCompra().atualizarApresentacao();
         List<RegistroCompra> registroCompras = filtrar();
-        System.out.println(registroCompras);
 
         if (registroCompras.isEmpty())
             showErrorMessage("Erro: nada encontrado", "A busca não retornou resultados",
