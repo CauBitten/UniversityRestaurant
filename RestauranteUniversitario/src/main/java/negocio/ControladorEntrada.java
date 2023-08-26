@@ -18,10 +18,5 @@ public class ControladorEntrada {
         }
         return instance;
     }
-    public void cadastrarCardapioAEntrada(Cardapio cardapio, String tipo, String data){
-        repositorioEntrada.associarCardapioAoDiaeTipo(cardapio, tipo, data);
-    }
-    public Cardapio obterCardapioDaEntrada(String data, String tipo){
-        return repositorioEntrada.obterCardapioPorDiaeTipo(data, tipo);
-    }
+
 }
