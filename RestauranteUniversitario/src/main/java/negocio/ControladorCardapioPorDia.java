@@ -41,8 +41,8 @@ public class ControladorCardapioPorDia {
         return this.repositorioCardapioDoDia.obterCardapioDoDia(data);
     }
 
-    public void alterarCardapioDoDia(LocalDate data, Cardapio c) {
-        this.repositorioCardapioDoDia.alterarCardapioDoDia(data, c);
+    public void alterarCardapioDoDiaETipo(LocalDate data, Cardapio c, String tipo) {
+        this.repositorioCardapioDoDia.alterarCardapioDoDiaETipo(data, c, tipo);
     }
 
 }

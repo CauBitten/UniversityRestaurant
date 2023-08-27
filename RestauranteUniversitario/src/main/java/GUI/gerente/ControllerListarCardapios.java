@@ -37,6 +37,9 @@ public class ControllerListarCardapios implements Initializable  {
     private Button buttonFiltrar;
 
     @FXML
+    private ChoiceBox<String> choiceBoxTipo;
+
+    @FXML
     private TableColumn<Cardapio, String> tblColGuarnicao;
 
     @FXML
@@ -66,30 +69,33 @@ public class ControllerListarCardapios implements Initializable  {
     @FXML
     void bttnAssociarAoDiaOn(ActionEvent event) {
         if (tvCardapios.getSelectionModel().getSelectedItem() != null) {
-            try {
-                if (Fachada.getInstance().obterCardapioDoDia(dtpDia.getValue()) != null) {
+            if (dtpDia.getValue() == null) {
+                showErrorMessage("Erro: data  inválida", "Selecione uma data para continuar");
+            }
+            else if (choiceBoxTipo.getValue() == null) {
+                showErrorMessage("Erro: nenhum tipo escolhido", "Selecione um tipo para continuar");
+            }
+            else {
+                if (Fachada.getInstance().obterCardapioDoDia(dtpDia.getValue(), choiceBoxTipo.getValue()) != null) {
                     if (getConfirmationSobrescreverCardapio()) {
                         Fachada.getInstance().alterarCardapioDoDia(dtpDia.getValue(),
-                                tvCardapios.getSelectionModel().getSelectedItem());
+                                tvCardapios.getSelectionModel().getSelectedItem(), choiceBoxTipo.getValue());
                     }
                 }
                 else {
                     CardapioPorEntrada ce = new CardapioPorEntrada(dtpDia.getValue(),
-                            tvCardapios.getSelectionModel().getSelectedItem(), "Almoco");
+                            tvCardapios.getSelectionModel().getSelectedItem(), choiceBoxTipo.getValue());
                     Fachada.getInstance().registrarCardapioDoDia(ce);
+                    showInfoMessage("Operação realizada", "O cardápio do dia selecionado foi cadastrado",
+                            "Operação foi um sucesso.");
                 }
-            }
-            catch (NullPointerException e) {
-                showErrorMessage("Erro: a data não pode ser vazia", "Corrija e tente novamente.");
             }
         }
         else {
-            showErrorMessage("Erro: nenhum cardápio selecionado",
-                    "Selecione um cardápio se quiser associa-lo.");
+            showErrorMessage("Erro: nada selecionado", "Selecione um cardápio para associar");
         }
-
-        System.out.println(Fachada.getInstance().getCardapiosPorEntrada());
     }
+
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
@@ -148,6 +154,7 @@ public class ControllerListarCardapios implements Initializable  {
         tblColSuco.setCellValueFactory(new PropertyValueFactory<>("suco"));
         tblColVegetariano.setCellValueFactory(new PropertyValueFactory<>("vegetariano"));
         tblColSobremesa.setCellValueFactory(new PropertyValueFactory<>("sobremesa"));
+        choiceBoxTipo.getItems().addAll("Almoco", "Janta");
     }
 
     public void configurarTv(List<Cardapio> cardapios) {

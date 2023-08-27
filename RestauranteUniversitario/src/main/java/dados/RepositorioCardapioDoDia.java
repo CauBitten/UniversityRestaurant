@@ -26,12 +26,7 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
 
     @Override
     public void registrarCardapioDoDia(CardapioPorEntrada ce) {
-       if (haCardapiosPorDiaIguaisA(ce)) {
-           //atirar excecao
-       }
-       else {
            cardapiosPorEntrada.add(ce);
-       }
     }
 
     @Override
@@ -71,9 +66,9 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
     }
 
     @Override
-    public void alterarCardapioDoDia(LocalDate data, Cardapio c) {
+    public void alterarCardapioDoDiaETipo(LocalDate data, Cardapio c, String tipo) {
         for (CardapioPorEntrada cardapioPorEntrada : cardapiosPorEntrada) {
-            if (cardapioPorEntrada.getData().equals(data)) {
+            if (cardapioPorEntrada.getData().equals(data) && cardapioPorEntrada.getTipo().equals(tipo)) {
                 cardapioPorEntrada.setCardapio(c);
             }
         }
