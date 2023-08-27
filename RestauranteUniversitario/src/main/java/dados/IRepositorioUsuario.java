@@ -9,7 +9,7 @@ import java.util.List;
 public interface IRepositorioUsuario {
 
     void cadastrarUsuario(Usuario u) throws CpfJaCadastradoException, LoginJaCadastradoException,
-            EmailJaCadastradoException;
+            EmailJaCadastradoException, CPFInvalidoException;
 
     void removerUsuario(Usuario u);
 
@@ -23,10 +23,8 @@ public interface IRepositorioUsuario {
             LoginNaoExisteException, UsuarioDesativadoException;
 
     void alterarUsuario(Usuario user, Usuario editado) throws LoginJaCadastradoException, CpfJaCadastradoException,
-            EmailJaCadastradoException;
+            EmailJaCadastradoException, CPFInvalidoException;
 
-    public Usuario getUsuarioPorEmail(String email);
-
-    public List<Usuario> obterUsuariosComInformacoesContidasEm(Usuario modelo);
+    List<Usuario> obterUsuariosComInformacoesContidasEm(Usuario modelo);
 
 }

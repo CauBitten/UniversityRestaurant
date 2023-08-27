@@ -31,10 +31,14 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     @Override
     public void cadastrarUsuario(Usuario u) throws CpfJaCadastradoException, LoginJaCadastradoException,
-            EmailJaCadastradoException {
+            EmailJaCadastradoException, CPFInvalidoException {
         if (u != null) {
             if (getUsuarioPorCPF(u.getCpf()) != null) {
                 throw new CpfJaCadastradoException(getUsuarioPorCPF(u.getCpf()));
+            }
+
+            if (Long.toString(u.getCpf()).length() != 11) {
+                throw new CPFInvalidoException(u.getCpf());
             }
 
             if (getUsuarioPorLogin(u.getLogin()) != null) {
@@ -74,8 +78,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         return null;
     }
 
-    @Override
-    public Usuario getUsuarioPorEmail(String email) {
+    private Usuario getUsuarioPorEmail(String email) {
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email))
                 return usuario;
@@ -99,7 +102,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     @Override
     public void alterarUsuario(Usuario user, Usuario editado) throws LoginJaCadastradoException, CpfJaCadastradoException,
-            EmailJaCadastradoException {
+            EmailJaCadastradoException, CPFInvalidoException {
         if (getUsuarioPorLogin(editado.getLogin()) != null &&
                 getUsuarioPorLogin(editado.getLogin()) != user) {
             throw new LoginJaCadastradoException(getUsuarioPorLogin(editado.getLogin()));
@@ -111,6 +114,9 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         else if (getUsuarioPorEmail(editado.getEmail()) != null
                 && getUsuarioPorEmail(editado.getEmail()) != user) {
             throw new EmailJaCadastradoException(getUsuarioPorEmail(editado.getEmail()));
+        }
+        else if (Long.toString(editado.getCpf()).length() != 11) {
+            throw new CPFInvalidoException(editado.getCpf());
         }
         else {
             for (Usuario usuario : usuarios) {
@@ -159,6 +165,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     private boolean compararUsuarioAoModelo(Usuario u, Usuario modelo) {
         return u.getNome().contains(modelo.getNome()) && u.getPerfil().contains(modelo.getPerfil())
-                && u.getLogin().contains(modelo.getLogin()) && u.getEmail().contains(modelo.getEmail()) && u.isAtivado() == modelo.isAtivado();
+                && u.getLogin().contains(modelo.getLogin()) && u.getEmail().contains(modelo.getEmail()) &&
+                u.isAtivado() == modelo.isAtivado();
     }
 }

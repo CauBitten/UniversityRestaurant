@@ -26,7 +26,7 @@ public class ControladorUsuario {
     }
 
     public void cadastrarUsuario(Usuario u) throws CpfJaCadastradoException, LoginJaCadastradoException,
-            EmailJaCadastradoException {
+            EmailJaCadastradoException, CPFInvalidoException {
         if (u != null) {
             repositorioUsuarios.cadastrarUsuario(u);
         }
@@ -67,7 +67,7 @@ public class ControladorUsuario {
     }
 
     public void alterarUsuario(Usuario user, Usuario editado) throws LoginJaCadastradoException, CpfJaCadastradoException,
-            EmailJaCadastradoException {
+            EmailJaCadastradoException, CPFInvalidoException {
         this.repositorioUsuarios.alterarUsuario(user, editado);
     }
     public Usuario getAvulso(){

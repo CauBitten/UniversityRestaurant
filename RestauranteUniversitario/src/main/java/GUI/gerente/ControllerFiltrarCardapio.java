@@ -54,6 +54,7 @@ public class ControllerFiltrarCardapio {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
+        clearFields();
         ScreenManager.getInstance().getControllerListarCardapios().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_CARDAPIOS.name());
     }

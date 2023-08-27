@@ -50,12 +50,14 @@ public class ControllerCadastroCardapio {
             catch (CardapioJaCadastradoException e) {
                 showErrorMessage("Erro: cardápio já existe.", e.getMessage());
             }
+
             clearFields();
         }
     }
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
+        clearFields();
         ScreenManager.getInstance().getControllerListarCardapios().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.VISUALIZAR_CARDAPIOS.name());
     }
@@ -79,7 +81,7 @@ public class ControllerCadastroCardapio {
     private boolean validar() {
         if (tfGuarnicao.getText().isBlank() || tfPrincipal.getText().isBlank() || tfSalada.getText().isBlank() ||
             tfVegetariano.getText().isBlank() || tfSobremesa.getText().isBlank() || tfSuco.getText().isBlank()) {
-            showErrorMessage("Erro: campos preenchidos incorretamente" , "Informe os campos solicitados corretamente");
+            showErrorMessage("Erro: campos não preenchidos" , "Informe os campos solicitados corretamente");
             return false;
         }
 

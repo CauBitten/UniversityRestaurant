@@ -50,6 +50,7 @@ public class ControllerFiltrarUsuarios {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
+        clearFields();
         ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_USUARIO.name());
     }
@@ -57,23 +58,28 @@ public class ControllerFiltrarUsuarios {
     private List<Usuario> filtrar() {
         List<Usuario> usuarios = new ArrayList<>();
 
-        if (tfLogin.getText().isBlank() && tfEmail.getText().isBlank()
-                && tfNome.getText().isBlank() && choiceBoxTipo.getValue() == null) {
+        if (tfLogin.getText().isBlank() && tfEmail.getText().isBlank() && tfNome.getText().isBlank() &&
+                choiceBoxTipo.getValue() == null && tfCPF.getText().isBlank() && !checkBoxAtivo.isSelected()) {
             usuarios = Fachada.getInstance().obterUsuarios();
         }
         else {
             Usuario modelo;
 
-            if (choiceBoxTipo.getValue() == null) {
-                modelo = new Usuario("", tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
-                        0L, checkBoxAtivo.isSelected(), "");
-            }
-            else {
-                modelo = new Usuario("", tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
-                        0L, checkBoxAtivo.isSelected(), choiceBoxTipo.getValue());
-            }
+            try {
+                if (choiceBoxTipo.getValue() == null) {
+                    modelo = new Usuario("", tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
+                            Long.parseLong(tfCPF.getText()), checkBoxAtivo.isSelected(), "");
+                }
+                else {
+                    modelo = new Usuario("", tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
+                            Long.parseLong(tfCPF.getText()), checkBoxAtivo.isSelected(), choiceBoxTipo.getValue());
+                }
 
-            usuarios.addAll(Fachada.getInstance().obterUsuariosComInformacoesContidasEm(modelo));
+                usuarios.addAll(Fachada.getInstance().obterUsuariosComInformacoesContidasEm(modelo));
+            }
+            catch (NumberFormatException e) {
+                showErrorMessage("Erro: CPF Inválido", "O CPF deve ser numérico", "Corrija e tente novamente");
+            }
         }
 
         return usuarios;
@@ -96,7 +102,7 @@ public class ControllerFiltrarUsuarios {
         tfNome.setText("");
         tfEmail.setText("");
         tfLogin.setText("");
-        tfCPF.setText("");
+        tfCPF.setText("0");
         choiceBoxTipo.setValue(null);
         checkBoxAtivo.setSelected(false);
     }

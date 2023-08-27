@@ -9,13 +9,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.vendedor.ControllerVenderACliente">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.vendedor.ControllerVenderACliente">
    <children>
       <TextField fx:id="tfCPF" layoutX="180.0" layoutY="70.0" prefHeight="35.0" prefWidth="240.0" promptText="CPF" />
       <VBox alignment="TOP_CENTER" layoutX="113.0" layoutY="139.0" prefHeight="91.0" prefWidth="134.0" spacing="40.0">
          <children>
-            <CheckBox fx:id="cbAlmoco" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Ficha de Almoço" />
-            <CheckBox fx:id="cbJantar" mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" text="Ficha de Jantar" />
+            <CheckBox fx:id="cbAlmoco" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Ficha de Almoço">
+               <font>
+                  <Font name="Georgia" size="13.0" />
+               </font></CheckBox>
+            <CheckBox fx:id="cbJantar" mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" text="Ficha de Jantar">
+               <font>
+                  <Font name="Georgia" size="13.0" />
+               </font></CheckBox>
          </children>
       </VBox>
       <VBox layoutX="328.0" layoutY="139.0" prefHeight="91.0" prefWidth="183.0" spacing="40.0">
@@ -36,7 +42,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="200.0" layoutY="287.0" mnemonicParsing="false" onAction="#bttnEfetuarCompraOn" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #149959;" text="EFETUAR COMPRA" textFill="WHITE">
+      <Button layoutX="200.0" layoutY="287.0" mnemonicParsing="false" onAction="#bttnEfetuarCompraOn" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #149959;" text="EFETUAR VENDA" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="15.0" />
          </font>
@@ -46,5 +52,10 @@
             <Font name="Georgia Bold" size="12.0" />
          </font>
       </Button>
+      <Label layoutX="245.0" layoutY="40.0" text="CPF do Cliente:">
+         <font>
+            <Font name="Georgia" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

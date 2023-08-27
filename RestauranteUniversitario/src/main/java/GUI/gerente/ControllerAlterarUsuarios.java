@@ -1,5 +1,6 @@
 package GUI.gerente;
 
+import exception.CPFInvalidoException;
 import exception.CpfJaCadastradoException;
 import exception.EmailJaCadastradoException;
 import exception.LoginJaCadastradoException;
@@ -14,6 +15,8 @@ import view.TelasEnum;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static java.lang.Long.parseLong;
 
 public class ControllerAlterarUsuarios {
 
@@ -42,7 +45,6 @@ public class ControllerAlterarUsuarios {
 
     @FXML
     void bttnAlterarOn(ActionEvent event) {
-        //falta alterar o cpf
         if (!verificarCampos()) {
             if (compararUsuarioAosCampos()) {
                 showErrorMessage("Erro: usuário não modificado", "Usuário não modificado",
@@ -51,7 +53,7 @@ public class ControllerAlterarUsuarios {
             else {
                 try {
                     Usuario editado = new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
-                            usuario.getCpf(), checkBoxAtivo.isSelected(), choiceBoxTipo.getValue());
+                            parseLong(tfCPF.getText()), checkBoxAtivo.isSelected(), choiceBoxTipo.getValue());
 
                     Fachada.getInstance().alterarUsuario(usuario, editado);
                     showInfoMessage("Alteração bem-sucedida", "Sucesso!", "Alteração realizada com sucesso");
@@ -64,6 +66,9 @@ public class ControllerAlterarUsuarios {
                 }
                 catch (EmailJaCadastradoException e) {
                     showErrorMessage("Erro: E-mail já cadastrado", e.getMessage(), "Tente novamente");
+                }
+                catch (CPFInvalidoException e) {
+                    showErrorMessage("Erro: CPF inválido", e.getMessage(), "Corrija e tente novamente");
                 }
 
                 ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
@@ -88,6 +93,7 @@ public class ControllerAlterarUsuarios {
             tfLogin.setText(usuario.getLogin());
             tfNome.setText(usuario.getNome());
             tfEmail.setText(usuario.getEmail());
+            tfCPF.setText(Long.toString(usuario.getCpf()));
             senhaField.setText(usuario.getSenha());
             choiceBoxTipo.setValue(usuario.getPerfil());
             checkBoxAtivo.setSelected(usuario.isAtivado());
@@ -109,7 +115,7 @@ public class ControllerAlterarUsuarios {
 
         alert.setTitle(titulo);
         alert.setHeaderText(header);
-        alert.setHeaderText(mensagem);
+        alert.setContentText(mensagem);
         alert.show();
     }
 
@@ -124,14 +130,14 @@ public class ControllerAlterarUsuarios {
 
     private boolean verificarCampos() {
         return tfNome.getText().isBlank() || tfEmail.getText().isBlank() || tfLogin.getText().isBlank() ||
-                senhaField.getText().isBlank() || choiceBoxTipo.getValue() == null;
+                senhaField.getText().isBlank() || choiceBoxTipo.getValue() == null || tfCPF.getText().isBlank();
     }
 
     private boolean compararUsuarioAosCampos() {
-        // ajustar o cpf
         return tfNome.getText().equals(usuario.getNome()) && tfEmail.getText().equals(usuario.getEmail()) &&
                 tfLogin.getText().equals(usuario.getLogin()) && senhaField.getText().equals(usuario.getSenha())
-                && (checkBoxAtivo.isSelected() == usuario.isAtivado()) && choiceBoxTipo.getValue().equals(usuario.getPerfil());
+                && (checkBoxAtivo.isSelected() == usuario.isAtivado()) && choiceBoxTipo.getValue().equals(usuario.getPerfil()) &&
+                (parseLong(tfCPF.getText()) == usuario.getCpf());
     }
 
 }

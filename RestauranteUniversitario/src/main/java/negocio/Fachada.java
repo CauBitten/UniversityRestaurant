@@ -32,7 +32,7 @@ public class Fachada {
     }
 
     public void cadastrarUsuario(Usuario u) throws CpfJaCadastradoException, LoginJaCadastradoException,
-            EmailJaCadastradoException {
+            EmailJaCadastradoException, CPFInvalidoException{
         if (u != null) {
             this.controladorUsuario.cadastrarUsuario(u);
         }
@@ -93,7 +93,7 @@ public class Fachada {
     }
 
     public void alterarUsuario(Usuario user, Usuario editado) throws LoginJaCadastradoException, CpfJaCadastradoException,
-            EmailJaCadastradoException {
+            EmailJaCadastradoException, CPFInvalidoException {
         this.controladorUsuario.alterarUsuario(user, editado);
     }
 

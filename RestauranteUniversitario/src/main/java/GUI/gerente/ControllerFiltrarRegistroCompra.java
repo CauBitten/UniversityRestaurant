@@ -61,6 +61,7 @@ public class ControllerFiltrarRegistroCompra {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
+        clearFields();
         ScreenManager.getInstance().getControllerListarRegistroCompra().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_REGISTRO_COMPRA.name());
     }

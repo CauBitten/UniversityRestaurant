@@ -1,5 +1,6 @@
 package GUI.gerente;
 
+import exception.CPFInvalidoException;
 import exception.CpfJaCadastradoException;
 import exception.EmailJaCadastradoException;
 import exception.LoginJaCadastradoException;
@@ -12,6 +13,7 @@ import negocio.beans.Usuario;
 import view.ScreenManager;
 import view.TelasEnum;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -42,7 +44,7 @@ public class ControllerCadastroUsuario implements Initializable {
         if (validar()) {
             try {
                 Usuario u =  new Usuario(senhaField.getText(), tfLogin.getText(), tfEmail.getText(), tfNome.getText(),
-                        parseLong(tfCPF.getText()), true, choiceBoxTipo.getValue());
+                        Long.parseLong(tfCPF.getText()), true, choiceBoxTipo.getValue());
 
                 Fachada.getInstance().cadastrarUsuario(u);
                 showInfoMessage("Cadastro realizado", "O usuário de CPF " + tfCPF.getText() +
@@ -56,6 +58,12 @@ public class ControllerCadastroUsuario implements Initializable {
             }
             catch (EmailJaCadastradoException e) {
                 showErrorMessage("Erro: E-mail já cadastrado", e.getMessage());
+            }
+            catch (CPFInvalidoException e) {
+                showErrorMessage("Erro: CPF inválido", e.getMessage());
+            }
+            catch (NumberFormatException e) {
+                showErrorMessage("Erro: CPF inválido", "O CPF deve ser numérico");
             }
 
             clearFields();
@@ -109,6 +117,17 @@ public class ControllerCadastroUsuario implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBoxTipo.getItems().addAll("Gerente", "Vendedor", "Cliente");
+    }
+
+    private boolean validarCpf(String cpf) {
+        try {
+            Long.parseLong(cpf);
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
+
+        return true;
     }
 
 }
