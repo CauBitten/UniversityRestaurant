@@ -37,7 +37,8 @@ public class ControllerPrincipalGerente {
     }
     @FXML
     void bttnCalendario(ActionEvent event) {
-
+        ScreenManager.getInstance().getControllerCalendario().atualizarApresentacao();
+        ScreenManager.getInstance().changeScreen(TelasEnum.CALENDARIO.name());
     }
 
     @FXML

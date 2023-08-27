@@ -102,6 +102,9 @@ public class ScreenManager {
 
     private Scene listarEntradasScene;
     private ControllerListarEntradas controllerListarEntradas;
+
+    private Scene mostrarCalendarioScene;
+    private ControllerCalendario controllerCalendario;
     // -----
 
     // Refeições Scenes
@@ -355,6 +358,14 @@ public class ScreenManager {
         return controllerCatraca;
     }
 
+    public Scene getMostrarCalendarioScene() {
+        return mostrarCalendarioScene;
+    }
+
+    public ControllerCalendario getControllerCalendario() {
+        return controllerCalendario;
+    }
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -539,6 +550,12 @@ public class ScreenManager {
                     .getResource("/catraca/telaCatraca.fxml")).openStream());
             this.catracaScene = new Scene(catracaPane);
             this.controllerCatraca = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane calendarioPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaCalendario.fxml")).openStream());
+            this.mostrarCalendarioScene = new Scene(calendarioPane);
+            this.controllerCalendario = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -701,6 +718,11 @@ public class ScreenManager {
             case "CATRACA" -> {
                 secondStage.setScene(catracaScene);
                 secondStage.setTitle("RU | CATRACA");
+            }
+
+            case "CALENDARIO" -> {
+                primaryStage.setScene(mostrarCalendarioScene);
+                primaryStage.setTitle("RU | CALENDARIO");
             }
 
             // -----
