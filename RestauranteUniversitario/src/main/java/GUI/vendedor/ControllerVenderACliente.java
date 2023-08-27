@@ -1,5 +1,8 @@
 package GUI.vendedor;
 
+import exception.LoginNaoExisteException;
+import exception.UsuarioDesativadoException;
+import exception.UsuarioNaoEClienteException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import negocio.Fachada;
 import view.ScreenManager;
 import view.TelasEnum;
 
@@ -31,7 +35,7 @@ public class ControllerVenderACliente implements Initializable {
     private Label labelQuantidadeJantar;
 
     @FXML
-    private TextField tfCPF;
+    private TextField tfLogin;
 
     @FXML
     void bttnDecrementarOn1(ActionEvent event) {
@@ -51,17 +55,40 @@ public class ControllerVenderACliente implements Initializable {
 
     @FXML
     void bttnEfetuarCompraOn(ActionEvent event) {
-        if ( (contadorAlmoco > 0 || contadorJantar > 0) && tfCPF.getText() != null) {
-            ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO_VENDA_CLIENTE.name());
-            ScreenManager.getInstance().getControllerPagamentoVendaACliente().inicializarValores();
+        if (validarCampos()) {
+            try {
+                ScreenManager.getInstance().getControllerPagamentoVendaACliente().setComprador(
+                        Fachada.getInstance().validarUsuarioParaCompra(tfLogin.getText()));
+                ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO_VENDA_CLIENTE.name());
+            }
+            catch (LoginNaoExisteException e) {
+                showErrorMessage("Erro: usuário não cadastrado", "O login informado não existe",
+                        "Tente novamente");
+            }
+            catch (UsuarioDesativadoException e) {
+                showErrorMessage("Erro: usuário desativado", "O usuário informado está desativado",
+                        "Contate o administrador");
+            }
+            catch (UsuarioNaoEClienteException e) {
+                showErrorMessage("Erro: usuário não é cliente", "O usuário informado não é do tipo cliente",
+                "Tente novamente.");
+            }
         }
-        else if (contadorAlmoco == 0 && contadorJantar == 0){
-            showErrorMessage("Erro: nenhuma ficha selecionada", "Você deve selecionar fichas para compra",
-                    "Tente outra vez para prosseguir");
-        } else if (tfCPF.getText() == null) {
-            showErrorMessage("Erro: nenhum cpf digitado", "Você deve prover um cpf",
+    }
+
+    private boolean validarCampos() {
+        if ((contadorAlmoco > 0 || contadorJantar > 0) && tfLogin.getText() != null)
+            return true;
+        else if (contadorAlmoco == 0 && contadorJantar == 0) {
+            showErrorMessage("Erro: nenhuma ficha selecionada", "Você deve selecionar fichas para comprar",
                     "Tente outra vez para prosseguir");
         }
+        else if (tfLogin.getText().isBlank()) {
+            showErrorMessage("Erro: nenhum login digitado", "Você deve prover um login",
+                    "Tente outra vez para prosseguir");
+        }
+
+        return false;
     }
 
     @FXML
@@ -82,6 +109,7 @@ public class ControllerVenderACliente implements Initializable {
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
+        clearFields();
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_VENDEDOR.name());
     }
 
@@ -117,6 +145,6 @@ public class ControllerVenderACliente implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tfCPF.setText(null);
+        tfLogin.setText(null);
     }
 }

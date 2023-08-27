@@ -163,6 +163,24 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         return usuariosFiltrados;
     }
 
+    @Override
+    public Usuario validarUsuarioParaCompra(String login) throws UsuarioDesativadoException,
+            UsuarioNaoEClienteException, LoginNaoExisteException {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getLogin().equals(login)) {
+                if (!usuario.isAtivado())
+                    throw new UsuarioDesativadoException(usuario);
+
+                if (!usuario.getPerfil().equals("Cliente"))
+                    throw new UsuarioNaoEClienteException(usuario);
+
+                return usuario;
+            }
+        }
+
+        throw new LoginNaoExisteException(login);
+    }
+
     private boolean compararUsuarioAoModelo(Usuario u, Usuario modelo) {
         return u.getNome().contains(modelo.getNome()) && u.getPerfil().contains(modelo.getPerfil())
                 && u.getLogin().contains(modelo.getLogin()) && u.getEmail().contains(modelo.getEmail()) &&

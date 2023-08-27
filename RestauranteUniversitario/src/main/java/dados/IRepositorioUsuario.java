@@ -27,4 +27,7 @@ public interface IRepositorioUsuario {
 
     List<Usuario> obterUsuariosComInformacoesContidasEm(Usuario modelo);
 
+    Usuario validarUsuarioParaCompra(String login) throws UsuarioDesativadoException,
+            UsuarioNaoEClienteException, LoginNaoExisteException;
+
 }

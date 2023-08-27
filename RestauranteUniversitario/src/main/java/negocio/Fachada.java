@@ -132,4 +132,9 @@ public class Fachada {
         return this.controladorUsuario.getUsuarioPorLogin(login);
     }
 
+    public Usuario validarUsuarioParaCompra(String login) throws UsuarioDesativadoException,
+            UsuarioNaoEClienteException, LoginNaoExisteException {
+        return this.controladorUsuario.validarUsuarioParaCompra(login);
+    }
+
 }

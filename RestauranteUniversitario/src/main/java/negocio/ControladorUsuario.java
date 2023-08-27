@@ -78,4 +78,9 @@ public class ControladorUsuario {
         return this.repositorioUsuarios.obterUsuariosComInformacoesContidasEm(modelo);
     }
 
+    public Usuario validarUsuarioParaCompra(String login) throws UsuarioDesativadoException,
+            UsuarioNaoEClienteException, LoginNaoExisteException {
+        return this.repositorioUsuarios.validarUsuarioParaCompra(login);
+    }
+
 }
