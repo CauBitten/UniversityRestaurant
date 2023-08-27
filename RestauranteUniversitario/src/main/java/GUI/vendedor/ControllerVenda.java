@@ -63,7 +63,6 @@ public class ControllerVenda {
     void bttnEfetuarCompraOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTOVENDEDOR.name());
         ScreenManager.getInstance().getControllerPagamentoVendedor().inicializarValores();
-        clearFields();
     }
 
     @FXML

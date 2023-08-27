@@ -47,6 +47,7 @@ public class ControllerPagamentoVendedor {
                 fichasCompradas.add(f);
                 Fachada.getInstance().adicionarFicha(f);
             }
+            System.out.println(ScreenManager.getInstance().getControllerVenda().getContadorAlmoco());
 
             for (int i = 0; i < ScreenManager.getInstance().getControllerVenda().getContadorJantar(); i++) {
                 Ficha f = new Ficha("Janta", Fachada.getInstance().getAvulso());
@@ -68,7 +69,7 @@ public class ControllerPagamentoVendedor {
 
             Fachada.getInstance().cadastrarRegistroCompra(rc);
             showInfoAlert("Compra realizada", "A operação foi um sucesso", "Compra Efetuada Com Sucesso!");
-            ScreenManager.getInstance().getControllerCompraFichas().clearFields();
+            ScreenManager.getInstance().getControllerVenda().clearFields();
             clearFields();
             ScreenManager.getInstance().changeScreen(TelasEnum.VENDA.name());
         }

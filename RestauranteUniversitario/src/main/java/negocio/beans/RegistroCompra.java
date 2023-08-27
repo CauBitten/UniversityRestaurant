@@ -80,7 +80,7 @@ public class RegistroCompra {
 //    }
 
     public String toString() {
-        String toString = "";
+        String toString;
 
         toString = String.format("=============== %d ===============\n", codigoCompra);
         toString += String.format("negocio.beans.Cliente     : %s\n", loginCliente);

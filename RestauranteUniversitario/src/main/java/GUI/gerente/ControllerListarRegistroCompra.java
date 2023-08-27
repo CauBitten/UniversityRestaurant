@@ -64,6 +64,7 @@ public class ControllerListarRegistroCompra implements Initializable {
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
+        System.out.println(Fachada.getInstance().getRegistrosCompra());
     }
 
     @FXML
@@ -103,9 +104,9 @@ public class ControllerListarRegistroCompra implements Initializable {
         valorColumn.setCellValueFactory(new PropertyValueFactory<>("valorCompra"));
 
         almocoColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().
-            getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Almoco")).collect(Collectors.toList()).size()).asObject());
+            getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Almoco")).toList().size()).asObject());
         jantaColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().
-                getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Janta")).collect(Collectors.toList()).size()).asObject());
+                getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Janta")).toList().size()).asObject());
 
     }
 
