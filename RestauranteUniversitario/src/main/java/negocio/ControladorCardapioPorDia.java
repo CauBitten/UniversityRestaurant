@@ -2,6 +2,7 @@ package negocio;
 
 import dados.IRepositorioCardapioDoDia;
 import dados.RepositorioCardapioDoDia;
+import exception.DiaNaoPossuiCardapioCadastradoException;
 import negocio.beans.Cardapio;
 import negocio.beans.CardapioPorEntrada;
 import negocio.beans.Entrada;
@@ -29,16 +30,13 @@ public class ControladorCardapioPorDia {
         this.repositorioCardapioDoDia.registrarCardapioDoDia(ce);
     }
 
-    public CardapioPorEntrada obterCardapioDoDia(LocalDate data, String tipo) {
+    public CardapioPorEntrada obterCardapioDoDia(LocalDate data, String tipo) throws
+            DiaNaoPossuiCardapioCadastradoException {
         return this.repositorioCardapioDoDia.obterCardapioPorDiaETipo(data, tipo);
     }
 
     public List<CardapioPorEntrada> getCardapiosPorEntrada() {
         return this.repositorioCardapioDoDia.getCardapiosPorEntrada();
-    }
-
-    public CardapioPorEntrada obterCardapioDoDia(LocalDate data) {
-        return this.repositorioCardapioDoDia.obterCardapioDoDia(data);
     }
 
     public void alterarCardapioDoDiaETipo(LocalDate data, Cardapio c, String tipo) {

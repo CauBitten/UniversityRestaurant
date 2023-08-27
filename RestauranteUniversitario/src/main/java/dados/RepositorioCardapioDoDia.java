@@ -1,5 +1,6 @@
 package dados;
 
+import exception.DiaNaoPossuiCardapioCadastradoException;
 import negocio.beans.Cardapio;
 import negocio.beans.CardapioPorEntrada;
 
@@ -30,14 +31,15 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
     }
 
     @Override
-    public CardapioPorEntrada obterCardapioPorDiaETipo(LocalDate data, String tipo) {
+    public CardapioPorEntrada obterCardapioPorDiaETipo(LocalDate data, String tipo) throws
+            DiaNaoPossuiCardapioCadastradoException {
         for (CardapioPorEntrada ce : this.cardapiosPorEntrada){
             if (ce.getData().equals(data) && ce.getTipo().equals(tipo)){
                 return ce;
             }
         }
 
-        return null;
+        throw new DiaNaoPossuiCardapioCadastradoException(data, tipo);
     }
 
     @Override
@@ -52,17 +54,6 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
         }
 
         return false;
-    }
-
-    @Override
-    public CardapioPorEntrada obterCardapioDoDia(LocalDate data) {
-        for (CardapioPorEntrada cardapioPorEntrada : cardapiosPorEntrada) {
-            if (cardapioPorEntrada.getData().equals(data))
-                return cardapioPorEntrada;
-        }
-
-        //atirar exceção de dia sem cardapio
-        return null;
     }
 
     @Override

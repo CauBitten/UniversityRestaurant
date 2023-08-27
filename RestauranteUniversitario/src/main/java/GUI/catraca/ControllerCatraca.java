@@ -31,8 +31,13 @@ public class ControllerCatraca {
             try {
                 System.out.println(Fachada.getInstance().getListaEntrada());
                 Usuario cliente = Fachada.getInstance().validarCredenciais(tfLogin.getText(), tfSenha.getText());
-                Entrada e = new Entrada(Fachada.getInstance().obterFichaDoClienteDoTipo(cliente, "Almoco"));
-                Fachada.getInstance().registrarEntrada(e);
+                String tipo = avaliarHorario();
+
+                if (tipo != null) {
+                    Entrada e = new Entrada(Fachada.getInstance().obterCardapioPorDiaETipo(LocalDateTime.now().toLocalDate(),
+                            tipo), tipo, LocalDateTime.now(), Fachada.getInstance().obterFichaDoClienteDoTipo(cliente, tipo));
+                    Fachada.getInstance().registrarEntrada(e);
+                }
             }
             catch (LoginNaoExisteException e) {
                 showErrorAlert("Erro: não há usuário com este login", e.getMessage(), "Tente novamente");
@@ -49,6 +54,9 @@ public class ControllerCatraca {
             }
             catch (EntradaJaRealizadaNesteTurnoException e) {
                 showErrorAlert("Erro: usuário informado já entrou neste turno", e.getMessage(), "Tente mais tarde");
+            }
+            catch (DiaNaoPossuiCardapioCadastradoException e) {
+                showErrorAlert("Erro: o dia não possui cardápio cadastrado", e.getMessage(), "Tente outro dia");
             }
         }
         else {
@@ -70,5 +78,18 @@ public class ControllerCatraca {
         alert.showAndWait();
     }
 
+    private String avaliarHorario() {
+        if (LocalDateTime.now().getHour() > 9 && LocalDateTime.now().getHour() < 15) {
+            return "Almoco";
+        }
+        else if (LocalDateTime.now().getHour() > 17 && LocalDateTime.now().getHour() < 23) {
+            return "Janta";
+        }
+        else {
+            showErrorAlert("Erro: acesso negado", "O restaurante está fechado no momento",
+                    "Por favor, retorne outra hora");
+            return null;
+        }
+    }
 
 }

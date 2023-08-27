@@ -129,9 +129,6 @@ public class Fachada {
         return this.controladorRegistroCompra.obterRegistrosContidosEm(modelo, almoco, janta);
     }
 
-    public Usuario getUsuarioPorLogin(String login) {
-        return this.controladorUsuario.getUsuarioPorLogin(login);
-    }
 
     public Usuario validarUsuarioParaCompra(String login) throws UsuarioDesativadoException,
             UsuarioNaoEClienteException, LoginNaoExisteException {
@@ -150,14 +147,16 @@ public class Fachada {
         this.controladorCardapioPorDia.registrarCardapioDoDia(ce);
     }
 
-    public CardapioPorEntrada obterCardapioPorDiaETipo(LocalDate data, String tipo) {
+    public CardapioPorEntrada obterCardapioPorDiaETipo(LocalDate data, String tipo) throws
+            DiaNaoPossuiCardapioCadastradoException {
         return this.controladorCardapioPorDia.obterCardapioDoDia(data, tipo);
     }
 
     public List<CardapioPorEntrada> getCardapiosPorEntrada() {
         return this.controladorCardapioPorDia.getCardapiosPorEntrada();
     }
-    public CardapioPorEntrada obterCardapioDoDia(LocalDate data, String tipo) {
+    public CardapioPorEntrada obterCardapioDoDia(LocalDate data, String tipo) throws
+            DiaNaoPossuiCardapioCadastradoException {
         return this.controladorCardapioPorDia.obterCardapioDoDia(data, tipo);
     }
 

@@ -10,16 +10,10 @@ public class Entrada {
     private LocalDateTime dataHora;
     private Ficha ficha;
 
-    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-
     public Entrada(CardapioPorEntrada cardapio, String tipo, LocalDateTime dataHora, Ficha ficha) {
         this.cardapio = cardapio;
         this.tipo = tipo;
         this.dataHora = dataHora;
-        this.ficha = ficha;
-    }
-
-    public Entrada(Ficha ficha) {
         this.ficha = ficha;
     }
 
@@ -62,7 +56,7 @@ public class Entrada {
     }
 
     public String toString() {
-        return "A refeição é um   : " + tipo + "\nData da refeição  : " /*+ dataHora.format(formato) + cardapio.toString()*/;
+        return "A refeição é um   : " + tipo + "\nData da refeição  : " + dataHora + cardapio.toString();
     }
 
 }

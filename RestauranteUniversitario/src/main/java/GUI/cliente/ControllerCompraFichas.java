@@ -72,7 +72,7 @@ public class ControllerCompraFichas {
             contadorJantar = 0;
         }
         else {
-            if (contadorAlmoco > 0 || contadorJantar > 0) {
+            if (contadorAlmoco >= 0 || contadorJantar >= 0) {
                 ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
                 ScreenManager.getInstance().getControllerPagamento().inicializarValores();
             }

@@ -1,5 +1,6 @@
 package GUI.gerente;
 
+import exception.DiaNaoPossuiCardapioCadastradoException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -76,13 +77,15 @@ public class ControllerListarCardapios implements Initializable  {
                 showErrorMessage("Erro: nenhum tipo escolhido", "Selecione um tipo para continuar");
             }
             else {
-                if (Fachada.getInstance().obterCardapioDoDia(dtpDia.getValue(), choiceBoxTipo.getValue()) != null) {
-                    if (getConfirmationSobrescreverCardapio()) {
-                        Fachada.getInstance().alterarCardapioDoDia(dtpDia.getValue(),
-                                tvCardapios.getSelectionModel().getSelectedItem(), choiceBoxTipo.getValue());
+                try {
+                    if (Fachada.getInstance().obterCardapioDoDia(dtpDia.getValue(), choiceBoxTipo.getValue()) != null) {
+                        if (getConfirmationSobrescreverCardapio()) {
+                            Fachada.getInstance().alterarCardapioDoDia(dtpDia.getValue(),
+                                    tvCardapios.getSelectionModel().getSelectedItem(), choiceBoxTipo.getValue());
+                        }
                     }
                 }
-                else {
+                catch (DiaNaoPossuiCardapioCadastradoException e) {
                     CardapioPorEntrada ce = new CardapioPorEntrada(dtpDia.getValue(),
                             tvCardapios.getSelectionModel().getSelectedItem(), choiceBoxTipo.getValue());
                     Fachada.getInstance().registrarCardapioDoDia(ce);
