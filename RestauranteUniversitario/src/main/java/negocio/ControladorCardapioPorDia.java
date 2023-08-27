@@ -36,4 +36,13 @@ public class ControladorCardapioPorDia {
     public List<CardapioPorEntrada> getCardapiosPorEntrada() {
         return this.repositorioCardapioDoDia.getCardapiosPorEntrada();
     }
+
+    public CardapioPorEntrada obterCardapioDoDia(LocalDate data) {
+        return this.repositorioCardapioDoDia.obterCardapioDoDia(data);
+    }
+
+    public void alterarCardapioDoDia(LocalDate data, Cardapio c) {
+        this.repositorioCardapioDoDia.alterarCardapioDoDia(data, c);
+    }
+
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerPrincipalGerente">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerPrincipalGerente">
    <children>
       <VBox alignment="CENTER" layoutX="134.0" layoutY="75.0" prefHeight="249.0" prefWidth="332.0" spacing="30.0">
          <children>
@@ -26,6 +26,11 @@
                </font>
             </Button>
             <Button fx:id="buttonListarEntradas" mnemonicParsing="false" onAction="#bttnListarEntradasOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="LISTAR ENTRADAS" textFill="WHITE">
+               <font>
+                  <Font name="Georgia Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonCalendario" mnemonicParsing="false" onAction="#bttnCalendario" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="VER CALENDARIO REGISTRADO" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="15.0" />
                </font>

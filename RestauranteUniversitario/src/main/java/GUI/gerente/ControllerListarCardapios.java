@@ -67,9 +67,17 @@ public class ControllerListarCardapios implements Initializable  {
     void bttnAssociarAoDiaOn(ActionEvent event) {
         if (tvCardapios.getSelectionModel().getSelectedItem() != null) {
             try {
-                CardapioPorEntrada ce = new CardapioPorEntrada(dtpDia.getValue(),
-                        tvCardapios.getSelectionModel().getSelectedItem(), "Almoco");
-                Fachada.getInstance().registrarCardapioDoDia(ce);
+                if (Fachada.getInstance().obterCardapioDoDia(dtpDia.getValue()) != null) {
+                    if (getConfirmationSobrescreverCardapio()) {
+                        Fachada.getInstance().alterarCardapioDoDia(dtpDia.getValue(),
+                                tvCardapios.getSelectionModel().getSelectedItem());
+                    }
+                }
+                else {
+                    CardapioPorEntrada ce = new CardapioPorEntrada(dtpDia.getValue(),
+                            tvCardapios.getSelectionModel().getSelectedItem(), "Almoco");
+                    Fachada.getInstance().registrarCardapioDoDia(ce);
+                }
             }
             catch (NullPointerException e) {
                 showErrorMessage("Erro: a data não pode ser vazia", "Corrija e tente novamente.");
@@ -102,7 +110,7 @@ public class ControllerListarCardapios implements Initializable  {
     @FXML
     void bttnRemoverOn(ActionEvent event) {
         if (tvCardapios.getSelectionModel().getSelectedItem() != null) {
-            if (getConfirmation()) {
+            if (getConfirmationRemover()) {
                 Fachada.getInstance().removerCardapio(tvCardapios.getSelectionModel().getSelectedItem());
                 atualizarApresentacao();
             }
@@ -172,7 +180,7 @@ public class ControllerListarCardapios implements Initializable  {
         alert.show();
     }
 
-    private boolean getConfirmation() {
+    private boolean getConfirmationRemover() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Remover cardápio");
         alert.setHeaderText("Tem certeza que gostaria de remover o cardápio selecionado?");
@@ -199,6 +207,27 @@ public class ControllerListarCardapios implements Initializable  {
         alert.setHeaderText(header);
         alert.setHeaderText(mensagem);
         alert.show();
+    }
+
+    private boolean getConfirmationSobrescreverCardapio() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Alterar cardápio");
+        alert.setHeaderText("Tem certeza que gostaria de alterar o cardápio do dia?");
+        alert.setContentText("Já existe um cardápio cadastrado neste dia");
+
+        Optional<ButtonType> option = alert.showAndWait();
+
+        if (option.get() == ButtonType.OK) {
+            showInfoMessage("Cardápio cadastrado", "Cardápio cadastrado com sucesso!",
+                    "A operação foi um sucesso!");
+            return true;
+        }
+        else if (option.get() == ButtonType.CANCEL) {
+            showInfoMessage("Operação cancelada", "A operação foi cancelada", "Nada foi modificado.");
+            return false;
+        }
+
+        return false;
     }
 
 }

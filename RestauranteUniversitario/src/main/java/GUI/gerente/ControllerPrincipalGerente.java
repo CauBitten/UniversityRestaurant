@@ -35,6 +35,10 @@ public class ControllerPrincipalGerente {
         ScreenManager.getInstance().getControllerListarRegistroCompra().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.LISTAR_REGISTRO_COMPRA.name());
     }
+    @FXML
+    void bttnCalendario(ActionEvent event) {
+
+    }
 
     @FXML
     void bttnListarUsuariosOn(ActionEvent event) {

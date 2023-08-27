@@ -157,5 +157,12 @@ public class Fachada {
     public List<CardapioPorEntrada> getCardapiosPorEntrada() {
         return this.controladorCardapioPorDia.getCardapiosPorEntrada();
     }
+    public CardapioPorEntrada obterCardapioDoDia(LocalDate data) {
+        return this.controladorCardapioPorDia.obterCardapioDoDia(data);
+    }
+
+    public void alterarCardapioDoDia(LocalDate data, Cardapio c) {
+        this.controladorCardapioPorDia.alterarCardapioDoDia(data, c);
+    }
 
 }

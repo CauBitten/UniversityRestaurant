@@ -59,4 +59,24 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
         return false;
     }
 
+    @Override
+    public CardapioPorEntrada obterCardapioDoDia(LocalDate data) {
+        for (CardapioPorEntrada cardapioPorEntrada : cardapiosPorEntrada) {
+            if (cardapioPorEntrada.getData().equals(data))
+                return cardapioPorEntrada;
+        }
+
+        //atirar exceção de dia sem cardapio
+        return null;
+    }
+
+    @Override
+    public void alterarCardapioDoDia(LocalDate data, Cardapio c) {
+        for (CardapioPorEntrada cardapioPorEntrada : cardapiosPorEntrada) {
+            if (cardapioPorEntrada.getData().equals(data)) {
+                cardapioPorEntrada.setCardapio(c);
+            }
+        }
+    }
+
 }
