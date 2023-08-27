@@ -105,6 +105,9 @@ public class ScreenManager {
 
     private Scene mostrarCalendarioScene;
     private ControllerCalendario controllerCalendario;
+
+    private Scene filtroCalendarioScene;
+    private ControllerFiltroCalendario controllerFiltroCalendario;
     // -----
 
     // Refeições Scenes
@@ -556,6 +559,12 @@ public class ScreenManager {
                     .getResource("/gerente/telaCalendario.fxml")).openStream());
             this.mostrarCalendarioScene = new Scene(calendarioPane);
             this.controllerCalendario = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane filtroCalendarioPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/gerente/telaFiltroCalendario.fxml")).openStream());
+            this.filtroCalendarioScene = new Scene(filtroCalendarioPane);
+            this.controllerFiltroCalendario = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -723,6 +732,11 @@ public class ScreenManager {
             case "CALENDARIO" -> {
                 primaryStage.setScene(mostrarCalendarioScene);
                 primaryStage.setTitle("RU | CALENDARIO");
+            }
+
+            case "FILTRO_CALENDARIO" -> {
+                primaryStage.setScene(filtroCalendarioScene);
+                primaryStage.setTitle("RU | FILTRO DE CALENDÁRIO");
             }
 
             // -----

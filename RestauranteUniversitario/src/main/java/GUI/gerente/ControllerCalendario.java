@@ -38,6 +38,11 @@ public class ControllerCalendario {
     private TableView<CardapioPorEntrada> tvCardapiosPorDia;
 
     @FXML
+    void bttnFiltrarOn(ActionEvent event) {
+
+    }
+
+    @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
     }
