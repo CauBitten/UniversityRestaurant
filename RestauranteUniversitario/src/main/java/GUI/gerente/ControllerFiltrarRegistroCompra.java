@@ -3,11 +3,13 @@ package GUI.gerente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.util.converter.LocalDateStringConverter;
 import negocio.Fachada;
 import negocio.beans.RegistroCompra;
 import view.ScreenManager;
 import view.TelasEnum;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,8 +57,8 @@ public class ControllerFiltrarRegistroCompra {
     }
 
     public void initialize() {
-        if (cbPagamento.getItems().isEmpty())
-            cbPagamento.getItems().addAll("Pix", "Cartão", "Boleto");
+        cbPagamento.getItems().addAll("Pix", "Cartão", "Boleto");
+        dtpData.setValue(LocalDate.of(2023, 01, 01));
     }
 
     @FXML
@@ -67,39 +69,47 @@ public class ControllerFiltrarRegistroCompra {
     }
 
     private void clearFields() {
-        tfAlmoco.setText("");
+        tfAlmoco.setText("0");
         tfCodigo.setText("");
         tfCliente.setText("");
         tfValor.setText("");
         cbPagamento.setValue("");
         tfVendedor.setText("");
-        tfJanta.setText("");
+        tfJanta.setText("0");
 
-        dtpData.getEditor().clear();
+        dtpData.setValue(LocalDate.of(2023, 01, 01));
     }
 
     private List<RegistroCompra> filtrar() {
         List<RegistroCompra> registrosFiltrados = new ArrayList<>();
 
-        if (tfAlmoco.getText().isBlank() && tfJanta.getText().isBlank() && tfVendedor.getText().isBlank() &&
-            cbPagamento.getValue().isBlank() && tfCliente.getText().isBlank() && tfCodigo.getText().isBlank() &&
-            dtpData.getValue() == null) {
+        if (validarCampos()) {
             registrosFiltrados = Fachada.getInstance().getRegistrosCompra();
         }
         else {
-            RegistroCompra modelo;
+            try {
+                RegistroCompra modelo;
 
-            if (cbPagamento.getValue() == null) {
-                modelo = new RegistroCompra(new ArrayList<>(0), tfCliente.getText(),
-                        tfVendedor.getText(), "", dtpData.getValue().atStartOfDay());
-            }
-            else {
-                modelo = new RegistroCompra(new ArrayList<>(0), tfCliente.getText(),
-                        tfVendedor.getText(), cbPagamento.getValue(), dtpData.getValue().atStartOfDay());
-            }
+                if (cbPagamento.getValue() == null) {
+                    modelo = new RegistroCompra(new ArrayList<>(0), tfCliente.getText(),
+                            tfVendedor.getText(), "", dtpData.getValue().atStartOfDay());
+                }
+                else {
+                    modelo = new RegistroCompra(new ArrayList<>(0), tfCliente.getText(),
+                            tfVendedor.getText(), cbPagamento.getValue(), dtpData.getValue().atStartOfDay());
+                }
 
-            registrosFiltrados.addAll(Fachada.getInstance().obterRegistrosContidosEm(modelo,
-                    Integer.parseInt(tfAlmoco.getText()), Integer.parseInt(tfJanta.getText())));
+                registrosFiltrados.addAll(Fachada.getInstance().obterRegistrosContidosEm(modelo,
+                        Integer.parseInt(tfAlmoco.getText()), Integer.parseInt(tfJanta.getText())));
+            }
+            catch (NumberFormatException e) {
+                showErrorMessage("Erro: quantidade de fichas inválida",
+                        "A quantidade de fichas deve ser numérica", "Corrija e tente outra vez");
+            }
+            catch (NullPointerException e) {
+                showErrorMessage("Erro: data inválida",
+                        "Você deve selecionar uma data", "Tente novamente");
+            }
         }
 
         return registrosFiltrados;
@@ -111,7 +121,13 @@ public class ControllerFiltrarRegistroCompra {
         alert.setTitle(titulo);
         alert.setHeaderText(header);
         alert.setContentText(content);
-        alert.show();
+        alert.showAndWait();
+    }
+
+    private boolean validarCampos() {
+        return tfAlmoco.getText().isBlank() && tfJanta.getText().isBlank() && tfVendedor.getText().isBlank() &&
+                cbPagamento.getValue().isBlank() && tfCliente.getText().isBlank() && tfCodigo.getText().isBlank() &&
+                dtpData.getValue() == null && tfJanta.getText().equals("0") && tfAlmoco.getText().equals("0");
     }
 
 }

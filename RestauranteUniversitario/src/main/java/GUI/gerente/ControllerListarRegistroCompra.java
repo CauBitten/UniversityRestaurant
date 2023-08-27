@@ -69,7 +69,6 @@ public class ControllerListarRegistroCompra implements Initializable {
     @FXML
     void bttnFiltrarOn(ActionEvent event) {
         if (!Fachada.getInstance().getRegistrosCompra().isEmpty()) {
-        ScreenManager.getInstance().getControllerFiltrarRegistroCompra().initialize();
             ScreenManager.getInstance().changeScreen(TelasEnum.FILTRAR_REGISTRO.name());
         }
         else {

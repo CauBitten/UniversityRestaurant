@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="429.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerFiltrarRegistroCompra">
+<AnchorPane prefHeight="429.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerFiltrarRegistroCompra">
    <children>
       <Button layoutX="34.0" layoutY="34.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
          <font>
@@ -68,13 +68,13 @@
             <Font name="Georgia Bold" size="15.0" />
          </font>
       </Button>
-      <TextField fx:id="tfAlmoco" layoutX="227.0" layoutY="253.0" prefHeight="24.0" prefWidth="114.0" promptText="QUANTIDADE" />
+      <TextField fx:id="tfAlmoco" layoutX="227.0" layoutY="253.0" prefHeight="24.0" prefWidth="114.0" promptText="QUANTIDADE" text="0" />
       <Label layoutX="369.0" layoutY="250.0" prefHeight="30.0" text="JANTA:" textFill="#149959">
          <font>
             <Font name="Georgia Bold" size="10.0" />
          </font>
       </Label>
-      <TextField fx:id="tfJanta" layoutX="423.0" layoutY="253.0" prefHeight="24.0" prefWidth="114.0" promptText="QUANTIDADE" />
+      <TextField fx:id="tfJanta" layoutX="423.0" layoutY="253.0" prefHeight="24.0" prefWidth="114.0" promptText="QUANTIDADE" text="0" />
       <VBox layoutX="227.0" layoutY="297.0" prefHeight="83.0" prefWidth="311.0" spacing="20.0">
          <children>
             <DatePicker fx:id="dtpData" prefHeight="35.0" prefWidth="311.0" promptText="DD/MM/AAAA" />
