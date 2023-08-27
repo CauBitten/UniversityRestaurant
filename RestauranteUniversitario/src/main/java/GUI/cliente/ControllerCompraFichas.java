@@ -75,14 +75,14 @@ public class ControllerCompraFichas {
 
         }
 
-            if (contadorAlmoco > 0 || contadorJantar > 0) {
-                ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
-                ScreenManager.getInstance().getControllerPagamento().inicializarValores();
-            }
-            else {
-                showErrorMessage("Erro: nenhuma ficha selecionada", "Você deve selecionar fichas para compra",
+        if (contadorAlmoco >= 0 || contadorJantar >= 0) {
+            ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
+            ScreenManager.getInstance().getControllerPagamento().inicializarValores();
+        }
+        else {
+            showErrorMessage("Erro: nenhuma ficha selecionada", "Você deve selecionar fichas para compra",
                         "Tente outra vez para prosseguir");
-            }
+        }
 
     }
 
