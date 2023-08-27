@@ -26,7 +26,7 @@ public class ControllerPrincipalVendedor {
 
     @FXML
     void bttnVenderAClienteOn(ActionEvent event) {
-
+        ScreenManager.getInstance().changeScreen(TelasEnum.VENDA_CLIENTE.name());
     }
 
     @FXML

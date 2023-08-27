@@ -9,10 +9,7 @@ import GUI.login.ControllerLoginPage;
 import GUI.refeicao.ControllerAlterarRefeicao;
 import GUI.refeicao.ControllerCadastroRefeicao;
 import GUI.refeicao.ControllerVisualizarRefeicoes;
-import GUI.vendedor.ControllerListarRefeicoes;
-import GUI.vendedor.ControllerPagamentoVendedor;
-import GUI.vendedor.ControllerPrincipalVendedor;
-import GUI.vendedor.ControllerVenda;
+import GUI.vendedor.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -55,6 +52,12 @@ public class ScreenManager {
     private ControllerListarRefeicoes controllerListarRefeicoes;
     private Scene pagamentoVendedorScene;
     private ControllerPagamentoVendedor controllerPagamentoVendedor;
+
+    private Scene venderAClienteScene;
+    private ControllerVenderACliente controllerVenderACliente;
+
+    private Scene pagamentoVendaClienteScene;
+    private ControllerPagamentoVendaACliente controllerPagamentoVendaACliente;
 
     // -----
 
@@ -107,6 +110,13 @@ public class ScreenManager {
     private ControllerAlterarRefeicao controllerAlterarRefeicao;
     // -----
 
+    public static ScreenManager getInstance() {
+        if (instance == null) {
+            instance = new ScreenManager();
+        }
+
+        return instance;
+    }
 
     public Stage getPrimaryStage() {
         return primaryStage;
@@ -292,20 +302,26 @@ public class ScreenManager {
 
     public ControllerListarEntradas getControllerListarEntradas(){return controllerListarEntradas;}
 
+    public Scene getVenderAClienteScene() { return venderAClienteScene; }
+
+    public ControllerVenderACliente getControllerVenderACliente() {
+        return controllerVenderACliente;
+    }
+
+    public Scene getPagamentoVendaClienteScene() {
+        return pagamentoVendaClienteScene;
+    }
+
+    public ControllerPagamentoVendaACliente getControllerPagamentoVendaACliente() {
+        return controllerPagamentoVendaACliente;
+    }
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
 
     private ScreenManager() {
         this.initialize();
-    }
-
-    public static ScreenManager getInstance() {
-        if (instance == null) {
-            instance = new ScreenManager();
-        }
-
-        return instance;
     }
 
     private void initialize() {
@@ -349,7 +365,7 @@ public class ScreenManager {
 
             fxmlLoader = new FXMLLoader();
             AnchorPane vendaVendedor = fxmlLoader.load(Objects.requireNonNull(getClass()
-                    .getResource("/vendedor/telaDeVenda.fxml")).openStream());
+                    .getResource("/vendedor/telaDeVendaAvulsa.fxml")).openStream());
             this.vendaScene = new Scene(vendaVendedor);
             this.controllerVenda = fxmlLoader.getController();
 
@@ -454,6 +470,18 @@ public class ScreenManager {
                     .getResource("/gerente/telaListarEntradas.fxml")).openStream());
             this.listarEntradasScene = new Scene(listarEntradasPane);
             this.controllerListarEntradas = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane vendaACliente = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/vendedor/telaVenderACliente.fxml")).openStream());
+            this.venderAClienteScene = new Scene(vendaACliente);
+            this.controllerVenderACliente = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane pagamentoVendaACliente = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/vendedor/telaPagamentoVendaACliente.fxml")).openStream());
+            this.pagamentoVendaClienteScene = new Scene(pagamentoVendaACliente);
+            this.controllerPagamentoVendaACliente = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -497,7 +525,7 @@ public class ScreenManager {
                 primaryStage.setTitle("RU | TELA DE VENDA");
             }
 
-            case "PAGAMENTOVENDEDOR" ->{
+            case "PAGAMENTOVENDEDOR" -> {
                 primaryStage.setScene(pagamentoVendedorScene);
                 primaryStage.setTitle("RU | TELA DE PAGAMENTO");
             }
@@ -505,6 +533,16 @@ public class ScreenManager {
             case "LISTAR_REFEICOES" -> {
                 primaryStage.setScene(listarRefeicoesScene);
                 primaryStage.setTitle("RU | TELA LISTAR REFEIÇÕES");
+            }
+
+            case "VENDA_CLIENTE" -> {
+                primaryStage.setScene(venderAClienteScene);
+                primaryStage.setTitle("RU | TELA VENDER A CLIENTE");
+            }
+
+            case "PAGAMENTO_VENDA_CLIENTE" -> {
+                primaryStage.setScene(pagamentoVendaClienteScene);
+                primaryStage.setTitle("RU | TELA PAGAMENTO");
             }
             // -----
 
