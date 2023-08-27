@@ -20,6 +20,7 @@ public class ScreenManager {
 
     // Stage e Login Scene
     private Stage primaryStage;
+    private Stage secondStage;
     private Scene loginScene;
     private ControllerLoginPage controllerLoginPage;
     // -----
@@ -121,6 +122,10 @@ public class ScreenManager {
         return instance;
     }
 
+    public void setSecondStage(Stage secondStage) {
+        this.secondStage = secondStage;
+    }
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -158,7 +163,6 @@ public class ScreenManager {
     }
 
     public Scene getPagamentoScene() { return pagamentoScene; }
-
 
     public ControllerPagamento getControllerPagamento() { return controllerPagamento; }
 
@@ -513,7 +517,9 @@ public class ScreenManager {
 
     public void changeScreen(String scr) {
         switch (scr) {
-            case "LOGIN" -> primaryStage.setScene(loginScene);
+            case "LOGIN" -> {
+                primaryStage.setScene(loginScene);
+            }
 
             // Cliente
             case "PRINCIPAL_CLIENTE" -> {

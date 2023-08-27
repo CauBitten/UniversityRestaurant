@@ -141,4 +141,8 @@ public class Fachada {
         return this.controladorRegistroCompra.obterRegistrosDoUsuario(u);
     }
 
+    public Ficha obterFichaDoClienteDoTipo(Usuario u, String tipo) throws ClienteNaoPossuiFichasException {
+        return this.controladorFicha.obterFichaDoClienteDoTipo(u, tipo);
+    }
+
 }

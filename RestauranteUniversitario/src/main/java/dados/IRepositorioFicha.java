@@ -1,5 +1,6 @@
 package dados;
 
+import exception.ClienteNaoPossuiFichasException;
 import negocio.beans.Ficha;
 import negocio.beans.Usuario;
 
@@ -8,16 +9,14 @@ import java.util.List;
 
 public interface IRepositorioFicha {
 
-    public void adicionarFicha(Ficha f);
+    void adicionarFicha(Ficha f);
 
-    public void removerFicha(Ficha f);
+    void removerFicha(Ficha f);
 
-    public Ficha obterFichaComCodigo(long codigo);
+    Ficha obterFichaComCodigo(long codigo);
 
-    public List<Ficha> obterFichasDoCliente(Usuario u);
+    List<Ficha> obterFichasDoCliente(Usuario u);
 
-    public List<Ficha> obterFichasDoTipo(String tipo);
-
-    public List<Ficha> obterFichasCompradasNoIntervalo(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim);
+    Ficha obterFichaDoClienteDoTipo(Usuario u, String tipo) throws ClienteNaoPossuiFichasException;
 
 }

@@ -2,6 +2,7 @@ package negocio;
 
 import dados.IRepositorioFicha;
 import dados.RepositorioFicha;
+import exception.ClienteNaoPossuiFichasException;
 import negocio.beans.Ficha;
 import negocio.beans.Usuario;
 
@@ -45,5 +46,9 @@ public class ControladorFicha {
 
         return null;
     }
+    public Ficha obterFichaDoClienteDoTipo(Usuario u, String tipo) throws ClienteNaoPossuiFichasException {
+        return this.repositorioFicha.obterFichaDoClienteDoTipo(u, tipo);
+    }
+
 
 }

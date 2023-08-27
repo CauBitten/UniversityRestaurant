@@ -1,5 +1,6 @@
 package dados;
 
+import exception.ClienteNaoPossuiFichasException;
 import negocio.beans.Ficha;
 import negocio.beans.Usuario;
 
@@ -72,4 +73,19 @@ public class RepositorioFicha implements IRepositorioFicha {
 
         return fichasDoIntervalo;
     }
+
+    @Override
+    public Ficha obterFichaDoClienteDoTipo(Usuario u, String tipo) throws ClienteNaoPossuiFichasException {
+        List<Ficha> fichasPorUsuario = new ArrayList<>();
+
+        for (Ficha ficha : fichas) {
+            Usuario usuario = ficha.getUsuario();
+
+            if (u.equals(usuario) && ficha.getTipo().equals(tipo))
+                return ficha;
+        }
+
+        throw new ClienteNaoPossuiFichasException(tipo);
+    }
+
 }
