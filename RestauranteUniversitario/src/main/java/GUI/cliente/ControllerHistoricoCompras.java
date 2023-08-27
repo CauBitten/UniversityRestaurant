@@ -55,7 +55,7 @@ public class ControllerHistoricoCompras {
 
     @FXML
     void bttnFiltrarOn(ActionEvent event) {
-
+        ScreenManager.getInstance().changeScreen(TelasEnum.FILTRO_HISTORICO.name());
     }
 
     @FXML
@@ -88,10 +88,13 @@ public class ControllerHistoricoCompras {
     }
 
     public void atualizarApresentacao() {
+        limparItens();
+        configurarTv(Fachada.getInstance().obterRegistrosDoUsuario(Fachada.getInstance().getUsuarioLogado()));
+    }
+
+    public void limparItens() {
         for (int i = 0; i < tvRegistroCompra.getItems().size(); i++)
             tvRegistroCompra.getItems().clear();
-
-        configurarTv(Fachada.getInstance().obterRegistrosDoUsuario(Fachada.getInstance().getUsuarioLogado()));
     }
 
 }

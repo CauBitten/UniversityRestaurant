@@ -39,6 +39,9 @@ public class ScreenManager {
 
     private Scene historicoComprasScene;
     private ControllerHistoricoCompras controllerHistoricoCompras;
+
+    private Scene filtrarHistoricoComprasScene;
+    private ControllerFiltroHistorico controllerFiltroHistorico;
     // -----
 
     // Vendedor Scenes
@@ -496,6 +499,12 @@ public class ScreenManager {
                     .getResource("/cliente/telaHistoricoCompras.fxml")).openStream());
             this.historicoComprasScene = new Scene(historicoComprasPane);
             this.controllerHistoricoCompras = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane filtroHistoricoComprasPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/cliente/telaFiltroHistoricoCompras.fxml")).openStream());
+            this.filtrarHistoricoComprasScene = new Scene(filtroHistoricoComprasPane);
+            this.controllerFiltroHistorico = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -646,6 +655,11 @@ public class ScreenManager {
             case "HISTORICO_COMPRAS" -> {
                 primaryStage.setScene(historicoComprasScene);
                 primaryStage.setTitle("RU | HISTÓRICO DE COMPRAS");
+            }
+
+            case "FILTRO_HISTORICO" -> {
+                primaryStage.setScene(filtrarHistoricoComprasScene);
+                primaryStage.setTitle("RU | FILTRO DE HISTÓRICO");
             }
 
             // -----
