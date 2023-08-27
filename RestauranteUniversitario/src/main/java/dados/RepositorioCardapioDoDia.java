@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
-    private List<CardapioPorEntrada> cardapioPorEntrada;
+    private List<CardapioPorEntrada> cardapiosPorEntrada;
     private static IRepositorioCardapioDoDia instance;
 
     private RepositorioCardapioDoDia() {
-        this.cardapioPorEntrada = new ArrayList<>();
+        this.cardapiosPorEntrada = new ArrayList<>();
     }
 
     public static IRepositorioCardapioDoDia getInstance() {
@@ -25,20 +25,38 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
     }
 
     @Override
-    public void associarCardapioAoDiaeTipo(Cardapio cardapio, String tipo, String data) {
-        CardapioPorEntrada ce = new CardapioPorEntrada(data, cardapio, tipo);
-        this.cardapioPorEntrada.add(ce);
+    public void registrarCardapioDoDia(CardapioPorEntrada ce) {
+       if (haCardapiosPorDiaIguaisA(ce)) {
+           //atirar excecao
+       }
+       else {
+           cardapiosPorEntrada.add(ce);
+       }
     }
 
     @Override
     public CardapioPorEntrada obterCardapioPorDiaETipo(LocalDate data, String tipo) {
-        for (CardapioPorEntrada ce : this.cardapioPorEntrada){
+        for (CardapioPorEntrada ce : this.cardapiosPorEntrada){
             if (ce.getData().equals(data) && ce.getTipo().equals(tipo)){
                 return ce;
             }
         }
 
         return null;
+    }
+
+    @Override
+    public List<CardapioPorEntrada> getCardapiosPorEntrada() {
+        return this.cardapiosPorEntrada;
+    }
+
+    private boolean haCardapiosPorDiaIguaisA(CardapioPorEntrada ce) {
+        for (CardapioPorEntrada cardapioPorEntrada : cardapiosPorEntrada) {
+            if (ce.equals(cardapioPorEntrada))
+                return true;
+        }
+
+        return false;
     }
 
 }

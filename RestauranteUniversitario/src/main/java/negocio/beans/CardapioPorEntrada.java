@@ -7,10 +7,9 @@ public class CardapioPorEntrada {
     private LocalDate data;
     private Cardapio cardapio;
     private String tipo;
-    DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public CardapioPorEntrada(String data, Cardapio cardapio, String tipo) {
-        this.data = LocalDate.parse(data, formato2);
+    public CardapioPorEntrada(LocalDate data, Cardapio cardapio, String tipo) {
+        this.data = data;
         this.cardapio = cardapio;
         this.tipo = tipo;
     }
@@ -39,12 +38,14 @@ public class CardapioPorEntrada {
         this.tipo = tipo;
     }
 
-    public DateTimeFormatter getFormato2() {
-        return formato2;
-    }
+    public boolean equals(Object o) {
+        if (o instanceof CardapioPorEntrada) {
+            return data.equals(((CardapioPorEntrada) o).getData()) &&
+                    cardapio.equals(((CardapioPorEntrada) o).getCardapio()) &&
+                    tipo.equals(((CardapioPorEntrada) o).getTipo());
+        }
 
-    public void setFormato2(DateTimeFormatter formato2) {
-        this.formato2 = formato2;
+        return false;
     }
 
 }

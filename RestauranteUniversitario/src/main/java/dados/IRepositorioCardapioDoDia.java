@@ -4,11 +4,15 @@ import negocio.beans.Cardapio;
 import negocio.beans.CardapioPorEntrada;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface IRepositorioCardapioDoDia {
 
     CardapioPorEntrada obterCardapioPorDiaETipo(LocalDate data, String tipo);
 
-    void associarCardapioAoDiaeTipo(Cardapio cardapio, String tipo, String data);
+    void registrarCardapioDoDia(CardapioPorEntrada ce);
+
+    List<CardapioPorEntrada> getCardapiosPorEntrada();
+
 
 }

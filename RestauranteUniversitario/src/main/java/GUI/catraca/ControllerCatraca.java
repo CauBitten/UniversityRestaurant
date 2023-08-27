@@ -29,9 +29,9 @@ public class ControllerCatraca {
     private boolean permitirEntrada() {
         if (!camposEstaoVazios()) {
             try {
+                System.out.println(Fachada.getInstance().getListaEntrada());
                 Usuario cliente = Fachada.getInstance().validarCredenciais(tfLogin.getText(), tfSenha.getText());
-                Entrada e = new Entrada(Fachada.getInstance().obterCardapioPorDiaETipo(LocalDate.now(), "Almoco"),
-                        "Almoco", LocalDateTime.now(), Fachada.getInstance().obterFichaDoClienteDoTipo(cliente, "Almoco"));
+                Entrada e = new Entrada(Fachada.getInstance().obterFichaDoClienteDoTipo(cliente, "Almoco"));
                 Fachada.getInstance().registrarEntrada(e);
             }
             catch (LoginNaoExisteException e) {

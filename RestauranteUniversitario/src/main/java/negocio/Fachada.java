@@ -146,12 +146,16 @@ public class Fachada {
         return this.controladorFicha.obterFichaDoClienteDoTipo(u, tipo);
     }
 
-    public void associarCardapioAoDiaETipo(Cardapio c, String tipo, String data) {
-        this.controladorCardapioPorDia.associarCardapioAoDiaETipo(c, tipo, data);
+    public void registrarCardapioDoDia(CardapioPorEntrada ce) {
+        this.controladorCardapioPorDia.registrarCardapioDoDia(ce);
     }
 
     public CardapioPorEntrada obterCardapioPorDiaETipo(LocalDate data, String tipo) {
         return this.controladorCardapioPorDia.obterCardapioDoDia(data, tipo);
+    }
+
+    public List<CardapioPorEntrada> getCardapiosPorEntrada() {
+        return this.controladorCardapioPorDia.getCardapiosPorEntrada();
     }
 
 }

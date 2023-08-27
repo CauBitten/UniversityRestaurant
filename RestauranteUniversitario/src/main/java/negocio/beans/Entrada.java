@@ -19,6 +19,10 @@ public class Entrada {
         this.ficha = ficha;
     }
 
+    public Entrada(Ficha ficha) {
+        this.ficha = ficha;
+    }
+
     public CardapioPorEntrada getCardapio() {
         return cardapio;
     }
@@ -58,7 +62,7 @@ public class Entrada {
     }
 
     public String toString() {
-        return "A refeição é um   : " + tipo + "\nData da refeição  : " + dataHora.format(formato) + cardapio.toString();
+        return "A refeição é um   : " + tipo + "\nData da refeição  : " /*+ dataHora.format(formato) + cardapio.toString()*/;
     }
 
 }

@@ -7,6 +7,7 @@ import negocio.beans.CardapioPorEntrada;
 import negocio.beans.Entrada;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ControladorCardapioPorDia {
     private IRepositorioCardapioDoDia repositorioCardapioDoDia;
@@ -24,11 +25,15 @@ public class ControladorCardapioPorDia {
         return instance;
     }
 
-    public void associarCardapioAoDiaETipo(Cardapio c, String tipo, String data) {
-        this.repositorioCardapioDoDia.associarCardapioAoDiaeTipo(c, tipo, data);
+    public void registrarCardapioDoDia(CardapioPorEntrada ce) {
+        this.repositorioCardapioDoDia.registrarCardapioDoDia(ce);
     }
 
     public CardapioPorEntrada obterCardapioDoDia(LocalDate data, String tipo) {
         return this.repositorioCardapioDoDia.obterCardapioPorDiaETipo(data, tipo);
+    }
+
+    public List<CardapioPorEntrada> getCardapiosPorEntrada() {
+        return this.repositorioCardapioDoDia.getCardapiosPorEntrada();
     }
 }

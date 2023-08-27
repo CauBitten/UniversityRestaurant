@@ -9,10 +9,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import negocio.Fachada;
 import negocio.beans.Cardapio;
+import negocio.beans.CardapioPorEntrada;
 import view.ScreenManager;
 import view.TelasEnum;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -57,6 +59,29 @@ public class ControllerListarCardapios implements Initializable  {
 
     @FXML
     private TableView<Cardapio> tvCardapios;
+
+    @FXML
+    private DatePicker dtpDia;
+
+    @FXML
+    void bttnAssociarAoDiaOn(ActionEvent event) {
+        if (tvCardapios.getSelectionModel().getSelectedItem() != null) {
+            try {
+                CardapioPorEntrada ce = new CardapioPorEntrada(dtpDia.getValue(),
+                        tvCardapios.getSelectionModel().getSelectedItem(), "Almoco");
+                Fachada.getInstance().registrarCardapioDoDia(ce);
+            }
+            catch (NullPointerException e) {
+                showErrorMessage("Erro: a data não pode ser vazia", "Corrija e tente novamente.");
+            }
+        }
+        else {
+            showErrorMessage("Erro: nenhum cardápio selecionado",
+                    "Selecione um cardápio se quiser associa-lo.");
+        }
+
+        System.out.println(Fachada.getInstance().getCardapiosPorEntrada());
+    }
 
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {

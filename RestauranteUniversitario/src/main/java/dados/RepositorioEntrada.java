@@ -22,15 +22,8 @@ public class RepositorioEntrada implements IRepositorioEntrada {
     }
     @Override
     public void registrarEntrada(Entrada e) throws EntradaJaRealizadaNesteTurnoException {
-        for (Entrada entrada : entradas) {
-            if (!(e.getFicha().getUsuario().getLogin().equals(entrada.getFicha().getUsuario().getLogin()) &&
-                e.getTipo().equals(entrada.getTipo()))) {
-                entradas.add(e);
-            }
-            else {
-                throw new EntradaJaRealizadaNesteTurnoException(e);
-            }
-        }
+        entradas.add(e);
+
     }
 
     public List<Entrada> getEntradas() {
