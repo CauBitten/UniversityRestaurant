@@ -67,11 +67,14 @@ public class ControllerCompraFichas {
     void bttnEfetuarCompraOn(ActionEvent event) {
         if (!cbAlmoco.isSelected()) {
             contadorAlmoco = 0;
-        }
-        else if (!cbJantar.isSelected()) {
+            atualizarLabelNum(labelQuantidadeAlmoco, contadorAlmoco);
+
+        } else if (!cbJantar.isSelected()) {
             contadorJantar = 0;
+            atualizarLabelNum(labelQuantidadeJantar, contadorJantar);
+
         }
-        else {
+
             if (contadorAlmoco > 0 || contadorJantar > 0) {
                 ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
                 ScreenManager.getInstance().getControllerPagamento().inicializarValores();
@@ -80,7 +83,7 @@ public class ControllerCompraFichas {
                 showErrorMessage("Erro: nenhuma ficha selecionada", "Você deve selecionar fichas para compra",
                         "Tente outra vez para prosseguir");
             }
-        }
+
     }
 
     private void atualizarLabelNum (Label label, int contador) {

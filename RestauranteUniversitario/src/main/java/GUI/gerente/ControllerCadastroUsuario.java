@@ -49,24 +49,28 @@ public class ControllerCadastroUsuario implements Initializable {
                 Fachada.getInstance().cadastrarUsuario(u);
                 showInfoMessage("Cadastro realizado", "O usuário de CPF " + tfCPF.getText() +
                         " foi cadastrado com sucesso");
+                clearFields();
             }
             catch (CpfJaCadastradoException e) {
                 showErrorMessage("Erro: CPF já cadastrado", e.getMessage());
+                tfCPF.setText("");
             }
             catch (LoginJaCadastradoException e) {
                 showErrorMessage("Erro: Login já cadastrado", e.getMessage());
+                tfLogin.setText("");
             }
             catch (EmailJaCadastradoException e) {
                 showErrorMessage("Erro: E-mail já cadastrado", e.getMessage());
+                tfEmail.setText("");
             }
             catch (CPFInvalidoException e) {
                 showErrorMessage("Erro: CPF inválido", e.getMessage());
+                tfCPF.setText("");
             }
             catch (NumberFormatException e) {
                 showErrorMessage("Erro: CPF inválido", "O CPF deve ser numérico");
+                tfCPF.setText("");
             }
-
-            clearFields();
         }
     }
 
