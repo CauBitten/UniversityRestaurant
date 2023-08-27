@@ -13,7 +13,6 @@ public class ControllerCompraFichas {
     private int contadorAlmoco = 0;
     private int contadorJantar = 0;
 
-
     @FXML
     private CheckBox cbAlmoco;
 
@@ -65,24 +64,22 @@ public class ControllerCompraFichas {
     }
 
     @FXML
-    void checkBoxFAlmocoOn(ActionEvent event) {
-
-    }
-
-    @FXML
-    void checkBoxFJantarOn(ActionEvent event) {
-
-    }
-
-    @FXML
     void bttnEfetuarCompraOn(ActionEvent event) {
-        if (contadorAlmoco > 0 || contadorJantar > 0) {
-            ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
-            ScreenManager.getInstance().getControllerPagamento().inicializarValores();
+        if (!cbAlmoco.isSelected()) {
+            contadorAlmoco = 0;
+        }
+        else if (!cbJantar.isSelected()) {
+            contadorJantar = 0;
         }
         else {
-            showErrorMessage("Erro: nenhuma ficha selecionada", "Você deve selecionar fichas para compra",
-                    "Tente outra vez para prosseguir");
+            if (contadorAlmoco > 0 || contadorJantar > 0) {
+                ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO.name());
+                ScreenManager.getInstance().getControllerPagamento().inicializarValores();
+            }
+            else {
+                showErrorMessage("Erro: nenhuma ficha selecionada", "Você deve selecionar fichas para compra",
+                        "Tente outra vez para prosseguir");
+            }
         }
     }
 
@@ -98,7 +95,7 @@ public class ControllerCompraFichas {
         return contadorJantar;
     }
 
-    public void clearFields(){
+    public void clearFields() {
         contadorAlmoco = 0;
         contadorJantar = 0;
         atualizarLabelNum(labelQuantidadeAlmoco, 0);
