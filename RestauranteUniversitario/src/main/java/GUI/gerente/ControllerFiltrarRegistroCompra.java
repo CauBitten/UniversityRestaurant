@@ -46,7 +46,6 @@ public class ControllerFiltrarRegistroCompra {
     void bttnFiltrarOn(ActionEvent event) {
         List<RegistroCompra> registroCompras = filtrar();
         ScreenManager.getInstance().getControllerListarRegistroCompra().limparItens();
-        System.out.println(registroCompras);
 
         if (registroCompras.isEmpty())
             showErrorMessage("Erro: nada encontrado", "A busca não retornou resultados",

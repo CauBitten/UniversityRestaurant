@@ -30,7 +30,6 @@ public class ControllerFiltroCalendario {
     void bttnFiltrarOn(ActionEvent event) {
         List<CardapioPorEntrada> cardapioPorEntradas = filtrar();
         ScreenManager.getInstance().getControllerCalendario().limparItens();
-        System.out.println(cardapioPorEntradas);
 
         if (cardapioPorEntradas.isEmpty()) {
             showErrorMessage("Erro: nada encontrado", "A busca não retornou resultados",
@@ -51,7 +50,7 @@ public class ControllerFiltroCalendario {
     }
 
     private void clearFields() {
-        tfId.setText("");
+        tfId.setText("0");
         cbTipo.setValue(null);
         dtpData.getEditor().clear();
     }
@@ -72,7 +71,6 @@ public class ControllerFiltroCalendario {
                                 Fachada.getInstance().obterCardapioComId(Long.parseLong(tfId.getText())), "");
                     }
                     else {
-                        System.out.println("1");
                         modelo = new CardapioPorEntrada(dtpData.getValue(),
                                 Fachada.getInstance().obterCardapioComId(Long.parseLong(tfId.getText())), cbTipo.getValue());
                     }

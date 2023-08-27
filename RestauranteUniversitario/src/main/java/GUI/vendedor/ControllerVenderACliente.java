@@ -59,6 +59,7 @@ public class ControllerVenderACliente implements Initializable {
             try {
                 ScreenManager.getInstance().getControllerPagamentoVendaACliente().setComprador(
                         Fachada.getInstance().validarUsuarioParaCompra(tfLogin.getText()));
+                ScreenManager.getInstance().getControllerPagamentoVendaACliente().inicializarValores();
                 ScreenManager.getInstance().changeScreen(TelasEnum.PAGAMENTO_VENDA_CLIENTE.name());
             }
             catch (LoginNaoExisteException e) {
@@ -124,6 +125,7 @@ public class ControllerVenderACliente implements Initializable {
         atualizarLabelNum(labelQuantidadeJantar, 0);
         cbAlmoco.setSelected(false);
         cbJantar.setSelected(false);
+        tfLogin.setText("");
     }
 
     private void showErrorMessage(String titulo, String header, String content) {

@@ -103,6 +103,6 @@ public class RepositorioCardapio implements IRepositorioCardapio {
     private boolean compararCardapioAoModelo(Cardapio c, Cardapio modelo) {
         return c.getPrincipal().contains(modelo.getPrincipal()) && c.getVegetariano().contains(modelo.getVegetariano()) &&
                 c.getGuarnicao().contains(modelo.getGuarnicao()) && c.getSalada().contains(modelo.getSalada())
-                && c.getSobremesa().contains(c.getSobremesa()) && c.getSuco().contains(modelo.getSuco());
+                && c.getSobremesa().contains(modelo.getSobremesa()) && c.getSuco().contains(modelo.getSuco());
     }
 }

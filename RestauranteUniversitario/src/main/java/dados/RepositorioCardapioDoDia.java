@@ -90,7 +90,7 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
     private boolean compararCardapioPorDiaAoModelo(CardapioPorEntrada modelo, CardapioPorEntrada ce) {
         return ce.getTipo().contains(modelo.getTipo()) &&
                 (ce.getData().isAfter(modelo.getData()) ||  ce.getData().equals(modelo.getData())) &&
-                modelo.getCardapio().getId() >= ce.getCardapio().getId();
+                modelo.getCardapio().getId() <= ce.getCardapio().getId();
     }
 
 }

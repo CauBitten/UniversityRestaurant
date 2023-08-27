@@ -36,6 +36,7 @@ public class ControllerFiltrarUsuarios {
 
     @FXML
     void bttnFiltrarOn(ActionEvent event) {
+        ScreenManager.getInstance().getControllerListarUsuarios().limparItens();
         List<Usuario> usuarios = filtrar();
 
         if (usuarios.isEmpty())

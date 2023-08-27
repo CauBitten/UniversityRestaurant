@@ -131,10 +131,13 @@ public class ControllerListarUsuarios implements Initializable {
     }
 
     public void atualizarApresentacao() {
+        limparItens();
+        configurarTv(Fachada.getInstance().obterUsuarios());
+    }
+
+    public void limparItens() {
         for (int i = 0; i < tvUsuarios.getItems().size(); i++)
             tvUsuarios.getItems().clear();
-
-        configurarTv(Fachada.getInstance().obterUsuarios());
     }
 
     private boolean getConfirmation() {
