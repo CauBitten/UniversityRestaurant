@@ -114,9 +114,7 @@ public class ControllerListarUsuarios implements Initializable {
         ObservableList<Usuario> userList = FXCollections.observableArrayList();
 
         for (Usuario u : usuarios) {
-            if(!u.getNome().equals("avulso")){
-                userList.add(u);
-            }
+            userList.add(u);
         }
 
         tvUsuarios.setItems(userList);
