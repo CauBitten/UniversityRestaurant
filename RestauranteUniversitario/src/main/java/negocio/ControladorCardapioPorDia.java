@@ -45,4 +45,8 @@ public class ControladorCardapioPorDia {
         this.repositorioCardapioDoDia.alterarCardapioDoDiaETipo(data, c, tipo);
     }
 
+    public boolean haDiaAssociadoAoCardapio(Cardapio c) {
+        return this.repositorioCardapioDoDia.haDiaAssociadoAoCardapio(c);
+    }
+
 }

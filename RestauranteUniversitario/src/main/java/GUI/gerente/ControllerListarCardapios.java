@@ -116,9 +116,15 @@ public class ControllerListarCardapios implements Initializable  {
     @FXML
     void bttnRemoverOn(ActionEvent event) {
         if (tvCardapios.getSelectionModel().getSelectedItem() != null) {
-            if (getConfirmationRemover()) {
-                Fachada.getInstance().removerCardapio(tvCardapios.getSelectionModel().getSelectedItem());
-                atualizarApresentacao();
+            if (Fachada.getInstance().haDiaAssociadoAoCardapio(tvCardapios.getSelectionModel().getSelectedItem())) {
+                showErrorMessage("Erro: o cardápio está associado a um dia",
+                        "Para removê-lo, altere os dias que ele está associado");
+            }
+            else {
+                if (getConfirmationRemover()) {
+                    Fachada.getInstance().removerCardapio(tvCardapios.getSelectionModel().getSelectedItem());
+                    atualizarApresentacao();
+                }
             }
         }
         else {

@@ -18,4 +18,6 @@ public interface IRepositorioCardapioDoDia {
 
     void alterarCardapioDoDiaETipo(LocalDate data, Cardapio c, String tipo);
 
+    boolean haDiaAssociadoAoCardapio(Cardapio c);
+
 }

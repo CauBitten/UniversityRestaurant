@@ -74,4 +74,14 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
         }
     }
 
+    @Override
+    public boolean haDiaAssociadoAoCardapio(Cardapio c) {
+        for (CardapioPorEntrada cardapioPorEntrada : cardapiosPorEntrada) {
+            if (cardapioPorEntrada.getCardapio().equals(c))
+                return true;
+        }
+
+        return false;
+    }
+
 }

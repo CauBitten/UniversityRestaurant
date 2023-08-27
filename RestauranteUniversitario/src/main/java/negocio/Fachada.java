@@ -164,5 +164,9 @@ public class Fachada {
     public void alterarCardapioDoDia(LocalDate data, Cardapio c, String tipo) {
         this.controladorCardapioPorDia.alterarCardapioDoDiaETipo(data, c, tipo);
     }
+    public boolean haDiaAssociadoAoCardapio(Cardapio c) {
+        return this.controladorCardapioPorDia.haDiaAssociadoAoCardapio(c);
+    }
+
 
 }
