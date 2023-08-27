@@ -1,6 +1,7 @@
 package dados;
 
 import negocio.beans.RegistroCompra;
+import negocio.beans.Usuario;
 
 import java.util.List;
 
@@ -13,5 +14,7 @@ public interface IRepositorioRegistroCompra {
     List<RegistroCompra> getListaRegistroCompra();
 
     List<RegistroCompra> obterRegistrosComInformacoesContidasEm(RegistroCompra modelo, int almoco, int janta);
+
+    List<RegistroCompra> obterRegistrosDoUsuario(Usuario u);
 
 }

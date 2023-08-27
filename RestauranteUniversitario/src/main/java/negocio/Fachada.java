@@ -137,4 +137,8 @@ public class Fachada {
         return this.controladorUsuario.validarUsuarioParaCompra(login);
     }
 
+    public List<RegistroCompra> obterRegistrosDoUsuario(Usuario u) {
+        return this.controladorRegistroCompra.obterRegistrosDoUsuario(u);
+    }
+
 }

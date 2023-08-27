@@ -47,7 +47,6 @@ public class ControllerPagamentoVendedor {
                 fichasCompradas.add(f);
                 Fachada.getInstance().adicionarFicha(f);
             }
-            System.out.println(ScreenManager.getInstance().getControllerVenda().getContadorAlmoco());
 
             for (int i = 0; i < ScreenManager.getInstance().getControllerVenda().getContadorJantar(); i++) {
                 Ficha f = new Ficha("Janta", Fachada.getInstance().getAvulso());

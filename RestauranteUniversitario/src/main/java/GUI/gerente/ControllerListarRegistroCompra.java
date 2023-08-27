@@ -64,7 +64,6 @@ public class ControllerListarRegistroCompra implements Initializable {
     @FXML
     void bttnVoltarPaginaOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
-        System.out.println(Fachada.getInstance().getRegistrosCompra());
     }
 
     @FXML
@@ -117,10 +116,14 @@ public class ControllerListarRegistroCompra implements Initializable {
     }
 
     public void atualizarApresentacao() {
-        for (int i = 0; i < tvRegistroCompra.getItems().size(); i++)
-            tvRegistroCompra.getItems().clear();
+        limparItens();
 
         configurarTv(Fachada.getInstance().getRegistrosCompra());
+    }
+
+    public void limparItens() {
+        for (int i = 0; i < tvRegistroCompra.getItems().size(); i++)
+            tvRegistroCompra.getItems().clear();
     }
 
 }

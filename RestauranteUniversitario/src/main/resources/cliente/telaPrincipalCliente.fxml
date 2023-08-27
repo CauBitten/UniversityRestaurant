@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.cliente.ControllerPrincipalCliente">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.cliente.ControllerPrincipalCliente">
    <children>
-      <VBox layoutX="134.0" layoutY="132.0" prefHeight="135.0" prefWidth="332.0" spacing="45.0">
+      <VBox layoutX="134.0" layoutY="89.0" prefHeight="222.0" prefWidth="332.0" spacing="45.0">
          <children>
             <Button mnemonicParsing="false" onAction="#bttnVisualizarDados" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="Visualizar Dados" textFill="WHITE">
                <font>
@@ -16,6 +16,11 @@
                </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#bttnComprarFichas" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="Comprar Fichas" textFill="WHITE">
+               <font>
+                  <Font name="Georgia Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonHistoricoCompras" mnemonicParsing="false" onAction="#bttnHistoricoComprasOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="Histórico de Compras" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="18.0" />
                </font>

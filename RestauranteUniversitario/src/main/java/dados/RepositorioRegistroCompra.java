@@ -2,6 +2,7 @@ package dados;
 
 import negocio.beans.Ficha;
 import negocio.beans.RegistroCompra;
+import negocio.beans.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +87,18 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
         }
 
         return qtd;
+    }
+
+    @Override
+    public List<RegistroCompra> obterRegistrosDoUsuario(Usuario u) {
+        List<RegistroCompra> registrosDoCliente = new ArrayList<>();
+
+        for (RegistroCompra registro : registrosCompras) {
+            if (registro.getLoginCliente().equals(u.getLogin()))
+                registrosDoCliente.add(registro);
+        }
+
+        return registrosDoCliente;
     }
 
 }

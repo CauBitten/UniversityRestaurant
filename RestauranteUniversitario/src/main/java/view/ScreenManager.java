@@ -1,9 +1,6 @@
 package view;
 
-import GUI.cliente.ControllerCompraFichas;
-import GUI.cliente.ControllerPagamento;
-import GUI.cliente.ControllerPrincipalCliente;
-import GUI.cliente.ControllerVisualizacaoDados;
+import GUI.cliente.*;
 import GUI.gerente.*;
 import GUI.login.ControllerLoginPage;
 import GUI.refeicao.ControllerAlterarRefeicao;
@@ -39,6 +36,9 @@ public class ScreenManager {
 
     private Scene pagamentoScene;
     private ControllerPagamento controllerPagamento;
+
+    private Scene historicoComprasScene;
+    private ControllerHistoricoCompras controllerHistoricoCompras;
     // -----
 
     // Vendedor Scenes
@@ -316,6 +316,14 @@ public class ScreenManager {
         return controllerPagamentoVendaACliente;
     }
 
+    public Scene getHistoricoComprasScene() {
+        return historicoComprasScene;
+    }
+
+    public ControllerHistoricoCompras getControllerHistoricoCompras() {
+        return controllerHistoricoCompras;
+    }
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -472,16 +480,22 @@ public class ScreenManager {
             this.controllerListarEntradas = fxmlLoader.getController();
 
             fxmlLoader = new FXMLLoader();
-            AnchorPane vendaACliente = fxmlLoader.load(Objects.requireNonNull(getClass()
+            AnchorPane vendaAClientePane = fxmlLoader.load(Objects.requireNonNull(getClass()
                     .getResource("/vendedor/telaVenderACliente.fxml")).openStream());
-            this.venderAClienteScene = new Scene(vendaACliente);
+            this.venderAClienteScene = new Scene(vendaAClientePane);
             this.controllerVenderACliente = fxmlLoader.getController();
 
             fxmlLoader = new FXMLLoader();
-            AnchorPane pagamentoVendaACliente = fxmlLoader.load(Objects.requireNonNull(getClass()
+            AnchorPane pagamentoVendaAClientePane = fxmlLoader.load(Objects.requireNonNull(getClass()
                     .getResource("/vendedor/telaPagamentoVendaACliente.fxml")).openStream());
-            this.pagamentoVendaClienteScene = new Scene(pagamentoVendaACliente);
+            this.pagamentoVendaClienteScene = new Scene(pagamentoVendaAClientePane);
             this.controllerPagamentoVendaACliente = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane historicoComprasPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/cliente/telaHistoricoCompras.fxml")).openStream());
+            this.historicoComprasScene = new Scene(historicoComprasPane);
+            this.controllerHistoricoCompras = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -500,12 +514,12 @@ public class ScreenManager {
 
             case "VISUALIZAR_DADOS" -> {
                 primaryStage.setScene(visualizarDadosScene);
-                primaryStage.setTitle("RU | TELA VISUALIZAÇÃO DE DADOS");
+                primaryStage.setTitle("RU | VISUALIZAÇÃO DE DADOS");
             }
 
             case "COMPRA_FICHAS" -> {
                 primaryStage.setScene(compraFichasScene);
-                primaryStage.setTitle("RU | TELA COMPRA FICHAS");
+                primaryStage.setTitle("RU | COMPRAR FICHAS");
             }
 
             case "PAGAMENTO" -> {
@@ -532,17 +546,17 @@ public class ScreenManager {
 
             case "LISTAR_REFEICOES" -> {
                 primaryStage.setScene(listarRefeicoesScene);
-                primaryStage.setTitle("RU | TELA LISTAR REFEIÇÕES");
+                primaryStage.setTitle("RU | LISTAR REFEIÇÕES");
             }
 
             case "VENDA_CLIENTE" -> {
                 primaryStage.setScene(venderAClienteScene);
-                primaryStage.setTitle("RU | TELA VENDER A CLIENTE");
+                primaryStage.setTitle("RU | VENDER A CLIENTE");
             }
 
             case "PAGAMENTO_VENDA_CLIENTE" -> {
                 primaryStage.setScene(pagamentoVendaClienteScene);
-                primaryStage.setTitle("RU | TELA PAGAMENTO");
+                primaryStage.setTitle("RU | PAGAMENTO");
             }
             // -----
 
@@ -554,79 +568,84 @@ public class ScreenManager {
 
             case "LISTAR_USUARIO" -> {
                 primaryStage.setScene(listarUsuarioScene);
-                primaryStage.setTitle("RU | TELA LISTAR USUÁRIO");
+                primaryStage.setTitle("RU | LISTA DE USUÁRIOS");
             }
 
             case "CADASTRAR_USUARIO" -> {
                 primaryStage.setScene(cadastrarUsuarioScene);
-                primaryStage.setTitle("RU | TELA CADASTRAR USUÁRIO");
+                primaryStage.setTitle("RU | CADASTRAR USUÁRIO");
             }
 
             case "ALTERAR_USUARIO" -> {
                 primaryStage.setScene(alterarUsuarioScene);
-                primaryStage.setTitle("RU | TELA ALTERAR USUÁRIO");
+                primaryStage.setTitle("RU | ALTERAR USUÁRIO");
             }
 
             case "LISTAR_REGISTRO_COMPRA" -> {
                 primaryStage.setScene(listarRegistroCompraScene);
-                primaryStage.setTitle("RU | TELA LISTAR REGISTRO COMPRA");
+                primaryStage.setTitle("RU | LISTA DE REGISTROS DE COMPRA");
             }
 
             case "LISTAR_ENTRADAS" -> {
                 primaryStage.setScene(listarEntradasScene);
-                primaryStage.setTitle("RU | TELA LISTAR ENTRADAS");
+                primaryStage.setTitle("RU | LISTA DE ENTRADAS");
             }
             // -----
 
             // Refeições
             case "VISUALIZAR_REFEICOES" -> {
                 primaryStage.setScene(visualizarRefeicoesScene);
-                primaryStage.setTitle("RU | TELA VISUALIZAR REFEIÇÕES");
+                primaryStage.setTitle("RU | VISUALIZAR REFEIÇÕES");
             }
 
             case "CADASTRAR_REFEICOES" -> {
                 primaryStage.setScene(cadastrarRefeicoesScene);
-                primaryStage.setTitle("RU | TELA CADASTRO REFEIÇÕES");
+                primaryStage.setTitle("RU | CADASTRO REFEIÇÕES");
             }
 
             case "ALTERAR_REFEICOES" -> {
                 primaryStage.setScene(alterarRefeicoesScene);
-                primaryStage.setTitle("RU | TELA ALTERAR REFEIÇÕES");
+                primaryStage.setTitle("RU | ALTERAR REFEIÇÕES");
             }
 
             case "VISUALIZAR_CARDAPIOS" -> {
                 primaryStage.setScene(listarCardapiosScene);
-                primaryStage.setTitle("RU | TELA LISTA DE CARDÁPIOS");
+                primaryStage.setTitle("RU | LISTA DE CARDÁPIOS");
             }
 
             case "CADASTRAR_CARDAPIO" -> {
                 primaryStage.setScene(cadastrarCardapioScene);
-                primaryStage.setTitle("RU | TELA DE CADASTRO DE CARDÁPIOS");
+                primaryStage.setTitle("RU | CADASTRO DE CARDÁPIOS");
             }
 
             case "LISTAR_CARDAPIOS" -> {
                 primaryStage.setScene(listarCardapiosScene);
-                primaryStage.setTitle("RU | TELA DE LISTA DE CARDÁPIOS");
+                primaryStage.setTitle("RU | LISTA DE CARDÁPIOS");
             }
 
             case "ALTERAR_CARDAPIO" -> {
                 primaryStage.setScene(alterarCardapioScene);
-                primaryStage.setTitle("RU | TELA DE ALTERAR CARDÁPIO");
+                primaryStage.setTitle("RU | ALTERAR CARDÁPIO");
             }
 
             case "FILTRAR_USUARIO" -> {
                 primaryStage.setScene(filtrarUsuarioScene);
-                primaryStage.setTitle("RU | TELA DE FILTRO DE USUÁRIOS");
+                primaryStage.setTitle("RU | FILTRO DE USUÁRIOS");
             }
 
             case "FILTRAR_CARDAPIO" -> {
                 primaryStage.setScene(filtrarCardapioScene);
-                primaryStage.setTitle("RU | TELA DE FILTRO DE CARDÁPIOS");
+                primaryStage.setTitle("RU | FILTRO DE CARDÁPIOS");
             }
 
             case "FILTRAR_REGISTRO" -> {
                 primaryStage.setScene(filtrarRegistrosScene);
-                primaryStage.setTitle("RU | TELA DE FILTRO DE REGISTROS");
+                primaryStage.setTitle("RU | FILTRO DE REGISTROS");
+            }
+
+            case "HISTORICO_COMPRAS" -> {
+                primaryStage.setScene(historicoComprasScene);
+                primaryStage.setTitle("RU | HISTÓRICO DE COMPRAS");
             }
 
             // -----

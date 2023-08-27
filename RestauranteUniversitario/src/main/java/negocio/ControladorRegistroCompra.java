@@ -3,6 +3,7 @@ package negocio;
 import dados.IRepositorioRegistroCompra;
 import dados.RepositorioRegistroCompra;
 import negocio.beans.RegistroCompra;
+import negocio.beans.Usuario;
 
 import java.util.List;
 
@@ -30,12 +31,6 @@ public class ControladorRegistroCompra{
         }
     }
 
-    public void removerRegistroCompra(RegistroCompra rc) {
-        if (rc != null) {
-            repositorioRegistroCompra.removerRegistroCompra(rc);
-        }
-    }
-
     public List<RegistroCompra> getListaRegistroCompra() {
         return repositorioRegistroCompra.getListaRegistroCompra();
     }
@@ -43,4 +38,9 @@ public class ControladorRegistroCompra{
     public List<RegistroCompra> obterRegistrosContidosEm(RegistroCompra modelo, int almoco, int janta) {
         return this.repositorioRegistroCompra.obterRegistrosComInformacoesContidasEm(modelo, almoco, janta);
     }
+
+    public List<RegistroCompra> obterRegistrosDoUsuario(Usuario u) {
+        return this.repositorioRegistroCompra.obterRegistrosDoUsuario(u);
+    }
+
 }
