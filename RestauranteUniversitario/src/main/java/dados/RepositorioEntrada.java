@@ -38,7 +38,8 @@ public class RepositorioEntrada implements IRepositorioEntrada {
 
     private boolean entradaJaRealizadaNesteTurno(Entrada e) {
         for (Entrada entrada : entradas) {
-            if (entrada.getTipo().equals(e.getTipo())
+            if (entrada.getTipo().equals(e.getTipo()) &&
+                    entrada.getFicha().getUsuario().equals(e.getFicha().getUsuario())
                     && e.getDataHora().toLocalDate().equals(entrada.getDataHora().toLocalDate()))
                 return true;
         }

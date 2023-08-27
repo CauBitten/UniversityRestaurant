@@ -59,14 +59,14 @@ public class ControllerListarEntradas {
 
     public void initialize() {
         tblColTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        tblColCliente.setCellValueFactory(new PropertyValueFactory<>("loginCliente"));
+        tblColCliente.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getFicha().getUsuario().getLogin()));
         tblColDataHora.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getDataHora().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))));
         tblColIdCardapio.setCellValueFactory(cellData ->
                 new SimpleLongProperty(cellData.getValue().getCardapio().getCardapio().getId()).asObject());
         tblColIdFicha.setCellValueFactory(cellData ->
                 new SimpleLongProperty(cellData.getValue().getFicha().getCodigo()).asObject());
-
     }
 
     public void atualizarApresentacao() {
