@@ -28,5 +28,10 @@
             </TableView>
          </children>
       </VBox>
+      <Button fx:id="buttonFiltrar" layoutX="224.0" layoutY="333.0" minHeight="35.0" minWidth="152.0" mnemonicParsing="false" onAction="#bttnFiltrarOn" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: #149959;" text="FILTRAR" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

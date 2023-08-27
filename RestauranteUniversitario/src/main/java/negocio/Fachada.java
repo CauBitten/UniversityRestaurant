@@ -129,7 +129,6 @@ public class Fachada {
         return this.controladorRegistroCompra.obterRegistrosContidosEm(modelo, almoco, janta);
     }
 
-
     public Usuario validarUsuarioParaCompra(String login) throws UsuarioDesativadoException,
             UsuarioNaoEClienteException, LoginNaoExisteException {
         return this.controladorUsuario.validarUsuarioParaCompra(login);
