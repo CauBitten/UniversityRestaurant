@@ -16,16 +16,12 @@
    <children>
       <VBox layoutX="139.0" layoutY="126.0" prefHeight="102.0" prefWidth="322.0" spacing="25.0">
          <children>
-            <TextField fx:id="tfLogin" prefHeight="40.0" prefWidth="322.0" promptText="LOGIN">
+            <TextField fx:id="tfLogin" prefHeight="44.0" prefWidth="322.0" promptText="LOGIN">
                <font>
                   <Font name="Georgia" size="12.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="pfSenha" prefHeight="40.0" promptText="SENHA">
-               <font>
-                  <Font name="Georgia" size="12.0" />
-               </font>
-            </PasswordField>
+            <PasswordField fx:id="pfSenha" prefHeight="43.0" prefWidth="322.0" promptText="SENHA" />
          </children>
       </VBox>
       <Button layoutX="139.0" layoutY="273.0" mnemonicParsing="false" onAction="#entrarButtonClicked" prefHeight="42.0" prefWidth="322.0" style="-fx-background-color: #01ff84; -fx-background-radius: 10;" text="ENTRAR" textFill="WHITE">

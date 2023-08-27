@@ -37,7 +37,6 @@ public class ControllerCatraca {
     private boolean permitirEntrada() {
         if (!camposEstaoVazios()) {
             try {
-                System.out.println(Fachada.getInstance().getListaEntrada());
                 Usuario cliente = Fachada.getInstance().validarCredenciais(tfLogin.getText(), pfSenha.getText());
                 String tipo = avaliarHorario();
 
