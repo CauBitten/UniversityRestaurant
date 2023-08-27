@@ -1,13 +1,7 @@
 package dados;
 
-import negocio.beans.Cardapio;
-import negocio.beans.CardapioPorEntrada;
-import negocio.beans.Cliente;
 import negocio.beans.Entrada;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 

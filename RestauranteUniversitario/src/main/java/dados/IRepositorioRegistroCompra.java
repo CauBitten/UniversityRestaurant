@@ -1,9 +1,7 @@
 package dados;
 
-import negocio.beans.Cliente;
 import negocio.beans.RegistroCompra;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IRepositorioRegistroCompra {

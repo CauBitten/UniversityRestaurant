@@ -2,7 +2,6 @@ package negocio;
 
 import dados.IRepositorioFicha;
 import dados.RepositorioFicha;
-import negocio.beans.Cliente;
 import negocio.beans.Ficha;
 import negocio.beans.Usuario;
 

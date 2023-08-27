@@ -52,10 +52,6 @@ public class Fachada {
         return controladorEntrada.getListaEntrada();
     }
 
-    public List<Ficha> obterFichasDoTipo(String tipo) {
-        return controladorFicha.obterFichasDoTipo(tipo);
-    }
-
     public void cadastrarRegistroCompra(RegistroCompra rc) {
         controladorRegistroCompra.cadastrarRegistroCompra(rc);
     }
@@ -83,6 +79,7 @@ public class Fachada {
     public void setUsuarioLogado(Usuario usuario) {
         this.usuarioLogado = usuario;
     }
+
     public Usuario getUsuarioLogado() {
         return usuarioLogado;
     }

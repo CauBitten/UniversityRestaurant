@@ -71,7 +71,8 @@ public class ControllerPagamentoVendedor {
             ScreenManager.getInstance().getControllerCompraFichas().clearFields();
             clearFields();
             ScreenManager.getInstance().changeScreen(TelasEnum.VENDA.name());
-        } else {
+        }
+        else {
             showErrorAlert("Erro: pagamento não selecionado", "Método de pagamento não selecionado",
                     "Você deve selecionar um método de pagamento para efetuar a compra");
         }
@@ -150,4 +151,5 @@ public class ControllerPagamentoVendedor {
         labelTFichasJantar.setText("");
         labelTCompra.setText("");
     }
+
 }

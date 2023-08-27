@@ -1,10 +1,8 @@
 package dados;
 
-import negocio.beans.Cliente;
 import negocio.beans.Ficha;
 import negocio.beans.RegistroCompra;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
