@@ -5,7 +5,6 @@ import dados.RepositorioFicha;
 import negocio.beans.Ficha;
 import negocio.beans.Usuario;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class ControladorFicha {
@@ -47,19 +46,4 @@ public class ControladorFicha {
         return null;
     }
 
-    public List<Ficha> obterFichasDoTipo(String tipo) {
-        //melhorar exceção
-        if (tipo != null)
-            return this.repositorioFicha.obterFichasDoTipo(tipo);
-        else
-            throw new RuntimeException();
-    }
-
-    List<Ficha> obterFichasCompradasNoIntervalo(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim) {
-        if (dataHoraInicio != null && dataHoraFim != null) {
-            return this.repositorioFicha.obterFichasCompradasNoIntervalo(dataHoraInicio, dataHoraFim);
-        }
-
-        return null;
-    }
 }

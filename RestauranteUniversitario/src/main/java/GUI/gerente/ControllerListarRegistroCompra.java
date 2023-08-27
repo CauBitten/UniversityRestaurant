@@ -105,7 +105,7 @@ public class ControllerListarRegistroCompra implements Initializable {
         almocoColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().
             getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Almoco")).collect(Collectors.toList()).size()).asObject());
         jantaColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().
-                getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Janta")) .collect(Collectors.toList()).size()).asObject());
+                getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Janta")).collect(Collectors.toList()).size()).asObject());
 
     }
 
