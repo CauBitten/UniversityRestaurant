@@ -1,5 +1,6 @@
 package dados;
 
+import exception.EntradaJaRealizadaNesteTurnoException;
 import negocio.beans.Entrada;
 
 import java.util.ArrayList;
@@ -20,14 +21,19 @@ public class RepositorioEntrada implements IRepositorioEntrada {
         return instance;
     }
     @Override
-    public void adicionarEntrada(Entrada e) {
-        if (e != null) {
-            entradas.add(e);
+    public void registrarEntrada(Entrada e) throws EntradaJaRealizadaNesteTurnoException {
+        for (Entrada entrada : entradas) {
+            if (!(e.getFicha().getUsuario().getLogin().equals(entrada.getFicha().getUsuario().getLogin()) &&
+                e.getTipo().equals(entrada.getTipo()))) {
+                entradas.add(e);
+            }
+            else {
+                throw new EntradaJaRealizadaNesteTurnoException(e);
+            }
         }
     }
 
-    @Override
-    public List<Entrada> getListaEntrada() {
+    public List<Entrada> getEntradas() {
         return entradas;
     }
 

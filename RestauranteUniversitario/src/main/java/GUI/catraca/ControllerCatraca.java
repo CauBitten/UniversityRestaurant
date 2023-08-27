@@ -1,15 +1,17 @@
-package GUI;
+package GUI.catraca;
 
-import exception.ClienteNaoPossuiFichasException;
-import exception.LoginNaoExisteException;
-import exception.SenhaIncorretaException;
-import exception.UsuarioDesativadoException;
+import exception.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import negocio.Fachada;
+import negocio.beans.Entrada;
 import negocio.beans.Ficha;
+import negocio.beans.Usuario;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ControllerCatraca {
 
@@ -21,14 +23,16 @@ public class ControllerCatraca {
 
     @FXML
     void entrarButtonClicked(ActionEvent event) {
-
+        permitirEntrada();
     }
 
     private boolean permitirEntrada() {
         if (!camposEstaoVazios()) {
             try {
-                Ficha f = Fachada.getInstance().obterFichaDoClienteDoTipo(
-                        Fachada.getInstance().validarCredenciais(tfLogin.getText(), tfSenha.getText()), "Almoco");
+                Usuario cliente = Fachada.getInstance().validarCredenciais(tfLogin.getText(), tfSenha.getText());
+                Entrada e = new Entrada(Fachada.getInstance().obterCardapioPorDiaETipo(LocalDate.now(), "Almoco"),
+                        "Almoco", LocalDateTime.now(), Fachada.getInstance().obterFichaDoClienteDoTipo(cliente, "Almoco"));
+                Fachada.getInstance().registrarEntrada(e);
             }
             catch (LoginNaoExisteException e) {
                 showErrorAlert("Erro: não há usuário com este login", e.getMessage(), "Tente novamente");
@@ -42,6 +46,9 @@ public class ControllerCatraca {
             catch (ClienteNaoPossuiFichasException e) {
                 showErrorAlert("Erro: usuário informado não possui fichas para este horário.",
                         e.getMessage(), "Compre fichas e tente outra vez");
+            }
+            catch (EntradaJaRealizadaNesteTurnoException e) {
+                showErrorAlert("Erro: usuário informado já entrou neste turno", e.getMessage(), "Tente mais tarde");
             }
         }
         else {

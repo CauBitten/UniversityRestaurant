@@ -5,21 +5,21 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Entrada {
-    private Cardapio cardapio;
+    private CardapioPorEntrada cardapio;
     private String tipo;
     private LocalDateTime dataHora;
     private Ficha ficha;
 
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-    public Entrada(Cardapio cardapio, String tipo, String dataHora, Ficha ficha) {
+    public Entrada(CardapioPorEntrada cardapio, String tipo, LocalDateTime dataHora, Ficha ficha) {
         this.cardapio = cardapio;
         this.tipo = tipo;
-        this.dataHora = LocalDateTime.parse(dataHora, formato);
+        this.dataHora = dataHora;
         this.ficha = ficha;
     }
 
-    public Cardapio getCardapio() {
+    public CardapioPorEntrada getCardapio() {
         return cardapio;
     }
 
@@ -29,14 +29,6 @@ public class Entrada {
 
     public LocalDateTime getDataHora() {
         return dataHora;
-    }
-
-    public String toString(){
-        return "A refeição é um   : " + tipo + "\nData da refeição  : " + dataHora.format(formato) + cardapio.toString();
-    }
-
-    public void setCardapio(Cardapio cardapio) {
-        this.cardapio = cardapio;
     }
 
     public void setTipo(String tipo) {
@@ -64,4 +56,9 @@ public class Entrada {
             return false;
         }
     }
+
+    public String toString() {
+        return "A refeição é um   : " + tipo + "\nData da refeição  : " + dataHora.format(formato) + cardapio.toString();
+    }
+
 }

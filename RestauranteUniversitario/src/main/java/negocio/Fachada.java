@@ -3,6 +3,8 @@ package negocio;
 import exception.*;
 import negocio.beans.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Fachada {
@@ -12,7 +14,8 @@ public class Fachada {
     private ControladorEntrada controladorEntrada;
     private ControladorCardapio controladorCardapio;
     private ControladorFicha controladorFicha;
-    public ControladorRegistroCompra controladorRegistroCompra;
+    private ControladorRegistroCompra controladorRegistroCompra;
+    private ControladorCardapioPorDia controladorCardapioPorDia;
     private Usuario usuarioLogado;
 
     private Fachada() {
@@ -21,6 +24,7 @@ public class Fachada {
         this.controladorCardapio = ControladorCardapio.getInstance();
         this.controladorFicha = ControladorFicha.getInstance();
         this.controladorRegistroCompra = ControladorRegistroCompra.getInstance();
+        this.controladorCardapioPorDia = ControladorCardapioPorDia.getInstance();
     }
 
     public static Fachada getInstance() {
@@ -44,8 +48,9 @@ public class Fachada {
         }
     }
 
-    public void adicionarEntrada(Entrada e) {
-        controladorEntrada.adicionarEntrada(e);
+    public void registrarEntrada(Entrada e) throws EntradaJaRealizadaNesteTurnoException {
+        this.controladorEntrada.registrarEntrada(e);
+        this.controladorFicha.removerFicha(e.getFicha());
     }
 
     public List<Entrada> getListaEntrada() {
@@ -58,10 +63,6 @@ public class Fachada {
 
     public void adicionarFicha(Ficha f) {
         controladorFicha.adicionarFicha(f);
-    }
-
-    public void removerFicha(Ficha f) {
-        controladorFicha.removerFicha(f);
     }
 
     public List<Ficha> obterFichasDoCliente(Usuario u) {
@@ -143,6 +144,14 @@ public class Fachada {
 
     public Ficha obterFichaDoClienteDoTipo(Usuario u, String tipo) throws ClienteNaoPossuiFichasException {
         return this.controladorFicha.obterFichaDoClienteDoTipo(u, tipo);
+    }
+
+    public void associarCardapioAoDiaETipo(Cardapio c, String tipo, String data) {
+        this.controladorCardapioPorDia.associarCardapioAoDiaETipo(c, tipo, data);
+    }
+
+    public CardapioPorEntrada obterCardapioPorDiaETipo(LocalDate data, String tipo) {
+        return this.controladorCardapioPorDia.obterCardapioDoDia(data, tipo);
     }
 
 }

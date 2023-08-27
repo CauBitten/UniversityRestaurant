@@ -63,7 +63,7 @@ public class ControllerListarEntradas {
         tblColDataHora.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getDataHora().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))));
         tblColIdCardapio.setCellValueFactory(cellData ->
-                new SimpleLongProperty(cellData.getValue().getCardapio().getId()).asObject());
+                new SimpleLongProperty(cellData.getValue().getCardapio().getCardapio().getId()).asObject());
         tblColIdFicha.setCellValueFactory(cellData ->
                 new SimpleLongProperty(cellData.getValue().getFicha().getCodigo()).asObject());
 

@@ -2,6 +2,7 @@ package negocio;
 
 import dados.IRepositorioEntrada;
 import dados.RepositorioEntrada;
+import exception.EntradaJaRealizadaNesteTurnoException;
 import negocio.beans.Cardapio;
 import negocio.beans.Entrada;
 
@@ -22,11 +23,11 @@ public class ControladorEntrada {
         return instance;
     }
 
-    public void adicionarEntrada(Entrada e) {
-        repositorioEntrada.adicionarEntrada(e);
+    public void registrarEntrada(Entrada e) throws EntradaJaRealizadaNesteTurnoException {
+        this.repositorioEntrada.registrarEntrada(e);
     }
 
     public List<Entrada> getListaEntrada() {
-        return repositorioEntrada.getListaEntrada();
+        return repositorioEntrada.getEntradas();
     }
 }

@@ -24,5 +24,8 @@ module view {
     exports GUI.refeicao;
     opens GUI.refeicao to javafx.fxml;
 
+    exports GUI.catraca;
+    opens GUI.catraca to javafx.fxml;
+
     opens negocio.beans to javafx.base;
 }

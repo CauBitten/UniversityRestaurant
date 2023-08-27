@@ -1,5 +1,6 @@
 package view;
 
+import GUI.catraca.ControllerCatraca;
 import GUI.cliente.*;
 import GUI.gerente.*;
 import GUI.login.ControllerLoginPage;
@@ -113,6 +114,9 @@ public class ScreenManager {
     private Scene alterarRefeicoesScene;
     private ControllerAlterarRefeicao controllerAlterarRefeicao;
     // -----
+
+    private Scene catracaScene;
+    private ControllerCatraca controllerCatraca;
 
     public static ScreenManager getInstance() {
         if (instance == null) {
@@ -331,6 +335,26 @@ public class ScreenManager {
         return controllerHistoricoCompras;
     }
 
+    public Stage getSecondStage() {
+        return secondStage;
+    }
+
+    public Scene getFiltrarHistoricoComprasScene() {
+        return filtrarHistoricoComprasScene;
+    }
+
+    public ControllerFiltroHistorico getControllerFiltroHistorico() {
+        return controllerFiltroHistorico;
+    }
+
+    public Scene getCatracaScene() {
+        return catracaScene;
+    }
+
+    public ControllerCatraca getControllerCatraca() {
+        return controllerCatraca;
+    }
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -509,6 +533,12 @@ public class ScreenManager {
                     .getResource("/cliente/telaFiltroHistoricoCompras.fxml")).openStream());
             this.filtrarHistoricoComprasScene = new Scene(filtroHistoricoComprasPane);
             this.controllerFiltroHistorico = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane catracaPane = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/catraca/telaCatraca.fxml")).openStream());
+            this.catracaScene = new Scene(catracaPane);
+            this.controllerCatraca = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -666,6 +696,11 @@ public class ScreenManager {
             case "FILTRO_HISTORICO" -> {
                 primaryStage.setScene(filtrarHistoricoComprasScene);
                 primaryStage.setTitle("RU | FILTRO DE HISTÓRICO");
+            }
+
+            case "CATRACA" -> {
+                secondStage.setScene(catracaScene);
+                secondStage.setTitle("RU | CATRACA");
             }
 
             // -----

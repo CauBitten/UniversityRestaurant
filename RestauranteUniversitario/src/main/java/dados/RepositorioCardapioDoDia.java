@@ -12,8 +12,6 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
     private List<CardapioPorEntrada> cardapioPorEntrada;
     private static IRepositorioCardapioDoDia instance;
 
-    private DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
     private RepositorioCardapioDoDia() {
         this.cardapioPorEntrada = new ArrayList<>();
     }
@@ -33,14 +31,13 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
     }
 
     @Override
-    public Cardapio obterCardapioPorDiaETipo(String data, String tipo) {
-        LocalDate aux = LocalDate.parse(data , formato2);
-        for(CardapioPorEntrada ce : this.cardapioPorEntrada){
-            if(ce.getData() == aux && ce.getTipo() == tipo){
-                return ce.getCardapio();
+    public CardapioPorEntrada obterCardapioPorDiaETipo(LocalDate data, String tipo) {
+        for (CardapioPorEntrada ce : this.cardapioPorEntrada){
+            if (ce.getData().equals(data) && ce.getTipo().equals(tipo)){
+                return ce;
             }
         }
-        //Tentei retornar nulo, mas n funfou
+
         return null;
     }
 
