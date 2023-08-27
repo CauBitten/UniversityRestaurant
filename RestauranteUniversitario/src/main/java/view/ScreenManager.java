@@ -716,8 +716,8 @@ public class ScreenManager {
             }
 
             case "CATRACA" -> {
-                secondStage.setScene(catracaScene);
-                secondStage.setTitle("RU | CATRACA");
+                primaryStage.setScene(catracaScene);
+                primaryStage.setTitle("RU | CATRACA");
             }
 
             case "CALENDARIO" -> {

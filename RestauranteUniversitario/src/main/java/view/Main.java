@@ -15,16 +15,6 @@ public class Main extends Application {
         ScreenManager.getInstance().setPrimaryStage(primaryStage);
 
         primaryStage.show();
-
-        Stage secondStage = new Stage();
-
-        secondStage.setScene(ScreenManager.getInstance().getCatracaScene());
-        secondStage.setTitle("RU | CATRACA");
-        secondStage.setResizable(false);
-
-        ScreenManager.getInstance().setSecondStage(secondStage);
-
-        secondStage.show();
     }
 
     public static void main(String[] args) {

@@ -21,6 +21,11 @@ public class ControllerLoginPage {
     private PasswordField passwordField;
 
     @FXML
+    void bttnCatracaOn(ActionEvent event) {
+        ScreenManager.getInstance().changeScreen(TelasEnum.CATRACA.name());
+    }
+
+    @FXML
     void hyperLinkEsqueceuSenha(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 "Envie um e-mail para a administração resolver seu problema: adminru@ufrpe.br");

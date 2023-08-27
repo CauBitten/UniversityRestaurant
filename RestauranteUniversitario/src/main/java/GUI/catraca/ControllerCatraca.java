@@ -4,11 +4,14 @@ import exception.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import negocio.Fachada;
 import negocio.beans.Entrada;
 import negocio.beans.Ficha;
 import negocio.beans.Usuario;
+import view.ScreenManager;
+import view.TelasEnum;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,7 +22,12 @@ public class ControllerCatraca {
     private TextField tfLogin;
 
     @FXML
-    private TextField tfSenha;
+    private PasswordField pfSenha;
+
+    @FXML
+    void bttnLoginOn(ActionEvent event) {
+        ScreenManager.getInstance().changeScreen(TelasEnum.LOGIN.name());
+    }
 
     @FXML
     void entrarButtonClicked(ActionEvent event) {
@@ -30,7 +38,7 @@ public class ControllerCatraca {
         if (!camposEstaoVazios()) {
             try {
                 System.out.println(Fachada.getInstance().getListaEntrada());
-                Usuario cliente = Fachada.getInstance().validarCredenciais(tfLogin.getText(), tfSenha.getText());
+                Usuario cliente = Fachada.getInstance().validarCredenciais(tfLogin.getText(), pfSenha.getText());
                 String tipo = avaliarHorario();
 
                 if (tipo != null) {
@@ -67,7 +75,7 @@ public class ControllerCatraca {
     }
 
     private boolean camposEstaoVazios() {
-        return tfLogin.getText().isBlank() && tfSenha.getText().isBlank();
+        return tfLogin.getText().isBlank() && pfSenha.getText().isBlank();
     }
     private void showErrorAlert(String titulo, String header, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
