@@ -75,4 +75,22 @@ public class RepositorioCardapioDoDia implements IRepositorioCardapioDoDia {
         return false;
     }
 
+    @Override
+    public List<CardapioPorEntrada> obterCardapiosComInformacoesContidasEm(CardapioPorEntrada modelo) {
+        List<CardapioPorEntrada> cardapiosFiltrados = new ArrayList<>();
+
+        for (CardapioPorEntrada cardapioPorEntrada : cardapiosPorEntrada) {
+            if (compararCardapioPorDiaAoModelo(modelo, cardapioPorEntrada))
+                cardapiosFiltrados.add(cardapioPorEntrada);
+        }
+
+        return cardapiosFiltrados;
+    }
+
+    private boolean compararCardapioPorDiaAoModelo(CardapioPorEntrada modelo, CardapioPorEntrada ce) {
+        return ce.getTipo().contains(modelo.getTipo()) &&
+                (ce.getData().isAfter(modelo.getData()) ||  ce.getData().equals(modelo.getData())) &&
+                modelo.getCardapio().getId() >= ce.getCardapio().getId();
+    }
+
 }

@@ -3,6 +3,7 @@ package negocio;
 import dados.IRepositorioCardapio;
 import dados.RepositorioCardapio;
 import exception.CardapioJaCadastradoException;
+import exception.NaoHaCardapioDeIdException;
 import negocio.beans.Cardapio;
 
 import java.util.List;
@@ -39,8 +40,7 @@ public class ControladorCardapio {
         }
     }
 
-    public Cardapio obterCardapioDeID(long id) {
-        //cadastrar exceçao se id < 0
+    public Cardapio obterCardapioDeID(long id) throws NaoHaCardapioDeIdException {
         return this.repositorioCardapio.encontrarCardapioPorID(id);
     }
 

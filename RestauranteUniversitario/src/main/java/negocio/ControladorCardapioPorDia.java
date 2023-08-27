@@ -47,4 +47,8 @@ public class ControladorCardapioPorDia {
         return this.repositorioCardapioDoDia.haDiaAssociadoAoCardapio(c);
     }
 
+    public List<CardapioPorEntrada> obterCardapiosComInformacoesContidasEm(CardapioPorEntrada modelo) {
+        return this.repositorioCardapioDoDia.obterCardapiosComInformacoesContidasEm(modelo);
+    }
+
 }

@@ -1,6 +1,7 @@
 package dados;
 
 import exception.CardapioJaCadastradoException;
+import exception.NaoHaCardapioDeIdException;
 import negocio.beans.Cardapio;
 
 import java.util.ArrayList;
@@ -34,13 +35,14 @@ public class RepositorioCardapio implements IRepositorioCardapio {
         }
     }
 
-    public Cardapio encontrarCardapioPorID(long id) {
+    @Override
+    public Cardapio encontrarCardapioPorID(long id) throws NaoHaCardapioDeIdException {
         for (Cardapio cardapio : cardapios) {
             if (cardapio.getId() == id)
                 return cardapio;
         }
 
-        return null;
+        throw new NaoHaCardapioDeIdException(id);
     }
 
     @Override

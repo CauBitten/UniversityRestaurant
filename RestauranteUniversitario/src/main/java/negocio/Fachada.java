@@ -166,5 +166,12 @@ public class Fachada {
         return this.controladorCardapioPorDia.haDiaAssociadoAoCardapio(c);
     }
 
+    public Cardapio obterCardapioComId(long id) throws NaoHaCardapioDeIdException {
+        return this.controladorCardapio.obterCardapioDeID(id);
+    }
+
+    public List<CardapioPorEntrada> obterCardapiosComInformacoesContidasEm(CardapioPorEntrada modelo) {
+        return this.controladorCardapioPorDia.obterCardapiosComInformacoesContidasEm(modelo);
+    }
 
 }

@@ -14,6 +14,8 @@ public interface IRepositorioCardapioDoDia {
 
     void registrarCardapioDoDia(CardapioPorEntrada ce);
 
+    List<CardapioPorEntrada> obterCardapiosComInformacoesContidasEm(CardapioPorEntrada modelo);
+
     List<CardapioPorEntrada> getCardapiosPorEntrada();
 
     void alterarCardapioDoDiaETipo(LocalDate data, Cardapio c, String tipo);

@@ -39,7 +39,7 @@ public class ControllerCalendario {
 
     @FXML
     void bttnFiltrarOn(ActionEvent event) {
-
+        ScreenManager.getInstance().changeScreen(TelasEnum.FILTRO_CALENDARIO.name());
     }
 
     @FXML
