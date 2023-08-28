@@ -80,4 +80,30 @@ public class ArquivosCardapio {
         }
         return cardapios;
     }
+
+    public static void sobrescreverArquivoCardapio(String nomeArquivo, List<Cardapio> cardapios) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+            for (Cardapio cardapio : cardapios) {
+                writer.write("Principal: " + cardapio.getPrincipal());
+                writer.newLine();
+                writer.write("Vegetariano: " + cardapio.getVegetariano());
+                writer.newLine();
+                writer.write("Guarnicao: " + cardapio.getGuarnicao());
+                writer.newLine();
+                writer.write("Salada: " + cardapio.getSalada());
+                writer.newLine();
+                writer.write("Sobremesa: " + cardapio.getSobremesa());
+                writer.newLine();
+                writer.write("Suco: " + cardapio.getSuco());
+                writer.newLine();
+                writer.write("Id: " + cardapio.getId());
+                writer.newLine();
+                writer.newLine();
+            }
+
+            // System.out.println("Objetos salvos em  " + nomeArquivo);
+        } catch (IOException e) {
+            // System.err.println("Erro ao salvar objetos: " + e.getMessage());
+        }
+    }
 }
