@@ -52,6 +52,7 @@ public class RepositorioCardapio implements IRepositorioCardapio {
     public void removerCardapio(Cardapio c) {
         if (c != null) {
             cardapios.remove(c);
+            ArquivosCardapio.sobrescreverArquivoCardapio("cardapios.txt", cardapios);
         }
     }
 
@@ -86,6 +87,7 @@ public class RepositorioCardapio implements IRepositorioCardapio {
                 }
             }
         }
+        ArquivosCardapio.sobrescreverArquivoCardapio("cardapios.txt", cardapios);
     }
 
     @Override
