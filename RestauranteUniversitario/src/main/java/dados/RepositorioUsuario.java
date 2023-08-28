@@ -15,11 +15,8 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     private static IRepositorioUsuario instance;
 
     public RepositorioUsuario() {
-
         usuarios = new ArrayList<>();
         usuarios = recuperarArquivoUsuario("usuarios.txt");
-
-
     }
 
     public static IRepositorioUsuario getInstance() {
