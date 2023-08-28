@@ -47,8 +47,35 @@ public class Ficha {
             public LocalDateTime getDataCompra() {
                 return dataCompra;
             }
+            public String getData(){
+            return dataCompra.format(formatoDataHora);
+            }
 
-            public Usuario getUsuario() {
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setDataCompra(LocalDateTime dataCompra) {
+        this.dataCompra = dataCompra;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setFormatoDataHora(DateTimeFormatter formatoDataHora) {
+        this.formatoDataHora = formatoDataHora;
+    }
+
+    public Usuario getUsuario() {
                 return usuario;
             }
 
@@ -65,14 +92,14 @@ public class Ficha {
             }
 
             public String toString() {
-                String toString;
+                String toString = "";
 
-                toString = "===============F===============\n";
+               // toString = "===============F===============\n";
                 toString += String.format("Código Ficha   : %s\n", codigo);
                 toString += String.format("Tipo Ficha     : %s\n", tipo);
                 toString += String.format("Valor Unitário : %.2f\n", valor);
                 toString += String.format("Data Aquisição : %s\n", dataCompra.format(formatoDataHora));
-                toString += "==================F=================\n";
+               // toString += "==================F=================\n";
 
                 return toString;
             }

@@ -47,6 +47,9 @@ public class RegistroCompra {
     public LocalDateTime getDataHoraCompra() {
         return dataHoraCompra;
     }
+    public String getDataHora(){
+       return dataHoraCompra.format(formatoDataHora);
+    }
 
     public String getPagamento() {
         return pagamento;
@@ -56,6 +59,10 @@ public class RegistroCompra {
         return valorCompra;
     }
     //
+
+    public void setValorCompra(double valorCompra) {
+        this.valorCompra = valorCompra;
+    }
 
     private double gerarValorDeCompra() {
         double total = 0;
@@ -70,8 +77,13 @@ public class RegistroCompra {
     public void setCodigoCompra(long codigoCompra) {
         this.codigoCompra = codigoCompra;
     }
-
-
+    public String getFichas(){
+        String retorno = "";
+        for(Ficha f : this.fichasCompradas){
+             retorno += f.toString();
+        }
+        return retorno;
+    }
 
 //    public boolean pagamentoAutorizado() {
 //        pagamento = new Pagamento(this.getValorCompra());

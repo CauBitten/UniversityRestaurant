@@ -14,7 +14,9 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
     private static IRepositorioRegistroCompra instance;
 
     private RepositorioRegistroCompra() {
+
         registrosCompras = new ArrayList<>();
+        registrosCompras = ArquivosRegistroCompra.recuperarArquivoCardapio("registros.txt");
     }
 
     public static IRepositorioRegistroCompra getInstance() {
@@ -42,7 +44,7 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
                 break;
             }
         }
-
+        ArquivosRegistroCompra.salvarArquivoRC("registros.txt", rc);
         this.registrosCompras.add(rc);
     }
 
@@ -50,6 +52,7 @@ public class RepositorioRegistroCompra implements IRepositorioRegistroCompra {
     public void removerRegistroCompra(RegistroCompra rc) {
         if (rc != null) {
             this.registrosCompras.remove(rc);
+            ArquivosRegistroCompra.sobrescreverArquivoRC("registros.txt", registrosCompras);
         }
     }
 

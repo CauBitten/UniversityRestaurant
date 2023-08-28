@@ -13,7 +13,9 @@ public class RepositorioFicha implements IRepositorioFicha {
     private static IRepositorioFicha instance;
 
     private RepositorioFicha() {
+
         fichas = new ArrayList<>();
+        fichas = ArquivosFichas.recuperarArquivoFichas("fichas.txt");
     }
 
     public static IRepositorioFicha getInstance() {
@@ -25,12 +27,14 @@ public class RepositorioFicha implements IRepositorioFicha {
     public void adicionarFicha(Ficha f) {
         if (f != null) {
             fichas.add(f);
+            ArquivosFichas.salvarArquivo("fichas.txt", f);
         }
     }
 
     public void removerFicha(Ficha f) {
         if (f != null) {
             fichas.remove(f);
+            ArquivosFichas.sobrescreverArquivoFichas("fichas.txt", fichas);
         }
     }
 
