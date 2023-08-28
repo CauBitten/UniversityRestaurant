@@ -57,7 +57,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
             if (u.getLogin().length() < 4 || u.getLogin().length() > 20) {
                 throw new LoginInvalidoException(u.getLogin());
             }
-            ArquivosUsuarios.salvarAtributosEmArquivo("usuarios.txt", u);
+            ArquivosUsuarios.salvarArquivo("usuarios.txt", u);
             usuarios.add(u);
         }
     }
@@ -67,6 +67,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         if (u != null) {
             if (getUsuarioPorCPF(u.getCpf()) != null) {
                 usuarios.remove(u);
+                ArquivosUsuarios.sobrescreverArquivo("usuarios.txt", usuarios);
             }
         }
     }
@@ -140,6 +141,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
                 }
             }
         }
+        ArquivosUsuarios.sobrescreverArquivo("usuarios.txt",usuarios);
     }
 
     public Usuario obterUsuarioDeCredenciais(String login, String senha) throws SenhaIncorretaException,

@@ -12,7 +12,9 @@ public class RepositorioCardapio implements IRepositorioCardapio {
     private static IRepositorioCardapio instance;
 
     private RepositorioCardapio() {
+
         cardapios = new ArrayList<>();
+        cardapios = ArquivosCardapio.recuperarArquivoCardapio("cardapios.txt");
     }
 
     public static IRepositorioCardapio getInstance() {
@@ -30,6 +32,7 @@ public class RepositorioCardapio implements IRepositorioCardapio {
                 throw new CardapioJaCadastradoException(obterCardapioIgualA(c));
             }
             else {
+                ArquivosCardapio.salvarArquivo("cardapios.txt", c);
                 cardapios.add(c);
             }
         }

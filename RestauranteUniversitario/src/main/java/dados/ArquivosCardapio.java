@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ArquivosCardapio {
 
-    public static void salvarAtributosEmArquivo(String nomeArquivo, Cardapio cardapio) {
+    public static void salvarArquivo(String nomeArquivo, Cardapio cardapio) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
             writer.write("Principal: " + cardapio.getPrincipal());
             writer.newLine();

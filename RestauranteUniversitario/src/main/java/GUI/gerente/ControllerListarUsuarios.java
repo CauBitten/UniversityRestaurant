@@ -82,7 +82,7 @@ public class ControllerListarUsuarios implements Initializable {
     public void configurarTv(List<Usuario> usuarios) {
         ObservableList<Usuario> userList = FXCollections.observableArrayList();
         for (Usuario usuario: usuarios) {
-            if(usuario.getNome() != "cliente" && usuario.getNome() != "admin" && usuario.getNome() != "online"){
+            if(usuario.getNome() != "avulso" && usuario.getNome() != "admin" && usuario.getNome() != "online"){
                 userList.add(usuario);
             }
         }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArquivosUsuarios {
-    public static void salvarAtributosEmArquivo(String nomeArquivo, Usuario usuario) {
+    public static void salvarArquivo(String nomeArquivo, Usuario usuario) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
             writer.write("Login: " + usuario.getLogin());
             writer.newLine();
@@ -27,7 +27,7 @@ public class ArquivosUsuarios {
 
             //System.out.println("Atributos da pessoa salvos em " + nomeArquivo);
         } catch (IOException e) {
-            System.err.println("Erro ao salvar atributos: " + e.getMessage());
+            // System.err.println("Erro ao salvar atributos: " + e.getMessage());
         }
     }
 
@@ -77,6 +77,32 @@ public class ArquivosUsuarios {
             System.err.println("Erro ao ler arquivo: " + e.getMessage());
         }
         return usuarios;
+    }
+
+    public static void sobrescreverArquivo(String nomeArquivo, List<Usuario> usuarios) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+            for (Usuario usuario : usuarios) {
+                writer.write("Login: " + usuario.getLogin());
+                writer.newLine();
+                writer.write("Email: " + usuario.getEmail());
+                writer.newLine();
+                writer.write("Nome: " + usuario.getNome());
+                writer.newLine();
+                writer.write("Senha: " + usuario.getSenha());
+                writer.newLine();
+                writer.write("Cpf: " + usuario.getCpf());
+                writer.newLine();
+                writer.write("Perfil: " + usuario.getPerfil());
+                writer.newLine();
+                writer.write("Ativado: " + usuario.isAtivado());
+                writer.newLine();
+                writer.newLine(); // Linha em branco entre as entradas
+            }
+
+           // System.out.println("Objetos salvos em  " + nomeArquivo);
+        } catch (IOException e) {
+           // System.err.println("Erro ao salvar objetos: " + e.getMessage());
+        }
     }
 
 }
