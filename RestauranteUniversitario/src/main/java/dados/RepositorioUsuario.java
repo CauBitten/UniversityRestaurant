@@ -6,6 +6,8 @@ import negocio.beans.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
+import static dados.ArquivosUsuarios.recuperarArquivoUsuario;
+
 public class RepositorioUsuario implements IRepositorioUsuario {
 
     private List<Usuario> usuarios;
@@ -16,7 +18,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         Usuario avulso = new Usuario("123","cliente","cliente@","avulso", 0L, true, "Cliente");
         Usuario online = new Usuario("123", "online", "online@", "online", 1L, true, "Vendedor");
         usuarios = new ArrayList<>();
-        usuarios = ArquivosUsuarios.recuperarAtributosDeArquivo("usuarios.txt");
+        usuarios = recuperarArquivoUsuario("usuarios.txt");
         usuarios.add(admin);
         usuarios.add(avulso);
         usuarios.add(online);
