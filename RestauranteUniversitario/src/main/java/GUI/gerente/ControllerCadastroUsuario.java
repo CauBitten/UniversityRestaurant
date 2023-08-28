@@ -1,9 +1,6 @@
 package GUI.gerente;
 
-import exception.CPFInvalidoException;
-import exception.CpfJaCadastradoException;
-import exception.EmailJaCadastradoException;
-import exception.LoginJaCadastradoException;
+import exception.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -67,6 +64,10 @@ public class ControllerCadastroUsuario implements Initializable {
             catch (NumberFormatException e) {
                 showErrorMessage("Erro: CPF inválido", "O CPF deve ser numérico");
                 tfCPF.setText("");
+            }
+            catch (LoginInvalidoException e) {
+                showErrorMessage("Erro: Login inválido", e.getMessage());
+                tfLogin.setText("");
             }
         }
     }

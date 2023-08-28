@@ -36,7 +36,7 @@ public class Fachada {
     }
 
     public void cadastrarUsuario(Usuario u) throws CpfJaCadastradoException, LoginJaCadastradoException,
-            EmailJaCadastradoException, CPFInvalidoException{
+            EmailJaCadastradoException, CPFInvalidoException, LoginInvalidoException {
         if (u != null) {
             this.controladorUsuario.cadastrarUsuario(u);
         }

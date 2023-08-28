@@ -5,6 +5,7 @@ import negocio.beans.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static dados.ArquivosUsuarios.recuperarArquivoUsuario;
 
@@ -35,7 +36,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     @Override
     public void cadastrarUsuario(Usuario u) throws CpfJaCadastradoException, LoginJaCadastradoException,
-            EmailJaCadastradoException, CPFInvalidoException {
+            EmailJaCadastradoException, CPFInvalidoException, LoginInvalidoException {
         if (u != null) {
             if (getUsuarioPorCPF(u.getCpf()) != null) {
                 throw new CpfJaCadastradoException(getUsuarioPorCPF(u.getCpf()));
@@ -50,7 +51,11 @@ public class RepositorioUsuario implements IRepositorioUsuario {
             }
 
             if (getUsuarioPorEmail(u.getEmail()) != null) {
-                throw new EmailJaCadastradoException(getUsuarioPorEmail(u.getEmail()));
+                throw new EmailJaCadastradoException(Objects.requireNonNull(getUsuarioPorEmail(u.getEmail())));
+            }
+
+            if (u.getLogin().length() < 4 || u.getLogin().length() > 20) {
+                throw new LoginInvalidoException(u.getLogin());
             }
             ArquivosUsuarios.salvarAtributosEmArquivo("usuarios.txt", u);
             usuarios.add(u);
