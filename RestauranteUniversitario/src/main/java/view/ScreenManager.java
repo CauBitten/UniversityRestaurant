@@ -4,9 +4,6 @@ import GUI.catraca.ControllerCatraca;
 import GUI.cliente.*;
 import GUI.gerente.*;
 import GUI.login.ControllerLoginPage;
-import GUI.refeicao.ControllerAlterarRefeicao;
-import GUI.refeicao.ControllerCadastroRefeicao;
-import GUI.refeicao.ControllerVisualizarRefeicoes;
 import GUI.vendedor.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -53,8 +50,6 @@ public class ScreenManager {
     private Scene vendaScene;
     private ControllerVenda controllerVenda;
 
-    private Scene listarRefeicoesScene;
-    private ControllerListarRefeicoes controllerListarRefeicoes;
     private Scene pagamentoVendedorScene;
     private ControllerPagamentoVendedor controllerPagamentoVendedor;
 
@@ -108,17 +103,6 @@ public class ScreenManager {
 
     private Scene filtroCalendarioScene;
     private ControllerFiltroCalendario controllerFiltroCalendario;
-    // -----
-
-    // Refeições Scenes
-    private Scene visualizarRefeicoesScene;
-    private ControllerVisualizarRefeicoes controllerVisualizarRefeicoes;
-
-    private Scene cadastrarRefeicoesScene;
-    private ControllerCadastroRefeicao controllerCadastroRefeicao;
-
-    private Scene alterarRefeicoesScene;
-    private ControllerAlterarRefeicao controllerAlterarRefeicao;
     // -----
 
     private Scene catracaScene;
@@ -195,14 +179,6 @@ public class ScreenManager {
         return controllerVenda;
     }
 
-    public Scene getListarRefeicoesScene() {
-        return listarRefeicoesScene;
-    }
-
-    public ControllerListarRefeicoes getControllerListarRefeicoes() {
-        return controllerListarRefeicoes;
-    }
-
     public Scene getPrincipalGerenteScene() {
         return principalGerenteScene;
     }
@@ -257,30 +233,6 @@ public class ScreenManager {
 
     public ControllerCadastroCardapio getControllerCadastroCardapio() {
         return controllerCadastroCardapio;
-    }
-
-    public Scene getVisualizarRefeicoesScene() {
-        return visualizarRefeicoesScene;
-    }
-
-    public ControllerVisualizarRefeicoes getControllerVisualizarRefeicoes() {
-        return controllerVisualizarRefeicoes;
-    }
-
-    public Scene getCadastrarRefeicoesScene() {
-        return cadastrarRefeicoesScene;
-    }
-
-    public ControllerCadastroRefeicao getControllerCadastroRefeicao() {
-        return controllerCadastroRefeicao;
-    }
-
-    public Scene getAlterarRefeicoesScene() {
-        return alterarRefeicoesScene;
-    }
-
-    public ControllerAlterarRefeicao getControllerAlterarRefeicao() {
-        return controllerAlterarRefeicao;
     }
 
     public Scene getAlterarCardapioScene() {
@@ -429,12 +381,6 @@ public class ScreenManager {
             this.controllerPagamentoVendedor = fxmlLoader.getController();
 
             fxmlLoader = new FXMLLoader();
-            AnchorPane listarRefeicoesPane = fxmlLoader.load(Objects.requireNonNull(getClass()
-                    .getResource("/vendedor/telaListarRefeicoes.fxml")).openStream());
-            this.listarRefeicoesScene = new Scene(listarRefeicoesPane);
-            this.controllerListarRefeicoes = fxmlLoader.getController();
-
-            fxmlLoader = new FXMLLoader();
             AnchorPane principalGerentePane = fxmlLoader.load(Objects.requireNonNull(getClass()
                     .getResource("/gerente/telaPrincipalGerente.fxml")).openStream());
             this.principalGerenteScene = new Scene(principalGerentePane);
@@ -475,24 +421,6 @@ public class ScreenManager {
                     .getResource("/gerente/telaCadastroCardapio.fxml")).openStream());
             this.cadastrarCardapioScene = new Scene(cadastrarCardapioPane);
             this.controllerCadastroCardapio = fxmlLoader.getController();
-
-            fxmlLoader = new FXMLLoader();
-            AnchorPane visualizarRefeicoesPane = fxmlLoader.load(Objects.requireNonNull(getClass()
-                    .getResource("/refeicoes/telaVisualizarRefeicoes.fxml")).openStream());
-            this.visualizarRefeicoesScene = new Scene(visualizarRefeicoesPane);
-            this.controllerVisualizarRefeicoes = fxmlLoader.getController();
-
-            fxmlLoader = new FXMLLoader();
-            AnchorPane cadastrarRefeicoesPane = fxmlLoader.load(Objects.requireNonNull(getClass()
-                    .getResource("/refeicoes/telaCadastroRefeicao.fxml")).openStream());
-            this.cadastrarRefeicoesScene = new Scene(cadastrarRefeicoesPane);
-            this.controllerCadastroRefeicao = fxmlLoader.getController();
-
-            fxmlLoader = new FXMLLoader();
-            AnchorPane alterarRefeicoesPane = fxmlLoader.load(Objects.requireNonNull(getClass()
-                    .getResource("/refeicoes/telaAlterarRefeicao.fxml")).openStream());
-            this.alterarRefeicoesScene = new Scene(alterarRefeicoesPane);
-            this.controllerAlterarRefeicao = fxmlLoader.getController();
 
             fxmlLoader = new FXMLLoader();
             AnchorPane alterarCardapioPane = fxmlLoader.load(Objects.requireNonNull(getClass()
@@ -615,11 +543,6 @@ public class ScreenManager {
                 primaryStage.setTitle("RU | TELA DE PAGAMENTO");
             }
 
-            case "LISTAR_REFEICOES" -> {
-                primaryStage.setScene(listarRefeicoesScene);
-                primaryStage.setTitle("RU | LISTAR REFEIÇÕES");
-            }
-
             case "VENDA_CLIENTE" -> {
                 primaryStage.setScene(venderAClienteScene);
                 primaryStage.setTitle("RU | VENDER A CLIENTE");
@@ -664,21 +587,6 @@ public class ScreenManager {
             // -----
 
             // Refeições
-            case "VISUALIZAR_REFEICOES" -> {
-                primaryStage.setScene(visualizarRefeicoesScene);
-                primaryStage.setTitle("RU | VISUALIZAR REFEIÇÕES");
-            }
-
-            case "CADASTRAR_REFEICOES" -> {
-                primaryStage.setScene(cadastrarRefeicoesScene);
-                primaryStage.setTitle("RU | CADASTRO REFEIÇÕES");
-            }
-
-            case "ALTERAR_REFEICOES" -> {
-                primaryStage.setScene(alterarRefeicoesScene);
-                primaryStage.setTitle("RU | ALTERAR REFEIÇÕES");
-            }
-
             case "VISUALIZAR_CARDAPIOS" -> {
                 primaryStage.setScene(listarCardapiosScene);
                 primaryStage.setTitle("RU | LISTA DE CARDÁPIOS");
@@ -738,7 +646,6 @@ public class ScreenManager {
                 primaryStage.setScene(filtroCalendarioScene);
                 primaryStage.setTitle("RU | FILTRO DE CALENDÁRIO");
             }
-
             // -----
         }
     }
