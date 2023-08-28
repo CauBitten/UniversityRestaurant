@@ -16,9 +16,11 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         Usuario avulso = new Usuario("123","cliente","cliente@","avulso", 0L, true, "Cliente");
         Usuario online = new Usuario("123", "online", "online@", "online", 1L, true, "Vendedor");
         usuarios = new ArrayList<>();
+        usuarios = ArquivosUsuarios.recuperarAtributosDeArquivo("usuarios.txt");
         usuarios.add(admin);
         usuarios.add(avulso);
         usuarios.add(online);
+
     }
 
     public static IRepositorioUsuario getInstance() {
@@ -48,7 +50,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
             if (getUsuarioPorEmail(u.getEmail()) != null) {
                 throw new EmailJaCadastradoException(getUsuarioPorEmail(u.getEmail()));
             }
-
+            ArquivosUsuarios.salvarAtributosEmArquivo("usuarios.txt", u);
             usuarios.add(u);
         }
     }
