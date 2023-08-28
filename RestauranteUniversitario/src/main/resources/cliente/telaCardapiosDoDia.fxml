@@ -7,21 +7,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.cliente.ControllerCardapiosDoDia">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.cliente.ControllerCardapiosDoDia">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #01ff84;" text="&lt;" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="tvCardapiosDoDia" layoutX="14.0" layoutY="94.0" prefHeight="90.0" prefWidth="570.0">
+      <TableView fx:id="tvCardapiosDoDia" layoutX="14.0" layoutY="94.0" prefHeight="99.0" prefWidth="570.0">
         <columns>
-            <TableColumn prefWidth="95.0" text="Principal" />
-          <TableColumn prefWidth="95.0" text="Vegetariano" />
-          <TableColumn prefWidth="95.0" text="Guarnição" />
-            <TableColumn prefWidth="95.0" text="Salada" />
-            <TableColumn prefWidth="95.0" text="Sobremesa" />
-            <TableColumn prefWidth="95.0" text="Suco" />
+            <TableColumn fx:id="tcPrincipal" prefWidth="95.0" text="Principal" />
+          <TableColumn fx:id="tcVegetariano" prefWidth="95.0" text="Vegetariano" />
+          <TableColumn fx:id="tcGuarnicao" prefWidth="95.0" text="Guarnição" />
+            <TableColumn fx:id="tcSalada" prefWidth="95.0" text="Salada" />
+            <TableColumn fx:id="tcSobremesa" prefWidth="95.0" text="Sobremesa" />
+            <TableColumn fx:id="tcSuco" prefWidth="95.0" text="Suco" />
         </columns>
       </TableView>
       <Label layoutX="129.0" layoutY="37.0" prefHeight="30.0" prefWidth="245.0" text="CARDÁPIOS DO DIA " textFill="#01ff84">

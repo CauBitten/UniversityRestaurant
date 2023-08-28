@@ -11,6 +11,7 @@ public class ControllerPrincipalCliente {
 
     @FXML
     void bttnCardapiosDiaOn(ActionEvent event) {
+        ScreenManager.getInstance().getControllerCardapiosDoDia().atualizarApresentacao();
         ScreenManager.getInstance().changeScreen(TelasEnum.CARDAPIOS_DO_DIA.name());
     }
 

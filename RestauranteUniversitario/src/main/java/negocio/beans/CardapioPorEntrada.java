@@ -18,6 +18,12 @@ public class CardapioPorEntrada {
         return data;
     }
 
+    public String getDataFormatada() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM");
+
+        return data.format(formatter);
+    }
+
     public void setData(LocalDate data) {
         this.data = data;
     }
