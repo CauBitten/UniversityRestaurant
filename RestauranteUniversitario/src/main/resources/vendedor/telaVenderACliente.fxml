@@ -16,11 +16,11 @@
          <children>
             <CheckBox fx:id="cbAlmoco" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Ficha de Almoço">
                <font>
-                  <Font name="Georgia" size="13.0" />
+                  <Font size="13.0" />
                </font></CheckBox>
             <CheckBox fx:id="cbJantar" mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" text="Ficha de Jantar">
                <font>
-                  <Font name="Georgia" size="13.0" />
+                  <Font size="13.0" />
                </font></CheckBox>
          </children>
       </VBox>
