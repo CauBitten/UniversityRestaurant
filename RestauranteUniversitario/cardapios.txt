@@ -1,0 +1,16 @@
+Principal: Peito de Frango
+Vegetariano: Abobrinha à Parmegiana
+Guarnicao: Espaguete
+Salada: Tomate com Acelga e Alface
+Sobremesa: Melância
+Suco: Goiaba / Caju
+Id: 0
+
+Principal: Carne à Tailanesa
+Vegetariano: Escondidinho
+Guarnicao: Quibebe
+Salada: Mix de Folhas com Abacaxi
+Sobremesa: Doce de Leite
+Suco: Limão / Manga
+Id: 1
+

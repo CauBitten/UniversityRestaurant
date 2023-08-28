@@ -1,5 +1,6 @@
 package dados;
 
+import javafx.scene.control.Alert;
 import negocio.ControladorFicha;
 import negocio.beans.Cardapio;
 import negocio.beans.Ficha;
@@ -29,26 +30,14 @@ public class ArquivosRegistroCompra {
             writer.write("Valor da compra: " + rc.getValorCompra());
             writer.newLine();
             ArquivosFichas.sobrescreverArquivoFichas(rc.getCodigoCompra() + ".txt", rc.getFichasCompradas());
-//            for(Ficha f : rc.getFichasCompradas()){
-//                int cont = 1;
-//                writer.write("Codigo" + cont + ": " + f.getCodigo());
-//                writer.newLine();
-//                writer.write("Valor" + cont + ": " + f.getValor());
-//                writer.newLine();
-//                writer.write("Tipo" + cont + ": " + f.getTipo());
-//                writer.newLine();
-//                writer.write("Data e hora" + cont + ": " + f.getData());
-//                writer.newLine();
-//                writer.write("CPF do usuario" + cont + ": " + f.getUsuario().getCpf());
-//                writer.newLine();
-//                cont++;
-//            }
 
             writer.newLine(); // Linha em branco entre as entradas
 
-            //System.out.println("Atributos da pessoa salvos em " + nomeArquivo);
         } catch (IOException e) {
-            //System.err.println("Erro ao salvar atributos: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro ao salvar atributos");
+            alert.setHeaderText("Arquivo não pode ser salvo: " + e.getMessage());
+            alert.show();
         }
     }
 
@@ -95,7 +84,10 @@ public class ArquivosRegistroCompra {
                 }
             }
         } catch (IOException e) {
-           //System.err.println("Erro ao ler arquivo: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro na leitura");
+            alert.setHeaderText("Arquivo não pode ser lido: " + e.getMessage());
+            alert.show();
         }
         return registros;
     }
@@ -120,9 +112,11 @@ public class ArquivosRegistroCompra {
 
             }
 
-            // System.out.println("Objetos salvos em  " + nomeArquivo);
         } catch (IOException e) {
-            // System.err.println("Erro ao salvar objetos: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro ao salvar");
+            alert.setHeaderText("Arquivo não foi salvo: " + e.getMessage());
+            alert.show();
         }
     }
 }

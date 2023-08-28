@@ -1,0 +1,56 @@
+Login: admin
+Email: admin@
+Nome: admin
+Senha: 123
+Cpf: 0
+Perfil: Gerente
+Ativado: true
+
+Login: cliente
+Email: cliente@
+Nome: avulso
+Senha: 1234
+Cpf: 1
+Perfil: Cliente
+Ativado: true
+
+Login: online
+Email: online@
+Nome: online
+Senha: 1234
+Cpf: 2
+Perfil: Vendedor
+Ativado: true
+
+Login: caua.fb
+Email: caua.fb@gmail.com
+Nome: Cauã Bittencourt
+Senha: 2212caca
+Cpf: 11354961410
+Perfil: Cliente
+Ativado: true
+
+Login: osvaldo
+Email: osvaldo@gmail.com
+Nome: Osvaldo Junior
+Senha: 12345
+Cpf: 17382945012
+Perfil: Cliente
+Ativado: true
+
+Login: jose.vini
+Email: jose@gmail.com
+Nome: José Vinicius
+Senha: 1010
+Cpf: 19242948592
+Perfil: Cliente
+Ativado: true
+
+Login: gabriel.o
+Email: gabdoo@gmail.com
+Nome: Gabriel do Ó
+Senha: 13579
+Cpf: 19252024748
+Perfil: Cliente
+Ativado: true
+
