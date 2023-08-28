@@ -1,5 +1,6 @@
 package dados;
 
+import javafx.scene.control.Alert;
 import negocio.beans.Usuario;
 
 import java.io.*;
@@ -25,9 +26,11 @@ public class ArquivosUsuarios {
             writer.newLine();
             writer.newLine(); // Linha em branco entre as entradas
 
-            //System.out.println("Atributos da pessoa salvos em " + nomeArquivo);
         } catch (IOException e) {
-            // System.err.println("Erro ao salvar atributos: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro ao salvar atributos");
+            alert.setHeaderText("Arquivo não pode ser salvo: " + e.getMessage());
+            alert.show();
         }
     }
 
@@ -73,8 +76,12 @@ public class ArquivosUsuarios {
                     senha = null;
                 }
             }
+
         } catch (IOException e) {
-            System.err.println("Erro ao ler arquivo: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro na leitura");
+            alert.setHeaderText("Arquivo não pode ser lido: " + e.getMessage());
+            alert.show();
         }
         return usuarios;
     }
@@ -99,10 +106,11 @@ public class ArquivosUsuarios {
                 writer.newLine(); // Linha em branco entre as entradas
             }
 
-           // System.out.println("Objetos salvos em  " + nomeArquivo);
         } catch (IOException e) {
-           // System.err.println("Erro ao salvar objetos: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro ao salvar");
+            alert.setHeaderText("Arquivo não foi salvo: " + e.getMessage());
+            alert.show();
         }
     }
-
 }
