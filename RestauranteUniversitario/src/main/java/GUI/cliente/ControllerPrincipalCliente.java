@@ -10,6 +10,11 @@ import view.TelasEnum;
 public class ControllerPrincipalCliente {
 
     @FXML
+    void bttnCardapiosDiaOn(ActionEvent event) {
+        ScreenManager.getInstance().changeScreen(TelasEnum.CARDAPIOS_DO_DIA.name());
+    }
+
+    @FXML
     void bttnHistoricoComprasOn(ActionEvent event) {
         if (!Fachada.getInstance().obterRegistrosDoUsuario(Fachada.getInstance().getUsuarioLogado()).isEmpty()) {
             ScreenManager.getInstance().getControllerHistoricoCompras().atualizarApresentacao();

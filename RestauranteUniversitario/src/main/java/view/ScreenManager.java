@@ -41,6 +41,9 @@ public class ScreenManager {
 
     private Scene filtrarHistoricoComprasScene;
     private ControllerFiltroHistorico controllerFiltroHistorico;
+
+    private Scene cardapiosDoDiaScene;
+    private ControllerCardapiosDoDia controllerCardapiosDoDia;
     // -----
 
     // Vendedor Scenes
@@ -321,6 +324,14 @@ public class ScreenManager {
         return controllerCalendario;
     }
 
+    public Scene getCardapiosDoDiaScene() {
+        return cardapiosDoDiaScene;
+    }
+
+    public ControllerCardapiosDoDia getControllerCardapiosDoDia() {
+        return controllerCardapiosDoDia;
+    }
+
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
@@ -493,6 +504,12 @@ public class ScreenManager {
                     .getResource("/gerente/telaFiltroCalendario.fxml")).openStream());
             this.filtroCalendarioScene = new Scene(filtroCalendarioPane);
             this.controllerFiltroCalendario = fxmlLoader.getController();
+
+            fxmlLoader = new FXMLLoader();
+            AnchorPane cardapiosDoDia = fxmlLoader.load(Objects.requireNonNull(getClass()
+                    .getResource("/cliente/telaCardapiosDoDia.fxml")).openStream());
+            this.cardapiosDoDiaScene = new Scene(cardapiosDoDia);
+            this.controllerCardapiosDoDia = fxmlLoader.getController();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -524,6 +541,11 @@ public class ScreenManager {
             case "PAGAMENTO" -> {
                 primaryStage.setScene(pagamentoScene);
                 primaryStage.setTitle("RU | TELA DE PAGAMENTO");
+            }
+
+            case "CARDAPIOS_DO_DIA" -> {
+                primaryStage.setScene(cardapiosDoDiaScene);
+                primaryStage.setTitle("RU | TELA CARDÁPIOS DO DIA");
             }
             // -----
 

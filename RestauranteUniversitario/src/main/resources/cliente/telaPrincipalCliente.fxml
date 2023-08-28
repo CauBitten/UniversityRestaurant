@@ -8,26 +8,31 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.cliente.ControllerPrincipalCliente">
    <children>
-      <VBox layoutX="134.0" layoutY="89.0" prefHeight="222.0" prefWidth="332.0" spacing="45.0">
+      <VBox layoutX="134.0" layoutY="65.0" prefHeight="269.0" prefWidth="332.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#bttnVisualizarDados" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="Visualizar Dados" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#bttnCardapiosDiaOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #01ff84;" text="CARDÁPIOS DO DIA" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#bttnComprarFichas" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="Comprar Fichas" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#bttnComprarFichas" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #01ff84;" text="COMPRAR FICHAS" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="buttonHistoricoCompras" mnemonicParsing="false" onAction="#bttnHistoricoComprasOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #149959;" text="Histórico de Compras" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#bttnVisualizarDados" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #01ff84;" text="VISUALIZAR DADOS" textFill="WHITE">
+               <font>
+                  <Font name="Georgia Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonHistoricoCompras" mnemonicParsing="false" onAction="#bttnHistoricoComprasOn" prefHeight="44.0" prefWidth="332.0" style="-fx-background-color: #01ff84;" text="HISTÓRICO DE COMPRAS" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="18.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <Hyperlink layoutX="554.0" layoutY="14.0" onAction="#hlSairOn" text="Sair" textFill="#149959">
+      <Hyperlink layoutX="554.0" layoutY="14.0" onAction="#hlSairOn" text="Sair" textFill="#01ff84">
          <font>
             <Font name="Georgia Italic" size="12.0" />
          </font>

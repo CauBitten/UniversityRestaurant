@@ -19,17 +19,17 @@
             <CheckBox fx:id="cbJantar" mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" text="Ficha de Jantar" />
          </children>
       </VBox>
-      <Label layoutX="200.0" layoutY="52.0" text="COMPRAR FICHAS" textFill="#149959">
+      <Label layoutX="200.0" layoutY="52.0" text="COMPRAR FICHAS" textFill="#01ff84">
          <font>
             <Font name="Georgia Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="200.0" layoutY="294.0" mnemonicParsing="false" onAction="#bttnEfetuarCompraOn" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #149959;" text="EFETUAR COMPRA" textFill="WHITE">
+      <Button layoutX="200.0" layoutY="294.0" mnemonicParsing="false" onAction="#bttnEfetuarCompraOn" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #01ff84;" text="EFETUAR COMPRA" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="15.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" style="-fx-background-color: #01ff84;" text="&lt;" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>

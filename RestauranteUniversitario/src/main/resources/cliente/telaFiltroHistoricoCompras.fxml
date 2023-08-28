@@ -10,10 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.cliente.ControllerFiltroHistorico">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
+      <Button layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #01ff84;" text="&lt;" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>
@@ -27,7 +26,7 @@
       </VBox>
       <VBox layoutX="129.0" layoutY="27.0" prefHeight="334.0" prefWidth="94.0" spacing="18.0">
          <children>
-            <Label prefHeight="30.0" text="CODIGO:" textFill="#149959">
+            <Label prefHeight="30.0" text="CÓDIGO:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
@@ -35,7 +34,7 @@
                   <Insets top="10.0" />
                </padding>
             </Label>
-            <Label prefHeight="30.0" text="VALOR:" textFill="#149959">
+            <Label prefHeight="30.0" text="VALOR:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
@@ -43,7 +42,7 @@
                   <Insets top="10.0" />
                </padding>
             </Label>
-            <Label prefHeight="30.0" text="VENDEDOR:" textFill="#149959">
+            <Label prefHeight="30.0" text="VENDEDOR:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
@@ -51,30 +50,30 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="30.0" text="ALMOÇO:" textFill="#149959">
+            <Label prefHeight="30.0" text="ALMOÇO:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
             </Label>
-            <Label prefHeight="30.0" text="DATA:" textFill="#149959">
+            <Label prefHeight="30.0" text="DATA:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
             </Label>
-            <Label prefHeight="32.0" prefWidth="75.0" text="PAGAMENTO:" textFill="#149959">
+            <Label prefHeight="32.0" prefWidth="75.0" text="PAGAMENTO:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <Button fx:id="buttonFiltrar" layoutX="224.0" layoutY="343.0" minHeight="35.0" minWidth="152.0" mnemonicParsing="false" onAction="#bttnFiltrarOn" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: #149959;" text="FILTRAR" textFill="WHITE">
+      <Button fx:id="buttonFiltrar" layoutX="224.0" layoutY="343.0" minHeight="35.0" minWidth="152.0" mnemonicParsing="false" onAction="#bttnFiltrarOn" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: #01ff84;" text="FILTRAR" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="15.0" />
          </font>
       </Button>
       <TextField fx:id="tfAlmoco" layoutX="223.0" layoutY="182.0" prefHeight="24.0" prefWidth="114.0" promptText="QUANTIDADE" text="0" />
-      <Label layoutX="365.0" layoutY="179.0" prefHeight="30.0" text="JANTA:" textFill="#149959">
+      <Label layoutX="365.0" layoutY="179.0" prefHeight="30.0" text="JANTA:" textFill="#01ff84">
          <font>
             <Font name="Georgia Bold" size="10.0" />
          </font>
