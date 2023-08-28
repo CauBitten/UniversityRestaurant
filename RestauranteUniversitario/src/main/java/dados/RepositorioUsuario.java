@@ -15,14 +15,10 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     private static IRepositorioUsuario instance;
 
     public RepositorioUsuario() {
-        Usuario admin = new Usuario("123","admin","admin@","admin", 123L, true, "Gerente");
-        Usuario avulso = new Usuario("123","cliente","cliente@","avulso", 0L, true, "Cliente");
-        Usuario online = new Usuario("123", "online", "online@", "online", 1L, true, "Vendedor");
+
         usuarios = new ArrayList<>();
         usuarios = recuperarArquivoUsuario("usuarios.txt");
-        usuarios.add(admin);
-        usuarios.add(avulso);
-        usuarios.add(online);
+
 
     }
 
@@ -36,7 +32,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     @Override
     public void cadastrarUsuario(Usuario u) throws CpfJaCadastradoException, LoginJaCadastradoException,
-            EmailJaCadastradoException, CPFInvalidoException, LoginInvalidoException {
+            EmailJaCadastradoException, CPFInvalidoException, LoginInvalidoException, SenhaInvalidaException {
         if (u != null) {
             if (getUsuarioPorCPF(u.getCpf()) != null) {
                 throw new CpfJaCadastradoException(getUsuarioPorCPF(u.getCpf()));
@@ -57,6 +53,11 @@ public class RepositorioUsuario implements IRepositorioUsuario {
             if (u.getLogin().length() < 4 || u.getLogin().length() > 20) {
                 throw new LoginInvalidoException(u.getLogin());
             }
+
+            if (u.getSenha().length() < 4) {
+                throw new SenhaInvalidaException(u.getSenha());
+            }
+
             ArquivosUsuarios.salvarArquivo("usuarios.txt", u);
             usuarios.add(u);
         }
@@ -112,7 +113,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     @Override
     public void alterarUsuario(Usuario user, Usuario editado) throws LoginJaCadastradoException, CpfJaCadastradoException,
-            EmailJaCadastradoException, CPFInvalidoException {
+            EmailJaCadastradoException, CPFInvalidoException, LoginInvalidoException, SenhaInvalidaException {
         if (getUsuarioPorLogin(editado.getLogin()) != null &&
                 getUsuarioPorLogin(editado.getLogin()) != user) {
             throw new LoginJaCadastradoException(getUsuarioPorLogin(editado.getLogin()));
@@ -123,10 +124,16 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         }
         else if (getUsuarioPorEmail(editado.getEmail()) != null
                 && getUsuarioPorEmail(editado.getEmail()) != user) {
-            throw new EmailJaCadastradoException(getUsuarioPorEmail(editado.getEmail()));
+            throw new EmailJaCadastradoException(Objects.requireNonNull(getUsuarioPorEmail(editado.getEmail())));
         }
         else if (Long.toString(editado.getCpf()).length() != 11) {
             throw new CPFInvalidoException(editado.getCpf());
+        }
+        else if (editado.getLogin().length() < 4 || editado.getLogin().length() > 20) {
+            throw new LoginInvalidoException(editado.getLogin());
+        }
+        else if (editado.getSenha().length() < 4) {
+            throw new SenhaInvalidaException(editado.getSenha());
         }
         else {
             for (Usuario usuario : usuarios) {

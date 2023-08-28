@@ -69,6 +69,10 @@ public class ControllerCadastroUsuario implements Initializable {
                 showErrorMessage("Erro: Login inválido", e.getMessage());
                 tfLogin.setText("");
             }
+            catch (SenhaInvalidaException e) {
+                showErrorMessage("Erro: senha inválida", e.getMessage());
+                senhaField.setText("");
+            }
         }
     }
 

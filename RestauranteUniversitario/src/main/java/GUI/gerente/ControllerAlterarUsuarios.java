@@ -1,9 +1,6 @@
 package GUI.gerente;
 
-import exception.CPFInvalidoException;
-import exception.CpfJaCadastradoException;
-import exception.EmailJaCadastradoException;
-import exception.LoginJaCadastradoException;
+import exception.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -66,6 +63,12 @@ public class ControllerAlterarUsuarios {
                 }
                 catch (CPFInvalidoException e) {
                     showErrorMessage("Erro: CPF inválido", e.getMessage(), "Corrija e tente novamente");
+                }
+                catch (LoginInvalidoException e) {
+                    showErrorMessage("Erro: Login inválido", e.getMessage(), "Corrija e tente novamente");
+                }
+                catch (SenhaInvalidaException e) {
+                    showErrorMessage("Erro: Senha inválida", e.getMessage(), "Corrija e tente novamente");
                 }
 
                 ScreenManager.getInstance().getControllerListarUsuarios().atualizarApresentacao();
