@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerPrincipalGerente">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerPrincipalGerente">
    <children>
       <VBox alignment="CENTER" layoutX="134.0" layoutY="52.0" prefHeight="296.0" prefWidth="332.0" spacing="25.0">
          <children>

@@ -15,27 +15,11 @@ import view.ScreenManager;
 import view.TelasEnum;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerListarCardapios implements Initializable  {
-
-    @FXML
-    private Button buttonAlterar;
-
-    @FXML
-    private Button buttonCadastrar;
-
-    @FXML
-    private Button buttonRemover;
-
-    @FXML
-    private Button buttonVoltarPagina;
-
-    @FXML
-    private Button buttonFiltrar;
 
     @FXML
     private ChoiceBox<String> choiceBoxTipo;

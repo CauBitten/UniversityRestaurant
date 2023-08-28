@@ -13,11 +13,8 @@ import negocio.beans.Usuario;
 import view.ScreenManager;
 import view.TelasEnum;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static java.lang.Long.parseLong;
 
 public class ControllerCadastroUsuario implements Initializable {
 

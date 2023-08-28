@@ -6,11 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.ButtonType;
 
 import negocio.Fachada;
 
@@ -20,25 +18,9 @@ import view.TelasEnum;
 
 import java.net.URL;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerListarUsuarios implements Initializable {
-
-    @FXML
-    private Button buttonAlterarUsuario;
-
-    @FXML
-    private Button buttonCadastrarUsuario;
-
-    @FXML
-    private Button buttonVoltarPagina;
-
-    @FXML
-    private Button buttonRemover;
-
-    @FXML
-    private Button buttonFiltrar;
 
     @FXML
     private TableColumn<Usuario, Boolean> tvColAtivo;
@@ -83,19 +65,6 @@ public class ControllerListarUsuarios implements Initializable {
         ScreenManager.getInstance().changeScreen(TelasEnum.PRINCIPAL_GERENTE.name());
     }
 
-    @FXML
-    void bttnRemoverOn(ActionEvent event) {
-        if (tvUsuarios.getSelectionModel().getSelectedItem() != Fachada.getInstance().getUsuarioLogado()) {
-            if (getConfirmation()) {
-                Fachada.getInstance().removerUsuario(tvUsuarios.getSelectionModel().getSelectedItem());
-                atualizarApresentacao();
-            }
-        }
-        else {
-            showErrorMessage("Erro: permissão negada", "Você não pode remover a si mesmo.");
-        }
-    }
-
     public void bttnFiltrarOn(ActionEvent event) {
         ScreenManager.getInstance().changeScreen(TelasEnum.FILTRAR_USUARIO.name());
     }
@@ -113,9 +82,7 @@ public class ControllerListarUsuarios implements Initializable {
     public void configurarTv(List<Usuario> usuarios) {
         ObservableList<Usuario> userList = FXCollections.observableArrayList();
 
-        for (Usuario u : usuarios) {
-            userList.add(u);
-        }
+        userList.addAll(usuarios);
 
         tvUsuarios.setItems(userList);
     }
@@ -137,35 +104,4 @@ public class ControllerListarUsuarios implements Initializable {
         for (int i = 0; i < tvUsuarios.getItems().size(); i++)
             tvUsuarios.getItems().clear();
     }
-
-    private boolean getConfirmation() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Remover usuário");
-        alert.setHeaderText("Tem certeza que gostaria de remover o usuário selecionado?");
-        alert.setContentText("Aviso: esta operação não pode ser desfeita.");
-
-        Optional<ButtonType> option = alert.showAndWait();
-
-        if (option.get() == ButtonType.OK) {
-            showInfoMessage("Usuário removido", "Usuário removido com sucesso!", "A operação foi um sucesso!");
-            return true;
-        }
-        else if (option.get() == ButtonType.CANCEL) {
-            showInfoMessage("Operação cancelada", "A operação foi cancelada", "Nada foi modificado.");
-            return false;
-        }
-
-        return false;
-    }
-
-    private void showInfoMessage(String titulo, String header, String mensagem) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-        alert.setTitle(titulo);
-        alert.setHeaderText(header);
-        alert.setHeaderText(mensagem);
-        alert.show();
-    }
-
-
 }

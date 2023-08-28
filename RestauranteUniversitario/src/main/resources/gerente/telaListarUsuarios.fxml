@@ -9,31 +9,26 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerListarUsuarios">
    <children>
-      <VBox layoutX="451.0" layoutY="53.0" prefHeight="181.0" prefWidth="134.0" spacing="15.0">
+      <VBox layoutX="451.0" layoutY="53.0" prefHeight="138.0" prefWidth="134.0" spacing="15.0">
          <children>
-            <Button fx:id="buttonCadastrarUsuario" mnemonicParsing="false" onAction="#bttnCadastrarUsuarioOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #149959;" text="CADASTRAR" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#bttnCadastrarUsuarioOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #01ff84;" text="CADASTRAR" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="buttonAlterarUsuario" mnemonicParsing="false" onAction="#bttnAlterarUsuarioOn" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #149959;" text="ALTERAR" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#bttnAlterarUsuarioOn" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #01ff84;" text="ALTERAR" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="buttonRemover" mnemonicParsing="false" onAction="#bttnRemoverOn" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #149959;" text="REMOVER" textFill="WHITE">
-               <font>
-                  <Font name="Georgia Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="bttnFiltrar" mnemonicParsing="false" onAction="#bttnFiltrarOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #149959;" text="FILTRAR" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#bttnFiltrarOn" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #01ff84;" text="FILTRAR" textFill="WHITE">
                <font>
                   <Font name="Georgia Bold" size="14.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <Button fx:id="buttonVoltarPagina" layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
+      <Button layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #01ff84;" text="&lt;" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>
@@ -43,11 +38,11 @@
             <TableView fx:id="tvUsuarios" prefHeight="335.0" prefWidth="436.0">
               <columns>
                 <TableColumn fx:id="tvColNome" prefWidth="75.0" text="Nome" />
-                <TableColumn fx:id="tvColCPF" prefWidth="86.4000244140625" text="CPF" />
-                  <TableColumn fx:id="tvColPerfil" prefWidth="60.0" text="Perfil" />
-                  <TableColumn fx:id="tvColAtivo" prefWidth="56.79998779296875" text="Ativo" />
-                  <TableColumn fx:id="tvColLogin" prefWidth="73.5999755859375" text="Login" />
-                  <TableColumn fx:id="tvColEmail" prefWidth="75.0" text="Email" />
+                <TableColumn fx:id="tvColCPF" text="CPF" />
+                  <TableColumn fx:id="tvColPerfil" prefWidth="70.0" text="Perfil" />
+                  <TableColumn fx:id="tvColAtivo" prefWidth="70.0" text="Ativo" />
+                  <TableColumn fx:id="tvColLogin" prefWidth="75.0" text="Login" />
+                  <TableColumn fx:id="tvColEmail" text="Email" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

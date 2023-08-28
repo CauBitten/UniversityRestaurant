@@ -1,6 +1,5 @@
 package GUI.gerente;
 
-import javafx.beans.property.SetProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -9,30 +8,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import negocio.Fachada;
-import negocio.beans.Cardapio;
 import negocio.beans.RegistroCompra;
 import view.ScreenManager;
 import view.TelasEnum;
 
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class ControllerListarRegistroCompra implements Initializable {
-
-    @FXML
-    private Button buttonVoltarPagina;
-
-    @FXML
-    private Button buttonFiltrar;
 
     @FXML
     private TableColumn<RegistroCompra, Long> codigoColumn = new TableColumn<>("Código");
@@ -104,6 +93,7 @@ public class ControllerListarRegistroCompra implements Initializable {
 
         almocoColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().
             getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Almoco")).toList().size()).asObject());
+
         jantaColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().
                 getFichasCompradas().stream().filter(ficha -> ficha.getTipo().equals("Janta")).toList().size()).asObject());
 

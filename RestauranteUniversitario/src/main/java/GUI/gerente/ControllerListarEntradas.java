@@ -1,33 +1,23 @@
 package GUI.gerente;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import negocio.Fachada;
 import negocio.beans.Entrada;
-import negocio.beans.RegistroCompra;
 import view.ScreenManager;
 import view.TelasEnum;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ControllerListarEntradas {
-
-    @FXML
-    private Button bttnFiltrar;
-
-    @FXML
-    private Button buttonVoltarPagina;
 
     @FXML
     private TableView<Entrada> tvEntrada;

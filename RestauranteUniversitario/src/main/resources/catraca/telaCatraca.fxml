@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.catraca.ControllerCatraca">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.catraca.ControllerCatraca">
    <children>
       <VBox layoutX="139.0" layoutY="126.0" prefHeight="102.0" prefWidth="322.0" spacing="25.0">
          <children>

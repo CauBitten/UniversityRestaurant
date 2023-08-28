@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerCadastroUsuario">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
+      <Button layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #01ff84;" text="&lt;" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>
@@ -25,13 +25,13 @@
             <TextField fx:id="tfCPF" minHeight="30.0" promptText="CPF" />
          </children>
       </VBox>
-      <Button layoutX="14.0" layoutY="58.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#bttnCadastrarOn" style="-fx-background-color: #149959;" text="CADASTRAR" textFill="WHITE">
+      <Button layoutX="14.0" layoutY="58.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#bttnCadastrarOn" style="-fx-background-color: #01ff84;" text="CADASTRAR" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="15.0" />
          </font>
       </Button>
       <ChoiceBox fx:id="choiceBoxTipo" layoutX="262.0" layoutY="321.0" prefWidth="150.0" />
-      <Label layoutX="277.0" layoutY="302.0" prefHeight="18.0" prefWidth="45.0" text="TIPO:" textFill="#149959">
+      <Label layoutX="277.0" layoutY="302.0" prefHeight="18.0" prefWidth="45.0" text="TIPO:" textFill="#01ff84">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>

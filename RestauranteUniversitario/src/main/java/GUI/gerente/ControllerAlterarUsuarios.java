@@ -6,15 +6,12 @@ import exception.EmailJaCadastradoException;
 import exception.LoginJaCadastradoException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import negocio.Fachada;
 import negocio.beans.Usuario;
 import view.ScreenManager;
 import view.TelasEnum;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import static java.lang.Long.parseLong;
 

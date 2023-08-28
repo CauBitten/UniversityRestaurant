@@ -14,9 +14,6 @@ import java.util.List;
 public class ControllerFiltrarUsuarios {
 
     @FXML
-    private Button buttonFiltrar;
-
-    @FXML
     private CheckBox checkBoxAtivo;
 
     @FXML

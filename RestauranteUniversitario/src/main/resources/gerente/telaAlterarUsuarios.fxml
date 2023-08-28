@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.gerente.ControllerAlterarUsuarios">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #149959;" text="&lt;" textFill="WHITE">
+      <Button layoutX="14.0" layoutY="14.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#bttnVoltarPaginaOn" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #01ff84;" text="&lt;" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>
@@ -28,45 +28,45 @@
       </VBox>
       <VBox layoutX="118.0" layoutY="27.0" prefHeight="232.0" prefWidth="46.0" spacing="20.0">
          <children>
-            <Label prefHeight="30.0" text="NOME:" textFill="#149959">
+            <Label prefHeight="30.0" text="NOME:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
             </Label>
-            <Label prefHeight="30.0" text="EMAIL:" textFill="#149959">
+            <Label prefHeight="30.0" text="EMAIL:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
             </Label>
-            <Label prefHeight="30.0" text="LOGIN:" textFill="#149959">
+            <Label prefHeight="30.0" text="LOGIN:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
             </Label>
-            <Label prefHeight="30.0" text="SENHA:" textFill="#149959">
+            <Label prefHeight="30.0" text="SENHA:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
             </Label>
-            <Label prefHeight="30.0" text="CPF:" textFill="#149959">
+            <Label prefHeight="30.0" text="CPF:" textFill="#01ff84">
                <font>
                   <Font name="Georgia Bold" size="10.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <Button layoutX="224.0" layoutY="326.0" minHeight="35.0" minWidth="152.0" mnemonicParsing="false" onAction="#bttnAlterarOn" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: #149959;" text="ALTERAR" textFill="WHITE">
+      <Button layoutX="133.0" layoutY="328.0" minHeight="35.0" minWidth="152.0" mnemonicParsing="false" onAction="#bttnAlterarOn" prefHeight="35.0" prefWidth="333.0" style="-fx-background-color: #01ff84;" text="ALTERAR" textFill="WHITE">
          <font>
             <Font name="Georgia Bold" size="15.0" />
          </font>
       </Button>
-      <CheckBox fx:id="checkBoxAtivo" layoutX="419.0" layoutY="285.0" mnemonicParsing="false" text="Ativo" textFill="#149959">
+      <CheckBox fx:id="checkBoxAtivo" layoutX="419.0" layoutY="285.0" mnemonicParsing="false" text="Ativo" textFill="#01ff84">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>
       </CheckBox>
       <ChoiceBox fx:id="choiceBoxTipo" layoutX="164.0" layoutY="281.0" prefWidth="150.0" />
-      <Label layoutX="118.0" layoutY="284.0" prefHeight="18.0" prefWidth="43.0" text="Perfil:" textFill="#149959">
+      <Label layoutX="118.0" layoutY="284.0" prefHeight="18.0" prefWidth="43.0" text="Perfil:" textFill="#01ff84">
          <font>
             <Font name="Georgia Bold" size="12.0" />
          </font>

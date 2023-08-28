@@ -4,7 +4,6 @@ import exception.CardapioJaCadastradoException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import negocio.Fachada;
 import negocio.beans.Cardapio;
@@ -12,12 +11,6 @@ import view.ScreenManager;
 import view.TelasEnum;
 
 public class ControllerCadastroCardapio {
-
-    @FXML
-    private Button buttonCadastrar;
-
-    @FXML
-    private Button buttonVoltarPagina;
 
     @FXML
     private TextField tfGuarnicao;

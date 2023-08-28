@@ -3,7 +3,6 @@ package GUI.gerente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.util.converter.LocalDateStringConverter;
 import negocio.Fachada;
 import negocio.beans.RegistroCompra;
 import view.ScreenManager;
@@ -14,9 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerFiltrarRegistroCompra {
-
-    @FXML
-    private Button buttonFiltrar;
 
     @FXML
     private DatePicker dtpData;

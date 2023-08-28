@@ -14,7 +14,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     public RepositorioUsuario() {
         Usuario admin = new Usuario("123","admin","admin@","admin", 123L, true, "Gerente");
         Usuario avulso = new Usuario("123","cliente","cliente@","cliente", 0L, true, "Cliente");
-        Usuario online = new Usuario("123", "online", "online@", "online", 1L, false, "Vendedor");
+        Usuario online = new Usuario("123", "online", "online@", "online", 1L, true, "Vendedor");
         usuarios = new ArrayList<>();
         usuarios.add(admin);
         usuarios.add(avulso);
