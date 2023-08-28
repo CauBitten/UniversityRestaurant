@@ -30,6 +30,7 @@ public class Usuario {
         return senha;
     }
 
+
     public String getLogin() {
         return login;
     }
