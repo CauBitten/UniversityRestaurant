@@ -25,13 +25,13 @@ public class ArquivosUsuarios {
             writer.newLine();
             writer.newLine(); // Linha em branco entre as entradas
 
-            System.out.println("Atributos da pessoa salvos em " + nomeArquivo);
+            //System.out.println("Atributos da pessoa salvos em " + nomeArquivo);
         } catch (IOException e) {
             System.err.println("Erro ao salvar atributos: " + e.getMessage());
         }
     }
 
-    public static List<Usuario> recuperarAtributosDeArquivo(String nomeArquivo) {
+    public static List<Usuario> recuperarArquivoUsuario(String nomeArquivo) {
         List<Usuario> usuarios = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo))) {
