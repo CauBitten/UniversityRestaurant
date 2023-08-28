@@ -45,6 +45,11 @@ public class ControllerCatraca {
                             tipo), tipo, LocalDateTime.now(), Fachada.getInstance().obterFichaDoClienteDoTipo(cliente, tipo));
                     Fachada.getInstance().registrarEntrada(e);
                 }
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Ficha utilizada");
+                alert.setHeaderText("Você entrou no RU e utilizou uma ficha");
+                alert.show();
             }
             catch (LoginNaoExisteException e) {
                 showErrorAlert("Erro: não há usuário com este login", e.getMessage(), "Tente novamente");
