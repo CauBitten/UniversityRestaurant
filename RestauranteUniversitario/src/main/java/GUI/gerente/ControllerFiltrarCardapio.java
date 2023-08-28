@@ -42,6 +42,7 @@ public class ControllerFiltrarCardapio {
     @FXML
     void bttnFiltrarOn(ActionEvent event) {
         List<Cardapio> cardapios = filtrar();
+        ScreenManager.getInstance().getControllerListarCardapios().limparItens();
 
         if (cardapios.isEmpty())
             showErrorMessage("Erro: nada encontrado", "Não foram encontrados cardápios", "Tente outro filtro.");

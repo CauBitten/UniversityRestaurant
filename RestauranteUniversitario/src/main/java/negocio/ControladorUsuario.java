@@ -54,10 +54,6 @@ public class ControladorUsuario {
         return null;
     }
 
-    public Usuario getUsuarioPorLogin(String login) {
-        return repositorioUsuarios.getUsuarioPorLogin(login);
-    }
-
     public Usuario getUsuarioDeCredenciais(String login, String senha) throws SenhaIncorretaException,
             LoginNaoExisteException, UsuarioDesativadoException {
         if (login != null && senha != null)

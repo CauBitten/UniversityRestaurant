@@ -173,10 +173,13 @@ public class ControllerListarCardapios implements Initializable  {
     }
 
     public void atualizarApresentacao() {
+        limparItens();
+        configurarTv(Fachada.getInstance().obterCardapios());
+    }
+
+    public void limparItens() {
         for (int i = 0; i < tvCardapios.getItems().size(); i++)
             tvCardapios.getItems().clear();
-
-        configurarTv(Fachada.getInstance().obterCardapios());
     }
 
     private void showErrorMessage(String titulo, String header, String content) {
