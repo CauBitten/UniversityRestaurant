@@ -520,6 +520,7 @@ public class ScreenManager {
         switch (scr) {
             case "LOGIN" -> {
                 primaryStage.setScene(loginScene);
+                primaryStage.setTitle("RU | LOGIN");
             }
 
             // Cliente
